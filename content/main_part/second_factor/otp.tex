@@ -1,0 +1,25 @@
+\section{OTP}
+
+\subsection{HMAC}
+
+\subsubsection{Variants}
+
+\begin{enumerate}
+	\item TOTP
+	\item HOTP
+\end{enumerate}
+
+\subsubsection{pros}
+
+\begin{enumerate}
+	\item Collisions in MD5 or SHA1 are no problem, already stated/analyzed in the RFC
+\end{enumerate}
+
+\subsubsection{cons}
+
+\begin{enumerate}
+	\item synchronization
+	\item invalidation
+	\item nobody knows how the algorithm is implemented (RFC = no standard)
+	\item Differences (e.g. Steam - only 5 digits, limited Alphabet)
+\end{enumerate}
