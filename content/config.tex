@@ -4,7 +4,7 @@
 %-----------------------------------------------------------------------------
 
 %-----------------------------------------------------------------------------
-% Font size, layout, paper, type of the document
+% Font size, layout, paper, type and page numbering the of the document
 %-----------------------------------------------------------------------------
 \documentclass[
 	fontsize=12pt,
@@ -17,6 +17,27 @@
 	numbers=noenddot
 ]{scrreprt}
 
+
+\newcommand{\romannumbering}{
+	\pagenumbering{Roman}
+	\setcounter{page}{1}
+}
+
+\newcommand{\arabicnumbering}{
+	\newcounter{frontmatter}
+	\setcounter{frontmatter}{\value{page}}
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+}
+
+\newcommand{\romannumberingtwo}{
+	\pagenumbering{Roman}
+	\setcounter{page}{\value{frontmatter}}
+}
+
+\newenvironment{mainmatter}{\arabicnumbering}{\newpage}
+\newenvironment{frontmatter}{\romannumbering}{\newpage}
+\newenvironment{backmatter}{\romannumberingtwo}{}
 
 %-----------------------------------------------------------------------------
 % Packages
@@ -41,12 +62,13 @@
 \usepackage{array}
 \usepackage{blindtext}
 \usepackage{titling}
+\usepackage{multicol}
 
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 
 %-----------------------------------------------------------------------------
-% Constans
+% Constants
 %-----------------------------------------------------------------------------
 \newcommand{\documentType}{Master-Thesis}
 \newcommand{\birthday}{03/31/1995}
@@ -56,7 +78,7 @@
 
 
 %-----------------------------------------------------------------------------
-% Margings
+% Margins
 %-----------------------------------------------------------------------------
 \usepackage[
 	left=3cm,
@@ -107,12 +129,12 @@
 %-----------------------------------------------------------------------------
 % Rename image captions
 %-----------------------------------------------------------------------------
-\addto{\captionsngerman}{%
-	\renewcommand*{\figurename}{Bild}}
+%\addto{\captionsngerman}{%
+%	\renewcommand*{\figurename}{Bild}}
 
 
 %-----------------------------------------------------------------------------
-% Colors for PDF documeents
+% Colors for PDF documents
 %-----------------------------------------------------------------------------
 \definecolor{LinkColor}{rgb}{0,0,0.5}
 
@@ -184,4 +206,10 @@
 \fancyhead[R]{\nouppercase{\leftmark}}
 \renewcommand{\headrulewidth}{0.5pt}
 \fancyfoot[R]{\thepage}
+
+\fancypagestyle{noheader}{
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0.0pt}
+	\fancyfoot[R]{\thepage}
+}
 %-----------------------------------------------------------------------------

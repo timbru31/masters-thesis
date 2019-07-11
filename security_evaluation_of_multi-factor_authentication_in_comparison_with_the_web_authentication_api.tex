@@ -4,56 +4,62 @@
 % Begin of document
 %-----------------------------------------------------------------------------
 \begin{document}
-
-	\input{content/cover.tex}
-	\onehalfspacing
-	
-	%-----------------------------------------------------------------------------
-	% Text
-	%-----------------------------------------------------------------------------
-	\input{content/topic}
-	\input{content/abstract}
-	
-	%-----------------------------------------------------------------------------
-	% ToC
+	\begin{frontmatter}
+		\input{content/cover.tex}
+		\onehalfspacing
+		
+		%-----------------------------------------------------------------------------
+		% Text
+		%-----------------------------------------------------------------------------
+		\input{content/topic}
+		\input{content/abstract}
+		
+		%-----------------------------------------------------------------------------
+		% ToC
+		%-----------------------------------------------------------------------------	
+		\pagestyle{fancy}
+		\pdfbookmark[1]{Inhaltsverzeichnis}{toc}	
+		\singlespacing
+		\tableofcontents
+		\onehalfspacing
+	\end{frontmatter}
 	%-----------------------------------------------------------------------------	
-	\pdfbookmark[1]{Inhaltsverzeichnis}{toc}	
-	\singlespacing
-	\tableofcontents
-	\onehalfspacing
-
-
 	% Main part
 	%-----------------------------------------------------------------------------	
-	\input{content/introduction/introduction}
-	\input{content/main_part/content}
-	\input{content/conclusion/conculsion}
+	\begin{mainmatter}
+		\input{content/introduction/introduction}
+		\input{content/main_part/content}
+		\input{content/conclusion/conculsion}
+	\end{mainmatter}
+
+	\begin{backmatter}
+		%-----------------------------------------------------------------------------
+		% Bibliography
+		%-----------------------------------------------------------------------------
+		\nocite{*}
+		%\bibliography{sources/papers}	
 	
-	%-----------------------------------------------------------------------------
-	% Bibliography
-	%-----------------------------------------------------------------------------
-	\nocite{*}
-	%\bibliography{sources/papers}	
-
-	%-----------------------------------------------------------------------------
-	% Listings
-	%-----------------------------------------------------------------------------
-	\singlespacing
-	\listoffigures
-    \lstlistoflistings
-	\listoftables
-	\printglossaries
-	\onehalfspacing
-
-	%-----------------------------------------------------------------------------
-	% Annex
-	%-----------------------------------------------------------------------------	
-
+		%-----------------------------------------------------------------------------
+		% Listings
+		%-----------------------------------------------------------------------------
+		\singlespacing
+		\listoffigures
+	    \lstlistoflistings
+		\listoftables
+		\printglossaries
+		\onehalfspacing
 	
-	%-----------------------------------------------------------------------------
-	% Declaration of Academic Integrity
-	%-----------------------------------------------------------------------------	
-	\input{content/declaration_of_academic_integrity}
-	%\input{content/index}
+		%-----------------------------------------------------------------------------
+		% Annex
+		%-----------------------------------------------------------------------------	
+	
+		
+		%-----------------------------------------------------------------------------
+		% Declaration of Academic Integrity
+		%-----------------------------------------------------------------------------	
+		\input{content/declaration_of_academic_integrity}
+		\input{content/theses}
+		%\input{content/index}
+	\end{backmatter}
 
 \end{document}
