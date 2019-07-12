@@ -2,12 +2,15 @@
 
 \subsection{HMAC}
 
-\subsubsection{Variants}
+Keyed-Hash Message Authentication Code is an extension of a Message Authentication Code (MAC) and standardized in RFCXYz and NIST abc.
 
-\begin{enumerate}
-	\item TOTP
-	\item HOTP
-\end{enumerate}
+\subsubsection{HTOP}
+
+HMAC-based One-time Password algorithm, counter based. RFC 899. Configurable length (6-10). Default SHA1. Truncation of HMAC
+
+\subsubsection{TOTP}
+
+Time based instead of counter based. RFC 123 and OATH.
 
 \subsubsection{pros}
 
@@ -17,9 +20,13 @@
 
 \subsubsection{cons}
 
+"Just an algorithm"
+
 \begin{enumerate}
 	\item synchronization
 	\item invalidation
 	\item nobody knows how the algorithm is implemented (RFC = no standard)
 	\item Differences (e.g. Steam - only 5 digits, limited Alphabet)
+	\item Brute Force if server does not limit
+	\item Not phishing resistant
 \end{enumerate}
