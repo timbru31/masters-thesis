@@ -63,6 +63,7 @@
 \usepackage{blindtext}
 \usepackage{titling}
 \usepackage{multicol}
+\usepackage{csquotes}
 
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
@@ -151,8 +152,17 @@
 %-----------------------------------------------------------------------------
 % Bibliography style
 %-----------------------------------------------------------------------------						
-%\usepackage[style=unsrt]{biblatex}
-\bibliographystyle{unsrtdin}
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+%\bibliographystyle{science}
+
+%-----------------------------------------------------------------------------
+% Bibliography
+%-----------------------------------------------------------------------------
+\addbibresource{sources/papers.bib}
+\addbibresource{sources/thesis.bib}
+\addbibresource{sources/books.bib}
+\addbibresource{sources/bsi.bib}
+
 
 %-----------------------------------------------------------------------------
 % Index
