@@ -163,39 +163,21 @@
 %-----------------------------------------------------------------------------
 % Glossary and abbreviations
 %-----------------------------------------------------------------------------
-%\usepackage[style=list,hyper=true,toc=true,number=none,acronym=true]{glossaries}
-\usepackage[toc,counter=page,nonumberlist,acronym,translate=babel]{glossaries}
-%\setacronymnamefmt{\gloshort}
-\makeglossaries
-%\makeacronym
-\input{content/abbreviations}
-
-
-%-----------------------------------------------------------------------------
-% Source code listings
-%-----------------------------------------------------------------------------
-\lstloadlanguages{Java}
-
-\definecolor{javared}{rgb}{0.6,0,0}
-\definecolor{javagreen}{rgb}{0.25,0.5,0.35}
-\definecolor{javapurple}{rgb}{0.5,0,0.35}
-\definecolor{javadocblue}{rgb}{0.25,0.35,0.75}
- 
-\lstset{language=Java,
-	basicstyle=\ttfamily\scriptsize,
-	keywordstyle=\color{javapurple}\bfseries,
-	stringstyle=\color{javared},
-	commentstyle=\color{javagreen},
-	morecomment=[s][\color{javadocblue}]{/**}{*/},
-	numbers=left,
-	numberstyle=\tiny\color{black},
-	stepnumber=2,
-	numbersep=10pt,
-	tabsize=3,
-	breaklines=true,
-	showspaces=false,
-	showstringspaces=false
+\usepackage[nonumberlist,toc,acronym]{glossaries-extra}
+\usepackage{glossary-mcols}
+\setglossarystyle{listgroup}
+\renewcommand*{\glsnamefont}[1]{\textbf{#1}}
+\renewcommand{\glsxtrpostdescacronym}{%
+ \ifglshasfield{see}{\glscurrententrylabel}%
+ {%
+   \glsfieldfetch{\glscurrententrylabel}{see}{\thisxr}%
+   , \expandafter\glsseeformat\thisxr{}%
+ }% 
+ {}%
 }
+
+\makeglossaries
+\input{content/abbreviations}
 
 
 %-----------------------------------------------------------------------------

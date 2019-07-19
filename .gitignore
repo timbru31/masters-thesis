@@ -38,3 +38,4 @@ svg-inkscape/
 *.fls
 *.fdb_latexmk
 *.synctex(busy)
+.fuse_hidden*
