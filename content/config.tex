@@ -13,7 +13,6 @@
 	parskip=half,
 	listof=totoc,
 	bibliography=totoc,
-	flegn,
 	numbers=noenddot
 ]{scrreprt}
 
@@ -176,6 +175,7 @@
 \usepackage[nonumberlist,toc,acronym]{glossaries-extra}
 \usepackage{glossary-mcols}
 \setglossarystyle{listgroup}
+\setabbreviationstyle[acronym]{long-short}
 \renewcommand*{\glsnamefont}[1]{\textbf{#1}}
 \renewcommand{\glsxtrpostdescacronym}{%
  \ifglshasfield{see}{\glscurrententrylabel}%
@@ -185,10 +185,9 @@
  }% 
  {}%
 }
-
 \makeglossaries
 \input{content/abbreviations}
-
+\glssetcategoryattribute{acronym}{glossdesc}{title}
 
 %-----------------------------------------------------------------------------
 % Header and footer

@@ -3,7 +3,9 @@
 As both the \gls{hotp} and the \gls{totp} are based on the \gls{hmac} algorithm by building the \gls{otp} over the \gls{hmac} function of the secret key and the counter with a truncation, the underlying \gls{hmac} algorithm needs to be evaluated.\\
 The important part here is the chosen cryptographic hash algorithm. Mostly \gls{sha}-1 is used, since it's the default of the RFC. Given that both \gls{sha}-1 and MD5 are considered insecure one has to ask if they are still considered secure in the \gls{otp} context.\\
 Because the collision resistance of the chosen cryptographic hash algorithm is not important for the security of the \gls{otp} generation those algorithms do not expose a threat.\\
-The \gls{bsi} lists these algorithms as secure for HMAC\footcite{verfahren2017empfehlungen}
+The \gls{bsi} lists these algorithms as secure for HMAC\footcite{verfahren2019empfehlungen}
+
+Citations: \cite{}
 
 It is more important that the algorithm is implemented correctly, in the past e.g. Google did not issue \gls{otp} values with a leading zero. Besides that, the minimum length of the \gls{otp} values are six digits, meanwhile the RFC supports up to 10.\\
 For example Steam, decided to use a different alphabet and character length.
