@@ -161,6 +161,7 @@
 \addbibresource{sources/thesis.bib}
 \addbibresource{sources/books.bib}
 \addbibresource{sources/bsi.bib}
+\addbibresource{sources/internet.bib}
 
 
 %-----------------------------------------------------------------------------
@@ -180,8 +181,8 @@
 \renewcommand{\glsxtrpostdescacronym}{%
  \ifglshasfield{see}{\glscurrententrylabel}%
  {%
-   \glsfieldfetch{\glscurrententrylabel}{see}{\thisxr}%
-   , \expandafter\glsseeformat\thisxr{}%
+	\glsfieldfetch{\glscurrententrylabel}{see}{\thisxr}%
+	, \expandafter\glsseeformat\thisxr{}%
  }% 
  {}%
 }

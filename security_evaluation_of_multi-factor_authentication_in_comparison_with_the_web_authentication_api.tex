@@ -37,9 +37,15 @@
 		% Listings
 		%-----------------------------------------------------------------------------
 		\singlespacing
-		\printbibliography
+		
+		\printbibliography[notkeyword={internet},notkeyword={internal}]
+		\clearpage
+		\phantomsection
+		\addcontentsline{toc}{section}{Internet sources}
+		\printbibliography[title={Internet sources}, keyword={internet}]
+		
 		\listoffigures
-	    \lstlistoflistings
+		\lstlistoflistings
 		\listoftables
 		\printglossaries
 		\onehalfspacing
