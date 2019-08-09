@@ -1,4 +1,4 @@
-\chapter{One Factor}
+\chapter{Single-factor Authentication}
 
 % TODO Challenge-Response, Zero Knowledge, Salt, NONCE
 
@@ -7,13 +7,41 @@
 
 \subsection{What you know (Password)}
 
+Just knowledge. Often weak, re-used. Meant to be remembered. One factor only.\\
+Protection by the server often not given, user's are writing it down etc.
+
 \begin{enumerate}
 	\item re-usage
 	\item phishing -> stealing in general
 	\item secret might be known by others, too (e.g. security questions)
+	\item guessing
+	\item brute force
+	\item copied
 \end{enumerate}
 
+\subsection{Possession}
 
-\subsection{What you habe (Possession)}
+The main risks of authentication by possession it that it's not tied to the user itself and can be lost or even worse stolen by an attacker. Besides that, possession factors can be shared between multiple users, allowing attacks such as a malicious insider attack. Another usage implication is that it has to be carried with the user and can be forgotten which makes the authentication impossible if no access to the possession is possible.\footcites[See][263--264]{shostack2014threat}
 
-\subsection{What you are (Biometrics)}
+Especially possessions that use wireless transmissions such as \gls{ble}, \gls{nfc} or \gls{rfid} can be copied even over some distances. For instance credit cards could be copied in crowded places like trains or busses.\footcite{6892730}
+% TODO. source for e.g. briefcase copying
+
+\subsection{Biometrics}
+
+In contrast to possession and knowledge the biometric trait can't be easily stolen. While it can be copied, e.g. the fingerprint from high resolution photographs or 
+face models to circumvent face recognition systems.\footcites[][]{185181}[][]{220566} In the recent past researchers were able to copy both German Chancellor's Angela Merkel's iris and the fingerprint of Ursula von der Leyen, the now the elected President of the European Commission, from high resolution photographs.\footcite{ccc-merkel}
+
+Yet another implication is that the biometric characteristics can change over time or be temporarily unavailable because of injuries. While some can heal over time, others, especially scars, can permanently change the biometric trait and therefore render it unusable.\footcite[See][52]{Jain2011}\\
+Traits such as facial recognition also must be usable with different amounts of facial hair, hair styles, with and without glasses, etc.\footcite[See][98]{Jain2011}
+
+Another high risk is the data privacy and protection.
+
+\subsection{Further methods}
+
+\begin{enumerate}
+	\item spoofing (GPS, IP)
+\end{enumerate}
+
+\subsection{General threats}
+
+General threat: security of transmission!

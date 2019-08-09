@@ -32,30 +32,26 @@ Yet another form is the time-based authentication. A common example is the time 
 
 \section{Wording differences between multi-factor, multi-step, authentication and verification}
 
-The naming of the chosen authentication or verification methods by companies is often confusing or difficult to understand. Companies use terms like \gls{2fa}, often just calling it \gls{2fa},\footcite{apple_2fa} while others are talking about two-step-verification, sometimes written as 2-Step Verification, too.\footcites[][]{apple_s2v}[][]{playstation}[][]{google_2-step_verification}[][]{microsoft_2sv}.
+The naming of the chosen authentication or verification methods by companies is often confusing or difficult to understand. The terms used by companies varies from \gls{2fa}, often just calling it \gls{2fa},\footcite{apple_2fa} to two-step-verification, sometimes written as 2-Step Verification, too.\footcites[][]{apple_s2v}[][]{playstation}[][]{google_2-step_verification}[][]{microsoft_2sv}.
 
 One could argue that the different authentication factors can be reduced to a single one, e.g. that an \gls{otp} is \frqq something the user knows\flqq{}, since it relies on a secret that \textit{could} in theory be memorized, too.\\
-In this case the term \gls{mfa} or 2FA is technically incorrect, since it's instead a multi-step authentication, because the same factor is used multiple times.
+In this case the term \gls{mfa} or 2FA is technically incorrect, since it's instead a multi-step authentication, because the same factor is used multiple times. However, it has to be noted that using the same authentication factor multiple times is weaker than using different authentication factors.\footcite[See][117]{grimes2017hacking}
 
 Besides that (user) verification is a part of the authentication process this fine differentiation of verification vs. authentication and multi-step vs. multi-factor is not important for this thesis and the term \gls{mfa} is used throughout.
 
-\newpage
-
-\section{Differentiation of factors}
-
-\subsection{Password}
-
-Just knowledge. Often weak, re-used. Meant to be remembered. One factor only.\\
-Protection by the server often not given, user's are writing it down etc.
-
-\subsection{MFA}
-
-More general term for 2FA. Can combine e.g. password with another method (like possession of hardware key, App) or trait (like TouchID, FaceID)
-
-\subsubsection{OOB}
-
-\gls{oob}
-
-\subsection{WebAuth}
-
-New API \gls{w3c}
+% TODO Check this sections
+%\section{Differentiation of factors // Introduction to 1FA, MFA and WebAuthn}
+%
+%As the main focus of this Master-Thesis is to evaluate \gls{mfa} with the Web Authentication API the following sections briefly introduces the common authentication methods ranging from single factor authentication with password to \gls{mfa} to the WebAuth.
+%
+%\subsection{MFA}
+%
+%More general term for 2FA. Can combine e.g. password with another method (like possession of hardware key, App) or trait (like TouchID, FaceID)
+%
+%\subsubsection{OOB}
+%
+%\gls{oob}
+%
+%\subsection{WebAuth}
+%
+%New API \gls{w3c}
