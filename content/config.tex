@@ -41,7 +41,7 @@
 \newcommand*\OK{\ding{51}}
 \newcommand*\NOOK{\ding{53}}
 \newcommand*\rot{\rotatebox{90}}
-\newcommand*\wa{Web Authentication API}
+\newcommand*\wa{Web Authentication \gls{api}}
 
 \counterwithout*{footnote}{chapter}
 
@@ -53,8 +53,12 @@
 \usepackage[american]{babel}
 \usepackage{graphicx}
 \usepackage{wrapfig}
+
+\usepackage{silence}
+\WarningFilter{scrreprt}{Usage of package `fancyhdr'}
 \usepackage{fancyhdr}
-\usepackage{setspace}
+
+\usepackage[onehalfspacing]{setspace}
 \usepackage{subfigure}
 \usepackage{listings}
 \usepackage{xcolor}
