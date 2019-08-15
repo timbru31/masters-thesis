@@ -2,4 +2,47 @@
 
 \subsection{Browser support}
 
+The global browser support as of August 2019 is 68\%.
+
+\begin{table}[ht]
+\renewcommand\thetable{1}
+\begin{tabularx}{\textwidth}{l|p{4cm}|p{2.5cm}|p{2cm}|p{3.5cm}}
+	& Web browser & Supported & Version & Release Date \\
+	\hline
+	\parbox[t]{2mm}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Dekstop}}} & Chrome & \OK & 67 & May 2018 \\
+	& Firefox & \OK & 60 & May 2018 \\
+	& Opera & \OK & 54 & June 2018 \\
+	& Internet Explorer & \NOOK & - & - \\
+	& Edge & \OK & 18 & November 2018 \\
+	& Safari & (\OK) & (13) & (December 2018) \\
+	\hline
+	\parbox[t]{2mm}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Mobile}}} & Chrome for Android & \OK & 70 & October 2018 \\
+	& Firefox for Android & \OK & 68 & July 2019 \\
+	& Opera Mobile & \NOOK & - & - \\
+	& IE Mobile & \NOOK & - & - \\
+	& iOS Safari & \NOOK & - & - \\
+	\hline
+\end{tabularx}
+\caption[Browser support of the \wa{}]{Browser support of the \wa{}\footnotemark} \label{tab:browser-support}
+\end{table}
+\footnotetext{Sources: \cites{chrome-webauthn}{firefox-webauthn}{safari-webauthn}{chrome-android-webauthn}{firefox-android-webauthn}}
+
+Table \ref{tab:browser-support} shows the support status of the \wa{} for the most common web browser, both desktop and mobile and if they support the API and if yes since which version and release date. The following subsections will explain the browser support more detailed.
+
+\subsubsection{Desktop support}
+
+The \wa{} is supported from Chrome 67 onwards which was released in May 2018, Firefox added support for the \wa{} in May 2018, too, with version 60.\\
+Microsoft added support for the API in Edge 13 which was released in November 2015 based on an earlier draft version with support for the \gls{fido} 2.0 spec in Edge 14 (released in December 2016). The feature is hidden behind a configuration option though and was enabled for all users with the release of Edge 17 in November 2018.
+
+As the development for the Internet Explorer halted, no support is available here, even though it's still used by 5\% of all desktop browser users.\footcite[See]{TODO}
+
+Safari added support for the \wa{} feature in December 2018 but only for the preview variant of the browser. It is expected to be available for all users with the release of Safari 13 in mid to end September.
+
+% TODO Move to a different section, e.g. History?
+Besides that Windows 10 also added support for \gls{mfa} by incorporating the technology described in the \gls{fido} standard. This allows biometric authentication with e.g. fingerprints when a reader is available or to use the facial recognition technology or iris scans. This feature is called \frqq Windows Hello\flqq{}. The credentials are only stored locally and are protected by asymetric encryption. Besides biometric authentication Windows Hello also supports \glspl{pin}, those are stored in the \gls{tpm}
+
+\subsubsection{Mobile support}
+
+The support for the \wa{} 
+
 \subsection{Usability}

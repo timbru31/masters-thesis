@@ -38,6 +38,11 @@
 \newenvironment{frontmatter}{\romannumbering}{\newpage}
 \newenvironment{backmatter}{\romannumberingtwo}{}
 
+\newcommand*\OK{\ding{51}}
+\newcommand*\NOOK{\ding{53}}
+\newcommand*\rot{\rotatebox{90}}
+\newcommand*\wa{Web Authentication API}
+
 \counterwithout*{footnote}{chapter}
 
 %-----------------------------------------------------------------------------
@@ -65,6 +70,9 @@
 \usepackage{titling}
 \usepackage{multicol}
 \usepackage{csquotes}
+\usepackage{tabularx}
+\usepackage{pifont}
+\usepackage{multirow}
 
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
