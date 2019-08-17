@@ -27,6 +27,7 @@
 	% Main part
 	%-----------------------------------------------------------------------------	
 	\begin{mainmatter}
+		\onehalfspacing
 		\input{content/introduction/introduction}
 		\input{content/main_part/content}
 		\input{content/conclusion/conculsion}
@@ -38,7 +39,7 @@
 		%-----------------------------------------------------------------------------
 		\singlespacing
 		
-		\printbibliography[notkeyword={internet},notkeyword={internal}]
+		\printbibliography[notkeyword={internet}]
 		\clearpage
 		\phantomsection
 		\addcontentsline{toc}{section}{Internet sources}
@@ -53,7 +54,10 @@
 		%-----------------------------------------------------------------------------
 		% Annex
 		%-----------------------------------------------------------------------------	
-	
+		\clearpage
+		\renewcommand{\thesection}{\Roman{section}}
+		\input{appendix/cd-rom}	
+
 		
 		%-----------------------------------------------------------------------------
 		% Declaration of Academic Integrity

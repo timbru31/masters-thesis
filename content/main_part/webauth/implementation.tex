@@ -1,13 +1,16 @@
 \section{Technical implementation and details}
 
+\newpage
 \subsection{Browser support}
 
+Table \ref{tab:browser-support} shows the support status of the \wa{} for the most common web browser, both desktop and mobile and if they support the \gls{api} and if yes since which version and when the release date was. The following subsections will explain the browser support more detailed.
+
 % TODO which stats
-The global browser support as of August 2019 is 68\%.
+\textcolor{red}{The global browser support as of August 2019 is 68\%.}
 % TODO China browser
 \begin{table}[ht]
 \renewcommand\thetable{1}
-\begin{tabularx}{\textwidth}{l|p{4cm}|p{2.5cm}|p{2cm}|p{3.5cm}}
+\begin{tabularx}{\textwidth}{l|p{4.8cm}|p{2cm}|p{2cm}|p{3.3cm}}
 	& Web browser & Supported & Version & Release Date \\
 	\hline
 	\parbox[t]{2mm}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Dekstop}}} & Chrome & \OK & 67 & May 2018 \\
@@ -17,28 +20,40 @@ The global browser support as of August 2019 is 68\%.
 	& Edge & \OK & 18 & November 2018 \\
 	& Safari & (\OK) & (13) & - \\
 	\hline
-	\parbox[t]{2mm}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Mobile}}} & Chrome for Android & \OK & 70 & October 2018 \\
-	& Firefox for Android & \OK & 68 & July 2019 \\
-	& Opera Mobile & \NOOK & - & - \\
+	\parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Mobile}}} & Opera Mobile & \NOOK & - & - \\
 	& IE Mobile & \NOOK & - & - \\
 	& iOS Safari & \NOOK & - & - \\
+	& iOS Safari & \NOOK & - & - \\
 	\hline
+	\parbox[t]{2mm}{\multirow{11}{*}{\rotatebox[origin=c]{90}{Android}}} & LineageOS Stock Browser & \NOOK & - & - \\
+	& Chrome for Android & \OK & 70 & October 2018 \\
+	& Firefox for Android & \OK & 68 & July 2019 \\
+	& Opera & \NOOK & - & - \\
+	& Opera mini & \NOOK & - & - \\
+	& Edge & \NOOK & - & - \\
+	& Samsung Internet & \NOOK & - & - \\
+	& UC Browser & \NOOK & - & - \\	
+	& Mint Browser & \NOOK & - & - \\
+	& 360 Secure Browser & \NOOK & - & - \\
+	& QQ Browser & \NOOK & - & - \\
+	& Brave Browser & \NOOK & - & -
 \end{tabularx}
 \caption[Browser support of the \wa{}]{Browser support of the \wa{}\footnotemark} \label{tab:browser-support}
 \end{table}
-\footnotetext{Sources: \cites{chrome-webauthn}{firefox-webauthn}{safari-webauthn}{chrome-android-webauthn}{firefox-android-webauthn}}
-
-Table \ref{tab:browser-support} shows the support status of the \wa{} for the most common web browser, both desktop and mobile and if they support the \gls{api} and if yes since which version and release date. The following subsections will explain the browser support more detailed.
+\footnotetext{Sources: \cites{chrome-webauthn}{firefox-webauthn}{safari-webauthn}{chrome-android-webauthn}{firefox-android-webauthn}. A detailed analysis of Android browsers is available on the CD in the appendix.}
+\newpage
 
 \subsubsection{Desktop support}
 
 The \wa{} is supported from Chrome 67 onwards, which was released in May 2018. Firefox added support for the \wa{} in May 2018, too, with version 60.\\
 Microsoft added support for the \wa{} in Edge 13 which was released in November 2015. However, the implementation is based on an earlier draft version of the \wa. Support for the \gls{fido} 2.0 specification was added in Edge 14 (released in December 2016). The feature is hidden behind a configuration option though and was enabled for all users with the release of Edge 17 in November 2018.
 
-As the development for the Internet Explorer halted and it's only receiving security updates, no support is available for new web \glspl{api} including the \wa, even though it's still used by 5\% of all desktop browser users and remains supported for the operating system Windows 7, 8.1 and 10.\footcite[See][]{ie-support}
+Browsers like Opera, Vivaldi or Brave and upcoming Edge versions, that are all based on Chromium, the browser and source code behind Google's Chrome browser, have support for the \wa, too.
+
+As the development for the Internet Explorer halted and it's only receiving security updates, no support is available for new web \glspl{api} including the \wa, even though it's still used by \textcolor{red}{5\%} of all desktop browser users and remains supported for the operating system Windows 7, 8.1 and 10.\footcite[See][]{ie-support}
  This is an important fact to take into account when evaluating the usability of the \wa{} since especially enterprise users often can't upgrade or switch their browser.
 
-Safari added support for the \wa{} feature in December 2018 but only for the preview variant of the browser. It is expected to be available for all users with the release of Safari 13 in mid to end September. The support is limited to USB HID enabled authenticator though.
+Safari added support for the \wa{} feature in December 2018 but only for the preview variant of the browser, called the Safari Technology Preview. It is expected to be available for all users with the release of Safari 13 in mid to end September. The support is limited to USB HID enabled authenticator though and only available for macOS Mojave and Catalina and yet unknown if older macOS version will receive an update to Safari 13.
 
 % TODO Move to a different section, e.g. History?
 % TODO sources
@@ -46,8 +61,13 @@ Besides that Windows 10 also added support for \gls{mfa} by incorporating the te
 
 \subsubsection{Mobile support}
 
-In contrast to the desktop support, the support for the \wa{} worse for mobile web browsers. While Android supports the \wa{} since October 2018 for Chrome and in July 2019 Firefox for Android added support for it, iOS lacks support for the \wa. Even in the iOS 13 beta versions even though the feature can be enabled in the \frqq Experimental Features\flqq{} section the \gls{api} remains unsupported or at least there is no way to add an authenticator in the browser. It has to be noted though, that other Android browser vendors need to implement the functionality themselves, since especially in Asia browsers such \frqq UC Browser\flqq{} or the \frqq Samsung Internet\flqq{} browser are used wich do \textcolor{red}{not?} support the \wa.
+In contrast to the desktop support, the support for the \wa{} is worse for mobile web browsers. While Android supports the \wa{} since October 2018 for Chrome and in July 2019 Firefox for Android added support for it, iOS lacks support for the \wa. Even though in the iOS 13 beta versions the feature can be enabled in the \frqq Experimental Features\flqq{} section the \gls{api} remains unsupported or at least there is no way to add an authenticator in the browser yet.\\
+The only ray of hope is that the Brave browser for iOS incorporated support for the yet to be released YubiKey 5Ci which enables \gls{u2f} and the \wa{} for iOS by using an Apple certified Lightning accessory. Unfortunately due to lack of availability this functionality could not be tested.\footcite[See][]{brave-ios}
+
+It has to be noted though, that other Android browser vendors need to implement the functionality themselves. In other geographic regions browsers like the UC Browser, 360 Security Browser, Mint Browser from Xiaomi or the QQ Browser from Tencent are widely used. Neither them, nor browsers such as Samsung Internet, Opera (mini) for Android, Edge or the Android Stock browser are currently supporting the \wa.
 % TODO picture with NFC, and OTG try - notice that it's in development though?
+
+Other mobile operation systems like Windows Phone 8, BlackBerry 10 or KaiOS do not support the \wa.
 
 \subsection{Usability}
 
