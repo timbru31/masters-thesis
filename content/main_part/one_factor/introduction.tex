@@ -21,9 +21,10 @@ Protection by the server often not given, user's are writing it down etc.
 
 \subsection{Possession}
 
-The main risks of authentication by possession it that it's not tied to the user itself and can be lost or even worse stolen by an attacker. Besides that, possession factors can be shared between multiple users, allowing attacks such as a malicious insider attack. Another usage implication is that it has to be carried with the user and can be forgotten which makes the authentication impossible if no access to the possession is possible.\footcites[See][263--264]{shostack2014threat}
+The main risks of authentication by possession it that it's not tied to the user itself and can be lost or even worse stolen by an attacker. Besides that, possession factors can be shared between multiple users, allowing attacks such as a malicious insider attack. Often the possession factors are not protected itself so e.g. a keycard to open a door can be used by the attacker, too.\\
+Another usage implication is that it has to be carried with the user and can be forgotten which makes the authentication impossible if no access to the possession is possible and no backup or different authentication methods are available. Yet another risk is that the possession can be damaged or destroyed. For example security keys that are carried on the keyring can be damaged when the key is dropped or exposed to liquids.\footcites[See][263--264]{shostack2014threat}
 
-Especially possessions that use wireless transmissions such as \gls{ble}, \gls{nfc} or \gls{rfid} can be copied even over some distances. For instance credit cards could be copied in crowded places like trains or busses.\footcite{6892730}
+Especially possessions that use wireless transmissions such as \gls{ble}, \gls{nfc} or \gls{rfid} can be copied even over some distances. For instance credit cards could be copied in crowded places such as trains or busses.\footcite{6892730}
 
 \subsection{Biometrics}
 
@@ -37,10 +38,9 @@ Another high risk is the data privacy and protection.
 
 \subsection{Further methods}
 
+A high risk of the location-based authentication is the spoofing of the actual location by an attacker. An attacker can choose different attack vectors such as spoofing the source IP address that tries to access a system. Another form of spoofing is the GPS spoofing where an attacker modifies the actual GPS by broadcasting false information or the called ID spoofing for e.g. usage with VoIP. Besides these techniques the most common variant remains the usage of a VPN network or DNS proxy to hide the real location.
 
-\begin{enumerate}
-	\item spoofing (GPS, IP)
-\end{enumerate}
+For time-base authentication an attacker could use attacks against the \gls{ntp} in order to either gain access of the verification system or to modify the synchronized time in order to allow the login attempt to succeed.\footcite[See][]{malhotraattacking}
 
 \subsection{General threats}
 

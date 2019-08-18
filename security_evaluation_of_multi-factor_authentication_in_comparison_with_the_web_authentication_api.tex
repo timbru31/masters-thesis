@@ -18,7 +18,6 @@
 		% ToC
 		%-----------------------------------------------------------------------------	
 		\pagestyle{fancy}
-		\pdfbookmark[1]{Inhaltsverzeichnis}{toc}	
 		\singlespacing
 		\tableofcontents
 		\onehalfspacing
@@ -55,8 +54,8 @@
 		% Annex
 		%-----------------------------------------------------------------------------	
 		\clearpage
-		\renewcommand{\thesection}{\Roman{section}}
-		\input{appendix/cd-rom}	
+		\renewcommand{\thechapter}{\Roman{section}}
+		\input{appendix/content}
 
 		
 		%-----------------------------------------------------------------------------

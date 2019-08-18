@@ -1,0 +1,61 @@
+\chapter{Introduction}
+
+\setlength\epigraphwidth{.5\textwidth}
+\epigraph{\frqq Usernames and passwords are an idea that came out of 1970s mainframe architectures. They were not built for 2016.\flqq\footnotemark}{\textit{Alex Stamos}}
+\footnotetext{See \cite{stamos}}
+
+\blindtext
+
+\section{Methods of authentication}
+There are multiple different methods or forms respectively that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession and trait are considered the different forms of authentication,\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[][47]{anderson2008security} but other sources also introduce or take new methods into account like location- or time-based authentication.\footcites[][]{6296127}[See][191]{dasgupta2017multi} Therefore this thesis accounts for them, too and describes the methods in the following sections briefly and a detailed analysis of the security, potential risk and threats is done in \autoref{one-factor-threats}.
+
+\subsection{Knowledge}
+
+The most common method of authentication is knowledge, i.e. \frqq something the user knows\flqq{}. Commonly used in \gls{it} are passwords. Other forms of knowledge are for example a \gls{pin} used e.g. banking (ATM's, credit cards) or telephony (SIM card), a passphrase, secret or recovery questions or a \gls{otp}. The security relies on the fact that the knowledge method is considered a secret that only the user knows.\footcite[See][467]{eckert-it-sec-9}
+
+\subsection{Possession}
+
+Another form of authentication is the possession, i.e. \frqq something the user has\flqq{} (physically). The most basic example is a key for a lock. Other forms are for example a bank or ID card which can use techniques like \gls{rfid}, an onboard chip or magnetic stripes to store the information. In \gls{it} security tokens are often used, which can be a hardware (such as a YubiKey or an RSA SecurID) or software (e.g. a smartphone application) token. They can either be disconnected, connected (e.g. via USB or as a smart card) or contactless (e.g. via \gls{nfc}, \gls{ble} or \gls{rfid}).\footcites[See][24]{265831}[][]{Dressel:2019:SZT:3319499.3328225}[See][8--11]{1698485}
+
+The security of this method relies on the fact that only a legitimate user has access to the possession factor and that no intruder has access or can for example make a copy. The biggest risk is the lost or theft of the possession, although for instance some security tokens are itself protected with a form of authentication like the fingerprint of the legitimate user.
+
+\subsection{Biometrics}
+
+Besides the knowledge and possession factors, another one is the biometrics. This factor is classified as \frqq something the user is\flqq{} and commonly includes the fingerprint, facial or iris scan. In theory many other characteristics like the gait, the ear, DNA or even the human odor could be used as a biometric factor.\footcite[See][30--34]{Jain2011}\\
+These intrinsic factors are sometimes referred to as traits or inherits, too.\footcite[See][186]{dasgupta2017multi}
+
+While it seems naturally to authenticate a person with a biometric, it also comes with a couple of challenges. Both, the \gls{frr}, i.e. a user is rejected even though it's a legitimate authentication attempt and \gls{far}, i.e. an imposter is granted access, need to be accounted for the usage. Compared to knowledge and possession factors the enrollment of the biometric and the continuous update of the sample is more complicated and expensive.\footcite[See][18--24]{Jain2011}
+
+On the other hand, it's more complicated to steal, share or copy this factor than the others. The usability varies because of the quality of the used biometrics module, the chosen biometric itself and the availability of the biometric.
+
+\subsection{Further methods of authentication}
+
+While the mentioned authentication forms above are considered a standard in the literature, other forms exist, too. Those include for example the location of the user. The location-based approach grants or denies the access based on the current location. This can either be physical (e.g. via GPS) or digital with e.g. an IP-address.\footcite{6296127}
+
+Yet another form is the time-based authentication. A common example is the time restricted access to a banking safe, which can only be opened at specific times of the day, it's secured by a time lock. In \gls{it} this form of authentication helps to protect against for instance phishing attacks from abroad, because the access is granted or denied based on the time and general time routines where for instance a user normally logs on.\footcite[See][191]{dasgupta2017multi}
+
+\section{Wording differences between multi-factor, multi-step, authentication and verification}
+
+The naming of the chosen authentication or verification methods by companies is often confusing or difficult to understand. The terms used by companies varies from \gls{2fa}, often just calling it \gls{2fa},\footcite{apple_2fa} to two-step-verification, sometimes written as 2-Step Verification, too.\footcites[][]{apple_s2v}[][]{playstation}[][]{google_2-step_verification}[][]{microsoft_2sv}.
+
+One could argue that the different authentication factors can be reduced to a single one, e.g. that an \gls{otp} is \frqq something the user knows\flqq{}, since it relies on a secret that \textit{could} in theory be memorized, too.\\
+In this case the term \gls{mfa} or 2FA is technically incorrect, since it's instead a multi-step authentication, because the same factor is used multiple times. However, it has to be noted that using the same authentication factor multiple times is weaker than using different authentication factors.\footcite[See][117]{grimes2017hacking}
+
+Besides that (user) verification is a part of the authentication process this fine differentiation of verification vs. authentication and multi-step vs. multi-factor is not important for this thesis and the term \gls{mfa} is used throughout.
+
+% TODO Check this sections
+%\section{Differentiation of factors // Introduction to 1FA, MFA and WebAuthn}
+%
+%As the main focus of this Master-Thesis is to evaluate \gls{mfa} with the Web Authentication API the following sections briefly introduces the common authentication methods ranging from single factor authentication with password to \gls{mfa} to the WebAuth.
+%
+%\subsection{MFA}
+%
+%More general term for 2FA. Can combine e.g. password with another method (like possession of hardware key, App) or trait (like TouchID, FaceID)
+%
+%\subsubsection{OOB}
+%
+%\gls{oob}
+%
+%\subsection{WebAuth}
+%
+%New API \gls{w3c}

@@ -7,7 +7,6 @@ Table \ref{tab:browser-support} shows the support status of the \wa{} for the mo
 
 % TODO which stats
 \textcolor{red}{The global browser support as of August 2019 is 68\%.}
-% TODO China browser
 \begin{table}[ht]
 \renewcommand\thetable{1}
 \begin{tabularx}{\textwidth}{l|p{4.8cm}|p{2cm}|p{2cm}|p{3.3cm}}
@@ -56,13 +55,12 @@ As the development for the Internet Explorer halted and it's only receiving secu
 Safari added support for the \wa{} feature in December 2018 but only for the preview variant of the browser, called the Safari Technology Preview. It is expected to be available for all users with the release of Safari 13 in mid to end September. The support is limited to USB HID enabled authenticator though and only available for macOS Mojave and Catalina and yet unknown if older macOS version will receive an update to Safari 13.
 
 % TODO Move to a different section, e.g. History?
-% TODO sources
-Besides that Windows 10 also added support for \gls{mfa} by incorporating the technology described in the \gls{fido} standard. This allows biometric authentication with e.g. fingerprints when a reader is available or to use the facial recognition technology or iris scans. This feature is called \frqq Windows Hello\flqq{}. The credentials are only stored locally and are protected by asymmetric encryption. Besides biometric authentication Windows Hello also supports \glspl{pin}, those are stored in the \gls{tpm}.
+Besides that Windows 10 also added support for \gls{mfa} by incorporating the technology described in the \gls{fido} standard. This allows biometric authentication with e.g. fingerprints when a reader is available or to use the facial recognition technology or iris scans. This feature is called \frqq Windows Hello\flqq{}. The credentials are only stored locally and are protected by asymmetric encryption. Besides biometric authentication Windows Hello also supports \glspl{pin}, those are stored in the \gls{tpm}.\footcite{201612}
 
 \subsubsection{Mobile support}
 
 In contrast to the desktop support, the support for the \wa{} is worse for mobile web browsers. While Android supports the \wa{} since October 2018 for Chrome and in July 2019 Firefox for Android added support for it, iOS lacks support for the \wa. Even though in the iOS 13 beta versions the feature can be enabled in the \frqq Experimental Features\flqq{} section the \gls{api} remains unsupported or at least there is no way to add an authenticator in the browser yet.\\
-The only ray of hope is that the Brave browser for iOS incorporated support for the yet to be released YubiKey 5Ci which enables \gls{u2f} and the \wa{} for iOS by using an Apple certified Lightning accessory. Unfortunately due to lack of availability this functionality could not be tested.\footcite[See][]{brave-ios}
+The only ray of hope is that the Brave browser for iOS incorporated support for the yet to be released security key \frqq YubiKey 5Ci\flqq{} which enables \gls{u2f} and the \wa{} for iOS by using an Apple certified Lightning accessory. Unfortunately due to lack of availability this functionality could not be tested.\footcite[See][]{brave-ios}
 
 It has to be noted though, that other Android browser vendors need to implement the functionality themselves. In other geographic regions browsers like the UC Browser, 360 Security Browser, Mint Browser from Xiaomi or the QQ Browser from Tencent are widely used. Neither them, nor browsers such as Samsung Internet, Opera (mini) for Android, Edge or the Android Stock browser are currently supporting the \wa.
 % TODO picture with NFC, and OTG try - notice that it's in development though?
