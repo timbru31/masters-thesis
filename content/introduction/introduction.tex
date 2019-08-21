@@ -9,9 +9,9 @@
 
 Passwords, in the way they are currently used, are not suited for the twenty-first-century, like Alex Stamos, the former \gls{cso} of Facebook and Yahoo!, stated. The secure handling of passwords is a problem for many users. Passwords are re-used between different websites and often shared across private and work environments. This renders the (private) user data, but also business secrets at high risk.\\
 To make things worse, very few people are using \gls{mfa} nor a password manager in 2019. The majority of the users are either remembering their passwords or writing them down on a piece of paper - in cleartext.\footcites[See][]{ibm-security}[See][]{web-de-passwords}
-At the same time, the recorded amount of cybercrime cases is still increasing and, for example, phishing remains a big problem. While \gls{mfa} can protect against threats such as brute force attacks or stolen credentials, but they are still affected by phishing attacks. Besides that, SMS traffic is not considered secure anymore, yet it's used by a lot of \gls{mfa}. Nevertheless, the majority of the users is not using \gls{mfa} at all.\footcites[See][]{infratest-dimap}[See][6--7]{bka-cybercrime}
+At the same time, the recorded amount of cybercrime cases is still increasing, and, for example, phishing remains a big problem. While \gls{mfa} can protect against threats such as brute force attacks or stolen credentials, but they are still affected by phishing attacks. Besides that, SMS traffic is not considered secure anymore, yet a lot of \gls{mfa} solutions use it. Nevertheless, the majority of the users are not using \gls{mfa} at all.\footcites[See][]{infratest-dimap}[See][6--7]{bka-cybercrime}
 
-To counter these negative trends new \glspl{api} are emerging, for example, the \wa. It's a standardized \gls{api} supported in major browsers such as Chrome, Firefox or Edge that allows  a secure registration, login and \gls{2fa} - all without the generation, storage and remembering of passwords by using asymmetric cryptography. The private keys are stored e.g., on external devices like USB sticks, but can be stored on built-in hardware, too and, for example, be protected by a fingerprint sensor.
+To counter these negative trends, new \glspl{api} are emerging, for example, the \wa. It is a standardized \gls{api} supported in major browsers such as Chrome, Firefox or Edge that allows  a secure registration, login and \gls{2fa} - all without the generation, storage and remembering of passwords by using asymmetric cryptography. The private keys are stored, e.g., on external devices like USB sticks, but can be stored on built-in hardware, too and, for example, a fingerprint sensor can protect these.
 
 \section{Goals of this thesis}
 
@@ -51,9 +51,9 @@ After that in the following chapters the areas
 	\item \gls{mfa}
 \end{itemize}
 
-are explained, for example, their technical functionality, and analyzed in regard to their security and potential risks and attacks such as phishing or \gls{mitm} attacks.
+are explained, for example, their technical functionality, and analyzed regarding their security and potential risks and attacks such as phishing or \gls{mitm} attacks.
 
-Hereupon the \wa{} is introduced in chapter \ref{chapter:webauth} and described in detail. The technical functionality is a key aspect of this chapter. Additionally, the attacks the \wa{} can offer protection against are explained but also asserted which security risks exist, too. Where suitable example source code listings are used to highlight these analyses.% TODO or POC?
+Hereupon the \wa{} is introduced in chapter \ref{chapter:webauth} and described in detail. The technical functionality is a crucial aspect of this chapter. Additionally, the attacks the \wa{} can offer protection against are explained but also asserted which security risks exist, too. Where suitable example source code listings are used to highlight these analyses.% TODO or POC?
 
 In chapter \ref{chapter:comparison}, the \wa{} is compared with existing \gls{mfa} solutions. Therefore, it's reviewed if the \wa{} can be used in conjunction or as a replacement for \gls{mfa}.
 
