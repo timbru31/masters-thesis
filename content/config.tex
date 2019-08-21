@@ -101,7 +101,7 @@
 	right=3cm,
 	top=1.5cm,
 	bottom=1.5cm,
-	includeheadfoot,	
+	includeheadfoot,
 	bindingoffset=0cm
 ]{geometry}
 
@@ -133,9 +133,9 @@
 %-----------------------------------------------------------------------------
 % Fonts
 %-----------------------------------------------------------------------------
-\setkomafont{sectioning}{\rmfamily\bfseries}	
+\setkomafont{sectioning}{\rmfamily\bfseries}
 \setkomafont{caption}{\small}
-\setkomafont{captionlabel}{\sffamily\bfseries\small}	
+\setkomafont{captionlabel}{\sffamily\bfseries\small}
 \setkomafont{chapterentry}{\small\bfseries}
 \setkomafont{chapter}{\large\bfseries}
 \setkomafont{section}{\normalsize}
@@ -155,18 +155,18 @@
 \definecolor{LinkColor}{rgb}{0,0,0.5}
 
 \hypersetup{
-	colorlinks=true,	
+	colorlinks=true,
 	breaklinks=true,
 	linkcolor=black,
-	citecolor=black,	
-	filecolor=LinkColor,	
+	citecolor=black,
+	filecolor=LinkColor,
 	menucolor=LinkColor,
 	urlcolor=LinkColor
 }
-						
+
 %-----------------------------------------------------------------------------
 % Bibliography style
-%-----------------------------------------------------------------------------						
+%-----------------------------------------------------------------------------
 \usepackage[backend=biber,style=alphabetic]{biblatex}
 %\bibliographystyle{science}
 
@@ -199,7 +199,7 @@
  {%
 	\glsfieldfetch{\glscurrententrylabel}{see}{\thisxr}%
 	, \expandafter\glsseeformat\thisxr{}%
- }% 
+ }%
  {}%
 }
 \makeglossaries
@@ -209,7 +209,7 @@
 %-----------------------------------------------------------------------------
 % Header and footer
 %-----------------------------------------------------------------------------
-\pagestyle{fancy}	
+\pagestyle{fancy}
 \fancyhf{}
 \fancypagestyle{plain}{}
 \fancyhead[R]{\nouppercase{\leftmark}}
