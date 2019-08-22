@@ -30,11 +30,15 @@ Especially possessions that use wireless transmissions such as \gls{ble}, \gls{n
 \subsection{Biometrics}
 
 In contrast to possession and knowledge, the biometric trait cannot easily be stolen. While it can be copied, e.g. the fingerprint from high-resolution photographs or 
-face models to circumvent face recognition systems.\footcites[][]{185181}[][]{220566} In the recent past, researchers could copy both German Chancellor's Angela Merkel's iris and the fingerprint of Ursula von der Leyen, the now the elected President of the European Commission, from high-resolution photographs.\footcite{ccc-merkel}
+face models to circumvent face recognition systems.\footcites[][]{185181}[][]{220566} In the recent past, researchers could copy both German Chancellor's Angela Merkel's iris and the fingerprint of Ursula von der Leyen, the now the elected President of the European Commission, from high-resolution photographs.\footcite{ccc-merkel} It has to be taken into account though, that especially the so-called latent fingerprints are nearly left everywhere, i.e., the security of biometrics heavily relies on the chosen biometric trait.\footcite[See][299]{Vacca2017aa}
 
 Further implications are that the biometric characteristics can change over time or be temporarily unavailable because of injuries. While some can heal over time, others, especially scars, can permanently change the biometric trait and therefore render it unusable. Also, each time the user authenticates with biometrics, a new sample of the trait is gathered and compared to the stored one. Because the recent probe will never be 100\% identical compared to the stored one (\frqq intra-user variants\flqq), a threshold needs to be defined, which allows or denies the authentication attempt. Setting the threshold to a too low value increases the risk of the \gls{far}, while a too high value decreases the usability and increases the \gls{frr}.\footcite[See][13--17, 52]{Jain2011}\\Traits such as facial recognition must also be usable with different amounts of facial hair, hairstyles, with and without glasses.\footcite[See][98]{Jain2011}
 
 Another high risk is data privacy and security. Over 50\% of the users fear about data usage, both legitimate and abusive, and collection of their biometrics, yet the majority of the user states that biometrics is the most secure authentication compared to, e.g., passwords and \glspl{pin}.\footcite[See][8]{ibm-security} It is crucial that the stored biometric probe is not accessible by third parties nor shared with them. For example, a theft of smartphones should not mean theft of the biometrics, e.g., fingerprint, too.
+
+However the major threat remains the difficulty to replace a compromised biometric template. While, e.g., a password or a security key can be changed or replaced, for instance a fingerprint can't be altered, changed or replaced since it remains the same for the whole lifespan of a person. To counter this threat it is advised to use, for instance, only a hash of the fingerprint and not store the \textit{image} of the fingerprint itself.\footcite[See][266]{shostack2014threat}
+
+Further, it is necessary to respect the quality and availability of the sensor. If a sensor is damaged, too cheap or the surface is, for example, dirty, then the authentication and especially the usability suffers.\footcite[See][37]{265831}
 
 \subsection{Further methods}
 
@@ -48,6 +52,6 @@ General threat: security of transmission!
 
 \subsubsection{Initialization/Registration/Enrollment}
 
-A more general threat is the registration or initialization of the authentication. The user has to make sure that no attacker can intercept or copy the required enrollment data. For instance, if a malware comprises a user’s computer and installs a keylogger, then an entered password is no longer a secret. A computer virus could also intercept a USB connection from a security key. Furthermore, the user needs to make sure that his enrollment process is not observed from, e.g., a surveillance camera, a hacked webcam, or a colleague from behind.
+A more general threat is the registration or initialization of the authentication. The user has to make sure that no attacker can intercept or copy the required enrollment data. For instance, if a malware comprises a user’s computer and installs a keylogger, then an entered password is no longer a secret and is compromised. A computer virus could also intercept a USB connection from a security key, both when registering the device and while using it. Furthermore, the user needs to make sure that his enrollment process is not observed from, e.g., a surveillance camera, a hacked webcam, or a colleague from behind.\footcites[See][152--153]{10.1007/978-3-642-39235-1_9}[See][61]{Ulqinaku:2019:FPP:3317549.3323404}
 
 \subsubsection{Transmission}
