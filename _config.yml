@@ -2,3 +2,5 @@ title: Master's Thesis - Security Evaluation of Multi-Factor Authentication in C
 description: Repository to collect, archive and of course provide access to the master's thesis 'Security Evaluation of Multi-Factor Authentication in Comparison with the Web Authentication API'
 encoding: UTF-8
 theme: jekyll-theme-minimal
+future: true
+timezone: Europe/Berlin
