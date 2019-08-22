@@ -171,6 +171,20 @@
 \usepackage[backend=biber,style=alphabetic]{biblatex}
 %\bibliographystyle{science}
 
+\DefineBibliographyStrings{english}{%
+  urlseen = {last accessed on},
+}
+
+\DeclareBibliographyCategory{badbreaks}
+\addtocategory{badbreaks}{bka-cybercrime}
+\addtocategory{badbreaks}{chrome-android-webauthn}
+\addtocategory{badbreaks}{firefox-android-webauthn}
+
+\AtEveryBibitem{%
+  \ifcategory{badbreaks}
+    {\defcounter{biburllcpenalty}{9000}\biburlsetup}
+    {}}
+
 %-----------------------------------------------------------------------------
 % Bibliography
 %-----------------------------------------------------------------------------
