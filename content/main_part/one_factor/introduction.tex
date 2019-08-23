@@ -1,7 +1,8 @@
-\chapter{Single-factor Authentication}
+\chapter{Single-factor authentication}
 
 % TODO Challenge-Response, Zero Knowledge, Salt, NONCE
 
+% "Passwords are both the bane and the foundation of network security." -- 206, Network Security: A Practical Approach (The Morgan Kaufmann Series in Networking) (book)
 \section{Threats}
 \label{one-factor-threats}
 
@@ -42,7 +43,7 @@ Further, it is necessary to respect the quality and availability of the sensor. 
 
 \subsection{Further methods}
 
-A high risk of location-based authentication is the spoofing of the actual location by an attacker. An attacker can choose different attack vectors, such as spoofing the source IP address that tries to access a system. Another form of spoofing is the GPS spoofing where an attacker modifies the actual GPS by broadcasting false information. Further, the Caller ID spoofing technique can be used with VoIP to disguise the location. Besides these techniques, the most common variant remains the usage of a VPN network or DNS proxy to hide the genuine location.
+A high risk of location-based authentication is the spoofing of the actual location by an attacker. An attacker can choose different attack vectors, such as spoofing the source IP address that tries to access a system. Another form of spoofing is the GPS spoofing where an attacker modifies the actual GPS by broadcasting false information. Further, the Caller ID spoofing technique can be used with VoIP to disguise the location. Besides these techniques, the most common variant remains the usage of a VPN network or DNS proxy to hide the genuine location.\footcites[See][138--145]{517355}[See][Chapter 4.5.3]{30270}
 
 For time-based authentication, an attacker could use attacks against the \gls{ntp} in order to either gain access of the verification system or to modify the synchronized time in order to allow the login attempt to succeed.\footcite[See][]{malhotraattacking}
 

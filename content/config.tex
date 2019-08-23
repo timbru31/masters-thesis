@@ -117,7 +117,7 @@
 
 
 %-----------------------------------------------------------------------------
-% PDF Metadata
+% PDF Metadata and hyperlinks
 %-----------------------------------------------------------------------------
 \usepackage[
 	pdftex,
@@ -131,6 +131,10 @@
 	hypertexnames=false,
 	pdfpagelabels
 ]{hyperref}
+
+\addto\extrasamerican{%
+  \renewcommand{\chapterautorefname}{Chapter}%
+}
 
 
 %-----------------------------------------------------------------------------
