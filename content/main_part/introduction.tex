@@ -23,12 +23,16 @@ While it seems natural to authenticate a person with a biometric, it also comes 
 
 On the other hand, it is more complicated to steal, share, or copy this factor than the others - but also nearly impossible to replace a compromised biometrics. The usability varies because of the quality of the used biometrics module, the chosen biometrics itself, and the availability of the biometrics.
 
+\newpage
+
 \begin{figure}[hbt]
 	\centering
 	\includesvg[width=\textwidth,pretex=\relscale{0.5}]{pics/svg/biometrics_auth_flow}
 	\caption{}
 	\label{fig:biometrics_auth_flow}
 \end{figure}
+
+Figure \ref{fig:biometrics_auth_flow} shows an exemplary authentication flow using biometrics, in the case with a fingerprint. First, the user interacts with the sensor that reads the fingerprint and extracts the biometric template. Generally, the template is then transformed into a more comparable format. For instance, fingerprints are scanned for minutiae and their direction. Simultaneously, the system retrieves the stored fingerprint or searches for it. The system now compares the stored probe to the fresh one. A threshold value that determines how much difference is tolerable decides finally if the authentication attempt can proceed or has to be aborted and denied. If the authentication succeeds, the stored template can be updated in the database, as denoted by the dotted grey arrow.
 
 \subsection{Further methods of authentication}
 
