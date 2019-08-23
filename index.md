@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Master's Thesis
 ## Security Evaluation of Multi-Factor Authentication in Comparison with the Web Authentication API
 
