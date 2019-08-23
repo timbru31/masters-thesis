@@ -12,7 +12,7 @@
         <text font-family="Helvetica" font-size="12" fill="#000" x="253.321" y="134.777">password</text>
         <text font-family="Helvetica" font-size="12" fill="#000" x="399.656" y="42">Password</text>
         <text font-family="Helvetica" font-size="12" fill="#000" x="387.65" y="66">transformation</text>
-        <text font-family="Helvetica" font-size="12" fill="#000" x="883.651" y="49">Extraction of</text>
+        <text font-family="Helvetica" font-size="12" fill="#000" x="883.651" y="49">Retrieval of</text>
         <text font-family="Helvetica" font-size="12" fill="#000" x="872.979" y="72">stored password</text>
         <text font-family="Helvetica" font-size="12" fill="#000" x="769.653" y="265">Comparison</text>
         <text font-family="Helvetica" font-size="12" fill="#000" x="731.295" y="279">of both password (hashes)</text>
