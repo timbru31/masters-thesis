@@ -2,7 +2,7 @@
 \label{chapter:basics}
 
 \section{Methods of authentication}
-There are multiple different methods or forms, respectively, that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession, and trait are considered the different forms of authentication,\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[][47]{anderson2008security} but other sources also introduce or take new methods into account such as the location- or time-based authentication.\footcites[][]{6296127}[See][191]{dasgupta2017multi} Therefore, this thesis accounts for them, too, and describes the methods in the following sections briefly including a diagram of an example authentication flow. A detailed analysis of the security, potential risk, and threats follows in \autoref{one-factor-threats}.
+There are multiple different methods or forms, respectively, that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession, and trait are considered the different forms of authentication,\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[][47]{anderson2008security} but other sources also introduce or take new methods into account such as the location- or time-based authentication.\footcites[][]{6296127}[See][191]{dasgupta2017multi} Therefore, this thesis accounts for them, too, and describes the methods in the following sections briefly including a diagram of an example authentication flow. A detailed analysis of the security, potential risk, and threats follows in \autoref{sec:one-factor-threats}
 
 \subsection{Knowledge}
 
@@ -59,6 +59,25 @@ On the other hand, it is more complicated to steal, share, or copy this factor t
 While the mentioned authentication forms above are considered a standard in the literature, other forms exist, too. Those include, for example, the location of the user. The location-based approach grants or denies access based on the current location. The location can either be physical (e.g., via GPS) or digital with, e.g., an IP address.\footcites{6296127}[See][Chapter 13.9]{2308830}
 
 Another form is time-based authentication. A typical example is time-limited access to a banking safe, which can only be opened at specific times of the day, a time lock secures it. In \gls{it} this form of authentication helps to protect against, for instance, phishing attacks from abroad, because the access is granted or denied based on the time and usual time routines where, for instance, a user logs typically on.\footcite[See][191]{dasgupta2017multi}
+
+Further methods of authentication are for example the social authentication, also referred as \frqq someone the user knows\flqq. For example Facebook uses this method to ensure the authentication is attempt is genuine by asking the user to identify a set of their friends. Of course the social authentication works in other scenarios, especially offline, too.\footcites[See][]{Brainard2006}[See][278--279]{shostack2014threat} Besides these methods \frqq something the user does\flqq{} is another form of authentication. Examples range from keystrokes to online shopping behavior.\footcites[See][]{10.1007/978-3-642-18178-8_9}[See][]{7460349}
+
+\section{Active and passive authentication}
+
+\subsection{Active authentication}
+
+The user has to initiate the authencation, e.g., by opening the website and entering thriee password in the form fields. Other idea: button press or something like that
+
+\subsection{Passive authentication}
+
+User has not to do anything. Use case are, e.g., \gls{rfid} chips that constantely send a signal in a short range.
+\cite{10.1007/978-3-319-05452-0_14}
+
+\subsection{Continuous authentication}
+
+\cite[See][Chapter 6]{dasgupta2017multi}
+\cite{185306}
+\cite{7444124}
 
 \section{Wording differences between multi-factor, multi-step, authentication, and verification}
 
