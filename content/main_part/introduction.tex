@@ -62,22 +62,32 @@ Another form is time-based authentication. A typical example is time-limited acc
 
 Further methods of authentication are for example the social authentication, also referred as \frqq someone the user knows\flqq. For example Facebook uses this method to ensure the authentication is attempt is genuine by asking the user to identify a set of their friends. Of course the social authentication works in other scenarios, especially offline, too.\footcites[See][]{Brainard2006}[See][278--279]{shostack2014threat} Besides these methods \frqq something the user does\flqq{} is another form of authentication. Examples range from keystrokes to online shopping behavior.\footcites[See][]{10.1007/978-3-642-18178-8_9}[See][]{7460349}
 
-\section{Active and passive authentication}
+\section{Processes of authentication}
+
+The process of authentication can be done in three different manners that are explained in the following subsections. These are namely:
+
+\begin{enumerate}
+	\item \textbf{Active authentication}, where a user has to initiate the process
+	\item \textbf{Passive authentication}, where the user does not need to interact with the system
+	\item \textbf{Continuous authentication}, where a system constantly monitors and authenticates the user
+\end{enumerate}
 
 \subsection{Active authentication}
+\label{subsec:active_auth}
 
-The user has to initiate the authencation, e.g., by opening the website and entering thriee password in the form fields. Other idea: button press or something like that
+The most common process of authentication is the active authentication. In this process of authentication, the user has to initiate the authentication, e.g., by opening the website and entering their password in the form fields, by pressing a button or placing their fingerprint on the corresponding sensor.\footcites[See][185--186]{10.1007/978-3-319-05452-0_14}
 
 \subsection{Passive authentication}
 
-User has not to do anything. Use case are, e.g., \gls{rfid} chips that constantely send a signal in a short range.
-\cite{10.1007/978-3-319-05452-0_14}
+In contrast to the active authentication process, the user is in the passive authentication process authenticated without an action on their part. Use case are, for \gls{rfid} chips that constantly send a signal in a short range and can open a door when the user approaches it. Further examples can be the analysis of keystroke or touch screen usage patterns. In comparison with active authentication this process is more low-friction.\footcites[See][186]{10.1007/978-3-319-05452-0_14}[See][]{185306}
 
 \subsection{Continuous authentication}
 
-\cite[See][Chapter 6]{dasgupta2017multi}
-\cite{185306}
-\cite{7444124}
+Further, the process of continuous authentication exists. In this case the user is constantly authenticated or monitored, to ensure that it it still the originally authenticated user whom is using the system. It is important that the authentication happens in a non-intrusiveness way. Commonly used for continuous authentication are biometrics, such as fingerprint, facial recognition or keystroke patterns.\footcites[See][236--238]{dasgupta2017multi}[See][]{7444124}
+
+Unfortunately the term active authentication is often used to describe continuous authentication, too. To avoid confusion the solely term continuous authentication is used to refer to this process of authentication, while any mentions of active authentication refers to the process described in \autoref{subsec:active_auth}.
+
+\newpage
 
 \section{Wording differences between multi-factor, multi-step, authentication, and verification}
 

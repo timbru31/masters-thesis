@@ -5,7 +5,7 @@ The important part here is the chosen cryptographic hash algorithm. Mostly \gls{
 Because the collision resistance of the chosen cryptographic hash algorithm is not important for the security of the \gls{otp} generation those algorithms do not expose a threat.\\
 The \gls{bsi} lists these algorithms as secure for HMAC\footcite{verfahren2019empfehlungen}
 
-Citations: \footcite{}
+Citations: \footcite{10.1007/978-3-319-63688-7_19}
 
 It is more important that the algorithm is implemented correctly, in the past e.g. Google did not issue \gls{otp} values with a leading zero. Besides that, the minimum length of the \gls{otp} values are six digits, meanwhile the RFC supports up to 10.\\
 For example Steam, decided to use a different alphabet and character length.
