@@ -18,7 +18,7 @@ The most common method of authentication is knowledge, i.e., \frqq something the
 \end{figure}
 \footnotetext{Source: diagram by author.}
 
-\autoref{fig:knowledge_auth_flow} shows a simplified authentication by knowledge flow. First the user visits in this example a website and enters their password in the corresponding form fields. When the user submits the form, the transferred password is often transformed, e.g., hashed and salted. If the user is known in the database, the stored (hash of) the password is retrieved and then compared to the given one. Only if the hashes are identical, then the login succeeds. Otherwise it fails. The \frqq access denied/cancel\flqq{} and \frqq checkmark\flqq{} symbols are chosen, since it can't be verified if the authentication is made by the genuine user or an imposter that gained access to the knowledge of the attacked user, in this case their password.
+\autoref{fig:knowledge_auth_flow} shows a simplified authentication by knowledge flow. First, the user visits in this example a website and enters their password in the corresponding form fields. When the user submits the form, the transferred password is often transformed, e.g., hashed and salted. If the user is known in the database, then the stored (hash of) the password is retrieved and compared to the given one. Only if the hashes are identical, then the login succeeds. Otherwise, it fails. The \frqq access denied/cancel\flqq{} and \frqq checkmark\flqq{} symbols are chosen, since it cannot be verified if the authentication is made by the genuine user or an imposter that gained access to the knowledge of the attacked user, in this case, their password.
 
 \subsection{Possession}
 
@@ -32,7 +32,7 @@ Another form of authentication is the possession, i.e., \frqq something the user
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-\autoref{fig:possesion_auth_flow} shows an example authentication flow with a smartcard. First, the user inserts the given smartcard into their computer. The data is read subsequently. Contemporaneous the application or system reads the stored database entry and compares the data to the one stored on the smartcard. If the data is equal or matches and the user authorized, then the authentication succeeds. Again any user can log on as long as they are in the possession of the smartcard.
+\autoref{fig:possesion_auth_flow} shows an example of an authentication flow with a smartcard. First, the user inserts the given smartcard into their computer. The data is read subsequently. Contemporaneous the application or system reads the stored database entry and compares the data to the one stored on the smartcard. If the data is equal or matches, and the user is authorized, then the authentication succeeds. Again, any user can log on as long as they are in possession of the smartcard.
 
 \subsection{Biometrics}
 
@@ -52,7 +52,7 @@ On the other hand, it is more complicated to steal, share, or copy this factor t
 \footcitetext[Source: diagram by author, based on][11]{Jain2011}
 
 
-\autoref{fig:biometrics_auth_flow} shows an exemplary authentication flow using biometrics, in the case with a fingerprint. First, the user interacts with the sensor that reads the fingerprint and extracts the biometric template. Generally, the template is then transformed into a more comparable format. For instance, fingerprints are scanned for minutiae and their direction. Simultaneously, the system retrieves the stored fingerprint or searches for it. The system now compares the stored probe to the fresh one. A threshold value that determines how much difference is tolerable decides finally if the authentication attempt can proceed or has to be aborted and denied. If the authentication succeeds, the stored template can be updated in the database, as denoted by the dotted grey arrow.
+\autoref{fig:biometrics_auth_flow} shows an exemplary authentication flow using biometrics, in the case with a fingerprint. First, the user interacts with the sensor that reads the fingerprint and extracts the biometric template. Generally, the system or reader transforms the template into a more comparable format. For instance, fingerprints are scanned for minutiae and their direction. Simultaneously, the system retrieves the stored fingerprint or searches for it. The system now compares the stored probe to the fresh one. A threshold value that determines how much difference is tolerable decides finally if the authentication attempt can proceed or has to be aborted and access denied. If the authentication succeeds, the stored template can be updated in the database, as denoted by the dotted grey arrow.
 
 \subsection{Further methods of authentication}
 
