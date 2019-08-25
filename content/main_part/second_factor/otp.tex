@@ -1,15 +1,29 @@
-\section{OTP}
+\section{One-time password}
+
+To fully understand how the \gls{otp} works the basics and origin's have to be introduced first. In the following subsections are the required algorithms shorty described and in ... the variants of \glspl{otp}, both the \gls{hotp} and the \gls{totp} which are based on \gls{hmac}.
+
+\subsection{MAC}
+
+The \gls{mac} is a \textit{code}, i.e., some sort of information to protect and ensure the integrity of a \textit{message}. Integrity, besides confidentially and availably, is one of the key concepts of \gls{it} security. The \gls{mac} is built using two parameters, a secret key that both parties know and the message itself. The algorithm generates a checksum that the sender can send alongside with the message. The recipient calculates the checksum (\gls{mac}) itself from the retrieved message. If it differs then the message has been manipulated or there might have been a faulty transmission. Technically the \gls{mac} can be generated with, e.g., cryptographic-hash functions (\gls{hmac}) or using block ciphers such as \gls{cbc-mac}.\footcites[See][565]{320284}[See][163--168]{anderson2008security}
+
+
+The \gls{mac} is standardized in different standards from various instituions, such as \gls{nist} \gls{fips} 198-1, the \gls{bsi} technical guideline TR-02102-1 (\frqq Cryptographic Mechanisms: Recommendations and Key Length\flqq{}) or the \gls{iso} norm ISO/IEC 9797-1 and ISO/IEC 9797-2.\footcites[See][]{FIPS198}[See][]{bsi2019recommendations}[See][]{iso9797-1}[See][]{iso9797-2}
+
+Sometimes the \gls{mac} is also called \gls{mic} in order to avoid confusion with the \gls{macaddress} address used in network protocols. Further, the \gls{mic} would not prove authenticity since an attacker can just modify the message and re-generate the \gls{mic} of the modified message.\footcites[See][60-62]{265831}
 
 \subsection{HMAC}
 
 \gls{hmac} Code is an extension of a \gls{mac} and standardized in \gls{rfc} and \gls{nist} abc.
 \cite{krawczyk1997rfc}
+
 \subsubsection{HTOP}
+\label{subsubsec:hotp}
 
 HMAC-based One-time Password algorithm, counter based. \gls{rfc} 899. Configurable length (6-10). Default SHA1. Truncation of HMAC
 \cite{m2005rfc}
 
 \subsubsection{TOTP}
+\label{subsubsec:totp}
 
 Time based instead of counter based. \gls{rfc} 123 and \gls{oath}.
 \cite{m2011rfc}
@@ -21,6 +35,8 @@ Time based instead of counter based. \gls{rfc} 123 and \gls{oath}.
 	\label{fig:2fa_flow}
 \end{figure}
 \footnotetext{Source: diagram by author}
+
+\autoref{fig:2fa_flow} shows an example authentoiation
 
 \subsubsection{pros}
 
