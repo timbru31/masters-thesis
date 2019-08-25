@@ -18,7 +18,7 @@ The most common method of authentication is knowledge, i.e., \frqq something the
 \end{figure}
 \footnotetext{Source: diagram by author.}
 
-\autoref{fig:knowledge_auth_flow} shows a simplified authentication by knowledge flow. First the user visits in this example a website and enters their password in the corresponding form fields. When the user submits the form, the transferred password is often transformed, e.g. hashed and salted. If the user is known in the database, the stored (hash of) the password is retrieved and then compared to the given one. Only if the hashes are identical, then the login succeeds. Otherwise it fails. The \frqq access denied/cancel\flqq{} and \frqq checkmark\flqq{} symbols are chosen, since it can't be verified if the authentication is made by the geniuine user or an imposter that gained access to the knowledge of the attacked user, in this case their password.
+\autoref{fig:knowledge_auth_flow} shows a simplified authentication by knowledge flow. First the user visits in this example a website and enters their password in the corresponding form fields. When the user submits the form, the transferred password is often transformed, e.g., hashed and salted. If the user is known in the database, the stored (hash of) the password is retrieved and then compared to the given one. Only if the hashes are identical, then the login succeeds. Otherwise it fails. The \frqq access denied/cancel\flqq{} and \frqq checkmark\flqq{} symbols are chosen, since it can't be verified if the authentication is made by the genuine user or an imposter that gained access to the knowledge of the attacked user, in this case their password.
 
 \subsection{Possession}
 
@@ -32,7 +32,7 @@ Another form of authentication is the possession, i.e., \frqq something the user
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-\autoref{fig:possesion_auth_flow} shows an example authentiaion flow with a smartcard. First, the user inserts the given smartcard into their computer. The data is read subsequently. Contemporaneous the application or sytem reads the stored database entry and compares the data to the one stored on the smartcard. If the data is equal or matches and the user authroized, then the authentication succeeds. Again any user can log on as long as they are in the possession of the smartcard.
+\autoref{fig:possesion_auth_flow} shows an example authentication flow with a smartcard. First, the user inserts the given smartcard into their computer. The data is read subsequently. Contemporaneous the application or system reads the stored database entry and compares the data to the one stored on the smartcard. If the data is equal or matches and the user authorized, then the authentication succeeds. Again any user can log on as long as they are in the possession of the smartcard.
 
 \subsection{Biometrics}
 
@@ -41,7 +41,7 @@ These intrinsic factors are sometimes referred to as traits or inherit, too.\foo
 
 While it seems natural to authenticate a person with a biometric, it also comes with a couple of challenges. Both, the \gls{frr}, i.e., the system rejects a user even though it is a legitimate authentication attempt and \gls{far}, i.e., an imposter is granted access, need to be accounted for the usage. Compared to knowledge and possession factors, the enrollment of the biometrics and the continuous update of the sample is more complicated and expensive.\footcites[See][18--24]{Jain2011}[See][34--37]{265831}
 
-On the other hand, it is more complicated to steal, share, or copy this factor than the others - but also nearly impossible to replace a compromised biometrics. The usability varies because of the quality of the used biometrics module, the chosen biometrics itself, and the availability of the biometrics.
+On the other hand, it is more complicated to steal, share, or copy this factor than the others -- but also nearly impossible to replace a compromised biometrics. The usability varies because of the quality of the used biometrics module, the chosen biometrics itself, and the availability of the biometrics.
 
 \begin{figure}[hbt]
 	\centering
@@ -60,7 +60,7 @@ While the mentioned authentication forms above are considered a standard in the 
 
 Another form is time-based authentication. A typical example is time-limited access to a banking safe, which can only be opened at specific times of the day, a time lock secures it. In \gls{it} this form of authentication helps to protect against, for instance, phishing attacks from abroad, because the access is granted or denied based on the time and usual time routines where, for instance, a user logs typically on.\footcite[See][191]{dasgupta2017multi}
 
-Further methods of authentication are for example the social authentication, also referred as \frqq someone the user knows\flqq. For example Facebook uses this method to ensure the authentication is attempt is genuine by asking the user to identify a set of their friends. Of course the social authentication works in other scenarios, especially offline, too.\footcites[See][]{Brainard2006}[See][278--279]{shostack2014threat} Besides these methods \frqq something the user does\flqq{} is another form of authentication. Examples range from keystrokes to online shopping behavior.\footcites[See][]{10.1007/978-3-642-18178-8_9}[See][]{7460349}
+Further methods of authentication are, for example, social authentication, also referred to as \frqq someone the user knows\flqq. For example, Facebook uses this method to ensure that the authentication attempt is genuine by asking the user to identify a set of their friends. Of course, social authentication works in other scenarios, especially offline, too.\footcites[See][]{Brainard2006}[See][278--279]{shostack2014threat} Besides these methods, \frqq something the user does\flqq{} is another form of authentication. Examples range from keystrokes to online shopping behavior.\footcites[See][]{10.1007/978-3-642-18178-8_9}[See][]{7460349}
 
 \section{Processes of authentication}
 
@@ -69,23 +69,23 @@ The process of authentication can be done in three different manners that are ex
 \begin{enumerate}
 	\item \textbf{Active authentication}, where a user has to initiate the process
 	\item \textbf{Passive authentication}, where the user does not need to interact with the system
-	\item \textbf{Continuous authentication}, where a system constantly monitors and authenticates the user
+	\item \textbf{Continuous authentication}, where a system continually monitors and authenticates the user
 \end{enumerate}
 
 \subsection{Active authentication}
 \label{subsec:active_auth}
 
-The most common process of authentication is the active authentication. In this process of authentication, the user has to initiate the authentication, e.g., by opening the website and entering their password in the form fields, by pressing a button or placing their fingerprint on the corresponding sensor.\footcites[See][185--186]{10.1007/978-3-319-05452-0_14}
+The most common process of authentication is active authentication. In this process of authentication, the user has to initiate the authentication. Instances for this process can be opening a website and entering the password in the form fields, pressing a button or placing the fingerprint on the corresponding sensor.\footcites[See][185--186]{10.1007/978-3-319-05452-0_14}
 
 \subsection{Passive authentication}
 
-In contrast to the active authentication process, the user is in the passive authentication process authenticated without an action on their part. Use case are, for \gls{rfid} chips that constantly send a signal in a short range and can open a door when the user approaches it. Further examples can be the analysis of keystroke or touch screen usage patterns. In comparison with active authentication this process is more low-friction.\footcites[See][186]{10.1007/978-3-319-05452-0_14}[See][]{185306}
+In contrast to the active authentication process, the user is in the passive authentication process authenticated without action on their part. Use cases are for \gls{rfid} chips that continuously send a signal in a short-range and can open a door when the user approaches it. Further examples can be the analysis of the keystroke or touch screen usage patterns. In comparison with active authentication, this process is more low-friction.\footcites[See][186]{10.1007/978-3-319-05452-0_14}[See][]{185306}
 
 \subsection{Continuous authentication}
 
-Further, the process of continuous authentication exists. In this case the user is constantly authenticated or monitored, to ensure that it it still the originally authenticated user whom is using the system. It is important that the authentication happens in a non-intrusiveness way. Commonly used for continuous authentication are biometrics, such as fingerprint, facial recognition or keystroke patterns.\footcites[See][236--238]{dasgupta2017multi}[See][]{7444124}
+Further, the process of continuous authentication exists. In this case, the user is continuously authenticated or monitored to ensure that it is still the initially authenticated user who is using the system. The authentication must happen in a non-intrusiveness way. Commonly used for continuous authentication are biometrics, such as the fingerprints, facial recognition, or keystroke patterns.\footcites[See][236--238]{dasgupta2017multi}[See][]{7444124}
 
-Unfortunately the term active authentication is often used to describe continuous authentication, too. To avoid confusion the solely term continuous authentication is used to refer to this process of authentication, while any mentions of active authentication refers to the process described in \autoref{subsec:active_auth}.
+Unfortunately, the term active authentication is often used to describe continuous authentication, too. To avoid confusion, solely term continuous authentication is used to refer to this process of authentication, while any mentions of active authentication refer to the process described in \autoref{subsec:active_auth}.
 
 \newpage
 
