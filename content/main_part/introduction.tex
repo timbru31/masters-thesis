@@ -72,22 +72,24 @@ The process of authentication can be done in three different manners that are ex
 	\item \textbf{Continuous authentication}, where a system continually monitors and authenticates the user
 \end{enumerate}
 
+A combination of active and passive authentication is also possible. For example, the biometric passport (\frqq ePassport\flqq) contains both active authentication and passive authentication with the help of an integrated \gls{rfid} chip.\footcite[See][545]{eckert-it-sec-9}
+
+
 \subsection{Active authentication}
 \label{subsec:active_auth}
 
-The most common process of authentication is active authentication. In this process of authentication, the user has to initiate the authentication. Instances for this process can be opening a website and entering the password in the form fields, pressing a button or placing the fingerprint on the corresponding sensor.\footcites[See][185--186]{10.1007/978-3-319-05452-0_14}
+The most common process of authentication is active authentication. In this process of authentication, the user has to initiate the authentication. Instances for this process can be opening a website and entering the password in the form fields, pressing a button or placing the fingerprint on the corresponding sensor.\footcites[See][185--186]{10.1007/978-3-319-05452-0_14} 
+The biometric passport authenticates against a reading device with an asymmetric challenge-response protocol. This security measure helps to identify cloned passports.\footcite[See][545]{eckert-it-sec-9}
 
 \subsection{Passive authentication}
 
-In contrast to the active authentication process, the user is in the passive authentication process authenticated without action on their part. Use cases are for \gls{rfid} chips that continuously send a signal in a short-range and can open a door when the user approaches it. Further examples can be the analysis of the keystroke or touch screen usage patterns. In comparison with active authentication, this process is more low-friction.\footcites[See][186]{10.1007/978-3-319-05452-0_14}[See][]{185306}
+In contrast to the active authentication process, the user is in the passive authentication process authenticated without action on their part. Use cases are for \gls{rfid} chips that continuously send a signal in a short-range and can open a door when the user approaches it. Further examples can be the analysis of the keystroke or touch screen usage patterns. In comparison with active authentication, this process is more low-friction.\footcites[See][186]{10.1007/978-3-319-05452-0_14}[See][]{185306} The biometric passport provides a way to calculate the integrity and authenticity from a reading device to improve the protection against forgery.\footcite[See][545]{eckert-it-sec-9}
 
 \subsection{Continuous authentication}
 
 Further, the process of continuous authentication exists. In this case, the user is continuously authenticated or monitored to ensure that it is still the initially authenticated user who is using the system. The authentication must happen in a non-intrusiveness way. Commonly used for continuous authentication are biometrics, such as the fingerprints, facial recognition, or keystroke patterns.\footcites[See][236--238]{dasgupta2017multi}[See][]{7444124}
 
 Unfortunately, the term active authentication is often used to describe continuous authentication, too. To avoid confusion, solely term continuous authentication is used to refer to this process of authentication, while any mentions of active authentication refer to the process described in \autoref{subsec:active_auth}.
-
-\newpage
 
 \section{Wording differences between multi-factor, multi-step, authentication, and verification}
 

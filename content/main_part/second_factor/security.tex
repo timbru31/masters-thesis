@@ -12,6 +12,7 @@ In this chapter the introduced \gls{mfa} solutions are analyzed in regards of th
 \end{figure}
 \footnotetext{Source: diagram by author}
 
+\autoref{fig:2fa_flow_phishing} shows the already in \autoref{fig:2fa_flow} explained \gls{mfa} flow using a \gls{totp}. In this figure the scenario is expanded with a phishing attack. The user visits a phishing copy of the website they want to use and do not recognize this. Because he knows that this site is using \gls{mfa} they provide the \gls{totp} to the phishing site, too. This allows the interceptor to steal both the password (knowledge; first factor) and \gls{totp} (possession; second factor) to successfully login to the victims account and effectively bypassing the \gls{mfa} solution.
 
 \section{HOTP and TOTP}
 
