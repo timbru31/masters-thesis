@@ -1,5 +1,7 @@
 \section{Technical implementation and details}
 
+\subsection{CTAP}
+
 \newpage
 \subsection{Browser support}
 
@@ -48,7 +50,7 @@
 The \wa{} is supported from Chrome 67 onwards, which was released in May 2018. Firefox added support for the \wa{} in May 2018 with its version 60 as well.\\
 Microsoft added support for the \wa{} in Edge 13 which was released in November 2015. However, the implementation is based on an earlier draft version of the \wa. Support for the \gls{fido} 2.0 specification was added in Edge 14 (released in December 2016). The feature is hidden behind a configuration option though and was enabled for all users with the release of Edge 17 in November 2018.
 
-Browsers like Opera, Vivaldi or Brave and upcoming Edge versions that are all based on Chromium, the browser and source code behind Google's Chrome browser, have support for the \wa, too.
+Browsers such as Opera, Vivaldi, or Brave, and upcoming Edge versions that are all based on Chromium, the browser and source code behind Google's Chrome browser, have support for the \wa, too.
 
 As the development for the Internet Explorer halted, and it is only receiving security updates, no support is available for new web \glspl{api} including the \wa, even though it is still used by \textcolor{red}{5\%} of all desktop browser users and remains supported for the operating system Windows 7, 8.1 and 10.\footcite[See][]{ie-support}
  This is an important fact to take into account when evaluating the usability of the \wa{} since especially enterprise users often cannot upgrade or switch their browser.
@@ -79,7 +81,7 @@ However, \autoref{fig:bave_try} shows the try to use an existing \gls{u2f} YubiK
 It has to be noted though, that other Android browser vendors need to implement the functionality themselves. Other geographic regions use a variety of different browsers, e.g., the UC Browser, 360 Security Browser, Mint Browser from Xiaomi or the QQ Browser from Tencent. Neither they nor browsers such as Samsung Internet, Opera (mini) for Android, Edge or the Android Stock browser are currently supporting the \wa.
 % TODO picture with NFC, and OTG try - notice that it's in development though?
 
-Other mobile operating systems like Windows Phone 8, BlackBerry 10 or KaiOS do not support the \wa.
+Other mobile \glspl{os} for example Windows Phone 8, BlackBerry \gls{os}, BlackBerry 10 or KaiOS do not support the \wa.
 
 \subsection{Usability}
 

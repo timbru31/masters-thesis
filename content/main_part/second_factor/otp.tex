@@ -2,9 +2,15 @@
 
 To fully understand how the \gls{otp} works the basics and origins, especially the underlying \gls{mac}, have to be introduced first. In the following subsections are the required algorithms shorty described and in \autoref{subsec:hotp} and \autoref{subsec:totp} the variants of \glspl{otp}, both the \gls{hotp} and the \gls{totp} which are based on \gls{hmac}.
 
+\newpage
+
 \subsection{Message authentication code}
 
 The \gls{mac} is a \textit{code}, i.e., some sort of information to protect and ensure the integrity of a \textit{message}. Integrity, besides confidentially and availably, is one of the key concepts of \gls{it} security. The \gls{mac} is built using two parameters, a secret key that both parties know and the message itself. The algorithm generates a checksum that the sender can send alongside with the message. The recipient calculates the checksum (\gls{mac}) itself from the retrieved message. If it differs then the message has been manipulated or there might have been a faulty transmission. Technically the \gls{mac} can be generated with, e.g., cryptographic-hash functions, such as \gls{hmac}, or using block ciphers such as \gls{cbc-mac}.\footcites[See][565]{320284}[See][163--168]{anderson2008security}[See][391-393]{eckert-it-sec-9}
+
+The \gls{mac} is standardized in different norms from various institutions, for example \gls{nist} \gls{fips} 198-1, the \gls{bsi} technical guideline TR-02102-1 (\frqq Cryptographic Mechanisms: Recommendations and Key Length\flqq{}) or the \gls{iso} norm ISO/IEC 9797-1 and ISO/IEC 9797-2.\footcites[See][]{FIPS198}[See][]{bsi2019recommendations}[See][]{iso9797-1}[See][]{iso9797-2}
+
+\newpage
 
 \begin{figure}[hbt]
 	\centering
@@ -14,21 +20,20 @@ The \gls{mac} is a \textit{code}, i.e., some sort of information to protect and 
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-\autoref{fig:mac} shows the \gls{mac} in use between Alice and Bob. Both Alice and Bob share a secret key only they know. Alice wants to send a message. In order to secure the integrity of the message she uses an algorithm that takes both message and the secret key as inputs and computes the cryptographic hash of the mssage. She transmits both the message and the \gls{mac} to Bob. He is now able to calculate the \gls{mac} himself by using the same algorithm, key, and the received message from Alice. If his compution of the \gls{mac} matches the one sent by Alcie then the integrity and authenticitiy of the message is given, otherwise the message might have been tampered. Mathematicelly the \gls{mac} is defined as
+\autoref{fig:mac} shows the \gls{mac} in use between Alice and Bob. Both Alice and Bob exchange a secret key only they know via a secure channel. Alice now wants to send a message to Bob. In order to secure the message integrity, she uses an algorithm that takes both message and the secret key as inputs and computes the cryptographic hash of the message, the \gls{mac}. She transmits both the message and the \gls{mac} to Bob. If the message is not confidential, it's also possible to choose an insecure transmission channel. Bob is now able to calculate the \gls{mac} himself by using the same algorithm, key, and the received message from Alice.\\
+If his computation of the \gls{mac} matches the one sent by Alice then the integrity and authenticity of the message is present, otherwise the message might have been tampered with.
+
+Mathematically the \gls{mac} is defined as
 
 \begin{equation*}
   	mac = MAC(M, K)
 \end{equation*}
 
-Where M = input message
-MAC = MAC function
-K = shared secret key
-mac = message authentication code
-
-
-The \gls{mac} is standardized in different norms from various institutions, for example \gls{nist} \gls{fips} 198-1, the \gls{bsi} technical guideline TR-02102-1 (\frqq Cryptographic Mechanisms: Recommendations and Key Length\flqq{}) or the \gls{iso} norm ISO/IEC 9797-1 and ISO/IEC 9797-2.\footcites[See][]{FIPS198}[See][]{bsi2019recommendations}[See][]{iso9797-1}[See][]{iso9797-2}
+Where \textit{M} is the input message, \textit{MAC} the used \gls{mac} function, \textit{K} the shared secret key and \textit{mac} the resulting \glsdesc{mac}.
 
 Sometimes the \gls{mac} is also called \gls{mic} in order to avoid confusion with the \gls{macaddress} address used in network protocols. Further, the \gls{mic} would not prove authenticity since an attacker can just modify the message and re-generate the \gls{mic} of the modified message.\footcites[See][60-62]{265831}
+
+Further, while the \gls{mac} provides authenticity regarding the origin of the data and the data integrity, it does not provide any authenticity regarding the content of the data. For example, mobile code would not be detected by the \gls{mac}, as long as the \gls{mac} belongs to the sent message. This implication has to be taken into account when using the \gls{mac} to authenticate received messages.
 
 \subsection{HMAC}
 
