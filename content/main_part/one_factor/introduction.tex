@@ -2,25 +2,57 @@
 
 % TODO Challenge-Response, Zero Knowledge, Salt, NONCE
 
-% "Passwords are both the bane and the foundation of network security." -- 206, Network Security: A Practical Approach (The Morgan Kaufmann Series in Networking) (book)
 \section{Threats}
 \label{sec:one-factor-threats}
 
-\subsection{What you know (Password)}
+\subsection{Knowledge}
 
-% TODO writeme
-Just knowledge. Often weak, re-used. Meant to be remembered. One factor only.\\
-Protection by the server often not given, user's are writing it down etc.
+\frqq Passwords are both the bane and the foundation of [...] security.\flqq{}\footcite[206]{517355}, yet the most used authentication method remains knowledge. While it seems the simplest method to use, it comes with a lot of downsides, too, which are explained in detail in this subsection. Because the knowledge should be remembered by the user, the human brain has difficulties to remember different a unique, secure password, \gls{pin} or secret questions for every unique account the user has registered for. The average amount of different accounts a user has is 10, not including, e.g., credit card \glspl{pin}. Because of this fact, the user does a couple of insecure things:
+
+\begin{enumerate}[label=(\alph*)]
+	\item using the same secret knowledge for multiple account
+	\item writing down the username and passwords, e.g., on a piece of paper that's accessible easily for others, storing \glspl{pin}, e.g., in the briefcase or saving an unencrypted file on their computer or smartphone
+\end{enumerate}
+
+This enables an attacker to easily steal the login credentials of a user. Written down post it notes enable any pyhsical attacker to steal the credentials, it might be captured by a camera, too. Leaving an unencrypted file on the computer enables computer viruses and trojans to send the file to an attacker, mobile devices are affected, too. Writing down the banking \gls{pin} and storing it in the same briefcase as the credit card even annuls the \gls{2fa} example of possession and knowledge.
+
+Regarding the security of security questions, it has to be noted that these might even decrease the security. Common examples of questions such as \frqq middle name, birth name of a parent, name of a pet, ...\flqq{} can be answered by relatives and friends, enabling a a malicious insider attack or some might be answerable by employing a social engineering attack.
+
+Further, especially true for passwords, it's not known to the user what the service provider does in order to protect the security of the passwords. As security breaches happen nearly on a daily basis, it's important to protect the password of the user. For instance, if the passwords are stored in a database, they can
+
+\begin{enumerate}[label=(\alph*)]
+	\item unencrypted (worst case)
+	\item hashed, but not salted (base case)
+	\item hashed and salted (best case)
+\end{enumerate}
+
+It is pretty obvious that unencrypted passwords in a database render the biggest threat, especially when re-used. Along with the e-mail or username an attacker can probably use the stolen credentials for other accounts, too, or in case of an e-mail provider breach, just re-issue a new password with the \flqq forgotten password \frqq{} mechanism. Even if the password is hashed, but not salted, it renders the credentials at risk. Weaker hashing algorithms such as MD5 or SHA1 might be broken in the futurue, but besides that if it's a weak password, too, the hash might already been reversed. Having the hashed password lsit, enables the attacker to execute a brute force attack in order to reverse as many hashes, as possible or just searching it in databses that contain billion of reversed hash values.
+
+The best protection is a uneique salt for each password, wich decreases the risk of a successful rainbow or brute force attack dramatically. In this scenario each password is not only hashed, but salted, too.
 
 \begin{enumerate}
-	\item re-usage
-	\item phishing -> stealing in general
 	\item secret might be known by others, too (e.g. security questions)
 	\item guessing
 	\item brute force
-	\item copied
 \end{enumerate}
 
+\begin{figure}
+	\begin{bchart}[min=5, max=55, step=10, unit=\%, width=.65\textwidth]
+		\bcbar[label=All passwords, color=red]{7}
+		\medskip
+		\bcbar[label=Most of the passwords, color=red]{20}
+		\medskip
+		\bcbar[label=Some passwords, color=red]{45}
+		\bigskip
+		\bcbar[label=Don't know, color=yellow]{7}
+		\bigskip
+		\bcbar[label=None of the passwords, color=green!50]{20}
+	\end{bchart}
+	\caption{Percentage of password re-usage in the United States in 2018}
+	\label{fig:us-password-reuse}
+\end{figure}
+
+	
 \subsection{Possession}
 \label{subsec:possession-threat}
 
