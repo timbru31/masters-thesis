@@ -19,12 +19,13 @@
 \newacronym{fips}{FIPS}{Federal Information Processing Standard Publication}
 
 \newacronym{hmac}{HMAC}{keyed-hash message authentication code}
-\newacronym{hotp}{HTOP}{HMAC-based one-time password algorithm}
+\newacronym{hotp}{HTOP}{HMAC-based one-time password}
 \newacronym{gps}{GPS}{Global Positioning System}
 
 \newacronym{ietf}{IETFC}{Internet Engineering Task Force}
 \newacronym{it}{IT}{information technology}
 \newacronym{iso}{ISO}{International Organization for Standardization}
+\newacronym{iot}{IoT}{Internet of Things}
 
 \newacronym{mac}{MAC}{message authentication code}
 \newacronym{macaddress}{MAC}{media access control }
@@ -43,6 +44,8 @@
 \newacronym[firstplural=operating systems (OSes)]{os}{OS}{operating system}
 \newacronym{otp}{OTP}{one-time password}
 
+\newacronym{qr}{QR}{Quick Response}
+
 \newacronym{pin}{PIN}{personal identification number}
 \newacronym{piv}{PIV}{Personal Identity Verification}
 
@@ -54,16 +57,20 @@
 \newacronym{sms}{SMS}{short message service}
 \newacronym{sso}{SSO}{single sign-on}
 
-\newacronym{tan}{TAN}{Transaction Authentication Number}
-\newacronym{totp}{TOTP}{time-based one-time password algorithm}
+\newacronym{tan}{TAN}{transaction authentication number}
+\newacronym{totp}{TOTP}{time-based one-time password}
 
 \newacronym{u2f}{U2F}{Universal Second Factor}
 \newacronym{uaf}{UAF}{Universal Authentication Framework}
 
 \newacronym{vcfa}{VCFA}{Verification Code Forwarding Attack}
 \newacronym{vpn}{VPN}{virtual private network}
+\newacronym{voip}{VoIP}{Voice over Internet Protocol}
 
 % ---- Glossary below ----
+
+\newglossaryentry{nonceg}{name={Nonce}, description={A number that can only be used once in a cryptographic operation or communication}}
+\newacronym[see={[Glossary:]{nonceg}}]{nonce}{nonce}{number used once\glsadd{nonceg}}
 
 \newglossaryentry{ss7g}{name={SS7}, description={A telephony signaling protocol.}}
 \newacronym[see={[Glossary:]{ss7g}}]{ss7}{SS7}{Signalling System No. 7\glsadd{ss7g}}
