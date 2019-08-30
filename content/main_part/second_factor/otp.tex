@@ -15,7 +15,7 @@ The \gls{mac} is standardized in different norms from various institutions, for 
 \begin{figure}[hbt]
 	\centering
 	\includesvg[width=\textwidth,pretex=\relscale{1}]{pics/svg/mac}
-	\caption[Exemplary \gls{mfa} authentication flow]{Exemplary \gls{mfa} authentication flow\footnotemark}
+	\caption[\Glsdesc{mac} used to protect a sent message]{\Glsdesc{mac} used to protect a sent message\footnotemark}
 	\label{fig:mac}
 \end{figure}
 \footnotetext{Source: diagram by author}
@@ -26,7 +26,7 @@ If his computation of the \gls{mac} matches the one sent by Alice then the integ
 Mathematically the \gls{mac} is defined as
 
 \begin{equation*}
-  	mac = MAC(M, K)
+	mac = MAC(M, K)
 \end{equation*}
 
 Where \textit{M} is the input message, \textit{MAC} the used \gls{mac} function, \textit{K} the shared secret key and \textit{mac} the resulting \glsdesc{mac}.
@@ -55,7 +55,7 @@ Time based instead of counter based. \gls{rfc} 123 and \gls{oath}.
 \begin{figure}[hbt]
 	\centering
 	\includesvg[width=\textwidth,pretex=\relscale{1}]{pics/svg/2fa_flow}
-	\caption[Exemplary \gls{mfa} authentication flow]{Exemplary \gls{mfa} authentication flow\footnotemark}
+	\caption[Exemplary \gls{mfa} flow]{Exemplary \gls{mfa} flow\footnotemark}
 	\label{fig:2fa_flow}
 \end{figure}
 \footnotetext{Source: diagram by author}

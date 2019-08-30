@@ -147,7 +147,7 @@
 ]{hyperref}
 
 \addto\extrasamerican{%
-  \renewcommand{\chapterautorefname}{Chapter}%
+	\renewcommand{\chapterautorefname}{Chapter}%
 }
 
 
@@ -192,18 +192,19 @@
 %\bibliographystyle{science}
 
 \DefineBibliographyStrings{english}{%
-  urlseen = {last accessed on},
+	urlseen = {last accessed on},
 }
 
 \DeclareBibliographyCategory{badbreaks}
 \addtocategory{badbreaks}{bka-cybercrime}
 \addtocategory{badbreaks}{chrome-android-webauthn}
 \addtocategory{badbreaks}{firefox-android-webauthn}
+\addtocategory{badbreaks}{yougov}
 
 \AtEveryBibitem{%
-  \ifcategory{badbreaks}
-    {\defcounter{biburllcpenalty}{9000}\biburlsetup}
-    {}}
+	\ifcategory{badbreaks}
+	{\defcounter{biburllcpenalty}{9000}\biburlsetup}
+	{}}
 
 %-----------------------------------------------------------------------------
 % Bibliography
