@@ -74,7 +74,7 @@ The \gls{hotp} is mathematically defined as:
 	HOTP(K,\, C) = truncate(HMAC(K,\, C))\; mod \; 10^d
 \end{equation*}
 
-Where \textit{K} is the secret key, \textit{C} is a counter value and \textit{truncate} the function to dynamically truncate the result of the \gls{hmac}. The result is then transformed via the modulo operation into decimal numbers  (mod 10$^d$, where \textit{d} is the number of digits to generate). The \textit{truncate} function is the core of the \gls{hotp} and explained below:
+Where \textit{K} is the secret key, \textit{C} is a counter value and \textit{truncate} the function to dynamically truncate the result of the \gls{hmac}. The result is then transformed via the modulo operation into decimal numbers (mod 10$^d$, where \textit{d} is the number of digits to generate). The \textit{truncate} function is the core of the \gls{hotp} and explained below:
 
 \begin{enumerate}
 	\item At first the dynamic truncation extracts the least four significant bits as an offset from the 20 byte long \gls{hmac}-\gls{sha}-1 result, i.e., from the byte 20.
