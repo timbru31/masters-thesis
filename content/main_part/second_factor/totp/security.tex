@@ -1,5 +1,24 @@
 \subsection{Algorithm}
 
+\subsubsection{pros}
+
+\begin{enumerate}
+	\item Collisions in MD5 or SHA1 are no problem, already stated/analyzed in the RFC
+\end{enumerate}
+
+\subsubsection{cons}
+
+"Just an algorithm"
+
+\begin{enumerate}
+	\item synchronization
+	\item invalidation
+	\item nobody knows how the algorithm is implemented
+	\item Differences (e.g. Steam - only 5 digits, limited Alphabet)
+	\item Brute Force if server does not limit
+	\item Not phishing resistant
+\end{enumerate}
+
 As both the \gls{hotp} and the \gls{totp} are based on the \gls{hmac} algorithm by building the \gls{otp} over the \gls{hmac} function of the secret key and the counter with a truncation, the underlying \gls{hmac} algorithm needs to be evaluated.\\
 The important part here is the chosen cryptographic hash algorithm. Mostly \gls{sha}-1 is used, since it's the default of the RFC. Given that both \gls{sha}-1 and MD5 are considered insecure one has to ask if they are still considered secure in the \gls{otp} context.\\
 Because the collision resistance of the chosen cryptographic hash algorithm is not important for the security of the \gls{otp} generation those algorithms do not expose a threat.\\
