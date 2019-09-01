@@ -9,6 +9,7 @@
 \newacronym{ctap}{CTAP}{Client-to-Authenticator Protocol}
 \newacronym{cso}{CSO}{Chief Security Officer}
 
+\newacronym{des}{DES}{Data Encryption Standard}
 \newacronym{dns}{DNS}{Domain Name System}
 
 \newacronym{ecc}{ECC}{elliptic-curve cryptography}
@@ -22,10 +23,13 @@
 \newacronym{hotp}{HTOP}{HMAC-based one-time password}
 \newacronym{gps}{GPS}{Global Positioning System}
 
-\newacronym{ietf}{IETFC}{Internet Engineering Task Force}
+\newacronym{ietf}{IETF}{Internet Engineering Task Force}
 \newacronym{it}{IT}{information technology}
 \newacronym{iso}{ISO}{International Organization for Standardization}
 \newacronym{iot}{IoT}{Internet of Things}
+
+\newacronym{json}{JSON}{JavaScript Object Notation}
+\newacronym{jwt}{JWT}{JSON Web Token}
 
 \newacronym{mac}{MAC}{message authentication code}
 \newacronym{macaddress}{MAC}{media access control }
@@ -34,12 +38,12 @@
 \newacronym{mic}{MIC}{Message Integrity Code}
 \newacronym{mitm}{MITM}{Man-in-the-Middle}
 \newacronym{mtan}{mTAN}{Mobile TAN}
+\newacronym{md}{MD}{Message Digest}
 
 \newacronym{nfc}{NFC}{near-field communication}
 \newacronym{nist}{NIST}{National Institute of Standards and Technology}
 \newacronym{ntp}{NTP}{Network Time Protocol}
 
-\newacronym{oath}{OATH}{Initiative For Open Authentication}
 \newacronym{oob}{OOB}{Out-of-band}
 \newacronym[firstplural=operating systems (OSes)]{os}{OS}{operating system}
 \newacronym{otp}{OTP}{one-time password}
@@ -56,7 +60,9 @@
 \newacronym{sim}{SIM}{subscriber identity module}
 \newacronym{sms}{SMS}{short message service}
 \newacronym{sso}{SSO}{single sign-on}
+\newacronym{ssl}{SSL}{Secure Sockets Layer}
 
+\newacronym{tls}{TLS}{Transport Layer Security}
 \newacronym{tan}{TAN}{transaction authentication number}
 \newacronym{totp}{TOTP}{time-based one-time password}
 
@@ -69,7 +75,10 @@
 
 % ---- Glossary below ----
 
-\newglossaryentry{nonceg}{name={Nonce}, description={A number that can only be used once in a cryptographic operation or communication}}
+\newglossaryentry{oathg}{name={OATH}, description={...}}
+\newacronym[see={[Glossary:]{oathg}}]{oath}{OATH}{Initiative for Open Authentication\glsadd{oathg}}
+
+\newglossaryentry{nonceg}{name={Nonce}, description={A number that can only be used once in a cryptographic operation or communication.}}
 \newacronym[see={[Glossary:]{nonceg}}]{nonce}{nonce}{number used once\glsadd{nonceg}}
 
 \newglossaryentry{ss7g}{name={SS7}, description={A telephony signaling protocol.}}

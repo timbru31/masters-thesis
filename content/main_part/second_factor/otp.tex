@@ -6,7 +6,7 @@ To fully understand how the \gls{otp} works the basics and origins, especially t
 
 \subsection{Message authentication code}
 
-The \gls{mac} is a \textit{code}, i.e., some sort of information to protect and ensure the integrity of a \textit{message}. Integrity, besides confidentially and availably, is one of the key concepts of \gls{it} security. The \gls{mac} is built using two parameters, a secret key that both parties know and the message itself. The algorithm generates a checksum that the sender can send alongside with the message. The recipient calculates the checksum (\gls{mac}) itself from the retrieved message. If it differs then the message has been manipulated or there might have been a faulty transmission. Technically the \gls{mac} can be generated with, e.g., cryptographic-hash functions, such as \gls{hmac}, or using block ciphers such as \gls{cbc-mac}.\footcites[See][565]{320284}[See][163--168]{anderson2008security}[See][391-393]{eckert-it-sec-9}
+The \gls{mac} is a \textit{code}, i.e., some sort of information to protect and ensure the integrity of a \textit{message}. Integrity, besides confidentially and availably, is one of the key concepts of \gls{it} security. The \gls{mac} is built using two parameters, a secret key that both parties know and the message itself. The algorithm generates a checksum that the sender can send alongside with the message. The recipient calculates the checksum (\gls{mac}) itself from the retrieved message. If it differs then the message has been manipulated or there might have been a faulty transmission. Technically the \gls{mac} can be generated with, e.g., cryptographic-hash functions, such as \gls{hmac}, or using block ciphers such as \gls{cbc-mac} or \gls{des}.\footcites[See][565]{320284}[See][163--168]{anderson2008security}[See][391--393]{eckert-it-sec-9}
 
 The \gls{mac} is standardized in different norms from various institutions, for example \gls{nist} \gls{fips} 198-1, the \gls{bsi} technical guideline TR-02102-1 (\frqq Cryptographic Mechanisms: Recommendations and Key Length\flqq{}) or the \gls{iso} norm ISO/IEC 9797-1 and ISO/IEC 9797-2.\footcites[See][]{FIPS198}[See][]{bsi2019recommendations}[See][]{iso9797-1}[See][]{iso9797-2}
 
@@ -31,20 +31,60 @@ Mathematically the \gls{mac} is defined as
 
 Where \textit{M} is the input message, \textit{MAC} the used \gls{mac} function, \textit{K} the shared secret key and \textit{mac} the resulting \glsdesc{mac}.
 
-Sometimes the \gls{mac} is also called \gls{mic} in order to avoid confusion with the \gls{macaddress} address used in network protocols. Further, the \gls{mic} would not prove authenticity since an attacker can just modify the message and re-generate the \gls{mic} of the modified message.\footcites[See][60-62]{265831}
+Sometimes the \gls{mac} is also called \gls{mic} in order to avoid confusion with the \gls{macaddress} address used in network protocols. Additionally, the \gls{mic} does not prove authenticity since an attacker can just modify the message and re-generate the \gls{mic} of the modified message.\footcites[See][60--62]{265831}
 
-Further, while the \gls{mac} provides authenticity regarding the origin of the data and the data integrity, it does not provide any authenticity regarding the content of the data. For example, mobile code would not be detected by the \gls{mac}, as long as the \gls{mac} belongs to the sent message. This implication has to be taken into account when using the \gls{mac} to authenticate received messages.
+Further, while the \gls{mac} provides authenticity regarding the origin of the data and the data integrity, it does not provide any authenticity regarding the content of the data. For example, mobile code is not be detected by the \gls{mac}, as long as the \gls{mac} belongs to the sent message. This implication has to be taken into account when using the \gls{mac} to authenticate and evaluate the trustworthiness of received messages.
 
 \subsection{HMAC}
 
-\gls{hmac} Code is an extension of a \gls{mac} and standardized in \gls{rfc} and \gls{nist} abc.
-\cite{krawczyk1997rfc}
+The \glsfirst{hmac} is an extension of the \gls{mac} and standardized in \gls{rfc} 2104 and \gls{nist}'s standard \gls{fips} 198-1 that allows the usage of any cryptographic hash function, such as \gls{sha} family, \glspl{md} algorithms, bcrypt, or whirlpool. Due to the black-box design of the \gls{hmac}, the easy replacement of the used cryptographic hash function is possible.\footcites[See][]{krawczyk1997rfc}[See][]{FIPS198} Besides authentication the \gls{hmac} is, e.g., used in \gls{tls} and \gls{jwt} to ensure data authenticity and integrity.\footcites[See][14]{rfc5246}[See][8]{rfc7519}[See][3--4]{s2011rfc}
 
-\subsection{Counter-based}
+Mathematically the \gls{hmac} is defined as follows:
+
+\begin{equation*}
+	HMAC(K,\, m) = H((K' \oplus opad),\, H((K' \oplus ipad),\, m))
+\end{equation*}
+
+Where \textit{K} is the shared secret key, \textit{K'} is the result by appending zeroes to the key \textit{K} until it reaches a full block size (\textit{B}) defined by the hash function. The inner padding \textit{ipad} is constructed by repeating the byte \textit{0x36} B-times, and \textit{opad} is the outer padding constructed by repeating the byte \textit{0x5C} B-times.
+
+Naively one could think that the \gls{hmac} is constructed by just hashing the secret key with the message. In order to increase the security and to protect against probable collusion of the hash functions the algorithm design is slightly different and shown in the next figure.
+
+\newpage
+
+\begin{figure}[hbt]
+	\centering
+	\includesvg[width=\textwidth,pretex=\relscale{1}]{pics/svg/hmac}
+	\caption[Visualization of the \gls{hmac} algorithm]{Visualization of the \gls{hmac} algorithm\footnotemark}
+	\label{fig:hmac}
+\end{figure}
+\footcitetext[Source: diagram by author, based on][395]{eckert-it-sec-9}
+
+The exclusive or (XOR) operation is performed on the key and \textit{opad} (1) and \textit{ipad} (2), respectively, instead. Besides that, the hash function is invoked twice, first on the result of the XOR operation on \textit{K'} and the \textit{ipad} (3) with the message and then again on the final result of the concatenation of (1), (2) and (3). \autoref{fig:hmac} shows the intermediate steps in order to generate the \gls{hmac}.
+
+One of the key aspects of the \gls{hmac} is the efficiency of original hash function is maintained and not altered by wrapping it in the \gls{hmac}.The security of the \gls{mac} relies on the used cryptographic hash function and on the strength, for example length and chosen alphabet, of the secret key. The best known attack against \gls{hmac} remains the brute force and birthday attack and due to the stated algorithm the collisions of, e.g., \gls{md}5 or \gls{sha}-1 do not expose a threat towards using the \gls{hmac} with these cryptographic hash functions.\footcites[See][Chapter 10.4.1]{2308830}[See][398]{1679747}[See][3, 10--13]{10.1007/3-540-68697-5_1} 
+
+\subsection{Counter-based} % TODO Some sources
 \label{subsec:hotp}
 
-HMAC-based One-time Password algorithm, counter based. \gls{rfc} 899. Configurable length (6-10). Default SHA1. Truncation of HMAC
-\cite{m2005rfc}
+The \glsfirst{hotp} is an extension and truncation of the \gls{hmac} which is standardized in the \gls{rfc} 4226 and joint effort between the \gls{ietf} and the \gls{oath}. It is an algorithm for the generation of \glspl{otp}, in contrast to before not an algorithm for message authentication and integrity. The security relies on the fact that a \flqq moving factor\frqq{}, i.e., in this case a counter is used to generate passwords that are only valid once. Alternatively the \gls{hotp} is also referred as event-based. The length of the numeric \gls{otp} is configurable and the defined minimum are six digits. The standard only defines \gls{hmac}-\gls{sha}-1 as the cryptographic hash function to use, but it's also possible to replace the cryptographic hash function, although the implementation won't comply with the \gls{rfc} anymore.\footcites[See][]{m2005rfc}[See][Chapter 3]{9781849287333}
+
+The \gls{hotp} is mathematically defined as:
+
+\begin{equation*}
+	HOTP(K,\, C) = truncate(HMAC(K,\, C))\; mod \; 10^d
+\end{equation*}
+
+Where \textit{K} is the secret key, \textit{C} is a counter value and \textit{truncate} the function to dynamically truncate the result of the \gls{hmac}. The result is then transformed via the modulo operation into decimal numbers  (mod 10$^d$, where \textit{d} is the number of digits to generate). The \textit{truncate} function is the core of the \gls{hotp} and explained below:
+
+\begin{enumerate}
+	\item At first the dynamic truncation extracts the least four significant bits as an offset from the 20 byte long \gls{hmac}-\gls{sha}-1 result, i.e., from the byte 20.
+	\item Extracting the next 31 bits from the offset position in order to generate 4-byte long string. The most significant bit is skipped in order to avoid issues such as modulo operations on negative numbers, caused by varying computation results based on implementation differences.
+\end{enumerate}
+
+Due to its design there are couple of limitations to the \gls{hotp}. The counter used between the parties can become out of synchronization requiring further efforts to resynchronize. This can be done by generating the next \gls{otp} by increasing the counter (look-ahead window) in order to verify if this \gls{otp} matches. Another method for resynchronization is the sending of multiple future values.\\
+It is important to limit the look-ahead window to decrease the attack surface. Further, the server should throttle the authentication attempts in order to counterfeit brute-force attacks. Further analysis is done in \textcolor{red}{XYZ}.
+
+Additionally, the \gls{hotp} allows bidirectional authentication, i.e., the user can authenticate the server if it sends the next \gls{otp} value that the client then can validate. \Glspl{hotp} are commonly used in physical security keys, such as YubiKeys, but are also present in software solutions, e.g., in the Google Authenticator.
 
 \subsection{Time-based}
 \label{subsec:totp}
@@ -64,10 +104,10 @@ Time based instead of counter based. \gls{rfc} 123 and \gls{oath}.
 
 \begin{enumerate}[label=(\alph*)]
 	\item use, e.g., a smartphone app, or hardware token to generate the \gls{totp}.
-	\item receive the \gls{totp} from the service, e.g., via a text message.
+	\item receive the \gls{totp} from the service, e.g., via a text message, e-mail or phone call (the figure shows a \gls{sms}).
 \end{enumerate}
 
-Once the user has the \gls{otp} obtained (possession; second factor), they can enter it at the login screen in order to complete the authentication process.
+Once the user has obtained the \gls{otp} (possession; second factor), they can enter it at the login screen in order to complete the authentication process.
 
 \subsubsection{pros}
 
@@ -87,3 +127,5 @@ Once the user has the \gls{otp} obtained (possession; second factor), they can e
 	\item Brute Force if server does not limit
 	\item Not phishing resistant
 \end{enumerate}
+
+\subsection{Yubico OTP}

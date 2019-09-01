@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1319" height="1006">
+    <g fill="none" fill-rule="evenodd" transform="translate(-1)">
+        <text fill="#000" font-family="Helvetica" font-size="36" x=".457" y="221">opad</text>
+        <text fill="#000" font-family="Helvetica" font-size="36" x="1254.469" y="228">ipad</text>
+        <path fill="#000" fill-rule="nonzero" d="M888 213v4h367v1H888v4l-9-4.5 9-4.5zM372.455 48.107c-3.766 0-6.819-3.034-6.819-6.776 0-3.743 3.053-6.777 6.819-6.777 3.765 0 6.818 3.034 6.818 6.777 0 3.742-3.053 6.776-6.818 6.776zm19.26-13.553C388.92 26.659 381.353 21 372.456 21 361.158 21 352 30.102 352 41.33c0 11.229 9.158 20.331 20.455 20.331 8.897 0 16.465-5.659 19.26-13.554h14.83v13.554h13.637V48.107H427V34.554h-35.284z"/>
+        <path stroke="#979797" d="M290.5.5h563v81h-563z"/>
+        <path fill="#000" fill-rule="nonzero" d="M353 89v88h4l-4.5 9-4.5-9h4V89h1zm388.523-8.207l98.53 105.162 2.92-2.735 2.869 9.645-9.437-3.491 2.918-2.735-98.53-105.162.73-.684z"/>
+        <path stroke="#979797" d="M854.5.5h168v81h-168zM741.5 316.5h208v81h-208zM950.5 316.5h258v81h-258zM560.5 640.5h208v81h-208zM769.5 640.5h355v81h-355z"/>
+        <path fill="#000" fill-rule="nonzero" d="M951 398v64h4l-4.5 9-4.5-9h4v-64h1zm-95.5-155.5v64h4l-4.5 9-4.5-9h4v-64h1zm96 325v64h4l-4.5 9-4.5-9h4v-64h1z"/>
+        <text fill="#000" font-family="Helvetica" font-size="36" x="456.434" y="54">shared secret key</text>
+        <text fill="#000" font-family="Helvetica" font-size="36" x="900.479" y="54">0…0</text>
+        <path fill="#000" fill-rule="nonzero" d="M854 238c-11.025 0-20-8.975-20-20s8.975-20 20-20 20 8.975 20 20-8.975 20-20 20zm0-45c-13.807 0-25 11.193-25 25a25 25 0 1 0 25-25zm2.5 12.5h-5v10h-10v5h10v10h5v-10h10v-5h-10v-10zM353 231c-11.025 0-20-8.975-20-20s8.975-20 20-20 20 8.975 20 20-8.975 20-20 20zm0-45c-13.807 0-25 11.193-25 25a25 25 0 1 0 25-25zm2.5 12.5h-5v10h-10v5h10v10h5v-10h10v-5h-10v-10z"/>
+        <path fill="#000" fill-rule="nonzero" d="M352.59 234.799L659.69 631.473l3.164-2.449 1.951 9.871-9.068-4.361 3.163-2.45-307.102-396.673.79-.612zM1109.5 342l-30 18.75-30-18.75v-7.5l30 18.75 30-18.75v7.5zm0-15h-60a7.474 7.474 0 0 0-7.5 7.5v45a7.5 7.5 0 0 0 7.5 7.5h60a7.5 7.5 0 0 0 7.5-7.5v-45c0-4.162-3.375-7.5-7.5-7.5zM319 206l9 4.5-9 4.5v-4H81v-1h238v-4z"/>
+        <rect width="348" height="96" x="776.5" y="471.5" stroke="#979797" rx="8"/>
+        <text fill="#000" font-family="Helvetica" font-size="36" x="843.423" y="531">hash function</text>
+        <rect width="348" height="96" x="776.5" y="797.5" stroke="#979797" rx="8"/>
+        <text fill="#000" font-family="Helvetica" font-size="36" x="857.452" y="1005">hmac value</text>
+        <text fill="#000" font-family="Helvetica" font-size="36" x="843.423" y="860">hash function</text>
+        <text fill="#000" font-family="Helvetica" font-size="36" x="795.473" y="370">XORed</text>
+        <text fill="#000" font-family="Helvetica" font-size="36" x="605.473" y="695">XORed</text>
+        <text fill="#000" font-family="Helvetica" font-size="36" x="804.414" y="695">intermediate hash</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="378.334" y="187">(1)</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="879.334" y="192">(2)</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="727.334" y="855">(4)</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="727.334" y="528">(3)</text>
+        <path fill="#000" fill-rule="nonzero" d="M949.5 721.5v64h4l-4.5 9-4.5-9h4v-64h1zm2 173v64h4l-4.5 9-4.5-9h4v-64h1z"/>
+    </g>
+</svg>
