@@ -7,8 +7,8 @@
 \epigraph{\frqq Usernames and passwords are an idea that came out of 1970s mainframe architectures. They were not built for 2016.\flqq\footnotemark}{\textit{Alex Stamos}}
 \footcitetext[See][]{stamos}
 
-Passwords in the way they are currently used, are not suited for the twenty-first-century, as Alex Stamos, the former \gls{cso} of Facebook and Yahoo!, stated. The secure handling of passwords is a problem for many users. Passwords are re-used between different websites and often shared across private and work environments. This renders the (private) user data, but also business secrets at high risk with the risk of ruining a whole company.\\
-To make things worse, very few people are using \gls{mfa} nor a password manager in 2019. The majority of the users are either remembering their passwords or writing them down on a piece of paper -- in cleartext.\footcites[See][]{ibm-security}[See][]{web-de-passwords}
+Passwords in the way they are currently used, are not suited for the twenty-first-century, as Alex Stamos, the former \gls{cso} of Facebook and Yahoo!, stated. The secure handling of passwords is a problem for many users. Passwords are re-used between different websites and often shared across private and work environments. This renders the (private) user data, but also business secrets at high risk with the risk of ruining a whole company if confidential data is leaked or obtained by a competitor.\\
+To make things worse, very few people are using \gls{mfa} and even fewer a password manager in 2019. The majority of the users are either remembering their passwords or writing them down on a piece of paper -- in cleartext.\footcites[See][]{ibm-security}[See][]{web-de-passwords}
 At the same time, the recorded amount of cybercrime cases is still increasing, and, for example, phishing remains a constant threat. While \gls{mfa} can protect against threats such as brute force attacks or stolen credentials, it is still affected and vulnerable to phishing attacks. Besides that, \gls{sms} traffic is not considered secure anymore, yet a lot of \gls{mfa} solutions use it. Nevertheless, the majority of the users are not using \gls{mfa} at all.\footcites[See][]{infratest-dimap}[See][6--7]{bka-cybercrime}
 
 To counter these negative trends, new \glspl{api} are emerging, for example, the \wa. It is a standardized \gls{api} supported in major browsers such as Chrome, Firefox, or Edge. The \wa{} allows a secure registration, login, and \gls{2fa} -- all without the generation, storage, and remembering of passwords by utilizing asymmetric cryptography. The private keys are stored, e.g., on external devices such as USB sticks, but can be stored on built-in hardware, too. These are, for example, protected by a fingerprint sensor or dedicated chip designed for secure operations.
@@ -35,28 +35,28 @@ are taken into account and answered.
 
 \section{Target audience}
 
-The target audience of this thesis are technically experienced readers that have a good understanding and interest in data security and privacy. Additionally, the reader should have a basic knowledge about the functionality and mathematics behind algorithms such as RSA, \gls{ecc} or symmetric and asymmetric key exchange (e.g., Diffie–Hellman key exchange). Moreover, the reader needs to be familiar with the underlying concept(s) and techniques of \gls{mfa}.
+The target audience of this thesis are technically experienced readers that have a good understanding and interest in data security and privacy. Additionally, the reader should have a basic knowledge about the functionality and mathematics behind algorithms such as RSA, \gls{ecc}, or symmetric and asymmetric key exchange (e.g., Diffie–Hellman key exchange). Moreover, the reader needs to be familiar with the underlying concept(s) and techniques of \gls{mfa}.
 
-Furthermore, the thesis is tailored towards interested (web) developers. On the one hand it shall, introduce a new standardized Web \gls{api} to them in detail. On the other hand, the thesis helps to understand the pros and cons of alternative registration, login, and \gls{mfa} solutions using asymmetric cryptography and if the \wa{} suits their needs.
+Furthermore, the thesis is tailored towards interested (web) developers. On the one hand, it shall introduce a new standardized Web \gls{api} to them in detail. On the other hand, the thesis helps to understand the pros and cons of alternative registration, login, and \gls{mfa} solutions using asymmetric cryptography and if the \wa{} suits their needs.
 
 \section{Delimitation of this thesis}
 
-Existing proven algorithms and concepts, as long as not required for the understanding of this thesis, are not explained in detail. It is not the goal of this thesis to perform complete cryptanalysis, but to take other factors, such as usability for the user, technical feasibility, and web browser support into account. Different, but adjacent, technologies such as OAuth (2.0), OpenID Connect or \gls{sso} neither are a focus of this thesis. Additionally, the topic of authorization is not taken into account and not from concern for this thesis. 
+Existing proven algorithms and concepts, as long as not required for the understanding of this thesis, are not explained in detail. It is not the goal of this thesis to perform complete cryptanalysis, but to take other factors, such as usability for the user, technical feasibility, and web browser support into account. Different, but adjacent, technologies such as OAuth (2.0), OpenID Connect or \gls{sso} neither are a focus of this thesis. Additionally, the topic of authorization is not taken into account and not of concern for this thesis. 
 
 \section{Approach and methodology}
 
 Initially, in \autoref{chapter:basics}, the reader is introduced into the basics of authentication.\\
-After that in the following chapters the areas
+After that, in the following chapters, the areas
 
 \begin{itemize}
 	\item Single-Factor-Authentication
 	\item \gls{mfa}
 \end{itemize}
 
-are explained, for example, their technical functionality, and analyzed regarding their security and potential risks and attacks such as phishing or \gls{mitm} attacks.
+are explained. For example, their technical functionality is described, followed by an analyze regarding their security and potential risks and attacks such as phishing or \gls{mitm} attacks.
 
-Hereupon the \wa{} is introduced in \autoref{chapter:webauth} and described in detail. The technical functionality is a crucial aspect of this chapter. Additionally, the attacks the \wa{} can offer protection against are explained but also asserted which security risks exist, too. Where suitable example source code listings are used to highlight these analyses.% TODO or POC?
+Hereupon the \wa{} is introduced in \autoref{chapter:webauth} and described in detail. The technical functionality is a crucial aspect of this chapter. Additionally, it is explained against which attacks the \wa{} can offer protection. But it is also asserted which security risks exist, too. Where suitable example source code listings are used to highlight these analyses.% TODO or POC?
 
-In \autoref{chapter:comparison}, the \wa{} is compared with existing \gls{mfa} solutions. Therefore, it's reviewed if the \wa{} can be used in conjunction or as a replacement for \gls{mfa}.
+In \autoref{chapter:comparison}, the \wa{} is compared with existing \gls{mfa} solutions. Therefore, it is reviewed if the \wa{} can be used in conjunction or as a replacement for \gls{mfa}.
 
-Concluding follows an evaluation based on the gained insights from the previous chapters with a conclusion and an outlook for further research and studies.
+Concluding follows an evaluation based on the gained insights from the previous chapters with a summing-up and outlook for further research and studies.
