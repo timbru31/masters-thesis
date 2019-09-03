@@ -26,7 +26,7 @@ Another form of authentication is the possession, i.e., \frqq something the user
 
 \begin{figure}[hbt]
 	\centering
-	\includesvg[width=\textwidth,pretex=\relscale{0.5}]{pics/svg/possession_auth_flow}
+	\includesvg[width=\textwidth,pretex=\relscale{0.8}]{pics/svg/possession_auth_flow}
 	\caption[Exemplary, but simplified, authentication by possession flow]{Exemplary, but simplified, authentication by possession flow\footnotemark}
 	\label{fig:possesion_auth_flow}
 \end{figure}
@@ -39,18 +39,17 @@ Another form of authentication is the possession, i.e., \frqq something the user
 Besides the knowledge and possession factors, another one is biometrics. This factor is classified as \frqq something the user is\flqq{} and commonly includes the fingerprint, facial, or iris scan. In theory, many other characteristics, e.g., the gait, the ear, DNA, or even the human odor can be a biometric factor.\footcite[See][30--34]{Jain2011}\\
 These intrinsic factors are sometimes referred to as traits or inheritance, too.\footcite[See][186]{dasgupta2017multi}
 
-While it seems natural to authenticate a person with a biometric factor, it also comes with a couple of challenges. Both, the \gls{frr}, i.e., the system rejects a user even though it is a legitimate user and \gls{far}, i.e., an imposter is granted access, needs to be accounted for the usage. Compared to knowledge and possession factors, the enrollment of the biometrics and the continuous update of the sample is more complicated and expensive.\footcites[See][18--24]{Jain2011}[See][34--37]{265831}
+While it seems natural to authenticate a person with a biometric factor, it also comes with a couple of challenges. Both, the \gls{frr}, i.e., the system rejects a user even though it is a legitimate user, and \gls{far}, i.e., an imposter is granted access, needs to be accounted for the usage. Compared to knowledge and possession factors, the enrollment of the biometrics and the continuous update of the sample is more complicated and expensive.\footcites[See][18--24]{Jain2011}[See][34--37]{265831}
 
 On the other hand, it is more complicated to steal, share, or copy this factor than the others -- but it is also nearly impossible to replace a compromised biometrics. The usability varies because of the quality of the used biometrics module, the chosen biometrics itself, and the availability of the biometrics.
 
 \begin{figure}[hbt]
 	\centering
-	\includesvg[width=\textwidth,pretex=\relscale{0.5}]{pics/svg/biometrics_auth_flow}
+	\includesvg[width=\textwidth,pretex=\relscale{0.8}]{pics/svg/biometrics_auth_flow}
 	\caption[Exemplary, but simplified, authentication by biometrics flow]{Exemplary, but simplified, authentication by biometrics flow\footnotemark}
 	\label{fig:biometrics_auth_flow}
 \end{figure}
 \footcitetext[Source: diagram by author, based on][11]{Jain2011}
-
 
 \autoref{fig:biometrics_auth_flow} shows an exemplary authentication flow using biometrics, in this case with a fingerprint. First, the user interacts with the sensor that reads the fingerprint and extracts the biometric template. Generally, the system or reader transforms the template into a more comparable format. For instance, fingerprints are scanned for minutiae and their direction. Simultaneously, the system retrieves the stored fingerprint or searches for it. The system now compares the stored probe to the fresh one. A threshold value that determines how much of difference is tolerable finally decides if the authentication attempt can proceed or has to be aborted and access denied. If the authentication succeeds, the stored template can be updated in the database, as denoted by the dotted grey arrow.
 
