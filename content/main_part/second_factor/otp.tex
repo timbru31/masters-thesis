@@ -1,8 +1,8 @@
 \section{One-time password}
 
-To fully understand how the \gls{otp} works the basics and origins, especially the underlying \gls{mac}, have to be introduced first. In the following subsections are the required algorithms shorty described and in \autoref{subsec:hotp} and \autoref{subsec:totp} the variants of \glspl{otp}, both the \gls{hotp} and the \gls{totp} which are based on \gls{hmac}.
+A widely used method of authentication in order to achieve \gls{mfa} are \glspl{otp} which belong to the category of possession of a shared secret between the client and the server.
 
-\newpage
+To fully understand how the \gls{otp} works, the basics and origins, especially the underlying \gls{mac}, have to be introduced first. In the following subsections are the required algorithms shorty described and in \autoref{subsec:hotp} and \autoref{subsec:totp} the variants of \glspl{otp}, both the \gls{hotp} and the \gls{totp} which are based on \gls{hmac}.
 
 \subsection{Message authentication code}
 
@@ -139,4 +139,4 @@ The constructed \gls{otp} consists of:
 
 Where the 48-bit \textit{private unique or secret ID} is stored in the YubiKey configuration and can be changes (write-only), the 16-bit \textit{usage counter} is a non-volatile usage counter, the 24-bit \textit{timestamp} value, set to a random value after startup and increased by an 8-Hz clock, the \textit{session usage counter}, a 8-bit volatile counter that's initialized with zero after power-up and then increased by one each \gls{otp} generation, the \textit{pseudo random number} of 16-bits and a \gls{crc} \textit{checksum} of 16-bits for the fields. Finally the generated \gls{otp} is encrypted with the per device unique \gls{aes}-128 key.\footcites[See][8--9, 33--34]{yubico-otp}
 
-The authentication server can either be used as a service from Yubico, as they know the pre-configured \gls{aes} key of each YubiKey, this renders their central key server a lucrative target for criminals though. Alternatively the validation server is available as a self-hosted solution, which requires changing of the used \gls{aes} key of the YubiKeys.\footcites[See][8--9]{yubico-cloud}
+The authentication server can either be used as a service from Yubico, as only they know the pre-configured \gls{aes} key of each YubiKey. This renders their central key server a lucrative target for criminals though, since it is a centralized place of all \gls{aes} keys. Alternatively the validation server software is available as a self-hosted solution in different programming languages. This requires changing the \gls{aes} key of the YubiKeys in order to save the shared key on the server, too, since Yubico will not give access to the pre-configured \gls{aes} key.\footcites[See][8--9]{yubico-cloud}
