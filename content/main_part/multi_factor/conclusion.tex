@@ -1,0 +1,30 @@
+\section{Overall comparison}
+
+The following sections sums the introduced authemntiation methods and analyzed \gls{mfa} up and shows their key vulnerabilites.
+
+\begin{table}[ht]
+	\renewcommand\thetable{1}
+	\begin{tabularx}{\textwidth}{c|p{4cm}|p{2cm}|p{9cm}}
+		& Authentication & Used as a multi-factor & Vulnerabilities \\
+		\hline
+		\parbox[t]{2mm}{\multirow{5}{*}{\rotatebox[origin=c]{90}{Knowledge}}} & 	Passwords & - & Can be guessed, brute-forced, stolen, replayed, or intercepted \\
+		& \glspl{pin} & - & Can be guessed, brute-forced, stolen, replayed, or intercepted \\
+		& Security/Recovery questions & - & Can be guessed, brute-forced, stolen, replayed, or intercepted \\
+		\hline
+		\parbox[t]{2mm}{\multirow{7}{*}{\rotatebox[origin=c]{90}{Possession}}} & Hardware \glspl{otp} & \OK & Can be phished,, replayed, or stolen (device) \\
+		& App \glspl{otp} & \OK & Can be phished, intercepted, replayed, or stolen (device) \\
+		& SMS \glspl{otp} & \OK & Can be phished, intercepted, replayed, or stolen (device) \\
+		& E-Mail \glspl{otp} & \OK & Can be phished or intereptecd \\
+		& Smartcards & \OK & Can be physically stolen or copied \\
+		& Security Keys & \OK & Can be physically stolen or copied \\
+		\hline
+		\parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Biometrics}}} & Fingerprints & - & Can be copied and replayed \\
+		& Facial scan & - & Can be copied and replayed \\
+		& Iris scan & - & Can be copied and replayed
+	\end{tabularx}
+	\caption[All threats compared]{All threats compared\footnotemark}
+	\label{tab:all-threats}
+\end{table}
+\footcitetexts[Sources:][]{}
+
+\autoref{tab:all-threats} shows the introduced authentication methods grouped by the known authentication methods. Further, it shows that no authentication method is free of vulnerabilities, even when combined as \gls{2fa} or \gls{mfa}. The most present vulnerbility is the missing phishing resistance alongside the theft and/or copy.
