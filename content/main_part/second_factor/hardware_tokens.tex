@@ -1,7 +1,18 @@
-\section{Hardware Tokens}
+\section{Security Tokens}
 
-\subsection{General}
+% FIPS 140-2?
+Besides smartcards, further \gls{mfa} soltuions with possession as the second factor involve the usage of security tokens.
+
+Hardware and software are possible. The minimum security specification are, e.g., defined in \gls{nist} \gls{fips} 140-3.\footcites[See][]{FIPS140-3}
 
 \subsection{RSA SecurID}
+
+The RSA SecurID exists in several variants, both hardware and software token. First hardware revisions used a 64-bit proprietary protocol called \flqq SecudID has function\flqq, hardware keys newer than 2003 use the standardized 128-bit RSA algorithm in order to generate \glspl{otp}. Newer revisions also feature a USB port which allows the device to store custom certificates, too, i.e., making it a smartcard device, too. Each token contains a burned in seed, a random key that was generated while manufacturing the device. Since this seed needs to be known to validate the \gls{otp}, the RSA SecurID server needs to be used.
+
+Mobile application exists, too, offering support for a soft-token based solution.
+
+\subsection{YubiKey}
+
+Variety of tokens available, all support Yubico's \gls{otp} algorithm, \gls{hotp} and \gls{totp}. Many support \gls{u2f}, too. Some static passwords and PKI. Some are \gls{piv} conform and \gls{fips} 140 certified.
 
 \subsection{Software tokens}

@@ -1,12 +1,20 @@
 \chapter{Multi-factor authentication}
 
-In this Chapter a list of different \gls{mfa} solutions is described in detail. \Gls{mfa} is a more general term for \gls{2fa}. It describes the process of using two (\gls{2fa}) or more (\gls{mfa}) distinct authentication methods for an authentication of a user. The \gls{mfa} can combine, e.g., the password (knowledge) with another method, e.g. the possession of a security token or a biometric factor, such as fingerprints or facial recognition.
+In this Chapter a variety of different \gls{mfa} solutions is described in detail. \Gls{mfa} is a more general term for \gls{2fa}. It describes the process of using two (\gls{2fa}) or more (\gls{mfa}) distinct authentication methods for an authentication of a user. The \gls{mfa} can combine, e.g., the password (knowledge) with another method, e.g. the possession of a security token or a biometric factor, such as fingerprints or facial recognition.
 
 Since this thesis is focusing on the internet and web technologies, the first factor is always assumed as knowledge, i.e., in the majority of the use cases a password. Therefore further knowledge based authentication methods are not taken into account in this Chapter.
 
-% TODO ECB, National Information Assurance Glossary StrongAuth,
-% PSD2 
+While not officially and often different defined, \gls{mfa} is also referred as Strong Authentication by, e.g., the \gls{bsi} or the \gls{eu} or the National Information Assurance Glossary.\footcites[See][47]{CNSS4009}\footcites[See][11]{deutschland2018grundschutz}
+
+\section{Motivation for the usage of multi-factor authentication}
+
+The motivation for the usage of \gls{mfa} is derived from the previous chapter. It has been shown that various security issues and risks exist, independent from the chosen authentication method. These make user accounts vulnerable.\\
+ In order to decrease or even eliminate these risks and threats the user needs to deploy additional security measures that explained in this chapter.
+ 
+ Further, new formalities such as the new version of the \gls{psd}, \gls{eu} Directive 2015/2366, coming into full effect in September 2019, even require the usage of \gls{mfa}.\footcites[See][10]{NOCTOR20189}
+
+\newpage
 
 \section{Transmission of information}
 
-A key aspect to take into account is the chosen transmission channel for the second or different (multi) factor. \gls{oob} transmission helps to reduce the risks of eavesdropping drastically. This technique describes the transmission of information on another channel or network than the current transmission of information is happening. While, e.g., the \textit{normal} transmission of information on websites happens via the internet, an example for \gls{oob} transmission is the phone call or \gls{sms} to transmit the second factor. 
+A key aspect to take into account is the chosen transmission channel for the second or different (multi) factor. \gls{oob} transmission helps to reduce the risks of eavesdropping drastically. This technique describes the transmission of information on another channel or network than the current transmission of information is happening. While, e.g., the \textit{normal} transmission of information on websites happens via the internet, an example for \gls{oob} transmission is a phone call or \gls{sms} to transmit the second factor. 

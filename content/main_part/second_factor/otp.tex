@@ -9,9 +9,7 @@ To fully understand how the \gls{otp} works, the basics and origins, especially 
 The \glsfirst{mac} is a \textit{code}, i.e., some sort of information to protect and ensure the integrity of a \textit{message}. Integrity, besides confidentially and availably, is one of the key concepts of \gls{it} security. The \gls{mac} is built using two parameters, a secret key that both parties know and the message itself. The algorithm generates a checksum that the sender can send alongside with the message. The recipient calculates the checksum (\gls{mac}) itself from the retrieved message. If it differs then the message has been manipulated or there might have been a faulty transmission. Technically the \gls{mac} can be generated with, e.g., cryptographic-hash functions, such as \gls{hmac}, or using block ciphers such as \gls{cbc-mac} or \gls{des}.\footcites[See][565]{320284}[See][163--168]{anderson2008security}[See][391--393]{eckert-it-sec-9}
 
 The \gls{mac} is standardized in different norms from various institutions, for example \gls{nist} \gls{fips} 198-1, the \gls{bsi} technical guideline TR-02102-1 (\frqq Cryptographic Mechanisms: Recommendations and Key Length\flqq{}) or the \gls{iso} norm ISO/IEC 9797-1 and ISO/IEC 9797-2.\footcites[See][]{FIPS198}[See][]{bsi2019recommendations}[See][]{iso9797-1}[See][]{iso9797-2}
-
-\newpage
-
+ 
 \begin{figure}[hbt]
 	\centering
 	\includesvg[width=\textwidth,pretex=\relscale{1}]{pics/svg/mac}
@@ -48,8 +46,6 @@ Mathematically the \gls{hmac} is defined as follows:
 Where \textit{K} is the shared secret key, \textit{K'} is the result by appending zeroes to the key \textit{K} until it reaches a full block size (\textit{B}) defined by the hash function. The inner padding \textit{ipad} is constructed by repeating the byte \textit{0x36} B-times, and \textit{opad} is the outer padding constructed by repeating the byte \textit{0x5C} B-times.
 
 Naively one could think that the \gls{hmac} is constructed by just hashing the secret key with the message. In order to increase the security and to protect against probable collusion of the hash functions the algorithm design is slightly different and shown in the next figure.
-
-\newpage
 
 \begin{figure}[hbt]
 	\centering
@@ -123,8 +119,6 @@ In contrast to the \gls{hotp} definition the \gls{rfc} 6238 explicitly defines t
 \end{enumerate}
 
 Once the user has obtained the \gls{otp} (possession; second factor), they can enter it at the login screen and send it to the server, the relying party. The service can now validate the \gls{otp} again, while respecting the look-ahead window, and allow the user authentication.
-
-\newpage
 
 \subsection{Yubico OTP}
 
