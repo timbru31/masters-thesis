@@ -1,14 +1,14 @@
 \section{One-time password}
 
-A widely used method of authentication in order to achieve \gls{mfa} are \glspl{otp} which belong to the category of possession of a shared secret between the client and the server.
+A widely used method of authentication in order to achieve \gls{mfa} are \glspl{otp} that belong to the category of possession of a shared secret between the client and the server.
 
-To fully understand how the \gls{otp} works, the basics and origins, especially the underlying \gls{mac}, have to be introduced first. In the following subsections are the required algorithms shorty described and in \autoref{subsec:hotp} and \autoref{subsec:totp} the variants of \glspl{otp}, both the \gls{hotp} and the \gls{totp} which are based on \gls{hmac}.
+To fully understand how the \gls{otp} works, the basics and origins, especially the underlying \gls{mac}, have to be introduced first. In the following subsections are the required algorithms shortly described and in \autoref{subsec:hotp} and \autoref{subsec:totp} the variants of \glspl{otp}, both the \gls{hotp} and the \gls{totp} which are based on \gls{hmac}.
 
 \subsection{Message authentication code}
 
-The \glsfirst{mac} is a \textit{code}, i.e., some sort of information to protect and ensure the integrity of a \textit{message}. Integrity, besides confidentially and availably, is one of the key concepts of \gls{it} security. The \gls{mac} is built using two parameters, a secret key that both parties know and the message itself. The algorithm generates a checksum that the sender can send alongside with the message. The recipient calculates the checksum (\gls{mac}) itself from the retrieved message. If it differs then the message has been manipulated or there might have been a faulty transmission. Technically the \gls{mac} can be generated with, e.g., cryptographic-hash functions, such as \gls{hmac}, or using block ciphers such as \gls{cbc-mac} or \gls{des}.\footcites[See][565]{320284}[See][163--168]{anderson2008security}[See][391--393]{eckert-it-sec-9}
+The \glsfirst{mac} is a \textit{code}, i.e., some sort of information to protect and ensure the integrity of a \textit{message}. Integrity, besides confidentially and availability, is one of the main concepts of \gls{it} security. The \gls{mac} is built using two parameters, a secret key that both parties know and the message itself. The algorithm generates a checksum that the sender can send alongside with the message. Upon retrieval of the message, the recipient calculates the checksum (\gls{mac}) themself. If it differs, then the message has been manipulated, or there might have been a faulty transmission. Technically, the \gls{mac} can be generated with, e.g., cryptographic-hash functions, such as \gls{hmac}, or using block ciphers such as \gls{cbc-mac} or \gls{des}.\footcites[See][565]{320284}[See][163--168]{anderson2008security}[See][391--393]{eckert-it-sec-9}
 
-The \gls{mac} is standardized in different norms from various institutions, for example \gls{nist} \gls{fips} 198-1, the \gls{bsi} technical guideline TR-02102-1 (\frqq Cryptographic Mechanisms: Recommendations and Key Length\flqq{}) or the \gls{iso} norm ISO/IEC 9797-1 and ISO/IEC 9797-2.\footcites[See][]{FIPS198}[See][]{bsi2019recommendations}[See][]{iso9797-1}[See][]{iso9797-2}
+The \gls{mac} is standardized in different norms from various institutions, for example, the \gls{nist} \gls{fips} 198-1, the \gls{bsi} technical guideline TR-02102-1 (\frqq Cryptographic Mechanisms: Recommendations and Key Length\flqq{}) or the \gls{iso} norm ISO/IEC 9797-1 and ISO/IEC 9797-2.\footcites[See][]{FIPS198}[See][]{bsi2019recommendations}[See][]{iso9797-1}[See][]{iso9797-2}
  
 \begin{figure}[hbt]
 	\centering
@@ -18,26 +18,26 @@ The \gls{mac} is standardized in different norms from various institutions, for 
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-\autoref{fig:mac} shows the \gls{mac} in use between Alice and Bob. Both Alice and Bob exchange a secret key only they know via a secure channel. Alice now wants to send a message to Bob. In order to secure the message integrity, she uses an algorithm that takes both message and the secret key as inputs and computes the cryptographic hash of the message, the \gls{mac}. She transmits both the message and the \gls{mac} to Bob. If the message is not confidential, it's also possible to choose an insecure transmission channel. Bob is now able to calculate the \gls{mac} himself by using the same algorithm, key, and the received message from Alice.\\
-If his computation of the \gls{mac} matches the one sent by Alice then the integrity and authenticity of the message is present, otherwise the message might have been tampered with.
+\autoref{fig:mac} shows the \gls{mac} in use between Alice and Bob. Both Alice and Bob exchange a secret key only they know via a secure channel. Alice now wants to send a message to Bob. In order to secure the message integrity, she uses an algorithm that takes both message and the secret key as inputs and computes the cryptographic hash of the message, the \gls{mac}. She transmits both the message and the \gls{mac} to Bob. If the message is not confidential, it is also possible to choose an insecure transmission channel. Bob is now able to calculate the \gls{mac} himself by using the same algorithm, key, and the received message from Alice.\\
+If his computation of the \gls{mac} matches the one sent by Alice, then the integrity and authenticity of the message are given. Otherwise, the message might have been intercepted and manipulated.
 
-Mathematically the \gls{mac} is defined as
+Mathematically, the \gls{mac} is defined as:
 
 \begin{equation*}
 	mac = MAC(M, K)
 \end{equation*}
 
-Where \textit{M} is the input message, \textit{MAC} the used \gls{mac} function, \textit{K} the shared secret key and \textit{mac} the resulting \glsdesc{mac}.
+Where \textit{M} is the input message, \textit{MAC} the used \gls{mac} function, \textit{K} the shared secret key, and \textit{mac} the resulting \glsdesc{mac}.
 
-Sometimes the \gls{mac} is also called \gls{mic} in order to avoid confusion with the \gls{macaddress} address used in network protocols. Additionally, the \gls{mic} does not prove authenticity since an attacker can just modify the message and re-generate the \gls{mic} of the modified message.\footcites[See][60--62]{265831}
+Sometimes the \gls{mac} is also called \gls{mic} in order to avoid confusion with the \gls{macaddress} address used in network protocols. Additionally, the \gls{mic} does not prove authenticity since, an attacker can modify the message and re-generate the \gls{mic} of the modified message.\footcites[See][60--62]{265831}
 
 Further, while the \gls{mac} provides authenticity regarding the origin of the data and the data integrity, it does not provide any authenticity regarding the content of the data. For example, mobile code is not be detected by the \gls{mac}, as long as the \gls{mac} belongs to the sent message. This implication has to be taken into account when using the \gls{mac} to authenticate and evaluate the trustworthiness of received messages.
 
 \subsection{HMAC}
 
-The \glsfirst{hmac} is an extension of the \gls{mac} and standardized in \gls{rfc} 2104 and \gls{nist}'s standard \gls{fips} 198-1 that allows the usage of any cryptographic hash function, such as \gls{sha} family, \glspl{md} algorithms, bcrypt, or whirlpool. Due to the black-box design of the \gls{hmac}, the easy replacement of the used cryptographic hash function is possible.\footcites[See][]{krawczyk1997rfc}[See][]{FIPS198} Besides authentication the \gls{hmac} is, e.g., used in \gls{tls} and \gls{jwt} to ensure data authenticity and integrity.\footcites[See][14]{rfc5246}[See][8]{rfc7519}[See][3--4]{s2011rfc}
+The \glsfirst{hmac} extends the \gls{mac} and standardized in \gls{rfc} 2104 and \gls{nist}'s standard \gls{fips} 198-1 that allows the usage of any cryptographic hash function, such as \gls{sha} family, \glspl{md} algorithms, bcrypt, or whirlpool. Because of the black-box design of the \gls{hmac}, the easy replacement of the used cryptographic hash function is possible.\footcites[See][]{krawczyk1997rfc}[See][]{FIPS198} Besides authentication the \gls{hmac} is, e.g., used in \gls{tls} and \gls{jwt} to ensure data authenticity and integrity.\footcites[See][14]{rfc5246}[See][8]{rfc7519}[See][3--4]{s2011rfc}
 
-Mathematically the \gls{hmac} is defined as follows:
+Mathematically, the \gls{hmac} is defined as follows:
 
 \begin{equation*}
 	HMAC(K,\, m) = H((K' \oplus opad),\, H((K' \oplus ipad),\, m))
@@ -45,7 +45,7 @@ Mathematically the \gls{hmac} is defined as follows:
 
 Where \textit{K} is the shared secret key, \textit{K'} is the result by appending zeroes to the key \textit{K} until it reaches a full block size (\textit{B}) defined by the hash function. The inner padding \textit{ipad} is constructed by repeating the byte \textit{0x36} B-times, and \textit{opad} is the outer padding constructed by repeating the byte \textit{0x5C} B-times.
 
-Naively one could think that the \gls{hmac} is constructed by just hashing the secret key with the message. In order to increase the security and to protect against probable collusion of the hash functions the algorithm design is slightly different and shown in the next figure.
+Naively one could think that the \gls{hmac} is constructed by just hashing the secret key with the message. In order to increase the security and to protect against a probable collision of the hash functions, the algorithm design is slightly different and shown in the next figure.
 
 \begin{figure}[hbt]
 	\centering
@@ -57,12 +57,12 @@ Naively one could think that the \gls{hmac} is constructed by just hashing the s
 
 The exclusive or (XOR) operation is performed on the key and \textit{opad} (1) and \textit{ipad} (2), respectively, instead. Besides that, the hash function is invoked twice, first on the result of the XOR operation on \textit{K'} and the \textit{ipad} (3) with the message and then again on the final result of the concatenation of (1), (2) and (3). \autoref{fig:hmac} shows the intermediate steps in order to generate the \gls{hmac}.
 
-One of the key aspects of the \gls{hmac} is that the efficiency of original hash function is maintained and not altered by wrapping it in the \gls{hmac} algorithm.The security of the \gls{mac} relies on the used cryptographic hash function and on the strength, for example length and chosen alphabet, of the secret key. The best known attack against \gls{hmac} remains the brute force and birthday attack and due to the stated algorithm the collisions of, e.g., \gls{md}5 or \gls{sha}-1 do not expose a threat towards using the \gls{hmac} with these cryptographic hash functions.\footcites[See][Chapter 10.4.1]{2308830}[See][398]{1679747}[See][3, 10--13]{10.1007/3-540-68697-5_1}[See][]{10.1007/3-540-44750-4_1}
+One of the key aspects of the \gls{hmac} is that the efficiency of the original hash function is maintained and not altered by wrapping it in the \gls{hmac} algorithm.The security of the \gls{mac} relies on the used cryptographic hash function and the strength, for example, length and chosen alphabet, of the secret key. The best-known attack against \gls{hmac} remains the brute force and birthday attack and due to the stated algorithm the collisions of, e.g., \gls{md}5 or \gls{sha}-1 do not expose a threat towards using the \gls{hmac} with these cryptographic hash functions.\footcites[See][Chapter 10.4.1]{2308830}[See][398]{1679747}[See][3, 10--13]{10.1007/3-540-68697-5_1}[See][]{10.1007/3-540-44750-4_1}
 
 \subsection{Counter-based}
 \label{subsec:hotp}
 
-The \glsfirst{hotp} is an extension and truncation of the \gls{hmac} which is standardized in the \gls{rfc} 4226 and joint effort between the \gls{ietf} and the \gls{oath}. It is an algorithm for the generation of \glspl{otp}, in contrast to before not an algorithm for message authentication and integrity. The security relies on the fact that a \flqq moving factor\frqq{}, i.e., in this case a counter is used to generate passwords that are only valid once. Alternatively the \gls{hotp} is also referred as event-based and the secret key is called the seed. The length of the numeric \gls{otp} is configurable and the defined minimum are six digits. The standard only defines \gls{hmac}-\gls{sha}-1 as the cryptographic hash function to use, but it's also possible to replace the cryptographic hash function, although the implementation won't comply with the \gls{rfc} anymore.\footcites[See][]{m2005rfc}[See][Chapter 3]{9781849287333}
+The \glsfirst{hotp} is an extension and truncation of the \gls{hmac} which is standardized in the \gls{rfc} 4226 and joint effort between the \gls{ietf} and the \gls{oath}. It is an algorithm for the generation of \glspl{otp}, in contrast to before not an algorithm for message authentication and integrity. The security relies on the fact that a \frqq moving factor\flqq{}, i.e., in this case, a counter is used to generate passwords that are only valid once. Alternatively, the \gls{hotp} is also referred to as event-based, and the secret key is called the seed. The length of the numeric \gls{otp} is configurable, and the defined minimum is six digits. The standard only defines \gls{hmac}-\gls{sha}-1 as the cryptographic hash function to use, but it is also possible to replace the cryptographic hash function, although the implementation will not comply with the \gls{rfc} anymore.\footcites[See][]{m2005rfc}[See][Chapter 3]{9781849287333}
 
 The \gls{hotp} is mathematically defined as:
 
@@ -70,24 +70,24 @@ The \gls{hotp} is mathematically defined as:
 	HOTP(K,\, C) = truncate(HMAC(K,\, C))\; mod \; 10^d
 \end{equation*}
 
-Where \textit{K} is the secret key, \textit{C} is a counter value and \textit{truncate} the function to dynamically truncate the result of the \gls{hmac}. The result is then transformed via the modulo operation into decimal numbers 	(mod 10$^d$, where \textit{d} is the number of digits to generate). The \textit{truncate} function is the core of the \gls{hotp} and explained below:
+Where \textit{K} is the secret key, \textit{C} is a counter value, and \textit{truncate} the function to truncate the result of the \gls{hmac} dynamically. The result is then transformed via the modulo operation into decimal numbers 	(mod 10$^d$, where \textit{d} is the number of digits to generate). The \textit{truncate} function is the core of the \gls{hotp} and explained below:
 
 \begin{enumerate}
-	\item At first the dynamic truncation extracts the least four significant bits as an offset from the 20 byte long \gls{hmac}-\gls{sha}-1 result, i.e., from the byte 20.
-	\item Extracting the next 31 bits from the offset position in order to generate 4-byte long string. The most significant bit is skipped in order to avoid issues such as modulo operations on negative numbers, caused by varying computation results based on implementation differences.
+	\item At first, the dynamic truncation extracts the least four significant bits as an offset from the 20 bytes long \gls{hmac}-\gls{sha}-1 result, i.e., from the byte 20.
+	\item Extracting the next 31 bits from the offset position in order to generate a 4-bytes long string. The most significant bit is skipped in order to avoid issues such as modulo operations on negative numbers caused by varying computation results based on implementation differences.
 \end{enumerate}
 
-Due to its design there are couple of limitations to the \gls{hotp}. The counter used between the parties can become out of synchronization requiring further efforts to resynchronize. Due to the fact that the server only increases the counter on successful authentication, the out of sync scenario can occur. The server and client can become synchronized again by generating the next \gls{otp} by increasing the counter (look-ahead window) in order to verify if this \gls{otp} matches.\\
-Another method for resynchronization is the sending of multiple future values.\footcites[See][236]{Schwartz2018}[See][Chapter 13.5.1]{2308830} It is important to limit the look-ahead window to decrease the attack surface. Further, the server should throttle the authentication attempts in order to counterfeit brute-force attacks. Further analysis is done in \autoref{sec:totp_sec}.
+Due to its design, there are a couple of limitations to the \gls{hotp}. The counter used between the parties can become out of synchronization, requiring further efforts to re-synchronize. Since that the server only increases the counter on successful authentication, the out of sync scenario can occur. The server and client can become synchronized again by generating the next \gls{otp} by increasing the counter (look-ahead window) in order to verify if this \gls{otp} matches.\\
+Another method for re-synchronization is the sending of multiple future values.\footcites[See][236]{Schwartz2018}[See][Chapter 13.5.1]{2308830} It is vital to limit the look-ahead window to decrease the attack surface. Further, the server should throttle the authentication attempts in order to counterfeit brute-force attacks. Further analysis is done in \autoref{sec:totp_sec}.
 
 Additionally, the \gls{hotp} allows bidirectional authentication, i.e., the user can authenticate the server if it sends the next \gls{otp} value that the client then can validate. \Glspl{hotp} are commonly used in physical security keys, such as YubiKeys, but are also present in software solutions, e.g., in the Google Authenticator.\footcites[See][716]{Vacca2017aa}[See][14]{m2005rfc}
 
 \subsection{Time-based}
 \label{subsec:totp}
 
-The \glsfirst{hotp} is again an extension of the \gls{hotp} that is time-based instead of counter-based. It's a joint effort of the \gls{ietf} and the \gls{oath}, too, resulting in a standardization in \gls{rfc} 6238.\footcite[See][]{m2011rfc}
+The \glsfirst{hotp} is again an extension of the \gls{hotp} that is time-based instead of counter-based. It is a joint effort of the \gls{ietf} and the \gls{oath}, too, resulting in standardization in \gls{rfc} 6238.\footcite[See][]{m2011rfc}
 
-Mathematically the \gls{totp} is defined equal as the \gls{hotp}:
+Mathematically the \gls{totp} is defined equally to the \gls{hotp}:
 
 \begin{equation*}
 	TOTP(K,\, T) = truncate(HMAC(K,\, T))\; mod \; 10^d
@@ -101,7 +101,7 @@ More formally correct, T can be described as:
 	T = \frac{(Current\, Unix\, time - T0)}{X}
 \end{equation*}
 
-In contrast to the \gls{hotp} definition the \gls{rfc} 6238 explicitly defines the use of other cryptographic hash algorithms such as \gls{sha}-256 or \gls{sha}-512. Besides the introduced security considerations and usability implications introduced in \autoref{subsec:hotp}, such as throttling and synchronization, an important aspect of the \gls{totp} to take into account is the configured time-step. While an increased time-step size increases the usability of the user, it also expands the attack window. In addition, the user has to wait a longer time until a new \gls{otp} is generated in case a fresh one is required. If a user or attacker sends the same \gls{otp} in the same time-step window, the server must not accept the same value after a successful authentication but instead wait until the next time-step window.
+In contrast to the \gls{hotp} definition, \gls{rfc} 6238 explicitly defines the use of other cryptographic hash algorithms such as \gls{sha}-256 or \gls{sha}-512. Besides the introduced security considerations and usability implications introduced in \autoref{subsec:hotp}, such as throttling and synchronization, an essential aspect of the \gls{totp} to take into account is the configured time-step. While an increased time-step size increases the usability of the user, it also expands the attack window. Also, the user has to wait a long time until a new \gls{otp} is generated in case a fresh one is required. If a user or attacker sends the same \gls{otp} in the same time-step window, the server must not accept the same value after a successful authentication but instead wait until the next time-step window.
 
 \begin{figure}[hbt]
 	\centering
@@ -111,26 +111,26 @@ In contrast to the \gls{hotp} definition the \gls{rfc} 6238 explicitly defines t
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-\autoref{fig:2fa_flow} shows an example authentication flow using \glspl{totp}. In this scenario the user tries to login to a service that uses \gls{2fa}. After entering their password (knowledge; first factor), they either
+\autoref{fig:2fa_flow} shows an example of an authentication flow using \glspl{totp}. In this scenario, the user tries to log in to a service that uses \gls{2fa}. After entering their password (knowledge; first factor), they either
 
 \begin{enumerate}[label=(\alph*)]
 	\item use, e.g., a smartphone app, or hardware token to generate the \gls{totp}.
-	\item receive the \gls{totp} from the service, e.g., via a text message, e-mail or phone call (the figure shows a \gls{sms}).
+	\item receive the \gls{totp} from the service, e.g., via a text message, e-mail or phone call (the figure shows an \gls{sms}).
 \end{enumerate}
 
-Once the user has obtained the \gls{otp} (possession; second factor), they can enter it at the login screen and send it to the server, the relying party. The service can now validate the \gls{otp} again, while respecting the look-ahead window, and allow the user authentication.
+Once the user has obtained the \gls{otp} (possession; second factor), they can enter it at the login screen and send it to the server, the relying party. The service can now validate the \gls{otp} again while respecting the look-ahead window and allow the user authentication.
 
 \subsection{Yubico OTP}
 
-In contrast to the open standards \gls{totp} and \gls{hotp} the Swedish company Yubico developed a proprietary \gls{otp} protocol, too. It is available for all their produced and sold YubiKeys. The produced \gls{otp} is a 44-characters long string which is constructed by using \gls{aes} with 128-bit encoded into 32 hexadecimal characters using a modified hexadecimal (\frqq modhex\flqq) encoding, yielding a 22-byte value. Each YubiKey contains a unique public ID of 6-bytes that is optionally prepended to the \gls{otp}. The \gls{otp} is 16-bytes long which is exactly the block size of the \gls{aes} 128-bit algorithm. \footcites[][]{10.1007/978-3-642-38004-4_17}[See][]{Jacobs:2016:STA:2953926.2953927}
+In contrast to the open standards \gls{totp} and \gls{hotp}, the Swedish company Yubico developed a proprietary \gls{otp} protocol, too. It is available for all their produced and sold YubiKeys. The produced \gls{otp} is a 44-characters long string which is constructed by using \gls{aes} with 128-bit encoded into 32 hexadecimal characters using a modified hexadecimal (\frqq modhex\flqq) encoding, yielding a 22-byte value. Each YubiKey contains a unique public ID of 6-bytes that is optionally prepended to the \gls{otp}. The \gls{otp} is 16-bytes long, which is exactly the block size of the \gls{aes} 128-bit algorithm. \footcites[][]{10.1007/978-3-642-38004-4_17}[See][]{Jacobs:2016:STA:2953926.2953927}
 
 The constructed \gls{otp} consists of:
 
 % Decode me ;) - 4645652b455155614c5f446547526545
 \begin{equation*}
-	\underbrace{4645652b4551}_\text{private uid}\underbrace{5561}_\text{usage counter}\overbrace{4c5f44}^\text{timestamp}\underbrace{65}_\text{session usage counter}\overbrace{4752}^\text{pseudo random}\underbrace{6545}_\text{CRC}
+	\underbrace{4645652b4551}_\text{private uid}\underbrace{5561}_\text{usage counter}\overbrace{4c5f44}^\text{timestamp}\underbrace{65}_\text{session usage counter}\overbrace{4752}^\text{pseudo-random}\underbrace{6545}_\text{CRC}
 \end{equation*}
 
-Where the 48-bit \textit{private unique or secret ID} is stored in the YubiKey configuration and can be changes (write-only), the 16-bit \textit{usage counter} is a non-volatile usage counter, the 24-bit \textit{timestamp} value, set to a random value after startup and increased by an 8-Hz clock, the \textit{session usage counter}, a 8-bit volatile counter that's initialized with zero after power-up and then increased by one each \gls{otp} generation, the \textit{pseudo random number} of 16-bits and a \gls{crc} \textit{checksum} of 16-bits for the fields. Finally the generated \gls{otp} is encrypted with the per device unique \gls{aes}-128 key.\footcites[See][8--9, 33--34]{yubico-otp}
+Where the 48-bit \textit{unique private/secret ID} is stored in the YubiKey configuration and can be changed (write-only). The 16-bit \textit{usage counter} is a non-volatile usage counter, the 24-bit \textit{timestamp} value, set to a random value after startup and increased by an 8-Hz clock, the \textit{session usage counter}. Further, the \gls{otp} contain an 8-bit volatile counter that's initialized with zero after power-up and then increased by one each \gls{otp} generation, the \textit{pseudo-random number} of 16-bits and a \gls{crc} \textit{checksum} of 16-bits for the fields. Finally, the generated \gls{otp} is encrypted with the per-device unique \gls{aes}-128 key.\footcites[See][8--9, 33--34]{yubico-otp}
 
-The authentication server can either be used as a service from Yubico, as only they know the pre-configured \gls{aes} key of each YubiKey. This renders their central key server a lucrative target for criminals though, since it is a centralized place of all \gls{aes} keys. Alternatively the validation server software is available as a self-hosted solution in different programming languages. This requires changing the \gls{aes} key of the YubiKeys in order to save the shared key on the server, too, since Yubico will not give access to the pre-configured \gls{aes} key.\footcites[See][8--9]{yubico-cloud}
+The authentication server can either be used as a service from Yubico, as only they know the pre-configured \gls{aes} key of each YubiKey. This renders their central key server a lucrative target for criminals though since it is a centralized place of all \gls{aes} keys. Alternatively, the validation server software is available as a self-hosted solution in different programming languages. This requires changing the \gls{aes} key of the YubiKeys in order to save the shared key on the server, too, since Yubico will not give access to the pre-configured \gls{aes} key.\footcites[See][8--9]{yubico-cloud}
