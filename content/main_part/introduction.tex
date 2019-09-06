@@ -92,7 +92,7 @@ Unfortunately, the term active authentication is often used to describe continuo
 
 \section{Wording differences between multi-factor, multi-step, authentication, and verification}
 
-The naming of the chosen authentication or verification methods by companies is often confusing or difficult to understand. The terms used by companies vary from \gls{2fa}, often just calling it \gls{2fa},\footcite{apple_2fa} to two-step-verification, sometimes written as 2-Step Verification, too.\footcites[][]{apple_s2v}[][]{playstation}[][]{google_2-step_verification}[][]{microsoft_2sv}
+The naming of the chosen authentication or verification methods by companies is often confusing or difficult to understand. The terms used by companies vary from \gls{2fa}, often just calling it \gls{2fa},\footcite[See][]{apple_2fa} to two-step-verification, sometimes written as 2-Step Verification, too.\footcites[See][]{apple_s2v}[See][]{playstation}[See][]{google_2-step_verification}[See][]{microsoft_2sv}
 
 One could argue that the different authentication factors can be reduced to a single one, e.g., that an \gls{otp} is \frqq something the user knows\flqq{} since it relies on a secret that \textit{could}, in theory, be memorized, too, but practically is not memorizable.\\
 In this case, the term \gls{mfa} or 2FA is technically incorrect, since it is instead a multi-step authentication because the same factor is used multiple times. However, it has to be noted that using the same authentication factor multiple times is weaker than using different authentication factors.\footcite[See][117]{grimes2017hacking}
@@ -107,3 +107,7 @@ Besides that, (user) verification is a part of the authentication process, this 
 %\subsection{WebAuth}
 %
 %New API \gls{w3c}
+
+\section{Attestation}
+
+A typical problem in authentication is the trustworthiness between two parties, usually a server and a client. Assuring and proving that an entity is trustworthy is called attestation. It is often used in \gls{tpm} computing, called \frqq Remote Attestation\flqq, but also important in the \wa. An essentials aspect is to prove (\frqq vouch for\flqq) an entity while keeping the user and the users' data private. This form of attestation is called \gls{daa}.\footcites[See][]{trusted-comp}[See][501]{1698485}[See][4]{Coker:2011:PRA:1989153.1989155}

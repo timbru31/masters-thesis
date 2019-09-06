@@ -1,30 +1,40 @@
-\section{Overall comparison}
+\section{Overall comparison of threats and risks}
 
-The following sections sums the introduced authemntiation methods and analyzed \gls{mfa} up and shows their key vulnerabilites.
+The following sections sums the introduce methods of authentication and analyzed \gls{mfa} solutions up and shows their key vulnerabilities.
 
 \begin{table}[ht]
 	\renewcommand\thetable{1}
-	\begin{tabularx}{\textwidth}{c|p{4cm}|p{2cm}|p{9cm}}
-		& Authentication & Used as a multi-factor & Vulnerabilities \\
-		\hline
-		\parbox[t]{2mm}{\multirow{5}{*}{\rotatebox[origin=c]{90}{Knowledge}}} & 	Passwords & - & Can be guessed, brute-forced, stolen, replayed, or intercepted \\
-		& \glspl{pin} & - & Can be guessed, brute-forced, stolen, replayed, or intercepted \\
-		& Security/Recovery questions & - & Can be guessed, brute-forced, stolen, replayed, or intercepted \\
-		\hline
-		\parbox[t]{2mm}{\multirow{7}{*}{\rotatebox[origin=c]{90}{Possession}}} & Hardware \glspl{otp} & \OK & Can be phished,, replayed, or stolen (device) \\
-		& App \glspl{otp} & \OK & Can be phished, intercepted, replayed, or stolen (device) \\
-		& SMS \glspl{otp} & \OK & Can be phished, intercepted, replayed, or stolen (device) \\
-		& E-Mail \glspl{otp} & \OK & Can be phished or intereptecd \\
-		& Smartcards & \OK & Can be physically stolen or copied \\
-		& Security Keys & \OK & Can be physically stolen or copied \\
-		\hline
-		\parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Biometrics}}} & Fingerprints & - & Can be copied and replayed \\
-		& Facial scan & - & Can be copied and replayed \\
-		& Iris scan & - & Can be copied and replayed
+	\begin{tabularx}{\textwidth}{c|p{3.5cm}|p{1.5cm}|p{8cm}}
+		& Authentication & \gls{mfa} & Threats \& risks \\
+		\specialrule{.2em}{.1em}{.1em}
+		\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Knowledge}}} & 	Passwords & - & \multirow{4}{*}{\parbox{8cm}{Phishing, guessing, brute-force, theft, replay attacks, interception}} \\
+		\cline{2-3}
+		& \glspl{pin} & - &\\
+		\cline{2-3}
+		& Security/Recovery questions & - &\\
+		\specialrule{.2em}{.1em}{.1em}
+		\parbox[t]{2mm}{\multirow{10}{*}{\rotatebox[origin=c]{90}{Possession}}} & Hardware \glspl{otp} & \OK & Theft of the device, phishing, interception, replay attacks, brute-force, damage, oblivion, loss \\
+		\cline{2-4}
+		& App \glspl{otp} & \OK & Theft of the device, phishing, interception, replay attacks, brute-force \\
+		\cline{2-4}
+		& SMS \glspl{otp} & \OK & Theft of the device, phishing, interception, replay attacks, brute-force, unavailability \\
+		\cline{2-4}
+		& E-Mail \glspl{otp} & \OK & Interception, phishing, brute-force, unavailability \\
+		\cline{2-4}
+		& Smartcards & \OK & Copy, theft, damage, oblivion, loss \\
+		\cline{2-4}
+		& Security Keys & \OK & Copy, theft, damage, oblivion, loss \\
+		\specialrule{.2em}{.1em}{.1em}
+		\parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Biometrics}}} & Fingerprints & (\OK) & \multirow{3}{*}{\parbox{8cm}{Copy, forgery, replay attacks, damage, unavailability of the sensor}} \\
+		\cline{2-3}
+		& Facial scan & (\OK) & \\
+		\cline{2-3}
+		& Iris scan & (\OK) &
 	\end{tabularx}
 	\caption[All threats compared]{All threats compared\footnotemark}
 	\label{tab:all-threats}
 \end{table}
 \footcitetexts[Sources:][]{}
 
-\autoref{tab:all-threats} shows the introduced authentication methods grouped by the known authentication methods. Further, it shows that no authentication method is free of vulnerabilities, even when combined as \gls{2fa} or \gls{mfa}. The most present vulnerbility is the missing phishing resistance alongside the theft and/or copy.
+\autoref{tab:all-threats} shows the introduced authentication methods grouped by the known authentication methods knowledge, possession, and biometrics. It shows that primary the possession methods of authentication are used as an additional authentication factor, given the fact that passwords are the de-facto standard in the Internet as the first factor. Biometrics can be used, too, but in practice there exist very few applications that use biometrics as an additional factor.\\
+Further, it shows that no authentication method is free of vulnerabilities, even when combined as \gls{2fa} or \gls{mfa}. The most present vulnerability is the missing phishing resistance alongside the the threat of interception followed by physical theft.
