@@ -1,16 +1,25 @@
 \section{Security aspects}
 
+% https://www.imperialviolet.org/2017/10/08/securitykeytest.html
+% https://www.imperialviolet.org/2017/08/13/securitykeys.html
+
 \subsection{Problems}
 
-The problems that are transferred to the \wa{} are the ones of authentication by possession already described in \autoref{subsec:possession-threat}. If the \wa{} is used with a security key, then the same risk of damage, loss or theft exist. Besides that, if the security key itself is not protected (by e.g. fingerprints) an attacker can easily gain access to an account if he steals or copies the authenticator. Built-in key stores in devices such as smartphone or laptops, do not protect against theft, either.
+The problems that are transferred to the \wa{} are the ones of authentication by possession already described in \autoref{subsec:possession-threat} and further specified for security keys in \autoref{sec:tokens}. If the \wa{} is used with a security key, then the same risk of damage, loss or theft exist. Besides that, if the security key itself is not protected (by e.g. fingerprints) an attacker can easily gain access to an account if he steals or copies the authenticator. Built-in key stores in devices such as smartphone or laptops, do not protect against theft, either. In the past pyhsical security keys suffered from lack of randomness in their \gls{rng}.
 
-Security-wise the \wa{} had little attention yet. A first security analysis showed some wekanesses. These are the following ones, described more detailed below:
+Security-wise the \wa{} had little attention yet. A first security analysis showed some weaknesses. These are the following ones, described more detailed below:
 
 \begin{enumerate}
-	\item Support for RSA PKCS1v1.5
-	\item The usage of ECDAA
-	\item Randomness of ECDAA
-	\item Chosen ECDSA curves
+	\item Support for RSA \gls{pkcs}\#1 v1.5 padding
+	\item The usage of \gls{ecdaa} without point compression
+	\item Randomness of \gls{ecdaa}
+	\item Chosen \gls{ecdsa} curves
 \end{enumerate}
 
-It has to be noted though, that these security consideations are only from one source.\footcite[See][]{paragon-webauth}
+It has to be noted though, that these security considerations are only from one source.\footcite[See][]{paragon-webauth}
+
+The first problem of the \wa{} are the registered \gls{cose} algorithms in section 11.3. A support for RSASSA-\gls{pkcs}\#1 v1.5 is explicitly required, making it vulnerable for the over twenty years known \frqq Bleichenbacher attack\flqq.\footcites[See][]{10.1007/BFb0055716}. Further the \gls{ecdaa} does not specify point compression. This can lead to invalid curve attacks, where an attacker can send a chosen point that is assumed to be on the elliptic curve. However, if the point is not on the curve it can lead to the leakage of the private key. Additionally the usage of the \gls{rng} is not further specified. Weak implementations might use the \textit{standard} \gls{rng} and not a suitable \gls{csprng} for the \gls{ecdaa}. Random values for the secret key in \gls{ecdsa} expose a threat, too. It is recommended to use determinist \glspl{nonce}.
+
+\subsection{Mitigations}
+
+As mitigations against potential security threats the following changes should be taken into account for future revisions of the \wa{}. For example, even when the standard does not specify which \gls{rng} has to be used, an implementer of such a cryptographic \gls{api} should always keep the potential lack of randomness when not using a \gls{csprng}. 
