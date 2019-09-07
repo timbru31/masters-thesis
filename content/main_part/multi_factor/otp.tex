@@ -2,7 +2,7 @@
 
 A widely used method of authentication in order to achieve \gls{mfa} are \glspl{otp} that belong to the category of possession of a shared secret between the client and the server.
 
-To fully understand how the \gls{otp} works, the basics and origins, especially the underlying \gls{mac}, have to be introduced first. In the following subsections are the required algorithms shortly described and in \autoref{subsec:hotp} and \autoref{subsec:totp} the variants of \glspl{otp}, both the \gls{hotp} and the \gls{totp} which are based on \gls{hmac}.
+To fully understand how the \gls{otp} works, first of all, the basics and origins, especially the underlying \gls{mac}, have to be introduced. In the following subsections are the required algorithms shortly described and in \autoref{subsec:hotp} and \autoref{subsec:totp} the variants of \glspl{otp}, both the \gls{hotp} and the \gls{totp} which are based on \gls{hmac}.
 
 \subsection{Message authentication code}
 
@@ -18,8 +18,11 @@ The \gls{mac} is standardized in different norms from various institutions, for 
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-\autoref{fig:mac} shows the \gls{mac} in use between Alice and Bob. Both Alice and Bob exchange a secret key only they know via a secure channel. Alice now wants to send a message to Bob. In order to secure the message integrity, she uses an algorithm that takes both message and the secret key as inputs and computes the cryptographic hash of the message, the \gls{mac}. She transmits both the message and the \gls{mac} to Bob. If the message is not confidential, it is also possible to choose an insecure transmission channel. Bob is now able to calculate the \gls{mac} himself by using the same algorithm, key, and the received message from Alice.\\
-If his computation of the \gls{mac} matches the one sent by Alice, then the integrity and authenticity of the message are given. Otherwise, the message might have been intercepted and manipulated.
+\autoref{fig:mac} shows the \gls{mac} in use between Alice and Bob. Both Alice and Bob exchange a secret key only they know via a secure channel. Alice now wants to send a message to Bob. In order to secure the message integrity, she uses an algorithm that takes both message and the secret key as inputs and computes the cryptographic hash of the message, the \gls{mac}. She transmits both the message and the \gls{mac} to Bob. If the message is not confidential, it is also possible to choose an insecure transmission channel. Bob is now able to calculate the \gls{mac} himself by using the same algorithm, key, and the received message from Alice.
+
+\newpage
+
+If his computation of the \gls{mac} matches the one sent by Alice, then the integrity and authenticity of the message are given. Otherwise, the message might have been intercepted and manipulated.\footcites[See][320]{Paar2010}
 
 Mathematically, the \gls{mac} is defined as:
 
@@ -62,7 +65,7 @@ One of the key aspects of the \gls{hmac} is that the efficiency of the original 
 \subsection{Counter-based}
 \label{subsec:hotp}
 
-The \glsfirst{hotp} is an extension and truncation of the \gls{hmac} which is standardized in the \gls{rfc} 4226 and joint effort between the \gls{ietf} and the \gls{oath}. It is an algorithm for the generation of \glspl{otp}, in contrast to before not an algorithm for message authentication and integrity. The security relies on the fact that a \frqq moving factor\flqq{}, i.e., in this case, a counter is used to generate passwords that are only valid once. Alternatively, the \gls{hotp} is also referred to as event-based, and the secret key is called the seed. The length of the numeric \gls{otp} is configurable, and the defined minimum is six digits. The standard only defines \gls{hmac}-\gls{sha}-1 as the cryptographic hash function to use, but it is also possible to replace the cryptographic hash function, although the implementation will not comply with the \gls{rfc} anymore.\footcites[See][]{m2005rfc}[See][Chapter 3]{9781849287333}
+The \glsfirst{hotp} is an extension and truncation of the \gls{hmac} which is standardized in the \gls{rfc} 4226 and joint efforts between the \gls{ietf} and the \gls{oath}. It is an algorithm for the generation of \glspl{otp}, in contrast to before not an algorithm for message authentication and integrity. The security relies on the fact that a \frqq moving factor\flqq{}, i.e., in this case, a counter is used to generate passwords that are only valid once. Alternatively, the \gls{hotp} is also referred to as event-based, and the secret key is called the seed. The length of the numeric \gls{otp} is configurable, and the defined minimum is six digits. The standard only defines \gls{hmac}-\gls{sha}-1 as the cryptographic hash function to use, but it is also possible to replace the cryptographic hash function, although the implementation will not comply with the \gls{rfc} anymore.\footcites[See][]{m2005rfc}[See][Chapter 3]{9781849287333}
 
 The \gls{hotp} is mathematically defined as:
 
@@ -85,7 +88,7 @@ Additionally, the \gls{hotp} allows bidirectional authentication, i.e., the user
 \subsection{Time-based}
 \label{subsec:totp}
 
-The \glsfirst{hotp} is again an extension of the \gls{hotp} that is time-based instead of counter-based. It is a joint effort of the \gls{ietf} and the \gls{oath}, too, resulting in standardization in \gls{rfc} 6238.\footcite[See][]{m2011rfc}
+The \glsfirst{hotp} is again an extension of the \gls{hotp} that is time-based instead of counter-based. It is a joint efforts of the \gls{ietf} and the \gls{oath}, too, resulting in standardization in \gls{rfc} 6238.\footcite[See][]{m2011rfc}
 
 Mathematically the \gls{totp} is defined equally to the \gls{hotp}:
 

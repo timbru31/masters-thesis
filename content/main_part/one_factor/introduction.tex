@@ -1,7 +1,5 @@
 \chapter{Single-factor authentication}
 
-% TODO Challenge-Response, Zero Knowledge
-
 \section{Threats}
 \label{sec:one-factor-threats}
 
@@ -98,8 +96,8 @@ Besides the specific risk and threats that affect each of the authentication met
 \subsubsection{Initialization/Registration/Enrollment}
 
 A more general threat is the registration or initialization of the authentication. The user has to make sure that no attacker can intercept or copy the required enrollment data. For instance, if malware compromises a user’s computer and installs a keylogger, then an entered password is no longer a secret and therefor compromised. A computer virus could also intercept a USB connection from a security key, both when registering the device and while using it. Furthermore, the user needs to make sure that his enrollment process is not observed from, e.g., a surveillance camera, a hacked webcam, or a colleague from behind. Mobile phones are subjects to trojans, too, enabling the risk that, for instance, the camera is intercepted and a scanned \gls{qr} code that contains enrollment data for a \gls{totp} is sent to an attacker. With the recent rise of the \gls{iot} devices, e.g., the mentioned security cameras might be compromised by an attacker.\footcites[See][152--153]{10.1007/978-3-642-39235-1_9}[See][61]{Ulqinaku:2019:FPP:3317549.3323404}[See][371--375]{10.1007/978-3-662-45472-5_24}
-% TODO some more sources
 
 \subsubsection{Transmission}
 
+% TODO some more sources
 Further, the chosen transmission channel is an important fact to take into account. Entering a password on an unencrypted website (HTTP) enables network sniffing because the password is transmitted in cleartext and therefore accessible for everyone on the same network. For example, public Wi-Fi hotspots are a lucrative target, especially when the user is accepting custom SSL certificates which enable the attacker to perform an \gls{mitm} attack and even steal the passwords that are sent via an encrypted channel. The risk also applies to other authentication methods, too. A manipulated USB or smartcard port could copy the data on a security key or smartcard, or a tampered sensor can capture the fingerprint of a user. \gls{sms} traffic is at high risk of being intercepted or eavesdropped (e.g., the transmission of \glspl{pin} or \glspl{tan}) as well as unencrypted e-mail traffic containing, e.g., temporary passwords or \glspl{totp}.

@@ -6,7 +6,7 @@ The following sections sums the introduce methods of authentication and analyzed
 	\begin{tabularx}{\textwidth}{c|p{3.5cm}|p{1.5cm}|p{8cm}}
 		& Authentication & \gls{mfa} & Threats \& risks \\
 		\specialrule{.2em}{.1em}{.1em}
-		\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Knowledge}}} & 	Passwords & - & \multirow{4}{*}{\parbox{8cm}{Phishing, guessing, brute-force, theft, replay attacks, interception}} \\
+		\parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Knowledge}}} & 	Passwords & - & \multirow{4}{*}{\parbox{8cm}{Phishing, sharing, guessing, brute-force, theft, replay attacks, interception, theft (e.g., written down passwords), social engineering}} \\
 		\cline{2-3}
 		& \glspl{pin} & - &\\
 		\cline{2-3}
@@ -20,11 +20,11 @@ The following sections sums the introduce methods of authentication and analyzed
 		\cline{2-4}
 		& E-Mail \glspl{otp} & \OK & Interception, phishing, brute-force, unavailability \\
 		\cline{2-4}
-		& Smartcards & \OK & Copy, theft, damage, oblivion, loss \\
+		& Smartcards & \OK & Cloning, theft, damage, oblivion, loss, side-channel attacks \\
 		\cline{2-4}
-		& Security Keys & \OK & Copy, theft, damage, oblivion, loss \\
+		& Security Keys & \OK & Cloning, theft, damage, oblivion, loss, side-channel attacks \\
 		\specialrule{.2em}{.1em}{.1em}
-		\parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Biometrics}}} & Fingerprints & (\OK) & \multirow{3}{*}{\parbox{8cm}{Copy, forgery, replay attacks, damage, unavailability of the sensor}} \\
+		\parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Biometrics}}} & Fingerprints & (\OK) & \multirow{3}{*}{\parbox{8cm}{Replica, forgery, replay attacks, damage, unavailability of the sensor}} \\
 		\cline{2-3}
 		& Facial scan & (\OK) & \\
 		\cline{2-3}
@@ -33,7 +33,7 @@ The following sections sums the introduce methods of authentication and analyzed
 	\caption[All threats compared]{All threats compared\footnotemark}
 	\label{tab:all-threats}
 \end{table}
-\footcitetexts[Sources:][]{}
+\footcitetexts[Sources: table based on analysis from previous chapters and additionally from][41--45]{SP80063B}
 
 \autoref{tab:all-threats} shows the introduced authentication methods grouped by the known authentication methods knowledge, possession, and biometrics. It shows that primary the possession methods of authentication are used as an additional authentication factor, given the fact that passwords are the de-facto standard in the Internet as the first factor. Biometrics can be used, too, but in practice there exist very few applications that use biometrics as an additional factor.\\
 Further, it shows that no authentication method is free of vulnerabilities, even when combined as \gls{2fa} or \gls{mfa}. The most present vulnerability is the missing phishing resistance alongside the the threat of interception followed by physical theft.

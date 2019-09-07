@@ -79,16 +79,17 @@ The only ray of hope is that the Brave browser for iOS incorporated support for 
 However, \autoref{fig:bave_try} shows the try to use an existing \gls{u2f} YubiKey with a lightning dongle in the Brave browser on a website that offers support for the \wa. While the \gls{u2f} YubiKey has power, Brave does not recognize it; neither is it usable. Safari did not show an overlay either.
 
 It has to be noted though, that other Android browser vendors need to implement the functionality themselves. Other geographic regions use a variety of different browsers, e.g., the UC Browser, 360 Security Browser, Mint Browser from Xiaomi or the QQ Browser from Tencent. Neither they nor browsers such as Samsung Internet, Opera (mini) for Android, Edge or the Android Stock browser are currently supporting the \wa. The current Firefox for Android (codename \frqq Fennec\flqq) browser is based on Chromium, too, while in contrast the dekstop browser is powered by Mozilla's own browser engine called \frqq Gecko\flqq. A new Firefox for Android browser, currently called Firefox Preview, which uses a mobile compatible version of Gecko is in development (codename \frqq Fenix\flqq), too, which yet lacks support for the \wa. However, Android offers support for FIDO2 as an \gls{api}
-% % https://developers.google.com/identity/fido/android/native-apps
+% https://developers.google.com/identity/fido/android/native-apps
 
 Other mobile \glspl{os} for example Windows Phone 8, BlackBerry \gls{os}, BlackBerry 10 or KaiOS do not support the \wa.
 
 \subsection{Usability}
 
-One of the main goals of the \wa{} is the \frqq it just works\flqq{} feeling, by providing a secure but abstract solution for the end user. The chosen web browser and \gls{os} are responsible for the design of the login and registration windows, while in contrast the website designed the traditional login masks and forms. In order to maintain a high usability the user should be able to use a variety of tokens, e.g., built in key stores protected by biometrics or an external token that uses \gls{ble}, \gls{nfc} or a USB-A or USB-C interface. Unforutenatley the \frqq it just works\flq{} can not be reached in Safari yet. While the desktop varian of Safari at least contains an opt-in support, the \gls{ctap} is only implemented for USB based tokens. Additionally, Firefox only supports USB-based authentocators on other oüerating systems than Windows 10, too.
+One of the main goals of the \wa{} is the \frqq it just works\flqq{} feeling, by providing a secure but abstract solution for the end user. The chosen web browser and \gls{os} are responsible for the design of the login and registration windows, while in contrast the website designs the traditional login masks and forms. In order to maintain a high usability the user should be able to use a variety of tokens, e.g., built in key stores protected by biometrics or an external token that uses \gls{ble}, \gls{nfc}, or a USB-A or USB-C interface. Unfortunately, the \frqq it just works\flq{} can not be reached in on macOS yet. While the desktop varian of Safari at least contains an opt-in support, the \gls{ctap} is only implemented for USB-HID based tokens. Additionally, Firefox only supports USB-HID based authenticators on other operating systems than Windows 10, too.
 
-While analyzing the market situation it was observed that the avaialbbility of \gls{fido} \gls{u2f} for end consumers is quite limited. Only a handful vendors offer security keys, quantity-wise \gls{ble} are the rarest keys, it seems they are succeeded by \gls{nfc}.
+While analyzing the market situation it was observed that the availability of \gls{fido} \gls{u2f} for end consumers is quite limited. Only a handful vendors offer security keys, quantity-wise \gls{ble} are the rarest keys, it seems they are succeeded by \gls{nfc}.
 
-Often token that contain a vulnervility in their firmware need to be replaced, making this both a hevay usability loss, as well as a security issue. % YubiKeys in 2017 and 2019 as well as Google's Titan Key
+Often token that contain a vulnerability in their firmware need to be replaced, making this both a heavy usability loss, as well as a security issue.
+% YubiKeys in 2017 and 2019 as well as Google's Titan Key
 % https://github.com/hillbrad/U2FReviews
 % https://github.com/mozilla/authenticator-rs/tree/master
