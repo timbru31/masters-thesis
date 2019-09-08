@@ -13,9 +13,23 @@ The \gls{fido} alliance developed the specifications \gls{uaf} and \gls{u2f}. Th
 
 \subsection{Universal Authentication Framework}
 
+The \glsfirst{uaf} is \gls{fido}'s solution for a passwordless experience. It uses local and native device authentication such as biometrics to authorize the user. It does not feature \gls{2fa}, but is instead meant as direct replacement for the login with passwords. It is based on public key cryptography with the use of challenge-response authentication.
+
+It features three key components, the \gls{uaf} client, the \gls{uaf} server and the \gls{uaf} authenticators. Besides that, the alliance offers a metadata service. The communication between the client and the authenticator is done via the \gls{uaf} \gls{asm}, which offers a standardized solution for the client to access and detect the various different authenticators.
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=\textwidth]{pics/Picture1}
+	\label{fig:uaf_architecture}
+\end{figure}
+
+\autoref{fig:uaf_architecture} shows the \gls{uaf} architecture.
+
+\footcites[See][191]{7897543}[See][131]{10.1007/978-3-319-67639-5_11}[See][]{uaf-asm}
+
 \subsection{Universal Second Factor}
 
-Also CTAP1 since WebAuthn
+\Gls{u2f} has also been renamed to \gls{ctap}1 since the release of the \wa{}.
 
 \subsection{FIDO2}
 
