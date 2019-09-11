@@ -2,7 +2,7 @@
 
 A widely used method of authentication in order to achieve \gls{mfa} are \glspl{otp} that belong to the category of possession of a shared secret between the client and the server.
 
-To fully understand how the \gls{otp} works, first of all, the basics and origins, especially the underlying \gls{mac}, have to be introduced. In the following subsections are the required algorithms shortly described and in \autoref{subsec:hotp} and \autoref{subsec:totp} the variants of \glspl{otp}, both the \gls{hotp} and the \gls{totp} which are based on \gls{hmac}.
+To fully understand how the \gls{otp} works, first of all, the basics and origins, especially the underlying \gls{mac}, have to be introduced. In the following subsections, the required algorithms are shortly described and in \autoref{subsec:hotp} and \autoref{subsec:totp} the variants of \glspl{otp}, both the \gls{hotp} and the \gls{totp} which are based on \gls{hmac}.
 
 \subsection{Message authentication code}
 
@@ -20,8 +20,6 @@ The \gls{mac} is standardized in different norms from various institutions, for 
 
 \autoref{fig:mac} shows the \gls{mac} in use between Alice and Bob. Both Alice and Bob exchange a secret key only they know via a secure channel. Alice now wants to send a message to Bob. In order to secure the message integrity, she uses an algorithm that takes both message and the secret key as inputs and computes the cryptographic hash of the message, the \gls{mac}. She transmits both the message and the \gls{mac} to Bob. If the message is not confidential, it is also possible to choose an insecure transmission channel. Bob is now able to calculate the \gls{mac} himself by using the same algorithm, key, and the received message from Alice.
 
-\newpage
-
 If his computation of the \gls{mac} matches the one sent by Alice, then the integrity and authenticity of the message are given. Otherwise, the message might have been intercepted and manipulated.\footcites[See][320]{Paar2010}
 
 Mathematically, the \gls{mac} is defined as:
@@ -34,11 +32,11 @@ Where \textit{M} is the input message, \textit{MAC} the used \gls{mac} function,
 
 Sometimes the \gls{mac} is also called \gls{mic} in order to avoid confusion with the \gls{macaddress} address used in network protocols. Additionally, the \gls{mic} does not prove authenticity since, an attacker can modify the message and re-generate the \gls{mic} of the modified message.\footcites[See][60--62]{265831}
 
-Further, while the \gls{mac} provides authenticity regarding the origin of the data and the data integrity, it does not provide any authenticity regarding the content of the data. For example, mobile code is not be detected by the \gls{mac}, as long as the \gls{mac} belongs to the sent message. This implication has to be taken into account when using the \gls{mac} to authenticate and evaluate the trustworthiness of received messages, given that both the encrypted traffic, but also the encrypted malware is increasing.\footcites[See][100]{weldon2015}
+Further, while the \gls{mac} provides authenticity regarding the origin of the data and the data integrity, it does not provide any authenticity regarding the content of the data. For example, mobile code is not detected by the \gls{mac}, as long as the \gls{mac} belongs to the sent message. This implication has to be taken into account when using the \gls{mac} to authenticate and evaluate the trustworthiness of received messages, given that both the encrypted traffic, but also the encrypted malware is increasing.\footcites[See][100]{weldon2015}
 
 \subsection{HMAC}
 
-The \glsfirst{hmac} extends the \gls{mac} and standardized in \gls{rfc} 2104 and \gls{nist}'s standard \gls{fips} 198-1 that allows the usage of any cryptographic hash function, such as \gls{sha} family, \glspl{md} algorithms, bcrypt, or whirlpool. Because of the black-box design of the \gls{hmac}, the easy replacement of the used cryptographic hash function is possible.\footcites[See][]{krawczyk1997rfc}[See][]{FIPS198} Besides authentication the \gls{hmac} is, e.g., used in \gls{tls} and \gls{jwt} to ensure data authenticity and integrity.\footcites[See][14]{rfc5246}[See][8]{rfc7519}[See][3--4]{s2011rfc}
+The \glsfirst{hmac} extends the \gls{mac} and is standardized in \gls{rfc} 2104 and \gls{nist}'s standard \gls{fips} 198-1. It allows the usage of any cryptographic hash function, such as \gls{sha} family, \glspl{md} algorithms, bcrypt, or whirlpool. Because of the black-box design of the \gls{hmac}, the easy replacement of the used cryptographic hash function is possible.\footcites[See][]{krawczyk1997rfc}[See][]{FIPS198} Besides authentication the \gls{hmac} is, e.g., used in \gls{tls} and \gls{jwt} to ensure data authenticity and integrity.\footcites[See][14]{rfc5246}[See][8]{rfc7519}[See][3--4]{s2011rfc}
 
 Mathematically, the \gls{hmac} is defined as follows:
 
@@ -88,7 +86,7 @@ Additionally, the \gls{hotp} allows bidirectional authentication, i.e., the user
 \subsection{Time-based}
 \label{subsec:totp}
 
-The \glsfirst{hotp} is again an extension of the \gls{hotp} that is time-based instead of counter-based. It is a joint efforts of the \gls{ietf} and the \gls{oath}, too, resulting in standardization in \gls{rfc} 6238.\footcite[See][]{m2011rfc}
+The \glsfirst{totp} is again an extension of the \gls{hotp} that is time-based instead of counter-based. It is a joint efforts of the \gls{ietf} and the \gls{oath}, too, resulting in standardization in \gls{rfc} 6238.\footcite[See][]{m2011rfc}
 
 Mathematically the \gls{totp} is defined equally to the \gls{hotp}:
 

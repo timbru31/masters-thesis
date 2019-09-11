@@ -2,7 +2,7 @@
 \label{chapter:basics}
 
 \section{Methods of authentication}
-There are multiple different methods or forms, respectively, that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession, and trait are considered the different forms of authentication,\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[][47]{anderson2008security} but other sources also introduce or take new methods into account such as the location- or time-based authentication.\footcites[][]{6296127}[See][191]{dasgupta2017multi} Therefore, this thesis accounts for them, too, and describes the methods in the following sections briefly including a diagram of an example authentication flow. A detailed analysis of the security, potential risk, and threats follows in \autoref{sec:one-factor-threats}.
+There are multiple different methods or forms, respectively, that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession, and trait are considered the different forms of authentication,\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[][47]{anderson2008security} but other sources also introduce or take new methods into account such as the location- or time-based authentication.\footcites[][]{6296127}[See][191]{dasgupta2017multi} Therefore, this thesis accounts for them, too, and describes the methods in the following sections briefly including a diagram of an example authentication flow. A detailed analysis of the \textcolor{red}{security, potential risk, and threats} follows in \autoref{sec:one-factor-threats}.
 
 \subsection{Knowledge}
 
@@ -97,7 +97,7 @@ The naming of the chosen authentication or verification methods by companies is 
 One could argue that the different authentication factors can be reduced to a single one, e.g., that an \gls{otp} is \frqq something the user knows\flqq{} since it relies on a secret that \textit{could}, in theory, be memorized, too, but practically is not memorizable.\\
 In this case, the term \gls{mfa} or 2FA is technically incorrect, since it is instead a multi-step authentication because the same factor is used multiple times. However, it has to be noted that using the same authentication factor multiple times is weaker than using different authentication factors.\footcite[See][117]{grimes2017hacking}
 
-Besides that, (user) verification is a part of the authentication process, this little differentiation of verification vs. authentication and multi-step vs. multi-factor is not crucial for this thesis, and the term \gls{mfa} is used throughout.
+The (user) verification, especially the verification of access permissions, is a part of the authentication process. Because of this, for the remainder of this thesis the subtle differences between verification and authentication are not relevant and the term \gls{mfa} is used throughout.
 
 % TODO Check this sections
 %\section{Differentiation of factors // Introduction to 1FA, MFA and WebAuthn}
