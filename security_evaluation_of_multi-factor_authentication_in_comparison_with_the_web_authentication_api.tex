@@ -44,10 +44,18 @@
 		\printbibliography[notkeyword={internet}]
 		\clearpage
 		\phantomsection
+		\pdfbookmark{Purpose of this thesis}{purpose}
+
 		\printbibliography[title={Internet sources}, keyword={internet}]
 		
 		\listoffigures
-		\lstlistoflistings
+		
+		\clearpage
+		\phantomsection
+		\addcontentsline{toc}{chapter}{List of Listings}
+		\rhead{List of Listings}
+		\listofexamples
+		
 		\listoftables
 		\printglossary[style=mcolindexgroup, type=\acronymtype]
 

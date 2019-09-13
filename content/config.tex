@@ -68,9 +68,7 @@
 \WarningFilter{transparent}{Loading aborted, because pdfTeX is not running in PDF mode}
 
 \usepackage{fancyhdr}
-
 \usepackage{setspace}
-\usepackage{subfigure}
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{lmodern}
@@ -78,13 +76,10 @@
 \usepackage{booktabs}
 \usepackage{shortvrb}
 \usepackage{makeidx}
-\usepackage{scrhack}
 \usepackage{rotating}
 \usepackage{array}
-\usepackage{blindtext}
 \usepackage{titling}
 \usepackage{multicol}
-\usepackage{csquotes}
 \usepackage{tabularx}
 \usepackage{pifont}
 \usepackage{multirow}
@@ -96,7 +91,12 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
 \usepackage{bchart}
-\usepackage{booktabs}
+\usepackage{minted}
+\usepackage[bf]{caption}
+\usepackage{csquotes}
+\usepackage{morewrites}
+\usepackage{tcolorbox}
+\usepackage{scrhack}
 
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
@@ -153,6 +153,8 @@
 }
 
 \usepackage{bookmark}
+
+\providecommand*\exampleautorefname{Listing}
 
 
 %-----------------------------------------------------------------------------
@@ -250,6 +252,30 @@
 \makeglossaries
 \input{content/abbreviations}
 \glssetcategoryattribute{acronym}{glossdesc}{title}
+
+
+%-----------------------------------------------------------------------------
+% Listings
+%-----------------------------------------------------------------------------
+\addtotoclist{loe}
+\newcounter{example}[chapter]
+\renewcommand{\theexample}{\thechapter.\arabic{example}}
+\newcommand{\listofloename}{List of Listings}
+\newcommand\listofexamples{\listoftoc{loe}}
+\setuptoc{loe}{chapteratlist, leveldown}
+\makeatletter
+\newcommand\l@example{\l@figure}
+\makeatother
+
+\newenvironment{example}[1]{%
+  \setlength\parfillskip{0pt plus 1fil}%
+  \begin{tcolorbox}[
+    before title={%
+      \refstepcounter{example}%
+      \addxcontentsline{loe}{section}[\theexample]{\ignorespaces #1}},
+    title=Listing\ \theexample:\ \ignorespaces #1]%
+}{\end{tcolorbox}}
+
 
 %-----------------------------------------------------------------------------
 % Header and footer

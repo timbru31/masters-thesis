@@ -41,3 +41,5 @@ svg-inkscape/
 .fuse_hidden*
 *.ps
 *-eps-converted-to.pdf
+*.loe
+*.mw
