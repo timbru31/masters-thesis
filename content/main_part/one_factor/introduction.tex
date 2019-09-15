@@ -26,7 +26,6 @@ Because of this fact, the user often does a couple of insecure things:
 \begin{enumerate}[label=(\alph*)]
 	\item using the same secret knowledge for multiple accounts or variations of the same knowledge\footcites[See][8]{yougov}[See][14]{sweden-passwords}[See][7]{lastpass}
 	\item using something easy to guess or knowledge that is tied to a personal object, such as birthdays or names\footcites[See][]{web-de-passwords}[See][34]{anderson2008security}
-	% TODO - feedback: I would argue that given todays threats, I would rather see people writing down passwords thatn reusing them. See credentia stuffing.
 	\item writing down the username and passwords, e.g., on a piece of paper that is accessible easily for others, storing \glspl{pin}, e.g., in the briefcase or saving an unencrypted file on their computer or smartphone\footcites[See][]{web-de-passwords}[See][6]{yougov2}
 
 \end{enumerate}
@@ -72,13 +71,27 @@ It is pretty evident that unencrypted passwords in a database render the most si
 
 Even if the password is hashed, but not salted, it renders the credentials at risk. Weaker hashing algorithms such as MD5 or SHA1 might be broken in the future, but besides that, if it is a weak password, too, the hash might already be reversed. Having the hashed password list enables the attacker to execute a brute force attack in order to reverse as many hashes as possible. A rainbow table attack, a dictionary attack, or just searching it in databases that contain a billion of reversed hash values is another attack vector.\footcites[See][1425]{Thomas:2017:DBP:3133956.3134067}[See][427--430]{320284}[See][56--57]{anderson2008security}
 
-% TODO - feedback I would argue that salt and nonces are similar, but not identical.
-% Reuse of nonces might brake the complete security of a MAC / encryption scheme - even leaking long term private keys.
-% Re-using salts is a different ballgame.
-% Also: both are used in different contexts: salt for hashing schemes, nonces for MACs / encryption protocols.
-% You might also want to add a line or two regarding pepper. 
-The \textcolor{red}{best} protection is a unique salt for each password, which decreases the risk of a successful rainbow or brute force attack dramatically. In this scenario, each password is not only hashed but salted, too. A salt is a fixed-length cryptographically strong random value or a \gls{nonce} that is concatenated with the actual password in order to avoid having the same hashes even when two users have chosen the same password.\footcites[See][32--34]{IdentityandDataSecurityforWebDevelopment}[See][130--131]{brotherston2017defensive}
+Obtaining a password hash is often enough for an attacker to gain access to further user accounts, by reversing easy hashes and then automatically trying to gain access with these credentials on other websites. This form of attack is called \frqq credential stuffing\flqq{} and a subform of the brute-force attack.\footcites[See][]{troy-hunt-1}[See][1565]{48399}
 
+A better protection of the password can be achieved by using a unique \frqq salt\flqq{} for each password. The salt is a fixed-length cryptographically strong random value that is concatenated with the actual password before hashing it. Salting a password serves two purposes. Firstly it decreases the risk of a successful rainbow or brute force attack dramatically because the hashes changed for known passwords. Secondly, it does not reveal users who have chosen the same password. The salt itself does not need to be encrypted or obfuscated, since its purpose is to decrease the and harden the brute-force, dictionary, and rainbow attacks. An example of the effect the salt has is shown in \autoref{tab:salting}.\footcites[See][32--34]{IdentityandDataSecurityforWebDevelopment}[See][130--131]{brotherston2017defensive}[See][15]{SP80063B}
+
+\begin{table}[ht]
+	\begin{tabularx}{\textwidth}{l|l|l|p{7cm}}
+		user & salt & password & resulting \gls{sha}-1 hash \\
+		\hline
+		user1 & & Wings & DAAF17BA041FF1A2184A2B024A9F8344\allowbreak{}2A7CA3EE \\
+		user2 & & Wings & DAAF17BA041FF1A2184A2B024A9F8344\allowbreak{}2A7CA3EE \\
+		\hline
+		user1 & C261012E & Wings & 2E35D46E345FD77317E5473586F15D68\allowbreak{}1E89B9A3 \\
+		user2 & 5F40720D & Wings & EE229D4F4C8F3A9137F98E7F8B5D46F2\allowbreak{}6D9C9B8D \\
+	\end{tabularx}
+	\caption{Example password hashes with and without salt using the \gls{sha}-1 hash}
+	\label{tab:salting}
+\end{table}
+
+Another technique to harden the password hashes is the use of a \frqq pepper\flqq{}. In contrast to the salt, the pepper is treated as a secret and not stored in the database. The pepper is not uniquely generated for each user account, but instead a fixed string or a string from a fixed set. When the latter is chosen, the server needs to generate the hash with each possible pepper value and then comparing with the stored hash when authenticating a user.\footcites[See][33--35]{IdentityandDataSecurityforWebDevelopment}[See][15]{SP80063B}[See][173]{MANBER1996171}
+
+Both techniques can be combined and independently also strengthen the generated hash of a weak password by increasing its length and complexity, reducing the risk of a collision.
 	
 \section{Possession}
 \label{sec:possession-security}
