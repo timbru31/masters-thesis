@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1131" height="635">
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#D8D8D8" stroke="#979797" d="M.5 46.5h189v249H.5zM440.5 47.5h249v249h-249z"/>
+        <path stroke="#000" stroke-dasharray="10" stroke-linecap="square" stroke-width="3" d="M564.5 86.5L564 294"/>
+        <path fill="#D8D8D8" stroke="#979797" d="M939.5 46.5h189v249h-189z"/>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="13.289" y="173">Authenticator</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="960.139" y="175">Relying Party</text>
+        <text fill="#000" font-family="Helvetica-Bold, Helvetica" font-size="24" font-weight="bold" x=".33" y="23">U2F</text>
+        <path fill="#000" fill-rule="nonzero" d="M209.056 160.11l-.048 7.999 216.001 1.281.048-8L444 171.003l-19.056 9.387.047-8-216.001-1.281-.047 8L190 169.498l19.056-9.387zm499.963.427l-.016 8 212 .425.016-8L940 170.502l-19.019 9.462.015-8.001-212-.425-.015 8L690 170l19.019-9.462z"/>
+        <text fill="#8B0000" font-family="Helvetica" font-size="24" x="244.141" y="162">U2F transport</text>
+        <text fill="#8B0000" font-family="Helvetica" font-size="24" x="268.809" y="200">protocols</text>
+        <text fill="#8B0000" font-family="Helvetica" font-size="24" x="775.492" y="162">U2F JS</text>
+        <text fill="#8B0000" font-family="Helvetica" font-size="24" x="796.158" y="200">API</text>
+        <path fill="#D8D8D8" stroke="#979797" d="M2.5 383.5h189v249H2.5zM442.5 384.5h249v249h-249z"/>
+        <path stroke="#000" stroke-dasharray="10" stroke-linecap="square" stroke-width="3" d="M564.5 429.5L565 633"/>
+        <path fill="#D8D8D8" stroke="#979797" d="M941.5 383.5h189v249h-189z"/>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="16.289" y="510">Authenticator</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="532.32" y="424">Client</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="962.139" y="512">Relying Party</text>
+        <text fill="#000" font-family="Helvetica-Bold, Helvetica" font-size="24" font-weight="bold" x=".162" y="360">FIDO2</text>
+        <path fill="#000" fill-rule="nonzero" d="M211.056 497.11l-.048 7.999 216.001 1.281.048-8L446 508.003l-19.056 9.387.047-8-216.001-1.281-.047 8L192 506.498l19.056-9.387zm500.463 1.177l-.016 8 212 .425.016-8 18.981 9.539-19.019 9.462.015-8.001-212-.425-.015 8-18.981-9.538 19.019-9.462z"/>
+        <text fill="#8B0000" font-family="Helvetica" font-size="24" x="286.381" y="502">CTAP</text>
+        <text fill="#8B0000" font-family="Helvetica" font-size="24" x="759" y="499">Web Authn</text>
+        <text fill="#8B0000" font-family="Helvetica" font-size="24" x="798.158" y="537">API</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="457.49" y="518">Browser</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="585.467" y="518">JS App</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="526.32" y="81">Client</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="451.49" y="175">Browser</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="579.467" y="175">JS App</text>
+    </g>
+</svg>

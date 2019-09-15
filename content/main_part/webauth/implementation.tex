@@ -54,24 +54,30 @@ As the development for the Internet Explorer halted, and it is only receiving se
 
 Safari added support for the \wa{} feature in December 2018 but only for the preview variant of the browser, called the Safari Technology Preview. It is expected to be available for all users with the release of Safari 13 in mid to end September. The support is limited to \gls{usb}-HID enabled authenticators though and only available for macOS Mojave and Catalina and yet unknown if older macOS version will receive an update to Safari 13.\footcites[See][]{safari-webauthn}
 
-% TODO Move to a different section, e.g., History?
-Besides that, Windows 10 also added support for \gls{mfa} by incorporating the technology described in the \gls{fido} standard. This allows biometric authentication with, e.g., fingerprints when a reader is available or to use the facial recognition technology or iris scans. This feature is called \frqq Windows Hello\flqq{}. The credentials are only stored locally and are protected by asymmetric encryption. Besides biometric authentication Windows Hello also supports \glspl{pin}. The \gls{tpm} stores this \gls{pin}.\footcite[See][]{201612}
+Besides that, Windows 10 also added support for \gls{mfa} by incorporating the technology described in the \gls{fido} standard. This allows biometric authentication with, e.g., fingerprints when a reader is available or to use the facial recognition technology or iris scans. This feature is called \frqq Windows Hello\flqq{}. The credentials are only stored locally and are protected by asymmetric encryption. Besides biometric authentication Windows Hello also supports \glspl{pin}. The \gls{tpm} stores this \gls{pin}. The Windows Hello technology can be used in desktop browsers, i.e., delegating the \wa{} functionality to the \gls{os}.\footcite[See][]{201612}[See][6]{fido-whitepaper-amd}
 
 \subsubsection{Mobile support}
 
 The support for the \wa{} in mobile web browsers is inferior to desktop support. While Chrome for Android supports the \wa{} since October 2018 and Firefox since July 2019, iOS completely lacks support for the \wa. Even though in the iOS 13 beta versions the feature can be enabled in the \frqq Experimental Features\flqq{} section the \gls{api} remains unsupported or at least there is no way to add an authenticator in the browser yet.\\
-The only ray of hope is that the Brave browser for iOS incorporated support for the yet to be released security key \frqq YubiKey 5Ci\flqq{} which enables \gls{u2f} and the \wa{} for iOS by using an Apple certified Lightning accessory. Unfortunately, due to lack of availability, this functionality could not be tested in this thesis.\footcites[See][]{brave-ios}[See][]{brave-now-available}
-\\
+The only ray of hope is that the Brave browser for iOS incorporated support for security key \frqq YubiKey 5Ci\flqq{} which enables \gls{u2f} and the \wa{} for iOS by using an Apple certified Lightning accessory. A successful authentication with the YubiKey 5Ci and the Brave browser for iOS shows \autoref{fig:brave_success}. iPad devices with an \gls{usb}-C connector currently do not work yet.\footcites[See][]{brave-ios}[See][]{brave-now-available}[See][]{fido-ct-6}
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=0.6\textwidth]{pics/brave_success_5ci.eps}
+	\caption[Successful use of the \wa{} with the Brave browser on an iPhone 7 with the YubiKey 5Ci]{Successful use of the \wa{} with the Brave browser on an iPhone 7 with the YubiKey 5Ci\footnotemark}
+	\label{fig:brave_success}
+\end{figure}
+\footnotetext{Source: author's own photograph}
+
+However, \autoref{fig:brave_try} shows the try to use an existing \gls{u2f} YubiKey with a lightning dongle in the Brave browser on a website that offers support for the \wa. While the \gls{u2f} YubiKey has power, Brave does not recognize it. Neither is it usable. Safari does not show an overlay either. Further, the YubiKey 5Ci is not recognized in the Safari browser, too.
 
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=0.6\textwidth]{pics/brave_try_dongle.eps}
-	\caption[Failed try to use the \wa{} with the Brave Browser on an iPhone 6]{Failed try to use the \wa{} with the Brave Browser on an iPhone 6\footnotemark}
-	\label{fig:bave_try}
+	\caption[Failed try to use the \wa{} with the Brave browser on an iPhone 6]{Failed try to use the \wa{} with the Brave browser on an iPhone 6\footnotemark}
+	\label{fig:brave_try}
 \end{figure}
 \footnotetext{Source: author's own photograph}
-
-However, \autoref{fig:bave_try} shows the try to use an existing \gls{u2f} YubiKey with a lightning dongle in the Brave browser on a website that offers support for the \wa. While the \gls{u2f} YubiKey has power, Brave does not recognize it. Neither is it usable. Safari did not show an overlay either.
 
 It has to be noted though, that other Android browser vendors need to implement the functionality themselves. Other geographic regions use a variety of different browsers, e.g., the UC Browser, 360 Security Browser, Mint Browser from Xiaomi or the QQ Browser from Tencent. Neither they nor browsers such as Samsung Internet, Opera (mini) for Android, Edge or the Android Stock browser are currently supporting the \wa. The current Firefox for Android (codename \frqq Fennec\flqq) browser is based on Chromium, too, while in contrast the desktop browser is powered by Mozilla's own browser engine called \frqq Gecko\flqq. A new Firefox for Android browser, currently called Firefox Preview, which uses a mobile compatible version of Gecko is in development (codename \frqq Fenix\flqq), too, which yet lacks support for the \wa. However, Android offers support for FIDO2 as an \gls{api}
 % TODO https://developers.google.com/identity/fido/android/native-apps
@@ -80,7 +86,7 @@ Other mobile \glspl{os}, for example, Windows Phone 8, BlackBerry \gls{os}, Blac
 
 \subsection{Usability}
 
-One of the main goals of the \wa{} is the \frqq it just works\flqq{} feeling, by providing a secure but abstract solution for the end user. The chosen web browser and \gls{os} are responsible for the design of the login and registration windows, while in contrast the website designs the traditional login masks and forms. In order to maintain a high usability the user should be able to use a variety of tokens, e.g., built in key stores protected by biometrics or an external token that uses \gls{ble}, \gls{nfc}, or a \gls{usb}-A or \gls{usb}-C interface. Unfortunately, the \frqq it just works\flq{} can not be reached in on macOS yet. While the desktop varian of Safari at least contains an opt-in support, the \gls{ctap} is only implemented for \gls{usb}-HID based tokens. Additionally, Firefox only supports \gls{usb}-HID based authenticators on other operating systems than Windows 10, too.
+One of the main goals of the \wa{} is the \frqq it just works\flqq{} feeling, by providing a secure but abstract solution for the end user. The chosen web browser and \gls{os} are responsible for the design of the login and registration windows, while in contrast the website designs the traditional login masks and forms. In order to maintain a high usability the user should be able to use a variety of tokens, e.g., built in key stores protected by biometrics or an external token that uses \gls{ble}, \gls{nfc}, or a \gls{usb}-A or \gls{usb}-C interface. Unfortunately, the \frqq it just works\flqq{} can not be reached on macOS or iOS yet. While the desktop varian of Safari at least contains an opt-in support, the \gls{ctap} is only implemented for \gls{usb}-HID based tokens. Additionally, Firefox only supports \gls{usb}-HID based authenticators on other operating systems than Windows 10, too.
 
 While analyzing the market situation it was observed that the availability of \gls{fido} \gls{u2f} for end consumers is quite limited. Only a handful vendors offer security keys, quantity-wise \gls{ble} are the rarest keys, it seems they are succeeded by \gls{nfc}.
 
@@ -89,7 +95,8 @@ Often token that contain a vulnerability in their firmware need to be replaced, 
 % TODO https://github.com/hillbrad/U2FReviews
 % TODO https://github.com/mozilla/authenticator-rs/tree/master
 
-% TODO multi keys?!
-% TODO durability of the keys
-
-% TODO Implementation is hard (e.g. no SpringBoot, but many OSS. Often not certified)
+\begin{enumerate}
+	\item multi keys?!
+	\item durability of the keys
+	\item Implementation is hard (e.g. no SpringBoot, but many OSS. Often not certified)
+\end{enumerate}
