@@ -2,7 +2,7 @@
 \label{chapter:basics}
 
 \section{Methods of authentication}
-There are multiple different methods or forms, respectively, that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession, and trait are considered the different forms of authentication,\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[][47]{anderson2008security} but other sources also introduce or take new methods into account such as the location- or time-based authentication.\footcites[][]{6296127}[See][191]{dasgupta2017multi} Therefore, this thesis accounts for them, too, and describes the methods in the following sections briefly including a diagram of an example authentication flow. A detailed analysis of the \textcolor{red}{security, potential risk, and threats} follows in \autoref{sec:one-factor-threats}.
+There are multiple different methods or forms, respectively, that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession, and trait are considered the different forms of authentication,\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[][47]{anderson2008security} but other sources also introduce or take new methods into account such as the location- or time-based authentication.\footcites[][]{6296127}[See][191]{dasgupta2017multi} Therefore, this thesis accounts for them, too, and describes the methods in the following sections briefly including a diagram of an example authentication flow. A detailed analysis of the security, especially potential threats and vulnerabilities, follows in \autoref{chap:one-factor-security}.
 
 \subsection{Knowledge}
 
@@ -90,24 +90,6 @@ Further, the process of continuous authentication exists. In this case, the user
 
 Unfortunately, the term active authentication is often used to describe continuous authentication, too. To avoid confusion, solely term continuous authentication is used to refer to this process of authentication, while any mentions of active authentication refer to the process described in \autoref{subsec:active_auth}.
 
-\section{Wording differences between multi-factor, multi-step, authentication, and verification}
-
-The naming of the chosen authentication or verification methods by companies is often confusing or difficult to understand. The terms used by companies vary from \gls{2fa}, often just calling it \gls{2fa},\footcite[See][]{apple_2fa} to two-step-verification, sometimes written as 2-Step Verification, too.\footcites[See][]{apple_s2v}[See][]{playstation}[See][]{google_2-step_verification}[See][]{microsoft_2sv}
-
-One could argue that the different authentication factors can be reduced to a single one, e.g., that an \gls{otp} is \frqq something the user knows\flqq{} since it relies on a secret that \textit{could}, in theory, be memorized, too, but practically is not memorizable.\\
-In this case, the term \gls{mfa} or 2FA is technically incorrect, since it is instead a multi-step authentication because the same factor is used multiple times. However, it has to be noted that using the same authentication factor multiple times is weaker than using different authentication factors.\footcite[See][117]{grimes2017hacking}
-
-The (user) verification, especially the verification of access permissions, is a part of the authentication process. Because of this, for the remainder of this thesis the subtle differences between verification and authentication are not relevant and the term \gls{mfa} is used throughout.
-
-% TODO Check this sections
-%\section{Differentiation of factors // Introduction to 1FA, MFA and WebAuthn}
-%
-%As the main focus of this master's thesis is to evaluate \gls{mfa} with the Web Authentication API the following sections briefly introduces the common authentication methods ranging from single factor authentication with password to \gls{mfa} to the WebAuth.
-%
-%\subsection{WebAuth}
-%
-%New API \gls{w3c}
-
 \section{Attestation}
 
 A typical problem in authentication is the trustworthiness between two parties, usually a server and a client. Assuring and proving that an entity is trustworthy is called attestation. \Gls{tpm} computing uses attention, also called »Remote Attestation«, but it is also important in the \wa. An essential aspect is to prove (\frqq vouch for\flqq) an entity while keeping the user and the users' data private. This form of attestation is called \gls{daa}.\footcites[See][]{trusted-comp}[See][501]{1698485}[See][4]{Coker:2011:PRA:1989153.1989155}[See][100]{2178405}
@@ -129,3 +111,14 @@ To achieve mutual authentication, the client can also send a unique challenge to
 \section{Zero-knowledge protocol}
 
 Zero-knowledge protocols or proofs are special variants of the challenge-response authentication where two participants want to prove the knowledge of a secret without disclose the secret or parts of it to the other or third-parties. An example is the Feige–Fiat–Shamir identification scheme. A more sophisticated variant is the \gls{zkpp} which is an interactive zero-knowledge proof. It is standardized in the \gls{ieee} standard IEEE 1363.2. Using \gls{zkpp} protects against, e.g., guessing and dictionary attacks.\footcites[See][492]{eckert-it-sec-9}[See][Chapter 28.3.7]{1174011}[See][769--770]{FISCHERHBNER2017759}[See][]{Feige1988}
+
+\section{Wording differences between multi-factor, multi-step, authentication, and verification}
+
+Three different terms are used in the authentication environment. Single-factor authentication describes the authentication of a user with one of the described authentication methods. \glsfirst{2fa} described the process with two different methods of authentication involved in the authentication process, while \glsfirst{mfa} is an abstraction of this term that enables the usage of 2-n different methods of authentication.\footcites[See][186--188]{dasgupta2017multi}
+
+The naming of the chosen authentication or verification methods by companies is often confusing or difficult to understand. The terms used by companies vary from \glsfirst{2fa}, often just calling it \gls{2fa},\footcite[See][]{apple_2fa} to two-step-verification, sometimes written as 2-Step Verification, too.\footcites[See][]{apple_s2v}[See][]{playstation}[See][]{google_2-step_verification}[See][]{microsoft_2sv}
+
+One could argue that the different authentication factors can be reduced to a single one, e.g., that an \gls{otp} is \frqq something the user knows\flqq{} since it relies on a secret that \textit{could}, in theory, be memorized, too, but practically is not memorizable.\\
+In this case, the term \gls{mfa} or 2FA is technically incorrect, since it is instead a multi-step authentication because the same factor is used multiple times. However, it has to be noted that using the same authentication factor multiple times is weaker than using different authentication factors.\footcite[See][117]{grimes2017hacking}
+
+The (user) verification, especially the verification of access permissions, is a part of the authentication process. Because of this, for the remainder of this thesis the subtle differences between verification and authentication are not relevant and the term \gls{mfa} is used throughout.
