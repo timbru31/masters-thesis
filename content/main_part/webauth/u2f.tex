@@ -14,7 +14,7 @@ The \gls{u2f} protocol relies on a web browser that is \gls{u2f}-capable and a w
 
 Because it relies on the web in contrast to the \gls{uaf} protocol, browser support has to be taken into account. Due to the fact, that \gls{u2f} is superseded by \gls{fido}2, the browser support of \gls{u2f} is not of interest for this thesis.
 
-Moreover, \gls{u2f} has also been renamed to \gls{ctap}1 since the release of the \gls{fido}2 to avoid confusion and questions whether \gls{u2f} can be used for the \wa{} as the \gls{ctap} protocol. However, a crucial restriction of the legacy \gls{u2f} protocol in usage with \gls{fido}2 is, that it is only usable as a second factor and not for passwordless logins.
+Moreover, \gls{u2f} has also been renamed to \gls{ctap}1 since the release of the \gls{fido}2 to avoid confusion and questions whether \gls{u2f} can be used for the \wa{} as the \gls{ctap} protocol.
 
 \subsubsection{Registration}
 
@@ -60,14 +60,14 @@ const response = {
   errorCode: 0,
   registrationData: '...', // omitted for readability
   version: 'U2F_V2'
-}
+};
 
 // bota() decoded clientData yields
 const decodedClientData = {
   challenge: 'Wings2019',
   origin: 'https://timbrust.de',
   typ: 'navigator.id.finishEnrollment'
-}
+};
 \end{minted}
 \label{listing:u2f_reg_resp}
 \end{example}
@@ -99,12 +99,12 @@ The \autoref{listing:u2f_reg} shows an example, high-level \gls{api} JavaScript 
 const registeredKey = {
   keyHandle: '_WFf5BJ1dwtSCFzfWHoqKUhc9M3Hi0Tv58LAtPz0qM6B3A [...]', // further data is omitted for readability
   version: 'U2F_V2'
-}
+};
 
 u2f.sign('https://timbrust.de', 'Wings2019Auth', [registeredKey], [], (response) => {
     console.log(response)
   }
-)
+);
 \end{minted}
 \label{listing:u2f_auth}
 \end{example}
@@ -116,14 +116,14 @@ const response = {
   errorCode: 0,
   keyHandle: 'WFf5BJ1dwtSCFzfWHoqKUhc9M3Hi0Tv58LAtPz0qM6B3A-iT [...]', // further data is omitted for readability
   signatureData: 'AQAAAhIwRQIhAK7xli8pV2cc8TKTOYMcdiz-ZuNVes [...]', // further data is omitted for readability
-}
+};
 
 // bota() decoded clientData yields
 const decodedClientData = {
   challenge: 'Wings2019Auth',
   origin: 'https://timbrust.de',
   typ: 'navigator.id.getAssertion'
-}
+};
 \end{minted}
 \label{listing:u2f_auth_resp}
 \end{example}
