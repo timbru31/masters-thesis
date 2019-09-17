@@ -1,8 +1,8 @@
-\chapter{Security of multi-factor authentication}
+\chapter{Security of Multi-Factor Authentication}
 
 \section{Introduction}
 
-In this chapter the introduced \gls{mfa} solutions are analyzed in regards of their security aspects, ranging from algorithms to transportation risks.
+This chapter analyses the introduced \gls{mfa} solutions in regards of their security aspects, ranging from algorithms and transportation threats, past vulnerabilities to implementation pitfalls.
 
 \begin{figure}[hbt]
 	\centering
@@ -14,14 +14,14 @@ In this chapter the introduced \gls{mfa} solutions are analyzed in regards of th
 
 \autoref{fig:2fa_flow_phishing} shows the already in \autoref{fig:2fa_flow} explained \gls{mfa} flow using a \gls{totp}. In this figure the scenario is expanded with a phishing attack. The user visits a phishing copy of the website they want to use and do not recognize this. Because he knows that this site is using \gls{mfa} they provide the \gls{totp} to the phishing site, too. This allows the interceptor to steal both the password (knowledge; first factor) and \gls{totp} (possession; second factor) to successfully login to the victims account and effectively bypassing the \gls{mfa} solution.
 
-\section{HOTP and TOTP}
+\section{One-Time Passwords}
 \label{sec:totp_sec}
 
-In this section the security of both \gls{hotp} and \gls{totp} is being analyzed.
+In this section the security of both \gls{hotp} and \gls{totp} are being analyzed.
 
 \input{content/main_part/multi_factor/totp/security}
 
-\section{Security Keys}
+\section{Security Tokens}
 \label{sec:tokens}
 
 

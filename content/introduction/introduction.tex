@@ -1,7 +1,7 @@
 \chapter{Introduction}
 \label{chapter:introduction}
 
-\section{Problem statement and motivation}
+\section{Problem Statement and Motivation}
 
 \setlength\epigraphwidth{.5\textwidth}
 \epigraph{\frqq Usernames and passwords are an idea that came out of 1970s mainframe architectures. They were not built for 2016.\flqq\footnotemark}{\textit{Alex Stamos}}
@@ -15,7 +15,7 @@ At the same time, the recorded amount of cybercrime cases is still increasing, a
 
 To counter these negative trends, new \glspl{api} are emerging, for example, the \wa. It is a standardized \gls{api} supported in major browsers such as Chrome, Firefox, or Edge. The \wa{} allows a secure registration, login, and \gls{2fa} -- all without the generation, storage, and remembering of passwords by utilizing asymmetric cryptography. The private keys are stored, e.g., on external devices such as \gls{usb} sticks, but can be stored on built-in hardware, too. These are, for example, protected by a fingerprint sensor or dedicated chip designed for secure operations.
 
-\section{Goals of this thesis}
+\section{Goals of this Thesis}
 
 The goals of this thesis are an introduction into \gls{mfa} and the different authentication factors such as \frqq knowledge, possession and biometrics\flqq{} including the technical functionality, usability in web projects and respectively web browsers and their security threats alongside an introduction to the \wa. Those methods of authentication need to be mapped to actual forms of authentication such as passwords, security keys, and fingerprint sensors, that need to be again evaluated security-wise.
 
@@ -35,17 +35,17 @@ Besides that, questions such as
 
 are taken into account and answered.
 
-\section{Target audience}
+\section{Target Audience}
 
 The target audience of this thesis are technically experienced readers that have a good understanding and interest in data security and privacy. Additionally, the reader should have a basic knowledge about the functionality and mathematics behind algorithms such as RSA, \gls{ecc}, or symmetric and asymmetric key exchange (e.g., Diffie–Hellman key exchange). Moreover, the reader needs to be familiar with the underlying concept(s) and techniques of \gls{mfa}.
 
 Furthermore, the thesis is tailored towards interested (web) developers. On the one hand, it shall introduce a new standardized Web \gls{api} to them in detail. On the other hand, the thesis helps to understand the pros and cons of alternative registration, login, and \gls{mfa} solutions using asymmetric cryptography and if the \wa{} suits their needs.
 
-\section{Delimitation of this thesis}
+\section{Delimitation of this Thesis}
 
 Existing proven algorithms and concepts, as long as not required for the understanding of this thesis, are not explained in detail. It is not the goal of this thesis to perform complete cryptanalysis of existing \gls{mfa} solution, nor the \wa, but to take other factors, such as usability for the user, technical feasibility, and web browser support into account. Different, but adjacent, technologies such as OAuth (2.0), OpenID Connect or \gls{sso} neither are a focus of this thesis. Additionally, the topic of authorization is not taken into account and not of concern for this thesis. 
 
-\section{Approach and methodology}
+\section{Approach and Methodology}
 
 Initially, in \autoref{chapter:basics}, the reader is introduced into the basics of authentication.\\
 After that, in the following chapters, the areas single-factor authentication and \gls{mfa} are explained. For example, their technical functionality is described, followed by an analysis regarding their security such as phishing or \gls{mitm} attacks.

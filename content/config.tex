@@ -69,7 +69,6 @@
 
 \usepackage{fancyhdr}
 \usepackage{setspace}
-\usepackage{listings}
 \usepackage{xcolor}
 \usepackage{lmodern}
 \usepackage{amsmath,amssymb}
@@ -170,13 +169,6 @@
 
 
 %-----------------------------------------------------------------------------
-% Rename image captions
-%-----------------------------------------------------------------------------
-%\addto{\captionsngerman}{%
-%	\renewcommand*{\figurename}{Bild}}
-
-
-%-----------------------------------------------------------------------------
 % Colors for PDF documents
 %-----------------------------------------------------------------------------
 \definecolor{LinkColor}{rgb}{0,0,0.5}
@@ -257,12 +249,10 @@
 %-----------------------------------------------------------------------------
 % Listings
 %-----------------------------------------------------------------------------
-\addtotoclist{loe}
 \newcounter{example}[chapter]
 \renewcommand{\theexample}{\thechapter.\arabic{example}}
 \newcommand{\listofloename}{List of Listings}
 \newcommand\listofexamples{\listoftoc{loe}}
-\setuptoc{loe}{chapteratlist, leveldown}
 \makeatletter
 \newcommand\l@example{\l@figure}
 \makeatother
@@ -292,4 +282,6 @@
 	\renewcommand{\headrulewidth}{0.0pt}
 	\fancyfoot[R]{\thepage}
 }
+
+
 %-----------------------------------------------------------------------------

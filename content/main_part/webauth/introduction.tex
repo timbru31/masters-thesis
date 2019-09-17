@@ -1,6 +1,10 @@
 % TODO https://fidoalliance.org/overview/history/
 
-\section{History and evolution}
+\section{Goals of the Web Authentication API}
+
+The goal of the \wa{} is to enable \frqq the creation and use of strong, attested, scoped, public key-based credentials by web applications, for the purpose of strongly authenticating users\flqq.\footcites[][Abstract]{w3c} Each public key credential is scoped to the \gls{rp}, i.e. can not be re-used for other websites (\glspl{rp}). The authenticator has the 	duties and responsibilities to create, store, and access these credentials, always with the users consent. The user agent, i.e., browser performs the communication with the authenticators and \glspl{rp} to persevere the users privacy. Attestation ensures that each operation from a alleged authenticator is legitimate and cryptographically verifiable. The primary use cases for the \wa{} are passwordless registrations and logins, being a second-factor, but also to sign specific transactions.\footcites[See][Abstract, Chapter 1.2]{w3c}
+
+\section{History and Evolution}
 
 The \wa{} is an outcome of joint efforts from the \gls{fido} alliance and and the \gls{w3c}. It is a product from preceding industry standards, namely \gls{uaf} and \gls{u2f}. This chapter introduces the origin of the \wa{} by explaining the origin of the \gls{fido} alliance and their works on the \gls{uaf} and \gls{u2f} with a focus of the technical implementations, protocols and used techniques.\footcites[See][24]{fido-ct-3}
 

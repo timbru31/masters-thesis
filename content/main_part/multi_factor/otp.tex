@@ -1,10 +1,10 @@
-\section{One-time password}
+\section{One-Time Passwords}
 
 A widely used method of authentication in order to achieve \gls{mfa} are \glspl{otp} that belong to the category of possession of a shared secret between the client and the server.
 
 To fully understand how the \gls{otp} works, first of all, the basics and origins, especially the underlying \gls{mac}, have to be introduced. In the following subsections, the required algorithms are shortly described and in \autoref{subsec:hotp} and \autoref{subsec:totp} the variants of \glspl{otp}, both the \gls{hotp} and the \gls{totp} which are based on \gls{hmac}.
 
-\subsection{Message authentication code}
+\subsection{Message Authentication Code}
 
 The \glsfirst{mac} is a \textit{code}, i.e., some sort of information to protect and ensure the integrity of a \textit{message}. Integrity, besides confidentially and availability, is one of the main concepts of \gls{it} security. The \gls{mac} is built using two parameters, a secret key that both parties know and the message itself. The algorithm generates a checksum that the sender can send alongside with the message. Upon retrieval of the message, the recipient calculates the checksum (\gls{mac}) themself. If it differs, then the message has been manipulated, or there might have been a faulty transmission. Technically, the \gls{mac} can be generated with, e.g., cryptographic-hash functions, such as \gls{hmac}, or using block ciphers such as \gls{cbc-mac} or \gls{des}.\footcites[See][565]{320284}[See][163--168]{anderson2008security}[See][391--393]{eckert-it-sec-9}
 

@@ -31,9 +31,9 @@ For example Steam, decided to use a different alphabet and character length.
 
 A theoretical vulnerability is to use the time sync offset feature because it enables an attacker to use a token that's much longer valid than it should be. (\textcolor{red}{as discussed in section xx - time sync/drift})
 
-\subsection{Transportation}
+\subsection{Transportation and Generation}
 
-Given that the generation of the \gls{otp} is considered secure the more important region to analyze is the transportation of these \gls{otp}. In this section the transportation mediums \gls{sms}, E-Mail and App are considered.
+Given that the generation of the \gls{otp} is considered secure the more important region to analyze is the transportation of these \gls{otp}. In this section the transportation mediums \gls{sms}, e-mail, and apps for the \gls{otp} generation are considered.
 
 \subsubsection{SMS}
 
@@ -102,35 +102,19 @@ Given all these facts \gls{sms} transportation should be avoided at all costs,\f
 % TODO BILDER für Malware
 
 \subsubsection{App}
+ 
+ In contrast to the transportation of the \gls{otp} via \gls{sms}, using a standalone app such as Google Authenticator, Authy or even the mobile \gls{otp} app for Java based phones offers some advantages. While the user has to be connected to the cellular network when receiving the \gls{otp} via \gls{sms}, the app solution works in offline or bad network connectivity use cases, too.
+ 
+ Furthermore, the app solution is cheaper because no transaction fee is due for the sender or receiver. It also eliminates the roaming problem. On the other hand, the app needs to be maintained and updated to protect against, e.g., vulnerabilities in third party libraries and to ensure compatibility with future devices and \gls{os} versions.
+ 
+ The setup of the \gls{otp} is not phishing resistant either. A malware on, e.g., the desktop can intercept the shared secret or the mobile phone can contain malware. This malware can intercept for instance the camera, later access the generated \gls{otp}, or access the app's database where the secrets are stored.
+ 
+ Besides that, the app itself can contain vulnerabilities such as Authy suffered from a vulnerable backend that could be exploited to bypass the \gls{2fa}. Additionally, the user has to ask if the app is legtimite and from a trustworthy source and have faith in the app that it keeps their data safe.\footcites[See][]{eset-bypass2fa}[See][]{sakurity-authy}
+ 
+\subsubsection{E-mail}
 
-\subsubsection{pros}
+Another widely used form to transmit the \gls{otp} from the server to the user is the distribution via e-mail. E-mails are by comparison with apps more acceptable and do not require a user to give aways their cellphone number. While it eliminates the need to rely on external services and given the fact that the user already registered an account with the corresponding site, it is assumed the user owns an e-mail account.
 
-\begin{enumerate}
-	\item Works offline
-	\item cheaper
-\end{enumerate}
+However, e-mail traffic comes with threats, too. In the first place, unencrypted e-mail traffic can be intercepted by a \gls{mitm}, therefore exposing the secret. In 2019 \textcolor{red}{?? \%} of all e-mail traffic is still unencrypted. A malware on the desktop or smartphone can intercept incoming e-mail and even delete the message without the users knowledge.
 
-\subsubsection{cons}
-
-\begin{enumerate}
-	\item Secret can be phished while setup (either on phone or computer)
-	\item Trusted apps? OSS? \footcite{eset-bypass2fa}
-	\item Vulnerabilities --> e.g. Authy\footcite{sakurity-authy}
-\end{enumerate}
-
-\subsubsection{E-Mail}
-
-\subsubsection{pros}
-
-\begin{enumerate}
-	\item widely used
-	\item cheap and easy
-\end{enumerate}
-
-\subsubsection{cons}
-
-\begin{enumerate}
-	\item unencrypted
-	\item malware
-	\item MITM
-\end{enumerate}
+Besides that, e-mails re-introduce the problem of delayed reception of the \gls{otp} since especially techniques such as grey-listing delay incoming messages to avoid spam. Examples such as network connectivity problems, dedicated attack (\gls{ddos}) or exceeded e-mail storage quota further increase the potential of unreliable \gls{otp} transportation
