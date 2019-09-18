@@ -13,11 +13,10 @@
                     <title>First Public Working Draft (FPWD) - Exclusion opportunity</title>
                 </rect>
 
-                <text font-size="8">
-                    <tspan aria-hidden="true" y="132" x="0">First Public WD</tspan>
-                    <tspan x="0" y="152">WG decision</tspan>
-                    <tspan x="0" y="162">Director's approval</tspan>
-                </text>
+                <text font-size="8" aria-hidden="true" y="132" x="0">First Public WD</text>
+                <text font-size="8" x="0" y="152">WG decision</text>
+                <text font-size="8" x="0" y="162">Director's approval</text>
+
 
                 <path d="M0,140h53" fill="none" stroke="#000"></path>
                 <polygon points="47,136 57,140 47,144"></polygon>
@@ -45,10 +44,8 @@
                             <title>Publish a new Working Draft</title>
                         </g>
 
-                        <text font-size="8">
-                            <tspan x="30" y="92">WG Decision: review needed, or</tspan>
-                            <tspan x="40" y="100">No change for 6 months</tspan>
-                        </text>
+                        <text font-size="8" x="30" y="92">WG Decision: review needed, or</text>
+                        <text font-size="8" x="40" y="100">No change for 6 months</text>
 
                         <path d="M78,124C73,114 79,104 97,104 108,104 115,108 117,114" fill="none" stroke="black" stroke-dasharray="6 1"></path>
                         <polygon points="120,114 116,124 114,113"></polygon>
@@ -91,10 +88,8 @@
                             <title>Publish revised Candidate Recommendation</title>
                         </g>
 
-                        <text font-size="8">
-                            <tspan x="225" y="84">Working Group Decision,</tspan>
-                            <tspan x="240" y="96">Directors approval</tspan>
-                        </text>
+                        <text font-size="8" x="225" y="84">Working Group Decision,</text>
+                        <text font-size="8" x="240" y="96">Directors approval</text>
 
                         <path stroke="#000" d="M242,124C238,114 244,104 260,104 271,104 277,108 279,114" stroke-dasharray="5 11" fill="none"></path>
                         <path stroke="#060" d="M242,124C238,114 244,104 260,104 271,104 277,108 279,114" stroke-dasharray="5 11" stroke-dashoffset="8" fill="none"></path>
@@ -122,10 +117,9 @@
                             <title>Return to Working Draft</title>
                         </g>
 
-                        <text font-size="8">
-                            <tspan x="142" y="160">WG or Director decision</tspan>
-                            <tspan x="144" y="170">e.g. for further review</tspan>
-                        </text>
+                        <text font-size="8" x="142" y="160">WG or Director decision</text>
+                        <text font-size="8" x="144" y="170">e.g. for further review</text>
+
 
                         <path d="M140,147h84" stroke-dasharray="4 4" stroke="#600"></path>
                         <polygon points="140,145 133,147 140,149"></polygon>
@@ -154,10 +148,8 @@
                             <title>Advance to Recommendation</title>
                         </g>
 
-                        <text x="300" y="138" font-size="8">
-                            <tspan x="445" y="124">Advisory Committee Review</tspan>
-                            <tspan x="445" y="134">Director's Decision</tspan>
-                        </text>
+                        <text font-size="8" x="445" y="124">Advisory Committee Review</text>
+                        <text font-size="8" x="445" y="134">Director's Decision</text>
 
                         <path d="M441,140h100" stroke="#060"></path>
                         <polygon points="534,136 544,140 534,144"></polygon>
@@ -171,11 +163,10 @@
                             <title>Return to Candidate Recommendation</title>
                         </g>
 
-                        <text font-size="8">
-                            <tspan x="306" y="160">AC Review, </tspan>
-                            <tspan x="302" y="170">Director Decision</tspan>
-                            <tspan x="304" y="180">e.g. for minor changes</tspan>
-                        </text>
+                        <text font-size="8" x="306" y="160">AC Review, </text>
+                        <text font-size="8" x="302" y="170">Director Decision</text>
+                        <text font-size="8" x="304" y="180">e.g. for minor changes</text>
+
 
                         <path d="M301,147h88" stroke-dasharray="3 5" stroke="#600"></path>
                         <polygon points="301,145 296,147 301,149"></polygon>
@@ -189,9 +180,7 @@
                             <title>Return to Working Draft</title>
                         </g>
 
-                        <text font-size="9">
-                            <tspan x="90" y="202">Advisory Committee review and Director's Decision, e.g. for further work and review</tspan>
-                        </text>
+                        <text font-size="9" x="90" y="202">Advisory Committee review and Director's Decision, e.g. for further work and review</text>
 
                         <path d="M413,158v32h-316v-26" stroke-dasharray="2 2" stroke="#c00" fill="none"></path>
                         <polygon points="95,164 97,159 99,164"></polygon>

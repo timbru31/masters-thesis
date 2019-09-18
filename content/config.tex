@@ -153,9 +153,6 @@
 
 \usepackage{bookmark}
 
-\providecommand*\exampleautorefname{Listing}
-
-
 %-----------------------------------------------------------------------------
 % Fonts
 %-----------------------------------------------------------------------------
@@ -188,7 +185,6 @@
 % Bibliography style
 %-----------------------------------------------------------------------------
 \usepackage[backend=biber,style=alphabetic]{biblatex}
-%\bibliographystyle{science}
 
 \DefineBibliographyStrings{english}{%
 	urlseen = {last accessed on},
@@ -250,6 +246,7 @@
 % Listings
 %-----------------------------------------------------------------------------
 \newcounter{example}[chapter]
+\def\exampleautorefname{Example}
 \renewcommand{\theexample}{\thechapter.\arabic{example}}
 \newcommand{\listofloename}{List of Listings}
 \newcommand\listofexamples{\listoftoc{loe}}
@@ -257,13 +254,13 @@
 \newcommand\l@example{\l@figure}
 \makeatother
 
-\newenvironment{example}[1]{%
+\newenvironment{example}[2]{%
   \setlength\parfillskip{0pt plus 1fil}%
   \begin{tcolorbox}[
     before title={%
       \refstepcounter{example}%
-      \addxcontentsline{loe}{section}[\theexample]{\ignorespaces #1}},
-    title=Listing\ \theexample:\ \ignorespaces #1]%
+      \addxcontentsline{loe}{section}[\theexample]{\ignorespaces #2}},
+    title=Listing\ \theexample:\ \ignorespaces #2,label=#1]%
 }{\end{tcolorbox}}
 
 
