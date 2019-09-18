@@ -55,13 +55,13 @@ As the \gls{uaf} protocol, but in contrast to the \gls{u2f} specification, the \
 \subsection{Web Authentication API}
 \label{subsec:wa}
 
-The API defined in the WebAuth is actually an extension of the Credential Management API, which is another API in development, but currently in a draft state. The Credential Management API defines \textit{navigator.credentials} property with the \textit{create} and \gls{get} methods and has the goal to offer an API for programatically accessing the user agent's password storage capabilities. The \wa{} is adding further method overloads to support public-key based credentials, too.
+The API defined in the WebAuth is actually an extension of the Credential Management API, which is another API in development, but currently in a draft state. The Credential Management API defines \textit{navigator.credentials} property with the \textit{create} and \textit{get} methods and has the goal to offer an API for programatically accessing the user agent's password storage capabilities. The \wa{} is adding further method overloads to support public-key based credentials, too.
 
 The \wa{} is backwards compatible to the \gls{u2f} compatible, thus making every security token that is usable for \gls{u2f} compatible with the \wa, too. However, a crucial restriction of the legacy \gls{u2f} protocol in usage with \gls{fido}2 is, that it is only usable as a second factor and not for passwordless logins.
 
 \subsubsection{Registration}
 
-\begin{example}[listing:webauthn_reg]{Exemplary Web Authentication API registration}
+\begin{example}{Exemplary Web Authentication API registration}{listing:webauthnreg}
 \begin{minted}[breaklines]{javascript}
 const publicKeyOptions = {
   challenge: 'Wings2019', // normally random string from the server in binary form (Uint8Array)
@@ -88,9 +88,9 @@ const credential = await navigator.credentials.create({
 \end{minted}
 \end{example}
 
-\autoref{listing:webauthn_reg} shows an example payload for the registration of a new credential with the \wa. Noteworthy parameter and options include the \textit{user.id}, which should not be an information that could lead to user identification because this ID can be stored on the authenticator.
+\autoref{listing:webauthnreg} shows an example payload for the registration of a new credential with the \wa. Noteworthy parameter and options include the \textit{user.id}, which should not be an information that could lead to user identification because this ID can be stored on the authenticator.
 
-\begin{example}[listing:webauthn_reg_resp]{Web Authentication API registration response}
+\begin{example}{Web Authentication API registration response}{listing:webauthnregresp}
 \begin{minted}[breaklines]{javascript}
 const credential = {
   id: 'BShOCQ2c32dv4aqyy3oWmcu_9s4tz0VIob81U5tg [...]',
@@ -104,9 +104,9 @@ const credential = {
 \end{minted}
 \end{example}
 
-\autoref{listing:webauthn_reg_resp} shows the received response from the creation generation, i.e., the newly generated credentials for the \gls{rp}.
+\autoref{listing:webauthnregresp} shows the received response from the creation generation, i.e., the newly generated credentials for the \gls{rp}.
 
-\begin{example}[listing:webauthn_reg_resp_client_data]{Web Authentication API registration client data}
+\begin{example}{Web Authentication API registration client data}{listing:webauthnregrespclientdata}
 \begin{minted}[breaklines]{javascript}
 const clientDataJSON = {
   challenge: 'Wings2019',
@@ -116,9 +116,9 @@ const clientDataJSON = {
 \end{minted}
 \end{example}
 
-\autoref{listing:webauthn_reg_resp_client_data} shows the decoded client data from the \wa{} registration response from \autoref{listing:webauthn_reg}. The data contains the challenge sent by the \gls{rp} and the origin of the \gls{rp}. Each registration is flagged with the type of \texttt{webauthn.create}.
+\autoref{listing:webauthnregrespclientdata} shows the decoded client data from the \wa{} registration response from \autoref{listing:webauthnreg}. The data contains the challenge sent by the \gls{rp} and the origin of the \gls{rp}. Each registration is flagged with the type of \texttt{webauthn.create}.
 
-\begin{example}[listing:webauthn_reg_resp_attestation]{Web Authentication API registration attestation}
+\begin{example}{Web Authentication API registration attestation}{listing:webauthnregrespattestation}
 \begin{minted}[breaklines]{javascript}
 const attestationObject = {
   fmt: 'fido-u2f',
@@ -156,7 +156,7 @@ const attestationObject = {
 
 \subsubsection{Authentication}
 
-\begin{example}[listing:webauthn_auth]{Exemplary Web Authentication API authentication}
+\begin{example}{Exemplary Web Authentication API authentication}{listing:webauthnauth}
 \begin{minted}[breaklines]{javascript}
 const publicKeyOptions = {
   challenge: 'Wings2019Auth', // normally random string from the server in binary form (Uint8Array)
@@ -176,7 +176,7 @@ const assertion = await navigator.credentials.get({
 \end{minted}
 \end{example}
 
-\begin{example}[listing:webauthn_auth_resp]{Web Authentication API authentication response}
+\begin{example}{Web Authentication API authentication response}{listing:webauthnauthresp}
 \begin{minted}[breaklines]{javascript}
 const assertion = {
   id: 'BShOCQ2c32dv4aqyy3oWmcu_9s4tz0VIob81U5tg [...]',

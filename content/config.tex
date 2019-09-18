@@ -257,10 +257,13 @@
 \newenvironment{example}[2]{%
   \setlength\parfillskip{0pt plus 1fil}%
   \begin{tcolorbox}[
+	phantom={\global\refstepcounter{example}},
     before title={%
-      \refstepcounter{example}%
-      \addxcontentsline{loe}{section}[\theexample]{\ignorespaces #2}},
-    title=Listing\ \theexample:\ \ignorespaces #2,label=#1]%
+
+      \addxcontentsline{loe}{section}[\theexample]{\ignorespaces #1}},
+    title=Listing\ \theexample:\ \ignorespaces #1,%
+    label=#2
+   ]%
 }{\end{tcolorbox}}
 
 
