@@ -55,7 +55,7 @@ As the \gls{uaf} protocol, but in contrast to the \gls{u2f} specification, the \
 \subsection{Web Authentication API}
 \label{subsec:wa}
 
-The API defined in the WebAuth is actually an extension of the Credential Management API, which is another API in development, but currently in a draft state. The Credential Management API defines \textit{navigator.credentials} property with the \textit{create} and \textit{get} methods and has the goal to offer an API for programatically accessing the user agent's password storage capabilities. The \wa{} is adding further method overloads to support public-key based credentials, too.
+The \gls{api} defined in the \wa{} is actually an extension of the Credential Management \gls{api}, which is another \gls{api} in development, but currently in a draft state.\footnote{The \gls{w3c} standardization process can be viewed in the \autoref{sec:w3c-process}} The Credential Management \gls{api} defines \textit{navigator.credentials} property with the \textit{create} and \textit{get} methods and has the goal to offer an \gls{api} for programmatically accessing the user agent's password storage capabilities. The \wa{} is adding further method overloads to support public-key based credentials, too.\footcites[See][Chapter 1]{w3c}[See][Chapter 1.1]{w3c-credentials}
 
 The \wa{} is backwards compatible to the \gls{u2f} compatible, thus making every security token that is usable for \gls{u2f} compatible with the \wa, too. However, a crucial restriction of the legacy \gls{u2f} protocol in usage with \gls{fido}2 is, that it is only usable as a second factor and not for passwordless logins.
 
