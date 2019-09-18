@@ -90,7 +90,7 @@ The client forwards registration dat, client data, and key handle to the \gls{rp
 \end{figure}
 \footnotetext{source:...}
 
-The \autoref{listing:u2freg} shows an example, high-level \gls{api} JavaScript signing process. The \gls{rp} sends the associated key handle, the protocol version, AppID and authentication challenge to the client. \autoref{listing:u2fauthresp} shows the generated response by the \gls{u2f} token. The response object and decoded client data shows the \autoref{listing:u2fauthresp}.
+The \autoref{listing:u2fauth} shows an example, high-level \gls{api} JavaScript signing process. The \gls{rp} sends the associated key handle, the protocol version, AppID and authentication challenge to the client. \autoref{listing:u2fauthresp} shows the generated response by the \gls{u2f} token. The response object and decoded client data shows the \autoref{listing:u2fauthresp}.
 \\
 \begin{example}{Example U2F authentication code}{listing:u2fauth}
 \begin{minted}[breaklines]{javascript}
