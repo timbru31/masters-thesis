@@ -100,8 +100,10 @@ const credential = await navigator.credentials.create({
 \end{minted}
 \end{example}
 
-\autoref{listing:webauthnreg} shows an example payload for the registration of a new credential with the \wa{} with the previousley introduced parameters. 
+\autoref{listing:webauthnreg} shows an example payload for the registration of a new credential with the \wa{} with the previously introduced parameters. The publicKeyOptions payload can now be passed to the authenticator by calling the authenticatorMakeCredential method. The client passes the user and \gls{rp} to the authenticator. Further, it is evaluated if the authenticator should verify the user or if a check of user presence is sufficient. For this evaluation the property \textit{userVerification} is used. Besides that, the list of credentials to exclude, the public key credential parameters and the hash of the client data is provided to the authenticator. The client data comprises of the server provided challenge, it's origin and the string type \textit{webauthn.create}.
 
+Upon reception of the \textit{attestationObject} and included credential ID in it, the client can generate the credential to be returned to the \gls{rp}, as shown in \autoref{listing:webauthnregresp}.
+\\
 \begin{example}{Web Authentication API registration response}{listing:webauthnregresp}
 \begin{minted}[breaklines]{javascript}
 const credential = {
@@ -116,8 +118,8 @@ const credential = {
 \end{minted}
 \end{example}
 
-\autoref{listing:webauthnregresp} shows the received response from the creation generation, i.e., the newly generated credentials for the \gls{rp}.
-
+The created credential consists of an ID, both as a string and binary reprenstation, the type that is always \textit{public-key} and the \textit{response} object. The response object is constructed from the returned \textit{attestationObject} and the client data.
+\\
 \begin{example}{Web Authentication API registration client data}{listing:webauthnregrespclientdata}
 \begin{minted}[breaklines]{javascript}
 const clientDataJSON = {
@@ -128,7 +130,9 @@ const clientDataJSON = {
 \end{minted}
 \end{example}
 
-\autoref{listing:webauthnregrespclientdata} shows the decoded client data from the \wa{} registration response from \autoref{listing:webauthnreg}. The data contains the challenge sent by the \gls{rp} and the origin of the \gls{rp}. Each registration is flagged with the type of \texttt{webauthn.create}.
+\autoref{listing:webauthnregrespclientdata} shows the decoded client data from the \wa{} registration response from \autoref{listing:webauthnreg}. The data contains the challenge sent by the \gls{rp} and the origin of the \gls{rp}. Each registration is flagged with the type of \textit{webauthn.create}.
+
+In contrast, the attestation sent from the authenticator is much bigger. On the first hierarchy it contains the attestation statement format identifier (\textit{fmt}), such as packed, tpm, or fido-u2f, the attestation statement (\textit{attmStmt}, and the authentication data (\textit{authData}). The authentication data includes the evaluated user flags, for instance if the user was present or verified, a signature counter if supported by the authenticator, and the hash of the \gls{rp} ID. In detail, the attested credential data of the authentication data contains the public key ID, the public key itself, e.g., the public point on an \gls{ec} and the \gls{aaguid} if attestation is. not set to none, otherwise 16 zero bytes.
 
 \begin{example}{Web Authentication API registration attestation}{listing:webauthnregrespattestation}
 \begin{minted}[breaklines]{javascript}
@@ -168,6 +172,8 @@ const attestationObject = {
 
 \subsubsection{Authentication}
 
+An authentication ceremony is started by calling the method \textit{navigator.credentials.get}.
+\\
 \begin{example}{Exemplary Web Authentication API authentication}{listing:webauthnauth}
 \begin{minted}[breaklines]{javascript}
 const publicKeyOptions = {
