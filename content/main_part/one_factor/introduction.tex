@@ -71,11 +71,11 @@ It is pretty evident that unencrypted passwords in a database render the most si
 
 Even if the password is hashed, but not salted, it renders the credentials at risk. Weaker hashing algorithms such as \gls{md} version 5 or \gls{sha}-1 might be broken in the future, but besides that, if it is a weak password, too, the hash might already be reversed. Having the hashed password list enables the attacker to execute a brute force attack in order to reverse as many hashes as possible. A rainbow table attack, a dictionary attack, or just searching it in databases that contain a billion of reversed hash values is another attack vector.\footcites[See][1425]{Thomas:2017:DBP:3133956.3134067}[See][427--430]{320284}[See][56--57]{anderson2008security}
 
-Obtaining a password hash is often enough for an attacker to gain access to further user accounts, by reversing easy hashes and then automatically trying to gain access with these credentials on other websites. This form of attack is called \frqq credential stuffing\flqq{} and a subform of the brute-force attack.\footcites[See][]{troy-hunt-1}[See][1565]{48399}
+Obtaining a password hash is often enough for an attacker to gain access to further user accounts, by reversing easy hashes and then automatically trying to gain access with these credentials on other websites. This form of attack is called \frqq credential stuffing\flqq{} and a subform of the brute-force attack.\footcites[See][]{troy-hunt-1}[See][1565]{48399}[See][Chapter 5.5]{zabicki2019practical}
 
 A better protection of the password can be achieved by using a unique \frqq salt\flqq{} for each password. The salt is a fixed-length cryptographically strong random value that is concatenated with the actual password before hashing it. Salting a password serves two purposes. Firstly it decreases the risk of a successful rainbow or brute force attack dramatically because the hashes changed for known passwords. Secondly, it does not reveal users who have chosen the same password. The salt itself does not need to be encrypted or obfuscated, since its purpose is to decrease the and harden the brute-force, dictionary, and rainbow attacks.\footcites[See][32--34]{IdentityandDataSecurityforWebDevelopment}[See][130--131]{brotherston2017defensive}[See][15]{SP80063B}
 
-Another technique to harden the password hashes is the use of a \frqq pepper\flqq{}. In contrast to the salt, the pepper is treated as a secret and not stored in the database. The pepper is not uniquely generated for each user account, but instead a fixed string or a string from a fixed set. When the latter is chosen, the server needs to generate the hash with each possible pepper value and then comparing with the stored hash when authenticating a user.  An example of the effects the salt and pepper have is shown in \autoref{tab:salting}. The beginning of identical hashes are marked bold. The table shows that just relying on a pepper is not sufficient to hide users that share the same password. \footcites[See][33--35]{IdentityandDataSecurityforWebDevelopment}[See][15]{SP80063B}[See][173]{MANBER1996171}
+Another technique to harden the password hashes is the use of a \frqq pepper\flqq{}. In contrast to the salt, the pepper is treated as a secret and not stored in the database. The pepper is not uniquely generated for each user account, but instead a fixed string or a string from a fixed set. When the latter is chosen, the server needs to generate the hash with each possible pepper value and then comparing with the stored hash when authenticating a user. An example of the effects the salt and pepper have is shown in \autoref{tab:salting}. The beginning of identical hashes are marked bold. The table shows that just relying on a pepper is not sufficient to hide users that share the same password. \footcites[See][33--35]{IdentityandDataSecurityforWebDevelopment}[See][15]{SP80063B}[See][173]{MANBER1996171}
 
 Both techniques can be combined and each of them independently strengthen the generated hash of a potential weak password by increasing its length and complexity, therefore reducing the risk of a collision.
 
@@ -98,7 +98,7 @@ Both techniques can be combined and each of them independently strengthen the ge
 	\caption{Example password \gls{sha}-1 hashes with and without salt and pepper}
 	\label{tab:salting}
 \end{table}
-	
+
 \section{Possession}
 \label{sec:possession-security}
 

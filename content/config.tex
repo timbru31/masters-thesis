@@ -249,10 +249,11 @@
 % Listings
 %-----------------------------------------------------------------------------
 \newcounter{example}[chapter]
-\def\exampleautorefname{Example}
+\def\exampleautorefname{Listing}
 \renewcommand{\theexample}{\thechapter.\arabic{example}}
 \newcommand{\listofloename}{List of Listings}
 \newcommand\listofexamples{\listoftoc{loe}}
+\setuptoc{loe}{chapteratlist}
 \makeatletter
 \newcommand\l@example{\l@figure}
 \makeatother
@@ -262,7 +263,6 @@
   \begin{tcolorbox}[
 	phantom={\global\refstepcounter{example}},
     before title={%
-
       \addxcontentsline{loe}{section}[\theexample]{\ignorespaces #1}},
     title=Listing\ \theexample:\ \ignorespaces #1,%
     label=#2

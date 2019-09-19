@@ -1,20 +1,17 @@
-% TODO sources
-\section{Universal Second Factor}
+\subsection{Universal Second Factor}
 
-The \glsfirst{u2f} is the second open standard developed by the \gls{fido} alliance prior to the \wa. It explicitly defines the use of a second factor, which is backed by public-key cryptography, for the password-based login flow. The main contributors are Google and Yubico, both being alliance members. The \textit{strong second factor} can be either connected or disconnected, e.g, built in hardware or for instance an \gls{usb} token, \gls{nfc}-capable device, or a standalone \gls{ble} dongle. The protocol defines two layers:\footcites[See][4]{u2f-overview}
+The \glsfirst{u2f} is the second open standard developed by the \gls{fido} alliance prior to the \wa. It explicitly defines a second factor for the password-based login flow. It is like the \gls{uaf} backed by public-key cryptography, too. The main contributors are Google and Yubico, both being alliance members. The \textit{strong second factor} can be either connected or disconnected, e.g, built in hardware orl for instance, an \gls{usb} token, \gls{nfc}-capable device, or a standalone \gls{ble} dongle. Besides that, the \gls{u2f} protocol only specifies \gls{usb}-\gls{hid} devices (internal or external), \gls{nfc}, Bluetooth, and the low energy variant \gls{ble}, as possible transport protocols. The protocol defines two layers:\footcites[See][4]{u2f-overview}[See][4]{u2f-js-api}
 
 \begin{enumerate}
 	\item the first layer defines the cryptographic basics of the protocol
 	\item the second layer defines the communication between the user's authenticator and the first layer over the chosen transport protocol (such as \gls{usb}, \gls{nfc}, or \gls{ble})
 \end{enumerate}
 
-Besides that, the \gls{u2f} protocol only specifies \gls{usb}-\gls{hid} devices (internal or external), \gls{nfc}, Bluetooth, and the low energy variant \gls{ble}, as possible transport protocols.
+The \gls{u2f} protocol relies on a web browser that is \gls{u2f}-capable, a web server that supports \gls{u2f} protocol, and the authenticator, called the \gls{u2f} token. Two different operations are defined by the specification, the \textit{registration} and \textit{authentication}. Authentication is performed by generating a signature. A notable difference to the \gls{uaf} protocol is the absence of a de-registration request. The message frame defined by the standard is based on the \gls{iso} standard for smartcards (ISO-7816) \gls{apdu}.\footcites[See][3]{7860546}[See][3]{u2f-raw-message}
 
-The \gls{u2f} protocol relies on a web browser that is \gls{u2f}-capable and a web server that supports \gls{u2f} protocol and the authenticator, called the \gls{u2f} token. Two different operations are defined by the specification, the \textit{registration} and \textit{authentication} by generating a signature, both are explained in more detailed below. A notable difference to the \gls{uaf} protocol is the missing of a de-registration request. The message frame defined by the standard is based on the \gls{iso} standard for smartcards (ISO-7816) \gls{apdu}.
+Because \gls{u2f} relies on the web in contrast to the \gls{uaf} protocol, browser support has to be taken into account. Due to the fact, that \gls{u2f} is superseded by \gls{fido}2, the browser support of \gls{u2f} is not of interest for this thesis.
 
-Because it relies on the web in contrast to the \gls{uaf} protocol, browser support has to be taken into account. Due to the fact, that \gls{u2f} is superseded by \gls{fido}2, the browser support of \gls{u2f} is not of interest for this thesis.
-
-Moreover, \gls{u2f} has also been renamed to \gls{ctap}1 since the release of the \gls{fido}2 to avoid confusion and questions whether \gls{u2f} can be used for the \wa{} as the \gls{ctap} protocol.
+Moreover, \gls{u2f} has been renamed to \gls{ctap}1 since the release of \gls{fido}2 to avoid confusion and questions whether \gls{u2f} as the \gls{ctap} can be used for the \wa.\footcite[See][4]{ctap2}
 
 \subsubsection{Registration}
 
@@ -24,33 +21,37 @@ Moreover, \gls{u2f} has also been renamed to \gls{ctap}1 since the release of th
 	\caption[\gls{u2f} registration process]{\gls{u2f} registration process\footnotemark}
 	\label{fig:u2f_reg}
 \end{figure}
-\footnotetext{source:...}
+\footcitetexts[Source: diagram by author, based on][69]{10.1007/978-3-319-75650-9_5}[][428]{10.1007/978-3-662-54970-4_25}
 
-A requirement of the registration process of a \gls{u2f} token is that the user already is registered by the \gls{rp}, the web server. The registration process is similar to the introduced process of the \gls{uaf} protocol and also displayed in \autoref{fig:u2f_reg}. At first, the server generates a challenge for the client and sends it along with the username and its AppID to the client, in this case the web browser. The payload also contains the desired version of the \gls{u2f} protocol and the already registered keys, if any. The client again can verify that the AppID matches the origin it is communicating with.
+A requirement of the registration process of a \gls{u2f} token is that the user already is registered on the \gls{rp}, the web server. The registration process is similar to the introduced process of the \gls{uaf} protocol and also displayed in \autoref{fig:u2f_reg}. At first, the server generates a \textit{challenge} for the client and sends it along with the \textit{username} and its \textit{AppID} to the client, in this case the web browser. The payload also contains the desired \textit{version} of the \gls{u2f} protocol and the already \textit{registered keys}, if any. The client can verify that the AppID matches the origin it is communicating with.\footcites[See][4--5]{u2f-js-api}[See][431]{10.1007/978-3-662-54970-4_25}
 
-Further, the challenge parameters are constructed by hashing \textit{client data}, i.e., the challenge, AppID, and typ. This data is sent along with the hash of the AppID to the \gls{u2f} token. After that, the token optionally verifies the presence of the user and generates a new public-private key pair over the \gls{nist} \gls{ec} P-256 and stores it with the username. The token sends the \textit{registration data} consisting of the public key, i.e. an uncompress point on the curve and the key handle, which can be wrapped, i.e., encrypted, back to the client. In addition, the attestation certificate of the token and an \gls{ecdsa} signature over the values hashed AppID, hashed challenge, key handle, and pubic key are sent back to the client.
+Further, the challenge parameters are constructed by hashing \textit{client data}, i.e., the challenge, AppID, and \textit{typ}. The typ always has the value \textit{navigator.id.finishEnrollment} for a registration process. This data along with the hash of the AppID is sent to the \gls{u2f} token. After that, the token optionally verifies the presence of the user and generates a new key-pair over the \gls{nist} \gls{ec} P-256 and stores it with the username in its database. The token sends the \textit{registration data} consisting of the public key, i.e. an uncompressed point on an \gls{ec} and the key handle, which can be wrapped, i.e., encrypted, back to the client. In addition, the attestation certificate of the token and an \gls{ecdsa} signature over the hashed AppID, hashed challenge, key handle, and public key are sent back to the client.\footcites[See][4--5]{u2f-raw-message}[See][70]{10.1007/978-3-319-75650-9_5}
 
-Finally, the client forwards the registration and client data to the \gls{rp}, which can cryptographically verify the data by the signature and attestation certificate.
+Finally, the client forwards the registration and client data to the \gls{rp}, which can cryptographically verify the data with the signature and attestation certificate.\footcites[See][3]{7860546}
 
-The following \autoref{listing:u2freg} shows the high-level \gls{api} \gls{js} registration process.
+The following \autoref{listing:u2freg} shows the high-level \gls{js} \gls{api} registration process.
 \\
 \begin{example}{Example U2F registration code}{listing:u2freg}
 \begin{minted}[breaklines]{javascript}
 const registerRequest = {
-  challenge: 'Wings2019', // normally is a random string
+  challenge: 'Wings2019', // usually a random string
   version: 'U2F_V2' // where V2 refers to protocol version 1.2
   appId: 'https://timbrust.de'
 };
 
-u2f.register('https://timbrust.de', [registerRequest], [], (response) => {
+const registeredKeys = [];
+
+u2f.register('https://timbrust.de', [registerRequest], registeredKeys, (response) => {
   console.log(response)
 });
 \end{minted}
 \end{example}
 
-The challenge value in the \textit{registerRequest} usually is a random challenge and base64 encoded, but for demonstration purposes a plain text string is used instead. In a real world scenario, the \textit{registerRequest} object is generated by the server and sent to the client and the \textit{u2f} \gls{js} object is called from the client.
+The challenge value in the \textit{registerRequest} usually is a random challenge and base64 encoded, but for demonstration purposes a plain text string is used instead. In a real world scenario, the \textit{registerRequest} object is generated by the \gls{rp} and sent to the client and the \textit{u2f} \gls{js} object is called by the client. Passing in a list of already registered keys with the \gls{rp} avoids the duplicate registration of a user with the \gls{rp}.\footcites[See][3]{u2f-js-api}[See][430]{10.1007/978-3-662-54970-4_25}
 
 The received response is displayed in \autoref{listing:u2fregresp} and contains the already explained bas64 encoded \textit{registrationData} and the base64 encoded \textit{clientData}. For better readability the strings clientData and registrationData are trimmed. Also, the clientData is decoded to show which data it contains. The client always returns an errorCode \textit{0 (OK)} indicating a successful registration. Other error codes include an other error (1), bad request (2), unsupported configuration (3), ineligible device (4), or timeout (5).
+
+Further the clientData consists of \textit{typ} as we,ll as the challenge of the \gls{rp} and the origin.
 
 \begin{example}{Example U2F registration response}{listing:u2fregresp}
 \begin{minted}[breaklines]{javascript}
@@ -61,7 +62,7 @@ const response = {
   version: 'U2F_V2'
 };
 
-// bota() decoded clientData yields
+// btoa() decoded clientData yields
 const decodedClientData = {
   challenge: 'Wings2019',
   origin: 'https://timbrust.de',
@@ -70,15 +71,13 @@ const decodedClientData = {
 \end{minted}
 \end{example}
 
-Further the clientData consists of \textit{typ} with the value \textit{navigator.id.finishEnrollment} for a successful registration as well as the challenge of the \gls{rp} and the origin.
-
 \subsubsection{Authentication}
 
 The authentication involves signing a challenge the \gls{rp}, the web server, sends with the corresponding private key, in order that the \gls{rp} can cryptographically verify the the response with the saved public key. \autoref{fig:u2f_auth} shows the procedure, too. The \gls{rp} begins by sending a random challenge, the key handle associated with the user, and the AppID to the client. As in the registration phase, the client can verify the received AppID.
 
 Afterwards, the challenge parameters (hash of the client data) are constructed by hashing the challenge, AppID, and typ. This data is sent along with the hash of the AppID to the \gls{u2f} token. There is no difference in this process compared to the registration
 
-Upon reception, the \gls{u2f} token verifies the presence of the user and retrieves the stored key-pair associated with the key handle.	It sends the counter, that is increased by each usage, and the \gls{ecdsa} over the values user presence, counter, challenge parameters and the hash of the AppID back to the client.
+Upon reception, the \gls{u2f} token verifies the presence of the user and retrieves the stored key-pair associated with the key handle. It sends the counter, that is increased by each usage, and the \gls{ecdsa} over the values user presence, counter, challenge parameters and the hash of the AppID back to the client.
 
 The client forwards registration dat, client data, and key handle to the \gls{rp}, which in return can verify the signature data with the stored public key.
 
@@ -88,7 +87,7 @@ The client forwards registration dat, client data, and key handle to the \gls{rp
 	\caption[\gls{u2f} authentication process]{\gls{u2f} authentication process\footnotemark}
 	\label{fig:u2f_auth}
 \end{figure}
-\footnotetext{source:...}
+\footcitetexts[Source: diagram by author, based on][70]{10.1007/978-3-319-75650-9_5}[][428]{10.1007/978-3-662-54970-4_25}
 
 The \autoref{listing:u2fauth} shows an example, high-level \gls{api} \gls{js} signing process. The \gls{rp} sends the associated key handle, the protocol version, AppID and authentication challenge to the client. \autoref{listing:u2fauthresp} shows the generated response by the \gls{u2f} token. The response object and decoded client data shows the \autoref{listing:u2fauthresp}.
 \\
@@ -115,7 +114,7 @@ const response = {
   signatureData: 'AQAAAhIwRQIhAK7xli8pV2cc8TKTOYMcdiz-ZuNVes [...]', // further data is omitted for readability
 };
 
-// bota() decoded clientData yields
+// btoa() decoded clientData yields
 const decodedClientData = {
   challenge: 'Wings2019Auth',
   origin: 'https://timbrust.de',

@@ -156,7 +156,7 @@ const attestationObject = {
     attestedCredentialData: {
       aaguid: '0000000000000000',
       credentialIdLength: 96,
-      credentialId: ArrayBuffer(59), // same as publicKeyCredential.id
+      credentialId: ArrayBuffer(59), // identical to publicKeyCredential.id
       credentialPublicKey: {
         kty: 'EC',
         alg: 'ECDSA_w_SHA256',
@@ -177,7 +177,7 @@ An authentication ceremony is started by calling the method \textit{navigator.cr
 \begin{example}{Exemplary Web Authentication API authentication}{listing:webauthnauth}
 \begin{minted}[breaklines]{javascript}
 const publicKeyOptions = {
-  challenge: 'Wings2019Auth', // normally random string from the server in binary form (Uint8Array)
+  challenge: 'Wings2019Auth', // normally a random string from the server in binary form (Uint8Array)
   allowCredentials: [
     {
       id: 'BShOCQ2c32dv4aqyy3oWmcu_9s4tz0VIob81U5tg [...]',
