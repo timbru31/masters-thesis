@@ -8,11 +8,4 @@ The goal of the \wa{} is to enable \frqq the creation and use of strong, atteste
 
 The \wa{} is an outcome of joint efforts from the \gls{fido} alliance and and the \gls{w3c}. It is a product from preceding industry standards, namely \glsfirst{uaf} and \glsfirst{u2f}. This chapter introduces the origin of the \wa{} by explaining the origin of the \gls{fido} alliance and their works on the \gls{uaf} and \gls{u2f} with a focus of the technical implementations, protocols and used techniques.\footcites[See][24]{fido-ct-3}
 
-\subsection{FIDO Alliance}
-\label{subsec:fido_alliance}
-
-The \gls{fido} alliance is an open industry association founded in July 2012 and launched in February 2013. Companies such as PayPal, Lenovo, and Infineon founded the \gls{fido} alliance. Currently the alliance has more than 260 members, including, e.g., Google, Amazon, Yubico, Samsung, Microsoft, VISA, or MasterCard. The goal of the \gls{fido} alliance is to develop new authentication protocols and standards in order to enhance and simplify the user experience of \gls{mfa} and to reduce the over usage of passwords.\footcites[See][583]{eckert-it-sec-9}[See][17]{fido-ct-2}
-
-The \gls{fido} alliance developed the specifications \gls{uaf} and \gls{u2f}. The first specification of the \gls{u2f} was the starting point for the development of the \wa{} in a joint efforts with the \gls{w3c}. The \gls{ctap} is based on the \gls{u2f} specification 1.2 which complements the \wa. Both projects are part of the FIDO2 project.\footcite[See][169--170]{grimes2017hacking}
-
-Another goal of the \gls{fido} alliance is the user privacy. As all specifications are based on public-key cryptography, this goal is easily achieved as each key is unique for each registration and not shared with third parties. Because of the public-key cryptography, no link between the same user account on different websites exist. Further, a \gls{rp} is only allowed to access the matching keys. In addition, one of the core principles is that biometrics data never leaves the local authenticator and that no action is performed without the users consent. Besides that, no authenticator device is uniquely identifiable, but only on a manufacturer or production-batch level.
+The first specification of the \gls{u2f} was the starting point for the development of the \wa{} in a joint efforts with the \gls{w3c}. The \gls{ctap} is based on the \gls{u2f} specification 1.2 which complements the \wa. Both projects are part of the FIDO2 project.\footcite[See][169--170]{grimes2017hacking}
