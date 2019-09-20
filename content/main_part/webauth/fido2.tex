@@ -10,9 +10,9 @@ As already briefly introduced in \autoref{subsec:fido_alliance}, the \gls{fido}2
 	\caption[\gls{fido}2 architecture overview]{\gls{fido}2 architecture overview\footnotemark}
 	\label{fig:fido2_architecture}
 \end{figure}
-\footnotetext{Source: https://fidoalliance.org/specifications/, last access on 09/14/2019}
+\footnotetext{Source: https://fidoalliance.org/specifications/, last accessed on 09/14/2019}
 
-\autoref{fig:fido2_architecture} shows the overview of the \gls{fido}2 project. A noteworthy change is the possibility to use either a \textit{roaming}, i.e., external authenticator or an authenticator that is built into the device.
+\autoref{fig:fido2_architecture} shows the overview of the \gls{fido}2 project. A noteworthy change in contrast to the \gls{u2f} specification is the possibility to use either a \textit{roaming}, i.e., external authenticator or an authenticator that is built into the device or platform, respectively.
 
 \subsection{Client to Authenticator Protocol 2}
 
@@ -21,10 +21,10 @@ The \glsfirst{ctap} 2 is based on the \gls{u2f} protocol version 1.2 and defines
 \begin{enumerate}
 	\item the authenticator \gls{api}
 	\item message encoding
-	\item transport-specifc binding
+	\item transport-specific bindings
 \end{enumerate}
 
-The key methods of the authenticator \gls{api} are explained in more detail below. Message encoding describes the process of encoding the corresponding message in a binary encoding called \gls{cbor} that is suitable for, e.g., the transport over \gls{ble}, because plain text string and \gls{json} objects can be too big for a transport over such protocols. The transport-specific bindings define the required transformation and bindings in order to comply with the transport protocol specifications.\footcites[See][4--5]{ctap2}
+The key methods of the authenticator \gls{api} are explained in more detail below. Message encoding describes the process of encoding the corresponding message in a binary form called \gls{cbor}. This binary form is suitable for, e.g., the transport over \gls{ble}, because plain text strings and \gls{json} objects can be too big for a transport over low data rate protocols. The transport-specific bindings define the required transformation and bindings in order to comply with the transport protocol specifications.\footcites[See][4--5]{ctap2}
 
 An important difference between \gls{ctap}2 and the preceding standard \gls{u2f} is the fact that \gls{ctap}2 describes only the communication between the client, i.e., web browser and the authenticator, as opposed to \gls{u2f} where the standard also defines the \gls{js} \gls{api} in order to communicate with the authenticator. \autoref{fig:ctap_vs_u2f} shows this architectural difference.\footcites[See][51]{kim-new-way-fido}[See][254]{Schwartz2018}
 
@@ -36,26 +36,28 @@ An important difference between \gls{ctap}2 and the preceding standard \gls{u2f}
 \end{figure}
 \footcitetexts[Source: diagram by author, based on][4]{u2f-overview}[][Chapter 6]{w3c}
 
+\newpage
+
 \subsubsection{Registration}
 
-The registration procedure calls the method \textit{authenticatorMakeCredential}. The input parameters are identical to the ones defined in the higher level \wa{} and are further explained in \autoref{subsec:wa}. Upon reception of the required data, the authenticator first checks if the \textit{excludeList} if a credential ID is listed that is already registered on the authenticator. This prevents that a user registers multiple accounts. If the user verification or presence option is passed, the authenticator has to ensure a legitimate user is present. Upon successful user verification the authenticator generates a new credential key-pair for the specified algorithm.\footcites[See][9]{ctap2}
+The registration procedure calls the method \textit{authenticatorMakeCredential}. The input parameters are identical to the ones defined in the higher level \wa{} and are further explained in \autoref{subsec:wa}. Upon reception of the required data, the authenticator first checks if the \textit{excludeList} contains a credential ID that is already registered with the authenticator. This prevents that a user registers multiple accounts for the same \gls{rp}. If the user verification or presence option is passed, the authenticator has to ensure a legitimate user is present. Upon successful user verification the authenticator generates a new credential key-pair for the specified algorithm.\footcites[See][9]{ctap2}
 
-After that, the authenticator generates the attestation object consisting of the authentication data, which contain the hash of the \gls{rp} ID, a counter, flags if the user has been verified, and the public key with its unique credential ID. Besides that, the authenticator also sends the attestation statement if required. This statement can for example be issued by the \gls{tpm}, Android Key attestation, or the private attestation key of the authenticator token.\footcites[See][9]{ctap2}[See][Chapter 8]{w3c}
+After that, the authenticator generates the attestation object consisting of the authentication data, which contains the hash of the \gls{rp} ID, a counter, flags if the user has been verified, and the public key with its unique credential ID. Besides that, the authenticator also sends the attestation statement, if required. This statement can for example be issued by the \gls{tpm}, Android Key attestation, or generated with private attestation key of the authenticator token.\footcites[See][9]{ctap2}[See][Chapter 8]{w3c}
 
-\subsubsection{Authentication and transaction confirmation}
+\subsubsection{Authentication and Transaction Confirmation}
 
-Authentication is performed by using the method \textit{authenticatorGetAssertion} of the \gls{ctap} protocol. Again the higher level \wa{} defines the input parameters. The identifier of the \gls{rp} is sent to the authenticator and optionally a list of allowed public keys the authenticator is allowed to retrieve. After optional user verification and presence detection the authenticator displays the data to the user if it has a display to do so. When these checks succeeded, the authenticator accesses the corresponding credentials.\footcites[See][11-13]{ctap2}
+Authentication is performed by using the method \textit{authenticatorGetAssertion} of the \gls{ctap}, where the higher level \wa{} defines the input parameters. The identifier of the \gls{rp} is sent to the authenticator and optionally a list of public keys the authenticator is allowed to retrieve. After optional user verification and presence detection, the authenticator displays the data to the user if it has a display to do so. When these checks succeeded, the authenticator accesses the corresponding credential.\footcites[See][11-13]{ctap2}
 
-The authenticator generates an assertion signature over the received hash of the client data and the authenticator data which consist of the hashed \gls{rp} ID, the flags for user presence and verification, a counter, and the attested credential data. The attested credential data comprises of the \gls{aaguid}, credential ID and the credential public key.\footcites[See][Chapter 6.4.1.]{w3c}
+The authenticator generates an assertion signature over the received hash of the client data and the authenticator data. The authenticator data consist of the hashed \gls{rp} ID, the flags for user presence and verification, a counter, and the attested credential data. The attested credential data comprises of the \gls{aaguid}, credential ID, and the credential public key.\footcites[See][Chapter 6.4.1.]{w3c}
 
-\subsubsection{Factory reset}
+\subsubsection{Factory Reset}
 
-As the \gls{uaf} protocol, but in contrast to the \gls{u2f} specification, the \gls{ctap} does define a method to completely factory reset the authenticator in order to de-register every user account on it. To avoid accidental deletion of all user accounts, the protocol specifies that the authenticator may ask for user confirmation. However, it is not possible to delete a specific user account.\footcites[See][26]{ctap2}
+As the \gls{uaf} protocol, but in contrast to the \gls{u2f} specification, the \gls{ctap} defines a method to completely factory reset the authenticator in order to de-register every user account and key material stored on it. To avoid accidental deletion of all user accounts, the protocol specifies that the authenticator may ask for user confirmation. However, it is not possible to delete a specific user account and key-pair.\footcites[See][26]{ctap2}
 
 \subsection{Web Authentication API}
 \label{subsec:wa}
 
-The \gls{api} defined in the \wa{} is actually an extension of the Credential Management \gls{api}, which is another \gls{api} in development, but currently in a draft state.\footnote{The \gls{w3c} standardization process can be viewed in the \autoref{sec:w3c-process}} The Credential Management \gls{api} defines \textit{navigator.credentials} property with the \textit{create} and \textit{get} methods and has the goal to offer an \gls{api} for programmatically accessing the user agent's password storage capabilities. The \wa{} is adding further method overloads to support public-key based credentials, too.\footcites[See][Chapter 1]{w3c}[See][Chapter 1.1]{w3c-credentials}
+The \gls{api} defined in the \wa{} is actually an extension of the Credential Management \gls{api}. This is another \gls{api} in development by the \gls{w3c}, but currently in a draft state and not a recommendation yet.\footnote{The \gls{w3c} standardization process can be viewed in the \autoref{sec:w3c-process}} The Credential Management \gls{api} defines the \textit{navigator.credentials} property with the \textit{create} and \textit{get} methods. Its the goal is to offer an \gls{api} for programmatically accessing the user agent's password storage capabilities. The \wa{} is adding further method overloads to support public-key based credentials, too.\footcites[See][Chapter 1]{w3c}[See][Chapter 1.1]{w3c-credentials}
 
 Authentication and registration in the context of the \wa{} are a special form of network protocols, called a \textit{ceremony}. A ceremony is the concept of extending a network protocol to include human nodes, too. This allows the specification to take the human factor into account, too.\footcite[See][2]{Ellison2007CeremonyDA}
 
