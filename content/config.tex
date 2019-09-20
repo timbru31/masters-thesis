@@ -7,16 +7,16 @@
 % Font size, layout, paper, type and page numbering the of the document
 %-----------------------------------------------------------------------------
 \documentclass[
+	listof=totoc,
+	chapteratlists=entry,
+	listof=chaptergapline,
 	fontsize=12pt,
 	oneside,
 	a4paper,
 	parskip=half,
-	listof=totoc,
-	listof=chaptergapline,
 	bibliography=totoc,
 	numbers=noenddot
 ]{scrreprt}
-
 
 \newcommand{\romannumbering}{
 	\pagenumbering{Roman}
@@ -249,12 +249,14 @@
 %-----------------------------------------------------------------------------
 % Listings
 %-----------------------------------------------------------------------------
-\newcounter{example}[chapter]
 \def\exampleautorefname{Listing}
+
+\addtotoclist{loe}
+\newcounter{example}[chapter]
 \renewcommand{\theexample}{\thechapter.\arabic{example}}
-\newcommand{\listofloename}{List of Listings}
+\newcommand{\listofloename}{List of Examples}
 \newcommand\listofexamples{\listoftoc{loe}}
-\setuptoc{loe}{chaptergapline,totoc}
+\setuptoc{loe}{chapteratlist,totoc}
 \makeatletter
 \newcommand\l@example{\l@figure}
 \makeatother
@@ -263,11 +265,11 @@
   \setlength\parfillskip{0pt plus 1fil}%
   \begin{tcolorbox}[
 	phantom={\global\refstepcounter{example}},
-    before title={%
-      \addxcontentsline{loe}{section}[\theexample]{\ignorespaces #1}},
-    title=Listing\ \theexample:\ \ignorespaces #1,%
-    label=#2
-   ]%
+	before title={%
+		\addxcontentsline{loe}{example}[\theexample]{\ignorespaces #1}},
+	title=Listing\ \theexample:\ \ignorespaces #1,%
+	label=#2
+	]%
 }{\end{tcolorbox}}
 
 
