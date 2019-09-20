@@ -5,7 +5,7 @@
 % TODO which stats
 \textcolor{red}{The global browser support as of August 2019 is 68\%.}
 \begin{table}[ht]
-	\begin{tabularx}{\textwidth}{l|p{5.3cm}|p{2cm}|p{1.9cm}|p{2.8cm}}
+	\begin{tabularx}{\textwidth}{l|p{5.3cm}|p{2cm}|p{1.7cm}|p{3.08cm}}
 		& Web browser & Supported & Version & Release Date \\
 		\hline
 		\parbox[t]{2mm}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Dekstop}}} & Chrome & \OK & 67 & May 2018 \\
@@ -13,7 +13,7 @@
 		& Opera & \OK & 54 & June 2018 \\
 		& Internet Explorer & \NOOK & - & - \\
 		& Edge & \OK & 18 & November 2018 \\
-		& Safari & (\OK) & (13) & - \\
+		& Safari & \OK & 13 & September 2019 \\
 		\hline
 		\parbox[t]{2mm}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Mobile}}} & Opera Mobile & \NOOK & - & - \\
 		& IE Mobile & \NOOK & - & - \\
@@ -44,24 +44,23 @@
 \newpage
 
 \subsubsection{Desktop support}
-% TODO SOURCES!!
 
 The \wa{} is supported from Chrome 67 onwards, which was released in May 2018. Firefox added support for the \wa{} in May 2018 with its version 60 as well.\\
 Microsoft added support for the \wa{} in Edge 13 which was released in November 2015. However, the implementation is based on an earlier draft version of the \wa. Support for the \gls{fido} 2.0 specification was added in Edge 14 (released in December 2016). The feature is hidden behind a configuration option though and was enabled for all users with the release of Edge 17 in November 2018.\footcite[See][112]{Jacobs:2019}
 
 Browsers such as Opera, Vivaldi, or Brave, and upcoming Edge versions that are all based on Chromium, the browser and source code behind Google's Chrome browser, have support for the \wa, too.\footcites[See][Chapter 7.1]{kissell2019take}
 
-As the development for the Internet Explorer halted, and it is only receiving security updates, no support is available for new web \glspl{api} including the \wa, even though it is still used by \textcolor{red}{5\%} of all desktop browser users and remains supported for the operating system Windows 7, 8.1 and 10.\footcite[See][]{ie-support}
- This is an important fact to take into account when evaluating the usability of the \wa{} since especially enterprise users often cannot upgrade or switch their browser.
+As the development for the Internet Explorer halted, and it is only receiving security updates, no support is available for new web \glspl{api} including the \wa. Even though it is still used by \textcolor{red}{5\%} of all desktop browser users and remains supported for the operating system Windows 7, 8.1 and 10. This is an important fact to take into account when evaluating the usability of the \wa{} since especially enterprise users often cannot upgrade or switch their browser.\footcite[See][]{ie-support}
 
-Safari added support for the \wa{} feature in December 2018 but only for the preview variant of the browser, called the Safari Technology Preview. It is expected to be available for all users with the release of Safari 13 in mid to end September. The support is limited to \gls{usb}-HID enabled authenticators though and only available for macOS Mojave and Catalina and yet unknown if older macOS version will receive an update to Safari 13.\footcites[See][]{safari-webauthn}
+Safari added support for the \wa{} feature in December 2018 but only for the preview variant of the browser, called the Safari Technology Preview. On September 20 Safari 13 was released for the \glspl{os} macOS High Sierra and Mojave. The support is limited to \gls{usb}-HID enabled authenticators though.\footcites[See][]{safari-webauthn}[See][]{safari-13-release}
 
-Besides that, Windows 10 also added support for \gls{mfa} by incorporating the technology described in the \gls{fido} standard. This allows biometric authentication with, e.g., fingerprints when a reader is available or to use the facial recognition technology or iris scans. This feature is called \frqq Windows Hello\flqq{}. The credentials are only stored locally and are protected by asymmetric encryption. Besides biometric authentication Windows Hello also supports \glspl{pin}. The \gls{tpm} stores this \gls{pin}. The Windows Hello technology can be used in desktop browsers, i.e., delegating the \wa{} functionality to the \gls{os}.\footcite[See][]{201612}[See][6]{fido-whitepaper-amd}
+Besides that, Windows 10 also added support for \gls{mfa} by incorporating the technology described in the \gls{fido}2 standard. This allows biometric authentication with, e.g., fingerprints when a reader is available or to use the facial recognition technology or iris scans. The feature is called \frqq Windows Hello\flqq{}. Credentials are only stored locally and are protected by asymmetric encryption. Besides biometric authentication Windows Hello also supports \glspl{pin}. The \gls{tpm} stores this \gls{pin}. Windows Hello can be used in desktop browsers, i.e., delegating the \wa{} functionality to the \gls{os}.\footcites[See][]{201612}[See][6]{fido-whitepaper-amd}
 
 \subsubsection{Mobile support}
 
-The support for the \wa{} in mobile web browsers is inferior to desktop support. While Chrome for Android supports the \wa{} since October 2018 and Firefox since July 2019, iOS completely lacks support for the \wa. Even though in the iOS 13 beta versions the feature can be enabled in the \frqq Experimental Features\flqq{} section the \gls{api} remains unsupported or at least there is no way to add an authenticator in the browser yet.\\
-The only ray of hope is that the Brave browser for iOS incorporated support for security key \frqq YubiKey 5Ci\flqq{} which enables \gls{u2f} and the \wa{} for iOS by using an Apple certified Lightning accessory. A successful authentication with the YubiKey 5Ci and the Brave browser for iOS shows \autoref{fig:brave_success}. iPad devices with an \gls{usb}-C connector currently do not work yet.\footcites[See][]{brave-ios}[See][]{brave-now-available}[See][]{fido-ct-6}
+The support for the \wa{} in mobile web browsers is inferior to the desktop support. While Chrome for Android supports the \wa{} since October 2018 and Firefox since July 2019, stock iOS completely lacks support for the \wa. Even though in the iOS 13 settings the feature can be enabled in the \frqq Experimental Features\flqq{} section, the \gls{api} remains unsupported or at least there is no way to add an authenticator in the browser yet.\footcites[See][]{chrome-android-webauthn}[See]{firefox-android-webauthn}
+
+The only ray of hope is that the Brave browser for iOS added support for the security key \frqq YubiKey 5Ci\flqq{} which enables the \wa{} for iOS by using an Apple certified Lightning accessory. \autoref{fig:brave_success} shows a successful authentication with the YubiKey 5Ci and the Brave browser for iOS. iPad devices with an \gls{usb}-C connector currently do not work yet. Further, the YubiKey 5Ci is not recognized in the Safari browser, too.\footcites[See][]{brave-ios}[See][]{brave-now-available}[See][]{fido-ct-6}
 
 \begin{figure}[hbt]
 	\centering
@@ -71,7 +70,7 @@ The only ray of hope is that the Brave browser for iOS incorporated support for 
 \end{figure}
 \footnotetext{Source: author's own photograph}
 
-However, \autoref{fig:brave_try} shows the try to use an existing \gls{u2f} YubiKey with a lightning dongle in the Brave browser on a website that offers support for the \wa. While the \gls{u2f} YubiKey has power, Brave does not recognize it. Neither is it usable. Safari does not show an overlay either. Further, the YubiKey 5Ci is not recognized in the Safari browser, too.
+However, \autoref{fig:brave_try} shows the try to use an existing Security Key by Yubico with a lightning dongle in the Brave browser. While the token has power, Brave does not recognize it, neither is it usable. Safari does not show an overlay for the key usage either.
 
 \begin{figure}[hbt]
 	\centering
@@ -81,16 +80,15 @@ However, \autoref{fig:brave_try} shows the try to use an existing \gls{u2f} Yubi
 \end{figure}
 \footnotetext{Source: author's own photograph}
 
-It has to be noted though, that other Android browser vendors need to implement the functionality themselves. Other geographic regions use a variety of different browsers, e.g., the UC Browser, 360 Security Browser, Mint Browser from Xiaomi or the QQ Browser from Tencent. Neither they nor browsers such as Samsung Internet, Opera (mini) for Android, Edge or the Android Stock browser are currently supporting the \wa. The current Firefox for Android (codename \frqq Fennec\flqq) browser is based on Chromium, too, while in contrast the desktop browser is powered by Mozilla's own browser engine called \frqq Gecko\flqq. A new Firefox for Android browser, currently called Firefox Preview, which uses a mobile compatible version of Gecko is in development (codename \frqq Fenix\flqq), too, which yet lacks support for the \wa. However, Android offers support for FIDO2 as an \gls{api}
-% TODO https://developers.google.com/identity/fido/android/native-apps
+\newpage
+
+It has to be noted though, that other Android browser vendors need to implement the functionality themselves. Other geographic regions use a variety of different browsers, e.g., the UC Browser, 360 Security Browser, Mint Browser from Xiaomi, or the QQ Browser from Tencent. Neither they, nor browsers such as Samsung Internet, Opera (mini) for Android, Edge, or the Android Stock browser are currently supporting the \wa. The current Firefox for Android (codename \frqq Fennec\flqq) browser is based on Chromium, too, in contrast the desktop browser which is powered by Mozilla's own browser engine Gecko. A new Firefox for Android browser, currently called Firefox Preview (codename \frqq Fenix\flqq), which uses a mobile compatible version of Gecko, lacks support for the \wa, too. However, Android offers support for FIDO2 as an \gls{api} and the \gls{os} itself is \gls{fido} certified.\footcites[See][24]{fido-ct-3}
 
 Other mobile \glspl{os}, for example, Windows Phone 8, BlackBerry \gls{os}, BlackBerry 10 or KaiOS do not support the \wa.
 
 \subsection{Usability}
 
-One of the main goals of the \wa{} is the \frqq it just works\flqq{} feeling, by providing a secure but abstract solution for the end user. The chosen web browser and \gls{os} are responsible for the design of the login and registration windows, while in contrast the website designs the traditional login masks and forms. In order to maintain a high usability the user should be able to use a variety of tokens, e.g., built in key stores protected by biometrics or an external token that uses \gls{ble}, \gls{nfc}, or a \gls{usb}-A or \gls{usb}-C interface. Unfortunately, the \frqq it just works\flqq{} can not be reached on macOS or iOS yet. While the desktop varian of Safari at least contains an opt-in support, the \gls{ctap} is only implemented for \gls{usb}-HID based tokens. Additionally, Firefox only supports \gls{usb}-HID based authenticators on other operating systems than Windows 10, too.
-
-While analyzing the market situation it was observed that the availability of \gls{fido} \gls{u2f} for end consumers is quite limited. Only a handful vendors offer security keys, quantity-wise \gls{ble} are the rarest keys, it seems they are succeeded by \gls{nfc}.
+One of the main goals of the \wa{} is the \frqq it just works\flqq{} feeling, by providing a secure but abstract solution for the end user. The chosen web browser and \gls{os} are responsible for the design of the login and registration windows, often being native overlays, while in contrast the website designs the traditional login masks and forms. In order to maintain a high usability the user should be able to use a variety of tokens, e.g., built in key stores protected by biometrics or an external token that uses \gls{ble}, \gls{nfc}, or a \gls{usb}-A or \gls{usb}-C interface. Unfortunately, the \frqq it just works\flqq{} can not be reached on macOS or iOS yet. While the desktop varian of Safari at least contains support for the \wa, the \gls{ctap} is only implemented for \gls{usb}-HID based tokens. Additionally, Firefox only supports \gls{usb}-HID based authenticators on other operating systems than Windows 10.
 
 Often token that contain a vulnerability in their firmware need to be replaced, making this both a heavy usability loss, \textcolor{red}{as well as a security issue.}
 % TODO YubiKeys in 2017 and 2019 as well as Google's Titan Key
