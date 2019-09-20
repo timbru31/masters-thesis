@@ -12,6 +12,7 @@
 	a4paper,
 	parskip=half,
 	listof=totoc,
+	listof=chaptergapline,
 	bibliography=totoc,
 	numbers=noenddot
 ]{scrreprt}
@@ -253,7 +254,7 @@
 \renewcommand{\theexample}{\thechapter.\arabic{example}}
 \newcommand{\listofloename}{List of Listings}
 \newcommand\listofexamples{\listoftoc{loe}}
-\setuptoc{loe}{chapteratlist}
+\setuptoc{loe}{chaptergapline,totoc}
 \makeatletter
 \newcommand\l@example{\l@figure}
 \makeatother
