@@ -88,15 +88,12 @@ Other mobile \glspl{os}, for example, Windows Phone 8, BlackBerry \gls{os}, Blac
 
 \subsection{Usability}
 
-One of the main goals of the \wa{} is the \frqq it just works\flqq{} feeling, by providing a secure but abstract solution for the end user. The chosen web browser and \gls{os} are responsible for the design of the login and registration windows, often being native overlays, while in contrast the website designs the traditional login masks and forms. In order to maintain a high usability the user should be able to use a variety of tokens, e.g., built in key stores protected by biometrics or an external token that uses \gls{ble}, \gls{nfc}, or a \gls{usb}-A or \gls{usb}-C interface. Unfortunately, the \frqq it just works\flqq{} can not be reached on macOS or iOS yet. While the desktop varian of Safari at least contains support for the \wa, the \gls{ctap} is only implemented for \gls{usb}-HID based tokens. Additionally, Firefox only supports \gls{usb}-HID based authenticators on other operating systems than Windows 10.
+One of the main goals of the \wa{} is the \frqq it just works\flqq{} feeling, by providing a secure but abstract solution for the end user. The chosen web browser and \gls{os} are responsible for the design of the login and registration windows, often being native overlays, while in contrast the website designs the traditional login masks and forms. In order to maintain a high usability the user should be able to use a variety of tokens, e.g., built in key stores protected by biometrics or an external token that uses \gls{ble}, \gls{nfc}, or a \gls{usb}-A or \gls{usb}-C interface. Unfortunately, the \frqq it just works\flqq{} can not be fullfilled on macOS or iOS yet.
 
-Often token that contain a vulnerability in their firmware need to be replaced, making this both a heavy usability loss, \textcolor{red}{as well as a security issue.}
-% TODO YubiKeys in 2017 and 2019 as well as Google's Titan Key
-% TODO https://github.com/hillbrad/U2FReviews
-% TODO https://github.com/mozilla/authenticator-rs/tree/master
+While the desktop varian of Safari at least contains support for the \wa, the \gls{ctap} is only implemented for \gls{usb}-HID based tokens. Unfortunately no indication, for instance an overlay or popup, that indicate the user needs to interact with their authenticator is shown in Safari. Additionally, Firefox only supports \gls{usb}-HID based authenticators on other operating systems than Windows 10.\footcites[See][]{rust-authenticator}
 
-\begin{enumerate}
-	\item multi keys?!
-	\item durability of the keys
-	\item Implementation is hard (e.g. no SpringBoot, but many OSS. Often not certified)
-\end{enumerate}
+Besides that, external token that contain a vulnerability in their firmware often need to be replaced, making this both a heavy usability loss, as well as increasing security risk when not replacing the affected token. Both Google's Titan Key and YubiKey's were affected in the past and needed to be replaced.\footcites[See][]{yubikey-heise}[See][]{titan-key}
+
+Further, external tokens are exposed to environment and suffer from the same problems such as the regular tokens do.\footnote{See \autoref{sec:tokens}}
+
+An additional usage implication is the recommendation to have at least two registered tokens for each website.  In case one token is lost, stolen, damaged or in any other inaccessible the user still possesses a backup token to gain access to their accounts. Moreover the \wa{} does not specify a way to backup registered credentials.\footcites[See][Chapter 13.6]{w3c}
