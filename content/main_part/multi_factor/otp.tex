@@ -114,14 +114,14 @@ In contrast to the \gls{hotp} definition, \gls{rfc} 6238 explicitly defines the 
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-\autoref{fig:2fa_flow} shows an example of an authentication flow using \glspl{totp}. In this scenario, the user tries to log in to a service that uses \gls{2fa}. After entering their password (knowledge; first factor), they either
+\autoref{fig:2fa_flow} shows an example of an authentication flow using \glspl{totp}. In this scenario, the user tries to log in to a service that uses \gls{2fa}. After entering their password (knowledge as the first factor), they either
 
 \begin{enumerate}[label=(\alph*)]
 	\item use, e.g., a smartphone app, or hardware token to generate the \gls{totp}.
 	\item receive the \gls{totp} from the service, e.g., via a text message, e-mail or phone call (the figure shows an \gls{sms}).
 \end{enumerate}
 
-Once the user has obtained the \gls{otp} (possession; second factor), they can enter it at the login screen and send it to the server, the \gls{rp}. The service can now validate the \gls{otp}, while respecting the look-ahead window and allow the user authentication.
+Once the user has obtained the \gls{otp} (possession as the second factor), they can enter it at the login screen and send it to the server, the \gls{rp}. The service can now validate the \gls{otp}, while respecting the look-ahead window and allow the user authentication.
 
 \subsection{Yubico OTP}
 

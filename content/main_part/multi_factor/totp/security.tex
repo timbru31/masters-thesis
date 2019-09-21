@@ -1,37 +1,23 @@
 \subsection{Algorithm}
 
-\subsubsection{pros}
+As both the \gls{hotp} and the \gls{totp} are based on the \gls{hmac} algorithm 
 
-\begin{enumerate}
-	\item Collisions in MD5 or SHA1 are no problem, already stated/analyzed in the RFC
-\end{enumerate}
-
-\subsubsection{cons}
-
-"Just an algorithm"
-
-\begin{enumerate}
-	\item synchronization
-	\item invalidation
-	\item nobody knows how the algorithm is implemented
-	\item Differences (e.g. Steam - only 5 digits, limited Alphabet)
-	\item Brute Force if server does not limit
-	\item Not phishing resistant
-\end{enumerate}
-
-As both the \gls{hotp} and the \gls{totp} are based on the \gls{hmac} algorithm by building the \gls{otp} over the \gls{hmac} function of the secret key and the counter with a truncation, the underlying \gls{hmac} algorithm needs to be evaluated.\\
-The important part here is the chosen cryptographic hash algorithm. Mostly \gls{sha}-1 is used, since it's the default of the RFC. Given that both \gls{sha}-1 and MD5 are considered insecure one has to ask if they are still considered secure in the \gls{otp} context.\\
+The important factor is chosen cryptographic hash algorithm. Mostly \gls{sha}-1 is used, since it is the default defined in the \gls{rfc}. Given that both \gls{sha}-1 and MD5 are considered insecure one has to ask if they are still considered secure in the \gls{otp} context.\\ \footcite[See][]{10.1007/978-3-319-63688-7_19}
 Because the collision resistance of the chosen cryptographic hash algorithm is not important for the security of the \gls{otp} generation those algorithms do not expose a threat.\\
 The \gls{bsi} lists these algorithms as secure for HMAC\footcite{bsi2019recommendations}
 
-Citations: \footcite{10.1007/978-3-319-63688-7_19}
+It is more important that the algorithm is implemented correctly than changing the used hash function. In the past, e.g., Google did not issue \gls{otp} values with a leading zero. Besides that, the defined minimum length of the \gls{otp} values are six digits, meanwhile the \gls{rfc} supports up to ten. However, nearly no service provider uses more than six digits. This decreases the 
 
-It is more important that the algorithm is implemented correctly, in the past e.g. Google did not issue \gls{otp} values with a leading zero. Besides that, the minimum length of the \gls{otp} values are six digits, meanwhile the \gls{rfc} supports up to 10.\\
-For example Steam, decided to use a different alphabet and character length.
+Further, for example, the online gaming platform Steam, uses a different alphabet and character length. These divergences shows that not all implementing parties follow the recommendations of the \gls{rfc}. Moreover, the user can not verify that the algorithms are correctly implemented.
 
 A theoretical vulnerability is to use the time sync offset feature because it enables an attacker to use a token that's much longer valid than it should be. (\textcolor{red}{as discussed in section xx - time sync/drift})
 
+In addition, the \glspl{otp} are subject to a brute-force attack.
+
+The mean threat however, remains the vulnerability to phishing, because \glspl{rfc} do not specify any requirements or recommendation how to verify the origin a user communicates with. The phishing threat is examined in more depth in the following \autoref{subsec:transport}
+
 \subsection{Transportation and Generation}
+\label{subsec:transport}
 
 Given that the generation of the \gls{otp} is considered secure the more important region to analyze is the transportation of these \gls{otp}. In this section the transportation mediums \gls{sms}, e-mail, and apps for the \gls{otp} generation are considered.
 
