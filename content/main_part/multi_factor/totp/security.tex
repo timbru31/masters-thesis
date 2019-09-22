@@ -1,20 +1,18 @@
 \subsection{Algorithm}
 
-As both the \gls{hotp} and the \gls{totp} are based on the \gls{hmac} algorithm 
+As both the \gls{hotp} and the \gls{totp} are based on the \gls{hmac} specification, the underlying algorithm need to be evaluated first. The important factor is chosen cryptographic hash algorithm. Mostly \gls{sha}-1 is used, since it is the default defined in the \gls{rfc}.\footcite[See][3]{m2011rfc}
 
-The important factor is chosen cryptographic hash algorithm. Mostly \gls{sha}-1 is used, since it is the default defined in the \gls{rfc}. Given that both \gls{sha}-1 and MD5 are considered insecure one has to ask if they are still considered secure in the \gls{otp} context.\\ \footcite[See][]{10.1007/978-3-319-63688-7_19}
-Because the collision resistance of the chosen cryptographic hash algorithm is not important for the security of the \gls{otp} generation those algorithms do not expose a threat.\\
-The \gls{bsi} lists these algorithms as secure for HMAC\footcite{bsi2019recommendations}
+Given that both \gls{sha}-1 and MD5 are considered insecure, one has to ask if they are still considered secure in the \gls{otp} context. Because of the truncation and limited character set, the collision resistance of the chosen cryptographic hash algorithm is not of importance for the security of the \gls{otp} generation. Therefore, using the \gls{md}5 and \gls{sha}-1 algorithms do not expose a threat. Besides, both the \gls{rfc} and the \gls{bsi} still list these algorithms as secure for \gls{hmac} after a consideration of the collision attacks.\footcites[See][]{10.1007/978-3-319-63688-7_19}[See][18]{bsi2019recommendations}[See][2]{s2011rfc}[See][395]{eckert-it-sec-9}
 
-It is more important that the algorithm is implemented correctly than changing the used hash function. In the past, e.g., Google did not issue \gls{otp} values with a leading zero. Besides that, the defined minimum length of the \gls{otp} values are six digits, meanwhile the \gls{rfc} supports up to ten. However, nearly no service provider uses more than six digits. This decreases the 
+It is more important that the algorithm is implemented correctly than replacing the used hash function. In the past, e.g., Google did not issue \gls{otp} values with a leading zero. Besides that, the defined minimum length of the \gls{otp} values are six digits, meanwhile the \gls{rfc} supports up to ten. However, nearly no service provider uses more than six digits. This decreases the \gls{otp} entropy and strengthens the brute-force attack.\footcites[See][369]{10.1007/978-3-662-45472-5_24}
 
-Further, for example, the online gaming platform Steam, uses a different alphabet and character length. These divergences shows that not all implementing parties follow the recommendations of the \gls{rfc}. Moreover, the user can not verify that the algorithms are correctly implemented.
+Further, for example, the online gaming platform Steam, uses a different alphabet and character length. These divergences shows that not all implementing parties follow the recommendations of the \gls{rfc}. Moreover, the user can not verify that the algorithms are correctly implemented. Because \gls{hotp} and \gls{totp} rely on a shared secret, it is crucial that both the server and client store the secret in a secure manner.\footcites[See][6--7]{steam-totp}[See][11--13]{m2005rfc}
 
-A theoretical vulnerability is to use the time sync offset feature because it enables an attacker to use a token that's much longer valid than it should be. (\textcolor{red}{as discussed in section xx - time sync/drift})
+A theoretical vulnerability is to use the look-ahead window feature. It enables an attacker to use a token that is much longer valid than it should be. The greater the look-ahead window period is, the bigger the time-frame an attack has brute-force or phish is, too. Also, it is essential that the \gls{otp} is invalidated after a successful use or when the time in the look-ahead window has passed.\footcites[See][369]{10.1007/978-3-662-45472-5_24}[See][11]{m2005rfc}
 
-In addition, the \glspl{otp} are subject to a brute-force attack.
+In addition, the \glspl{otp} are subject to a brute-force attack. It is important that the server throttles the amount of tries a user can make to counter this attack.\footcites[See][6]{m2011rfc}[See][21-22]{m2005rfc}[See][240]{Schwartz2018}
 
-The mean threat however, remains the vulnerability to phishing, because \glspl{rfc} do not specify any requirements or recommendation how to verify the origin a user communicates with. The phishing threat is examined in more depth in the following \autoref{subsec:transport}
+The main threat however remains the vulnerability to phishing because \glspl{rfc} do not specify any requirements or recommendations how to verify the origin a user communicates with. The phishing threat is examined in more depth in the following \autoref{subsec:transport}.
 
 \subsection{Transportation and Generation}
 \label{subsec:transport}
@@ -25,8 +23,6 @@ Given that the generation of the \gls{otp} is considered secure the more importa
 
 The biggest advantage of \gls{sms} as a transportation medium is every mobile, ranging from an old Nokia to a new iPhone XS, is capable of receiving \gls{sms}. All major mobile phone operation systems come with an \gls{sms} application pre-installed, so no external apps are required.\\
 \gls{sms} are around \textcolor{red}{1999} and highly accepted and easy to use.
-
-\newpage
 
 While there are some key advantages with \gls{sms} transportation it also comes with a lot of downsides. Besides the cost aspect of \gls{sms} traffic, both for the sender and potentially for the receiver due to roaming fees, too, the current state of \gls{sms} traffic is considered insecure.\\
 The \gls{sms} traffic relies on the \gls{ss7} network which was developed in the 1970s. It has multiple security flaws that allows an attacker to eavesdrop or modify the in- and out-coming traffic.\footcite{WELCH201717,7997246,puzankov2017stealthy}

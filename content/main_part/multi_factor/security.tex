@@ -4,7 +4,7 @@
 
 This chapter analyses the introduced \gls{mfa} solutions in regards of their security aspects, ranging from algorithms and transportation threats, past vulnerabilities to implementation pitfalls.
 
-\autoref{fig:2fa_flow_phishing} on the next page shows the already in \autoref{fig:2fa_flow} explained \gls{mfa} flow using a \gls{totp}. In this figure the scenario is expanded with a phishing attack. The user visits a phishing copy of the website they want to use and do not recognize this. Because they know that this site is using \gls{mfa} they provide the \gls{totp} to the phishing site, too.
+\autoref{fig:2fa_flow_phishing} on the next page shows the already in \autoref{fig:2fa_flow} explained \gls{mfa} flow using a \gls{totp}. In this figure the scenario is expanded by a phishing attack. The user visits a phishing copy of the website they want to use and does not notice this. They enter their password which is intercepted by an attacker and then forwarded to the legitimate service. Because the user knows that this site is using \gls{mfa} they provide the \gls{totp} to the phishing site, too.
 
 This allows the interceptor to steal both the password (knowledge as the first factor) and \gls{totp} (possession as the second factor). In turn, an attacker can now successfully login to the victims account and effectively bypassing the \gls{mfa} solution. This scenario does not explicitly exploit a vulnerability, but rather use the conceptual weakness of a \gls{mfa} solution, since it is not phishing resistant.
 
@@ -13,7 +13,7 @@ This allows the interceptor to steal both the password (knowledge as the first f
 \begin{figure}[hbt]
 	\centering
 	\includesvg[width=\textwidth,pretex=\relscale{1}]{pics/svg/2fa_flow_phishing}
-	\caption[Exemplary \gls{mfa} phishing of an \gls{otp}]{Exemplary \gls{2fa} phishing of an \gls{otp}\footnotemark}
+	\caption[Exemplary phishing of an \gls{otp} with \gls{2fa} enabled]{Exemplary phishing of an \gls{otp} with \gls{2fa} enabled\footnotemark}
 	\label{fig:2fa_flow_phishing}
 \end{figure}
 \footnotetext{Source: diagram by author}
