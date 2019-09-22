@@ -95,8 +95,10 @@ Further, it cannot be guaranteed that the user has a working mobile network, tha
  
 \subsubsection{E-Mail}
 
-Another widely used form to transmit the \gls{otp} from the server to the user is the distribution via e-mail. E-mails are by comparison with apps more acceptable and do not require a user to give aways their cellphone number. While it eliminates the need to rely on external services and given the fact that the user already registered an account with the corresponding site, it is assumed the user owns an e-mail account.
+Another widely used form to transmit the \gls{otp} from the server to the user is the distribution via e-mail. E-mails are by comparison with apps more accepted by the users and do not require a user to give aways their cellphone number, but rather only the e--mail address that is mostly provided to the service anyways.
 
-However, e-mail traffic comes with threats, too. In the first place, unencrypted e-mail traffic can be intercepted by a \gls{mitm}, therefore exposing the secret. In 2019 \textcolor{red}{?? \%} of all e-mail traffic is still unencrypted. A malware on the desktop or smartphone can intercept incoming e-mail and even delete the message without the users knowledge, the \autoref{fig:2fa_flow_malware} applies here, too, with the variation that the \gls{otp} is not generated on the device but instead only received.
+However, e-mail traffic comes with threats, too. In the first place, unencrypted e-mail traffic can be intercepted by a \gls{mitm}, therefore exposing the \gls{otp}. For example, in August 2019 only 90\% of Google Mail's outgoing traffic was encrypted. A malware on the desktop or smartphone can intercept incoming e-mail and even delete the message without the users knowledge, the \autoref{fig:2fa_flow_malware} applies here, too, with the variation that the \gls{otp} is not generated on the device but instead only received.\footcites[See][]{email-encryption}
 
-Besides that, e-mails re-introduce the problem of delayed reception of the \gls{otp} since especially techniques such as grey-listing delay incoming messages to avoid spam. Examples such as network connectivity problems, dedicated attack (\gls{ddos}) or exceeded e-mail storage quota further increase the potential of unreliable \gls{otp} transportation
+Besides that, e-mails re-introduce the problem of delayed reception of the \gls{otp}. Especially techniques such as grey-listing delay incoming messages to avoid spam. Examples such as network connectivity problems, dedicated attack (\gls{ddos}) or exceeded e-mail storage quota further increase the potential of unreliable \gls{otp} transportation.\footcites[See][]{rfc6647}
+
+Unfortunately, e-amils are not phishing resistant, either. The same threats of \gls{sms} 
