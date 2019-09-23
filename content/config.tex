@@ -265,14 +265,14 @@
 \makeatother
 
 \newenvironment{example}[2]{%
-  \setlength\parfillskip{0pt plus 1fil}%
-  \begin{tcolorbox}[
-	phantom={\global\refstepcounter{example}},
-	before title={%
-		\addxcontentsline{loe}{example}[\theexample]{\ignorespaces #1}},
-	title=Listing\ \theexample:\ \ignorespaces #1,%
-	label=#2
-	]%
+	\setlength\parfillskip{0pt plus 1fil}%
+	\begin{tcolorbox}[
+		phantom={\global\refstepcounter{example}},
+		before title={%
+			\addxcontentsline{loe}{example}[\theexample]{\ignorespaces #1}},
+		title=Listing\ \theexample:\ \ignorespaces #1,%
+		label=#2
+		]%
 }{\end{tcolorbox}}
 
 
