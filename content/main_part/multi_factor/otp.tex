@@ -81,7 +81,7 @@ Where \textit{K} is the secret key, \textit{C} is a counter value, and \textit{t
 \end{enumerate}
 
 Due to its design, there are a couple of limitations to the \gls{hotp}. The counter used between the parties can become out of synchronization, requiring further efforts to re-synchronize. Since that the server only increases the counter on successful authentication, the out of sync scenario can occur. The server and client can become synchronized again by generating the next \gls{otp} by increasing the counter (look-ahead window) in order to verify if this \gls{otp} matches.\\
-Another method for re-synchronization is the sending of multiple future values.\footcites[See][236]{Schwartz2018}[See][Chapter 13.5.1]{2308830} It is vital to limit the look-ahead window to decrease the attack surface. Further, the server should throttle the authentication attempts in order to counterfeit brute-force attacks. Further analysis is done in \autoref{sec:totp_sec}.
+Another method for re-synchronization is the sending of multiple future values.\footcites[See][236]{Schwartz2018}[See][Chapter 13.5.1]{2308830} It is vital to limit the look-ahead window to decrease the attack surface. Further, the server should throttle the authentication attempts in order to counter brute-force attacks. Further analysis is done in \autoref{sec:totp_sec}.
 
 Additionally, the \gls{hotp} allows bidirectional authentication, i.e., the user can authenticate the server if it sends the next \gls{otp} value that the client then can validate. \Glspl{hotp} are commonly used in physical security keys, such as YubiKeys, but are also present in software solutions, e.g., in the Google Authenticator.\footcites[See][716]{HUSEYNOV2017715}[See][14]{m2005rfc}
 

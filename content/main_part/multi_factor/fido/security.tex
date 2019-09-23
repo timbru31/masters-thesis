@@ -1,1 +1,9 @@
-\cite{8429292}
+The security of the \gls{u2f} protocol extends the security threats of physical security tokens and smartcards that were introduced in the previous section, for example loss or theft.\footcites[See][12--13]{fido-sec-ref}
+
+In contrast to \gls{otp}, the \gls{u2f} protocol is phishing resistant. This resistance is achieved by binding the token, registration and authentication to a specific origin. Given the fact \gls{u2f} token compares the origin, phishing sites that target, e.g., typos in the \gls{url} do not expose a threat.
+
+However, the \gls{u2f} protocol is not resistant to malware. A malware that controls the \gls{usb} ports of a computer can communicate with the token, too.\footcites[See][10--1]{8429292}[See][9]{u2f-overview}
+
+When using the \gls{tls} ChannelID, also called token binding, extension of the \gls{u2f} protocol, the user is protected against \gls{mitm} attacks. Token binding enables mutual authentication in \gls{tls} by using cryptographic certificates on both sides. It has to be noted though, that using the \gls{tls} ChannelID is defined as optional in the specification.\footcites[See][6--7]{u2f-overview}
+
+Albeit it is not a vulnerability, the lack of a display on the authenticator can render a threat. An attacker might be able to change the transaction a user signs with the test of user presence. Further, the absence of a display might confuse a user if a registration or authentication was successful.\footcites[See][434]{10.1007/978-3-662-54970-4_25}[See][15]{das2018johnny}
