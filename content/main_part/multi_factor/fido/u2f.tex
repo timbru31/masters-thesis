@@ -31,7 +31,7 @@ Finally, the client forwards the registration and client data to the \gls{rp}, w
 
 The following \autoref{listing:u2freg} shows the high-level \gls{js} \gls{api} registration process.
 \\
-\begin{example}{Example U2F registration code}{listing:u2freg}
+\begin{example}{Example U2F registration request}{listing:u2freg}
 \begin{minted}[breaklines]{javascript}
 const registerRequest = {
   challenge: 'Wings2019', // usually a random string
@@ -89,7 +89,7 @@ The client forwards registration data, client data, and key handle to the \gls{r
 
 The \autoref{listing:u2fauth} shows an example, high-level \gls{js} \gls{api} signing process. The \gls{rp} sends the associated key handle, the protocol version, AppID and authentication challenge to the client. \autoref{listing:u2fauthresp} shows the generated response by the \gls{u2f} token. The response object and decoded client data shows the \autoref{listing:u2fauthresp}, where the clientData can also be generated beforehand by the client.\footcites[See][3]{u2f-js-api}
 \\
-\begin{example}{Example U2F authentication code}{listing:u2fauth}
+\begin{example}{Example U2F authentication request}{listing:u2fauth}
 \begin{minted}[breaklines]{javascript}
 const registeredKey = {
   keyHandle: '_WFf5BJ1dwtSCFzfWHoqKUhc9M3Hi0Tv58LAtPz0qM6B3A [...]', // further data is omitted for readability
