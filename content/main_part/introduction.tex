@@ -22,7 +22,7 @@ The most used method of authentication is knowledge, i.e., \frqq something the u
 
 \subsection{Possession}
 
-Another form of authentication is the possession, i.e., \frqq something the user (physically) has\flqq{}. The most basic example is a key for a lock. Other forms are, for example, a bank or ID card that can use techniques such as \gls{rfid}, an onboard chip or magnetic stripes to store the information. In \gls{it}, security tokens are often used, which can be hardware (such as a YubiKey, an RSA SecurID or a smartcard) or software (for instance, a smartphone application) token. They can either be disconnected, connected (e.g., via \gls{usb} or as a smartcard) or contactless (for example via \gls{nfc}, \gls{ble} or \gls{rfid}). Sometimes these tokens contain a display that can show further information.\footcites[See][24]{265831}[See][]{Dressel:2019:SZT:3319499.3328225}[See][8--11]{1698485}
+Another form of authentication is the possession, i.e., \frqq something the user (physically) has\flqq{}. The most basic example is a key for a lock. Other forms are, for example, a bank or ID card that can use techniques such as \gls{rfid}, an onboard chip or magnetic stripes to store the information. In \gls{it}, security tokens are often used, which can be hardware (such as a YubiKey, an RSA SecurID or a smartcard) or software (for instance, a smartphone application) token. They can either be disconnected, connected (e.g., via \gls{usb} or as a smartcard) or contactless (for example via \gls{nfc}, \gls{ble} or \gls{rfid}). Sometimes these tokens contain a display that can show further information.\footcites[See][24]{265831}[See][]{Dressel:2019:SZT:3319499.3328225}[See][8--11]{Mayes2017}
 
 \begin{figure}[hbt]
 	\centering
@@ -91,7 +91,7 @@ Unfortunately, the term active authentication is often used to describe continuo
 
 \section{Attestation}
 
-A typical problem in authentication is the trustworthiness between two parties, usually a server and a client. Assuring and proving that an entity is trustworthy is called attestation. \Gls{tpm} computing uses attestation, also called »Remote Attestation«, but it is also important in the context of the \gls{uaf}, \gls{u2f} protocol, and the \wa. An essential aspect is to prove (\frqq vouch for\flqq) an entity while keeping the user and the users' data private. This form of attestation is called \gls{daa}, which can use \gls{ecc} to achieve this goal, too.\footcites[See][]{trusted-comp}[See][501]{1698485}[See][4]{Coker:2011:PRA:1989153.1989155}[See][100]{2178405}[See][226]{10.1007/978-3-642-12510-2_16}
+A typical problem in authentication is the trustworthiness between two parties, usually a server and a client. Assuring and proving that an entity is trustworthy is called attestation. \Gls{tpm} computing uses attestation, also called »Remote Attestation«, but it is also important in the context of the \gls{uaf}, \gls{u2f} protocol, and the \wa. An essential aspect is to prove (\frqq vouch for\flqq) an entity while keeping the user and the users' data private. This form of attestation is called \gls{daa}, which can use \gls{ecc} to achieve this goal, too.\footcites[See][]{trusted-comp}[See][501]{Mayes2017}[See][4]{Coker:2011:PRA:1989153.1989155}[See][100]{2178405}[See][226]{10.1007/978-3-642-12510-2_16}
 
 \section{Challenge-Response Authentication}
 
