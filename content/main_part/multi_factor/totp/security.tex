@@ -37,7 +37,7 @@ The \gls{sms} traffic relies on the \gls{ss7} network which was developed in the
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-Another negative aspect of \gls{sms} transportation is the routing. Many companies rely on third-party providers to send the \gls{sms} to the user. Often these providers are using countries where \gls{sms} are very cheap, but on the other hand the \gls{ss7} security measures like \gls{sms} home routing and not enforced. This results in a higher security risk that the \gls{sms} is compromised while delivered to the user. Also, the third party providers are given access to the \gls{otp} which enables the risk of a malicious insider.\textcolor{red}{missing sources. Many/often/..}
+Another negative aspect of \gls{sms} transportation is the routing. Many companies rely on third-party providers to send the \gls{sms} to the user. Often these providers are using countries where \gls{sms} are very cheap, but on the other hand the \gls{ss7} security measures like \gls{sms} home routing and not enforced. This results in a higher security risk that the \gls{sms} is compromised while delivered to the user. Also, the third party providers are given access to the \gls{otp} which enables the risk of a malicious insider.\footcites[See][153]{10.1007/978-3-642-39235-1_9}\textcolor{red}{missing sources. Many/often/..}
 
 In contrast to the web and e-mail, the user is not aware of phishing attacks in the \gls{sms} context. However, studies show that a new technique called \gls{vcfa} is already in use. In this scenario the attacker sends the victim a (spoofed) \gls{sms} and impersonates the service provider. They tell the user that, e.g., a fraudulent access was detected and in order to block this attempt the user needs to reply with the \gls{otp} code for security measure.\footcites[See][6--7]{JAKOBSSON20186}[See][4--5]{SIADATI201714}
 
@@ -57,7 +57,7 @@ Another threat is specialized malware for mobile phones. Especially for Android 
 
 \newpage
 
-Moreover, social engineering attacks that target the mobile service operator are an attack vector. \autoref{fig:2fa_flow_sim_hack} shows a \gls{mfa} flow using \gls{totp}, but in this case with another phishing scenario that targets the service provider. An attacker has again access to the user's password, e.g., from a previous, successful phishing attack. In order to obtain or phish, respectively, they target the human weakness in the cell phone provider of the user. They successfully convince them to activate another \gls{sim} card for the victims phone number and receive the \gls{sms} with the \gls{totp}, too, which enables the attacker to successfully complete the \gls{mfa} flow. This type of attack is also called \gls{sim} swap scam. In the recent past Twitter's CEO was victim of such an attack that lead to an account takeover.\footcite[See][]{twitter-hack}
+Moreover, social engineering attacks that target the mobile service operator are an attack vector. \autoref{fig:2fa_flow_sim_hack} shows a \gls{mfa} flow using \gls{totp}, but in this case with another phishing scenario that targets the service provider. An attacker has again access to the user's password, e.g., from a previous, successful phishing attack. In order to obtain or phish, respectively, they target the human weakness in the cell phone provider of the user. They successfully convince them to activate another \gls{sim} card for the victims phone number and receive the \gls{sms} with the \gls{totp}, too, which enables the attacker to successfully complete the \gls{mfa} flow. This type of attack is also called \gls{sim} swap scam or fraud. In the recent past Twitter's CEO was victim of such an attack that lead to an account takeover.\footcites[See][19]{BLAICH201719}[See][]{twitter-hack}[See][74--76]{10.1007/978-3-642-19228-9_7}
 \\
 \begin{figure}[hbt]
 	\centering
@@ -69,20 +69,21 @@ Moreover, social engineering attacks that target the mobile service operator are
 
 Yet another variant which is technically more complex, but feasible, is the \gls{sim} card cloning. This allows the attacker to intercept the \gls{totp}, too. Even if the phone number can not be registered twice, it still enables the eavesdropping.\footcites[See][873]{eckert-it-sec-9}[See][11--12]{sim-clone}
 
-Given all these facts \gls{sms} transportation should be avoided at all costs, since there are multiple flaws in the \gls{ss7} network itself and the process how the \gls{sms} reaches the user. It is also not resistant against phishing or mobile phone trojans. Both the \gls{bsi} and the \gls{nist} advise service providers to not use \gls{sms} for the transission of \glspl{otp} and \glspl{tan} anymore.\footcites[See][8]{JAKOBSSON20186}[See][27]{bsi2019recommendations2}[See][19]{SP80063B}
+Given all these facts \gls{sms} transportation should be avoided for the usage with \glspl{otp}, since there are multiple flaws in the \gls{ss7} network itself and the process how the \gls{sms} reaches the user. It is also not resistant against phishing or mobile phone trojans. Both the \gls{bsi} and the \gls{nist} advise service providers to not use \gls{sms} for the transission of \glspl{otp} and \glspl{tan} anymore.\footcites[See][8]{JAKOBSSON20186}[See][27]{bsi2019recommendations2}[See][19]{SP80063B}[See][407]{10.1007/978-3-662-54970-4_24}
 
 Further, it cannot be guaranteed that the user has a working mobile network, that the registered mobile phone number is still active, or that the user receives the \gls{sms} in time. These non-influenceable, external factors strengthen the fact that \gls{sms} is not a secure and reliable choice for the transportation medium of \glspl{otp}.
 
 \subsubsection{App}
+\label{sec:app}
  
- In contrast to the transportation of the \gls{otp} via \gls{sms}, using a standalone app such as Google Authenticator, Authy or even the mobile \gls{otp} app for Java based phones offer some advantages. While the user has to be connected to the cellular network when receiving the \gls{otp} via \gls{sms}, the app solution works in offline or bad network connectivity use cases, too.
+ In contrast to the transportation of the \gls{otp} via \gls{sms}, using a standalone app such as Google Authenticator, Authy or even the mobile \gls{otp} app for Java based phones offer some advantages. While the user has to be connected to the cellular network when receiving the \gls{otp} via \gls{sms}, the app solution works in offline or bad network connectivity use cases, too.\footcites[See][228]{6920371}
  
  Furthermore, the app solution is cheaper because no transaction fee has to be paid by the sender or receiver. It also solves the roaming problem. On the other hand, the app needs to be maintained and updated to protect against, e.g., vulnerabilities in third party libraries and to ensure compatibility with future devices and \gls{os} versions.
  
- The setup of the \gls{otp} is not phishing resistant either. A malware on, e.g., the desktop can intercept the shared secret or the mobile phone can contain malware. This malware can intercept for instance the camera, later access the generated \gls{otp}, or access the app's database where the secrets are stored.
+ The setup of the \gls{otp} is not phishing resistant either. A malware on, e.g., the desktop can intercept the shared secret or the mobile phone can contain malware. This malware can intercept for instance the camera, later access the generated \gls{otp}, or access the app's database where the secrets are stored.\footcites[See][371]{10.1007/978-3-662-45472-5_24}[See][407]{10.1007/978-3-662-54970-4_24}
  
  \autoref{fig:2fa_flow_malware} shows the scenario where an attacker successfully infected a smartphone of a user with a mobile malware. The hacker now has the possibility to access either the \gls{otp} secret or to forward the secret when a user opens the app. This enables an attacker to bypass \gls{2fa} if, e.g., beforehand the password was phished or obtained from another data breach.
- 
+
  \newpage
  
  \begin{figure}[hbt]

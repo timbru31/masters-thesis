@@ -102,7 +102,7 @@ Challenge-response authentication is a further method of authentication by knowl
 	\item \textbf{requirement}: The server and client both know the same secret key \textit{K}
 	\item the server generates a unique challenge \textit{c} (e.g., a random number) and sends it to the client 
 	\item the client computes the keyed hash \(resp_c = hash(c, K)\)
-	\item the server compares its computation of \(resp_s = hash(c, K)\) to the received \textit{\(resp\_c\)}
+	\item the server compares its computation of \(resp_s = hash(c, K)\) to the received \textit{\(resp_c\)}
 \end{enumerate}
 
 To achieve mutual authentication, the client can also send a unique challenge to the server which in turn generates the keyed hash and sends it back to the client for verification. A typical challenge-response protocol is Fiat-Shamir.\footcites[See][Chapter 13.6]{waschke2017personal}[See][489--491]{eckert-it-sec-9}

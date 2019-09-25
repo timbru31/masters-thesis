@@ -6,8 +6,8 @@ The first generation of RSA SecurID contained a vulnerable algorithm that lead t
 
 Besides vulnerabilities in the companies server, both Google's Titan Key and YubiKeys suffered from a vulnerable firmware. Due to token design, it is not possible to update the firmware and the only security mitigation remains the replacement of affected devices.\footcites[See][]{yubikey-heise}[See][]{titan-key}
 
-In order to attack the chips inside smartcards and security tokens, a common attack are side-channel attacks such as a \gls{dpa}. YubiKeys were successfully attacked and their private \gls{aes} could be extracted. Therefore, an attacker was able to gain access to the Yubico \gls{otp} generation. In addition, an attacker can target the \gls{eeprom} of a smartcard, e.g., by trying to freeze and copy the values.\footcites[See][210, 212, 219]{10.1007/978-3-642-41284-4_11}[See][502--503, 509]{anderson2008security}
-
+In order to attack the chips inside smartcards and security tokens, a common attack are side-channel attacks such as a \gls{dpa}. YubiKeys were successfully attacked and their private \gls{aes} could be extracted. Therefore, an attacker was able to gain access to the Yubico \gls{otp} generation. In addition, an attacker can target the \gls{eeprom} of a smartcard, e.g., by trying to freeze and copy the values.\footcites[See][210, 212, 219]{10.1007/978-3-642-41284-4_11}[See][502--503, 509]{anderson2008security}\\
 Moreover, given the fact that smartcard operate as a \gls{usb}-\gls{hid} and some RSA SecurID tokens contain a \gls{usb} port for smartcard compatibility, a malware might be able to intercept the \gls{usb} communication.
 
-% TODO Software Tokens
+As software tokens mainly generate \glspl{otp} and the generation by an application already has been discussed, the reader is referred to \autopageref{sec:app}.
+ 
