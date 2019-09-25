@@ -17,8 +17,8 @@
         <text fill="#000" font-family="Helvetica" font-size="24" x="379.645" y="635">token</text>
         <text fill="#000" font-family="Helvetica-Bold, Helvetica" font-size="24" font-weight="bold" x="202.123" y="39">User device</text>
         <rect width="266" height="530" x="915" y=".5" fill="#D8D8D8" stroke="#979797" rx="8"/>
-        <text fill="#000" font-family="Helvetica" font-size="24" x="912.797" y="330">verify signature,</text>
-        <text fill="#000" font-family="Helvetica" font-size="24" x="919.465" y="363">with public key</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="912.797" y="330" transform="rotate(-90 997.5 357.5)">verify signature,</text>
+        <text fill="#000" font-family="Helvetica" font-size="24" x="919.465" y="363" transform="rotate(-90 997.5 357.5)">with public key</text>
         <text fill="#000" font-family="Helvetica-Bold, Helvetica" font-size="24" font-weight="bold" x="944.313" y="32">Relying party /</text>
         <text fill="#000" font-family="Helvetica-Bold, Helvetica" font-size="24" font-weight="bold" x="964.293" y="61">web server</text>
         <rect width="266" height="104" x="915.5" y="635.5" fill="#FFF" stroke="#979797" rx="8"/>

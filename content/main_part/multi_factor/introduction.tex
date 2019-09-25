@@ -1,16 +1,15 @@
 \chapter{Multi-Factor Authentication}
 \label{chap:mfa}
 
-In this chapter, a variety of different \gls{mfa} solutions are described in detail. \Gls{mfa} describes the process of using two (\gls{2fa}) or more (\gls{mfa}) distinct authentication methods for the user authentication, e.g., the password (knowledge) and a security token (possession).
+In this chapter, different \gls{mfa} solutions are described in detail. It describes the process of using two (\gls{2fa}) or more (\gls{mfa}) distinct authentication methods for the user authentication, e.g., the password (knowledge) and a security token (possession).
 
-Since this thesis focuses on the internet and web technologies, the first factor is always assumed as knowledge, i.e., in the majority of the use cases, passwords. Therefore, further knowledge-based authentication methods are not taken into account in this chapter.
-
-Authorities such as the \gls{bsi}, the \gls{eu}, or the National Information Assurance Glossary also use the term \frqq strong authentication\flqq{} as a synonym for \gls{mfa}, although strong authentication is not officially and often different defined.\footcites[See][47]{CNSS4009}[See][11]{deutschland2018grundschutz}
+Since this thesis focuses on the internet and web technologies, it is always assumed that the first factor is knowledge-based, i.e., in the majority of the use cases, a password. Therefore, further knowledge-based authentication methods are not taken into account in this chapter.
 
 \section{Motivation for the Usage of Multi-Factor Authentication}
 
-The motivation for the usage of \gls{mfa} is derived from the previous chapter. The chapter showed that various security threats exist, which are independent from the specific authentication method. These make user accounts, for instance, vulnerable to theft, impersonation, or phishing.\\
- In order to decrease or even eliminate these threats, the user needs to deploy additional security measures that are explained in this chapter.
+The motivation for the usage of \gls{mfa} is derived from the previous chapter. The chapter showed that multiple security threats exist, which are independent from the specific authentication method. These make user accounts, for instance, vulnerable to theft, impersonation, or phishing. Also, the previous chapter outlined the threats of password re-usage and weak passwords that have the potential to lead to subsequent attacks with, e.g., credential stuffing.
+
+ In order to decrease or even eliminate these threats, the user needs to deploy additional security measures that are explained in this chapter. The topics of \glspl{otp}, smartcards, security tokens and the \gls{u2f} protocol are presented in this chapter as possible solutions towards the security threats.
  
  Further, new formalities even require the usage of \gls{mfa}, such as the new version of the \gls{psd}, \gls{eu} Directive 2015/2366, coming into full effect in September 2019.\footcites[See][10]{NOCTOR20189}
 
@@ -20,4 +19,6 @@ The motivation for the usage of \gls{mfa} is derived from the previous chapter. 
 
 A key aspect to take into account is the chosen transmission channel for the second or different (multi) factor. \gls{oob} authentication describes the transportation of information on another channel or network than the current one. While, e.g., the \textit{standard} transmission of information on websites happens via \gls{http}, an example of \gls{oob} authentication is a phone call or \gls{sms} to send the second factor.
 
-This technique helps to reduce the risks of eavesdropping drastically, since an attacker needs to have control over two (or more) distinct communication channels. Of course the chosen \gls{oob} channel should protect against eavesdropping, i.e., be secure or encrypted. The increased security only works if the different factor is not transmitted over the first channel, which might be intercepted. Besides that, it does not work if the different factor is, for instance, entered on a phishing website, too.\footcites[See][17]{SP80063B}[See][441]{doi:10.1002/9781118256107.ch37}[See][140]{brotherston2017defensive}[See][106]{2241278}
+This technique helps to reduce the risks of eavesdropping drastically, since an attacker needs to have control over two (or more) distinct communication channels. Of course, the chosen \gls{oob} channel should protect against eavesdropping, i.e., be secure or encrypted.
+
+The increased security only takes effect if the different factor is not transmitted over the first channel, because the first channel might be intercepted. For instance, \gls{oob} provides no benefits when the users enters the \gls{otp} received via a different channel on a phishing website along with their password.\footcites[See][17]{SP80063B}[See][441]{doi:10.1002/9781118256107.ch37}[See][140]{brotherston2017defensive}[See][106]{2241278}
