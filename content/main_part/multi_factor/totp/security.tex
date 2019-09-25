@@ -23,7 +23,7 @@ Given that the fact that the weaknesses of both \gls{sha}-1 and \gls{md}5 do not
 
 The biggest advantage of \gls{sms} as a transportation medium is every mobile, ranging from an old Nokia 3310 to a new iPhone 11 Pro, is capable of receiving \gls{sms}. All major mobile phone operation systems come with an \gls{sms} application pre-installed, so no external apps are required. The first \gls{sms} was sent in 1994 and while the \gls{sms} traffic is decreasing, there were 9 billion messages sent solely in Germany in 2018.\footcites[See][2--3]{alpert2012mobile}[See][57]{bundesnetzagentur}
 
-Although there are some key advantages with \gls{sms} transportation, such as the easy to use factor and the fact that the user does not need to know the \gls{otp} secret, it also comes with a lot of downsides. Besides the cost aspect of \gls{sms} traffic, both for the sender and potentially for the receiver due to roaming fees, the current state of \gls{sms} traffic is considered insecure.
+Although there are some key advantages with \gls{sms} transportation, such as the easy to use factor and the fact that the user does not need to know the \gls{otp} secret, it also comes with a lot of downsides. Besides the cost aspect of \gls{sms} traffic, both for the sender and potentially for the receiver due to roaming fees, the current state of \gls{sms} traffic is considered insecure.\footcites[See][167]{8632643}
 
 The \gls{sms} traffic relies on the \gls{ss7} network which was developed in the 1970s. It has multiple security flaws that allows an attacker to eavesdrop or modify the in- and out-coming traffic.\footcites[See][17--18]{WELCH201717}[See][3--4]{7997246}[See][40, 46]{puzankov2017stealthy}
 
@@ -37,13 +37,13 @@ The \gls{sms} traffic relies on the \gls{ss7} network which was developed in the
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-Another negative aspect of \gls{sms} transportation is the routing. Many companies rely on third-party providers to send the \gls{sms} to the user. Often these providers are using countries where \gls{sms} are very cheap, but on the other hand the \gls{ss7} security measures such as \gls{sms} home routing and not enforced. This results in a higher security risk that the \gls{sms} is compromised while delivered to the user. Also, the third party providers are given access to the \gls{otp} which enables the risk of a malicious insider.\footcites[See][153]{10.1007/978-3-642-39235-1_9}\textcolor{red}{missing sources. Many/often/..}
+Another negative aspect of \gls{sms} transportation is the routing. Many companies rely on third-party providers to send the \gls{sms} to the user. These providers are using countries where \gls{sms} are very cheap, or route them the cheapest way, but on the other hand the \gls{ss7} security measures such as \gls{sms} home routing and not enforced. This results in a higher security risk that the \gls{sms} is compromised while delivered to the user. Also, the third party providers are given access to the \gls{otp} which enables the risk of a malicious insider.\footcites[See][153]{10.1007/978-3-642-39235-1_9}[See][4, 9, 12]{Certic2018}
 
 In contrast to the web and e-mail, the user is not aware of phishing attacks in the \gls{sms} context. However, studies show that a new technique called \gls{vcfa} is already in use. In this scenario the attacker sends the victim a (spoofed) \gls{sms} and impersonates the service provider. They tell the user that, e.g., a fraudulent access was detected and in order to block this attempt the user needs to reply with the \gls{otp} code for security measure.\footcites[See][6--7]{JAKOBSSON20186}[See][4--5]{SIADATI201714}
 
 \newpage
 
-\autoref{fig:2fa_flow_forward_phishing} shows an example of a \gls{vcfa}. An attack logs in to the user's account with, e.g., hacked or phished credentials. Because the account is protected by \gls{mfa}, the user receives a verification code via \gls{sms} or smartphone. The attacker now sends a fake \gls{sms} to the victim, stating that the service has detected unusual activity. In order to block this attempt and prove that the user is the legitimate account owner, they should reply with the just received verification code. Of course the attacker now has access to the \gls{otp}, too, since they convined the user into forwarding their code.\footcites[See][66]{10.1007/978-3-319-29938-9_5}
+\autoref{fig:2fa_flow_forward_phishing} shows an example of a \gls{vcfa}. An attack logs in to the user's account with, e.g., hacked or phished credentials. Because the account is protected by \gls{mfa}, the user receives a verification code via \gls{sms} or smartphone. The attacker now sends a fake \gls{sms} to the victim, stating that the service has detected unusual activity. In order to block this attempt and prove that the user is the legitimate account owner, they should reply with the just received verification code. Of course the attacker now has access to the \gls{otp}, too, since they convinced the user into forwarding their code.\footcites[See][66]{10.1007/978-3-319-29938-9_5}
 
 \begin{figure}[hbt]
 	\centering
@@ -71,7 +71,7 @@ Yet another variant which is technically more complex, but feasible, is the \gls
 
 Given all these facts \gls{sms} transportation should be avoided for the usage with \glspl{otp}, since there are multiple flaws in the \gls{ss7} network itself and the process how the \gls{sms} reaches the user. It is also not resistant against phishing or mobile phone trojans. Both the \gls{bsi} and the \gls{nist} advise service providers to not use \gls{sms} for the transission of \glspl{otp} and \glspl{tan} anymore.\footcites[See][8]{JAKOBSSON20186}[See][27]{bsi2019recommendations2}[See][19]{SP80063B}[See][407]{10.1007/978-3-662-54970-4_24}
 
-Further, it cannot be guaranteed that the user has a working mobile network, that the registered mobile phone number is still active, or that the user receives the \gls{sms} in time. These non-influenceable, external factors strengthen the fact that \gls{sms} is not a secure and reliable choice for the transportation medium of \glspl{otp}.
+Further, it cannot be guaranteed that the user has a working mobile network, that the registered mobile phone number is still active, or that the user receives the \gls{sms} in time. These non-influenceable, external factors strengthen the fact that \gls{sms} is not a secure and reliable choice for the transportation medium of \glspl{otp}.\footcites[See][327]{5945255}
 
 \subsubsection{App}
 \label{sec:app}
