@@ -1,30 +1,18 @@
 \chapter{Conclusion and Outlook}
 
+This thesis opened with a citation that highlighted that passwords are not suitable for a secure authentication on the web anymore. To prove this statement, the reader has been introduced into the fundamental methods and concepts of authentication. The knowledge-based method of authentication in the form of passwords are the most common method of authentication on the internet. Further, but less used methods of authentication are for example possession and biometrics, but the time or location can also be used to authentication a user. In addition the building blocks for the \gls{uaf}, the attestation and challenge-response authentication have been explained, followed by the first example of passwordless authentication.
 
-Because the thesis focused on the use of \gls{mfa} solutions on the web, but at the same time delimitated concepts as OpenID Connect, OAuth 2.0 and \gls{sso}, further research can be done in this topics. For instance, \gls{sso} is an important factor in enterprises, often used in conjunction with services and protocols such as \gls{ldap} or \gls{ad} from Microsoft. It has yet to be researched, whether the \wa{} is combinable with \gls{sso} providers.
+based thereupon, each of the authentication methods has been analyzed in regards of their security. \autoref{chap:one-factor-security} showed, that knowledge-based authentication exposes major threats. Since the human brain has difficulties remembering the 
+
+Because the thesis focused on the use of \gls{mfa} solutions on the web, but at the same time delimitated concepts as OpenID Connect, OAuth 2.0 and \gls{sso}, further research can be done in these topics. For instance, \gls{sso} is an important factor in enterprises, often used in conjunction with services and protocols such as \gls{ldap} or \gls{ad} from Microsoft. It has yet to be researched, whether the \wa{} is combinable with \gls{sso} providers.
 
 In the consumer section OAuth plays a relevant aspect as, e.g., Google, Facebook and Microsoft allow the registration on a website with the account a user has on their site registered. Most recently, Apple announced support for OAuth with the Apple ID, too. A matter to clarify and study in this regard is the competition between the \wa{} and OAuth. In particular the privacy aspect is interesting, because the providing party has the knowledge on which websites the user registered with their account. This allows an extensive user tracking.\footcites[See][18]{fido-ct-2}[See][4]{osti_1257179}
 
 One the one hand, emerging technologies such as \gls{iot} and Industry 4.0 are becoming more and more connected, but on the other hand increase the attack surface drastically. An open question for continued research is if the \wa{} is a suitable use case for strong and secure authentication which is done without user interaction, but rather by machines and computer autonomously. Further it has to be evaluated if these, especially low-power computing, devices are capable of implementing both secure channels, such as \gls{tls}, and calculations on \glspl{ec}.
 
-
-All in all, this thesis showed that the internet use is at risk, because 
-
-
-
-
-
-
-
-
-
-
-
+All in all, this thesis showed that internet users and their accounts are at risk, because passwords are not suited for a secure authentication in the way they are currently used. Weak passwords, password re-usage, and data breaches expose a constant threat. It is crucial to sensitize the user that these threats affect each and everyone. Moreover, existing \gls{mfa} solutions are prone to phishing attacks since the way of transmission via \gls{sms} and e-mail are insecure and can be eavesdropped. Additionally, they are not resistant against social engineering attacks or malware on a user's device. \gls{u2f} and in particular the \wa{} are the only solutions to protect against phishing. While the \wa{} has the potential to (finally) replace passwords, it is not yet usable enough in all web browser across different \glspl{os}. With the help of the web browser vendors and a growing rate of adoption though, the \wa{} is on the right way towards an internet with strong, secure, and simple authentication, even without passwords.
 
 \begin{enumerate}
-	\item not yet ready for the world (iOS, IE, only USB)
 	\item two keys recommended - expensive
-	\item user needs to be educated!
-	\item mfa is safe most of the time - sms and email and http not!
 	\item new additions in the recent months, this shows the actuality and importance of the topic, but also that it might be suitable to finally kill the passwords
 \end{enumerate}
