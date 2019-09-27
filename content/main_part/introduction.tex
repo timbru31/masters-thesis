@@ -2,7 +2,7 @@
 \label{chapter:basics}
 
 \section{Methods of Authentication}
-There are multiple different methods or forms, respectively, that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession, and trait are considered the different forms of authentication. However, other sources also introduce or take new kinds into account, such as location- or time-based authentication. Therefore, this thesis accounts for them, too, and describes the forms in the following sections briefly. A detailed analysis of the security, especially potential threats and vulnerabilities, follows in \autoref{chap:one-factor-security}.\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[See][47]{anderson2008security}[See][]{6296127}[See][191]{dasgupta2017multi}
+There are multiple different methods or forms, respectively, that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession, and trait are considered the different forms of authentication. However, other sources also introduce or take new kinds into account, such as location- or time-based authentication. Therefore, this thesis accounts for them, too, and describes the forms in the following sections briefly. A detailed analysis of the security, especially potential threats and vulnerabilities follows in \autoref{chap:one-factor-security}.\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[See][47]{anderson2008security}[See][]{6296127}[See][191]{dasgupta2017multi}
 
 \subsection{Knowledge}
 
@@ -22,7 +22,7 @@ The most used method of authentication is knowledge, i.e., \frqq something the u
 
 \subsection{Possession}
 
-Another form of authentication is the possession, i.e., \frqq something the user (physically) has\flqq{}. The most basic example is a key for a lock. Other forms are, for example, a bank or ID card that can use techniques such as \gls{rfid}, an onboard chip or magnetic stripes to store the information. In \gls{it}, security tokens are often used, which can be hardware (such as a YubiKey, an RSA SecurID or a smartcard) or software (for instance, a smartphone application) token. They can either be disconnected, connected (e.g., via \gls{usb} or as a smartcard) or contactless (for example via \gls{nfc}, \gls{ble} or \gls{rfid}). Sometimes these tokens contain a display that can show further information.\footcites[See][24]{265831}[See][]{Dressel:2019:SZT:3319499.3328225}[See][8--11]{Mayes2017}
+Another form of authentication is the possession, i.e., \frqq something the user (physically) has\flqq{}. The most basic example is a key for a lock. Other forms are, for example, a bank or ID card that can use techniques such as \gls{rfid}, an onboard chip or magnetic stripes to store the information. In \gls{it}, security tokens are often used, which can be hardware (such as a YubiKey, an RSA SecurID or a smart card) or software (for instance, a smartphone application) token. They can either be disconnected, connected (e.g., via \gls{usb} or as a smart card) or contactless (for example via \gls{nfc}, \gls{ble} or \gls{rfid}). Sometimes these tokens contain a display that can show further information.\footcites[See][24]{265831}[See][]{Dressel:2019:SZT:3319499.3328225}[See][8--11]{Mayes2017}
 
 \begin{figure}[hbt]
 	\centering
@@ -32,7 +32,7 @@ Another form of authentication is the possession, i.e., \frqq something the user
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-\autoref{fig:possesion_auth_flow} shows an example of an authentication flow with a smartcard. First, the user inserts the given smartcard into their computer. The data is read subsequently. Contemporaneous the application or system reads the stored database entry and compares the data to the one stored on the smartcard. If the data is equal or matches, and the user is authorized, then the authentication succeeds. Again, any user can log on as long as they have the smartcard.
+\autoref{fig:possesion_auth_flow} shows an example of an authentication flow with a smart card. First, the user inserts the given smart card into their computer. The data is read subsequently. Contemporaneous the application or system reads the stored database entry and compares the data to the one stored on the smart card. If the data is equal or matches, and the user is authorized, then the authentication succeeds. Again, any user can log on as long as they have the smart card.
 
 \subsection{Biometrics}
 
@@ -119,7 +119,7 @@ Authorities such as the \gls{bsi}, the \gls{eu}, or the National Information Ass
 
 The naming of the chosen authentication or verification methods by companies is often confusing and difficult to understand. The terms used by companies vary from \glsfirst{2fa}, often just calling it \gls{2fa}, to two-step-verification, sometimes written as 2-Step Verification, too.\footcites[See][]{apple_2fa}[See][]{apple_s2v}[See][]{playstation}[See][]{google_2-step_verification}[See][]{microsoft_2sv}
 
-One could argue that the different authentication factors can be reduced to a single one, e.g., that an \gls{otp} is \frqq something the user knows\flqq{} since it relies on a secret that \textit{could, in theory,} be memorized, too, but practically is not memorizable.\\
+One could argue that the different authentication factors can be reduced to a single one, e.g., that an \gls{otp} is \frqq something the user knows\flqq{} since it relies on a secret that \textit{could, in theory,} be memorized, too, but practically is not memorable.\\
 In this case, the term \gls{mfa} or 2FA is technically incorrect, since it is instead a multi-step authentication because the same factor is used multiple times. However, it has to be noted that using the same authentication factor multiple times is weaker than using different authentication factors.\footcite[See][117]{grimes2017hacking}
 
 The (user) verification, especially the verification of access permissions, is a part of the authentication process. Because of this, for the remainder of this thesis, the subtle differences between verification and authentication are not relevant, and the term \gls{mfa} is used throughout.

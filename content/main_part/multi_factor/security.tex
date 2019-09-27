@@ -6,7 +6,7 @@ This chapter analyses the introduced \gls{mfa} solutions in regards to their sec
 
 \autoref{fig:2fa_flow_phishing} on the next page shows the already in \autoref{fig:2fa_flow} explained \gls{mfa} flow using a \gls{totp}. In this figure, the scenario is expanded by a phishing attack. The user visits a phishing copy of the website they want to use and does not notice this. They enter their password which is intercepted by an attacker and then forwarded to the legitimate service. Because the user knows that this site is using \gls{mfa}, they provide the \gls{totp} to the phishing site, too.
 
-This allows the interceptor to steal both the password (knowledge as the first factor) and \gls{totp} (possession as the second factor). In turn, an attacker can now successfully log in to the victim's account and effectively bypassing the \gls{mfa} solution. This scenario does not explicitly exploit a vulnerability, but instead use the conceptual weakness of a \gls{mfa} solution, since it is not phishing resistant.
+This allows the interceptor to steal both the password (knowledge as the first factor) and \gls{totp} (possession as the second factor). In turn, an attacker can now successfully log in to the victim's account and effectively bypassing the \gls{mfa} solution. This scenario does not explicitly exploit a vulnerability, but instead use the conceptual weakness of an \gls{mfa} solution, since it is not phishing resistant.
 
 \newpage
 
@@ -25,7 +25,7 @@ In this section, the security of both \gls{hotp} and \gls{totp} is being analyze
 
 \input{content/main_part/multi_factor/totp/security}
 
-\section{Smartcards and Security Tokens}
+\section{Smart Cards and Security Tokens}
 \label{sec:tokens}
 
 \input{content/main_part/multi_factor/tokens/security}
