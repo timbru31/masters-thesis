@@ -2,7 +2,7 @@
 \label{chapter:basics}
 
 \section{Methods of Authentication}
-There are multiple different methods or forms, respectively, that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession, and trait are considered the different forms of authentication,\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[See][47]{anderson2008security} but other sources also introduce or take new methods into account such as location- or time-based authentication.\footcites[See][]{6296127}[See][191]{dasgupta2017multi} Therefore, this thesis accounts them, too, and describes the methods in the following sections briefly. A detailed analysis of the security, especially potential threats and vulnerabilities, follows in \autoref{chap:one-factor-security}.
+There are multiple different methods or forms, respectively, that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession, and trait are considered the different forms of authentication. However, other sources also introduce or take new kinds into account, such as location- or time-based authentication. Therefore, this thesis accounts for them, too, and describes the forms in the following sections briefly. A detailed analysis of the security, especially potential threats and vulnerabilities, follows in \autoref{chap:one-factor-security}.\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[See][47]{anderson2008security}[See][]{6296127}[See][191]{dasgupta2017multi}
 
 \subsection{Knowledge}
 
@@ -18,7 +18,7 @@ The most used method of authentication is knowledge, i.e., \frqq something the u
 \end{figure}
 \footnotetext{Source: diagram by author.}
 
-\autoref{fig:knowledge_auth_flow} shows a simplified authentication by knowledge flow. In this example, the user first visits a website and enters their password in the corresponding form fields. When the user submits the form, the transferred password is often transformed, e.g., hashed and salted. If the database contains an entry for the user, then the stored (hash of) the password is retrieved and compared to the entered one. Only if the hashes are identical, the login succeeds. Otherwise, it fails. The \frqq access denied/cancel\flqq{} and \frqq check mark\flqq{} symbols are chosen since it cannot be verified by whom the authentication is made. It could be a genuine user or an imposter that gained access to the knowledge of the attacked user, in this case, their password.
+\autoref{fig:knowledge_auth_flow} shows a simplified authentication by knowledge flow. In this example, the user first visits a website and enters their password in the corresponding form fields. When the user submits the form, the transferred password is often transformed, e.g., hashed and salted. If the database contains an entry for the user, then the stored (hash of) the password is retrieved and compared to the entered one. Only if the hashes are identical, the login succeeds. Otherwise, it fails. The \frqq access denied/cancel\flqq{} and \frqq checkmark\flqq{} symbols are chosen since it cannot be verified by whom the authentication is made. It could be a genuine user or an imposter that gained access to the knowledge of the attacked user, in this case, their password.
 
 \subsection{Possession}
 
@@ -32,7 +32,7 @@ Another form of authentication is the possession, i.e., \frqq something the user
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-\autoref{fig:possesion_auth_flow} shows an example of an authentication flow with a smartcard. First, the user inserts the given smartcard into their computer. The data is read subsequently. Contemporaneous the application or system reads the stored database entry and compares the data to the one stored on the smartcard. If the data is equal or matches, and the user is authorized, then the authentication succeeds. Again, any user can log on as long as they are in possession of the smartcard.
+\autoref{fig:possesion_auth_flow} shows an example of an authentication flow with a smartcard. First, the user inserts the given smartcard into their computer. The data is read subsequently. Contemporaneous the application or system reads the stored database entry and compares the data to the one stored on the smartcard. If the data is equal or matches, and the user is authorized, then the authentication succeeds. Again, any user can log on as long as they have the smartcard.
 
 \subsection{Biometrics}
 
@@ -57,9 +57,9 @@ On the other hand, it is more complicated to steal, share, or copy this factor t
 
 While the mentioned authentication forms above are considered a standard in the literature, other forms exist, too. Those include, for example, the current position of the user. The location-based approach grants or denies access based on the current location. The location can either be physical (e.g., via \gls{gps}) or digital with, e.g., an IP address.\footcites[See][]{6296127}[See][Chapter 13.9]{2308830}
 
-Another method of authentication is time-based authentication. A typical example is time-limited access to a banking safe, which can only be opened at specific times of the day. A time lock secures it. In \gls{it} this form of authentication helps to protect against, for instance, phishing attacks from abroad. The access is granted or denied based on the time and usual time routines where, for instance, a user logs typically on.\footcite[See][191]{dasgupta2017multi}
+Another method of authentication is time-based authentication. A typical example is time-limited access to a banking safe, which can only be opened at specific times of the day. A time lock secures it. In \gls{it}, this form of authentication helps to protect against, for example, phishing attacks from abroad. The access is granted or denied based on the time and usual time routines where, for instance, a user logs typically on.\footcite[See][191]{dasgupta2017multi}
 
-Further methods of authentication are, for instance, social authentication, also referred to as \frqq someone the user knows\flqq. For example, Facebook uses this method to ensure that the authentication attempt is genuine by asking the user to identify a set of their friends. Of course, social authentication works in other scenarios, especially offline use cases, too.\footcites[See][]{Brainard2006}[See][278--279]{shostack2014threat} Besides these methods, \frqq something the user does\flqq{} is another form of authentication. Examples range from keystrokes to online shopping behavior.\footcites[See][]{10.1007/978-3-642-18178-8_9}[See][]{7460349}
+Further methods of authentication are, for instance, social authentication, also referred to as \frqq someone the user knows\flqq. For example, Facebook uses this method to ensure that the authentication attempt is genuine by asking the user to identify a set of their friends. Of course, social authentication works in other scenarios, especially offline use cases, too. Besides these methods, \frqq something the user does\flqq{} is another form of authentication. Examples range from keystrokes to online shopping behavior.\footcites[See][]{Brainard2006}[See][278--279]{shostack2014threat}[See][]{10.1007/978-3-642-18178-8_9}[See][]{7460349}
 
 \section{Processes of Authentication}
 
@@ -85,7 +85,7 @@ In contrast to the active authentication process, in the passive authentication 
 
 \subsection{Continuous Authentication}
 
-Further, the process of continuous authentication exists, too. In this case, the user is continuously authenticated or monitored to ensure that it is still the initially authenticated user who is using the system. Authentication must happen in a non-intrusive way. Commonly used for continuous authentication are biometrics, such a fingerprints, facial recognition, or keystroke patterns.\footcites[See][236--238]{dasgupta2017multi}[See][]{7444124}
+Further, the process of continuous authentication exists, too. In this case, the user is continuously authenticated or monitored to ensure that it is still the initially authenticated user who is using the system. Authentication must happen in a non-intrusive way. Commonly used for continuous authentication are biometrics, such as fingerprints, facial recognition, or keystroke patterns.\footcites[See][236--238]{dasgupta2017multi}[See][]{7444124}
 
 Unfortunately, the term active authentication is often used to describe continuous authentication, too. To avoid confusion, solely term continuous authentication is used to refer to this process of authentication, while any mentions of active authentication are a reference to the process described in \autoref{subsec:active_auth}.
 
@@ -105,7 +105,7 @@ Challenge-response authentication is a further method of authentication by knowl
 	\item the server compares its computation of \(resp_s = hash(c, K)\) to the received \textit{\(resp_c\)}
 \end{enumerate}
 
-To achieve mutual authentication, the client can also send a unique challenge to the server which in turn generates the keyed hash and sends it back to the client for verification. A typical challenge-response protocol is Fiat-Shamir.\footcites[See][Chapter 13.6]{waschke2017personal}[See][489--491]{eckert-it-sec-9}
+To achieve mutual authentication, the client can also send a unique challenge to the server, which in turn generates the keyed hash and sends it back to the client for verification. A typical challenge-response protocol is Fiat-Shamir.\footcites[See][Chapter 13.6]{waschke2017personal}[See][489--491]{eckert-it-sec-9}
 
 \section{Zero-Knowledge Protocol}
 
