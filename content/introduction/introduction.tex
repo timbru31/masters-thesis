@@ -22,36 +22,33 @@ The goals of this thesis are an introduction to \gls{mfa} and the different auth
 
 The \wa{} and its origin are being illustrated and technically in more depth explained. In this connection, the question has to be answered if the \wa{} can increase security, user comfort, and usability. In this regard, the potential security threats or vulnerabilities that \wa{} faces are discussed as well.
 
-Finally, the thesis should answer the question if the \wa{} is ready to be used yet and whether it can replace passwords and existing \gls{mfa} solutions or if it can be used in conjunction with passwords. Besides that, questions such as:
+Finally, the thesis should answer the question if the \wa{} is ready to be used yet and whether it can replace passwords and existing \gls{mfa} solutions or if it can be used in conjunction with passwords. Besides that, questions are taken into account and answered, such as:
 
 \begin{itemize}
-	\item what are the risks of not using \gls{mfa}?
-	\item why are weak passwords and password re-usage such a big issue?
-	\item is there protection against the weakest link, often being humans?
-	\item if a user employs \gls{mfa}, are there any threats, too?
-	\item are the architecture and algorithms of the used \gls{mfa} solutions secure enough for usage in web projects and insecure connections?
-	\item is the \wa{} suitable, easy to use, and understandable for end-users?
+	\item What are the risks of not using \gls{mfa}?
+	\item Why are weak passwords and password re-usage such a big issue?
+	\item Is there protection against the weakest link, often being humans?
+	\item If a user employs \gls{mfa}, are there any threats, too?
+	\item Are the architecture and algorithms of the used \gls{mfa} solutions secure enough for usage in web projects and insecure connections?
+	\item Is the \wa{} suitable, easy to use, and understandable for end-users?
 \end{itemize}
-
-are taken into account and answered.
 
 \section{Target Audience}
 
 The target audience of this thesis are technically experienced readers that have a good understanding and interest in data security and privacy. Additionally, the reader should have a basic knowledge about the functionality and mathematics behind algorithms such as \gls{rsa}, \gls{ecc}, or symmetric and asymmetric key exchange (e.g., Diffie–Hellman key exchange). Moreover, the reader needs to be familiar with the underlying concept(s) and techniques of \gls{mfa}.
 
-Furthermore, the thesis is tailored to interested (web) developers. On the one hand, it shall introduce a new standardized Web \gls{api} to them in detail. On the other hand, the thesis helps to understand the pros and cons of alternative registration, login, and \gls{mfa} solutions using asymmetric cryptography and whether the \wa{} suits their needs.
+Furthermore, the thesis is tailored to interested (web) developers. On the one hand, it shall introduce a new standardized Web \gls{api} to them in detail. On the other hand, the thesis helps to understand the pros and cons of alternative registration, login, and \gls{mfa} solutions using asymmetric cryptography, and whether the \wa{} suits their needs.
 
 \section{Delimitation of this Thesis}
 
-Existing formally verified and proven algorithms and concepts, as long as not required for the understanding of this thesis, are not explained in detail. It is not the goal of this thesis to perform complete cryptanalysis of existing \gls{mfa} solutions, nor of the \wa. Instead, the thesis takes other factors, such as usability for the user, technical feasibility, and web browser support into account. Different, but adjacent, technologies such as OAuth (2.0), OpenID Connect or \gls{sso} neither are a focus of this thesis. Additionally, the topic of authorization is not taken into account and not of concern for this thesis. 
+Existing formally verified and proven algorithms and concepts, as long as not required for the understanding of this thesis, are not explained in detail. It is not the goal of this thesis to perform complete cryptanalysis of existing \gls{mfa} solutions, nor of the \wa. Instead, the thesis takes other factors, such as usability for the user, technical feasibility, and web browser support into account. Different, but adjacent, technologies such as OAuth (2.0), OpenID Connect or \gls{sso} neither are a focus of this thesis. Additionally, the topic of authorization is not taken into account and is not of concern for this thesis. 
 
 \section{Approach and Methodology}
 
-Initially, in \autoref{chapter:basics}, the reader is introduced into the basics of authentication.\\
-After that, in the following chapters, the areas single-factor authentication and \gls{mfa} are explained. For example, their technical functionality is described, followed by an analysis regarding their security and protection against attacks such as phishing or \gls{mitm} attacks.
+Initially, in \autoref{chapter:basics}, the reader is introduced into the basics of authentication. After that, in the following chapters, the areas single-factor authentication and \gls{mfa} are explained. For example, their technical functionality is described, followed by an analysis regarding their security and protection against attacks such as phishing or \gls{mitm} attacks.
 
 Hereupon, the \wa{} is introduced in \autoref{chapter:webauth} and described in detail. Technical functionality is a crucial aspect of this chapter. Additionally, it is explained against which attacks the \wa{} can offer protection. However, it is also asserted which security threats exist, too. As various \glspl{poc}, libraries and full implementations in different programming languages exist, where suitable only example source code listings are used to highlight these analyses.
 
 In \autoref{chapter:comparison}, the \wa{} is compared with existing \gls{mfa} solutions. Therefore, it is reviewed if the \wa{} can be used in conjunction or as a replacement for \gls{mfa}.
 
-Concluding follows an evaluation based on the gained insights from the previous chapters with a summing-up and outlook for further research and studies.
+Concluding, follows an evaluation based on the gained insights from the previous chapters with a summing-up, a conclusion, and outlook for further research and studies.

@@ -6,7 +6,7 @@ Given that both \gls{sha}-1 and MD5 are considered insecure, one has to ask if t
 
 It is more important to implement the algorithm correctly than replacing the used hash function. In the past, e.g., Google did not issue \gls{otp} values with a leading zero. Besides that, the defined minimum length of the \gls{otp} values is six digits. Meanwhile, the \gls{rfc} supports up to ten. However, nearly no service provider uses more than six digits. This decreases the \gls{otp} entropy and strengthens the brute-force attack.\footcites[See][369]{10.1007/978-3-662-45472-5_24}
 
-Further, for example, the online gaming platform Steam uses a different alphabet and character length. These divergences show that not all implementing parties follow the recommendations of the \gls{rfc}. Moreover, the user can not verify that the algorithms are correctly implemented. Because \gls{hotp} and \gls{totp} rely on a shared secret, it is crucial that both the server and client store the secret in a secure manner.\footcites[See][6--7]{steam-totp}[See][11--13]{m2005rfc}
+Further, for example, the online gaming platform Steam uses a different alphabet and character length. These divergences show that not all implementing parties follow the recommendations of the \gls{rfc}. Moreover, the user cannot verify that the algorithms are correctly implemented. Because \gls{hotp} and \gls{totp} rely on a shared secret, it is crucial that both the server and client store the secret in a secure manner.\footcites[See][6--7]{steam-totp}[See][11--13]{m2005rfc}
 
 A theoretical vulnerability is to use the look-ahead window feature. It enables an attacker to use a token that is much longer valid than it should be. The larger the look-ahead window period is, the bigger the time-frame an attack has brute-force, or phish is, too. Also, it is essential that the \gls{otp} is invalidated after a successful use or when the time in the look-ahead window has passed.\footcites[See][369]{10.1007/978-3-662-45472-5_24}[See][11]{m2005rfc}
 
@@ -67,7 +67,7 @@ Moreover, social engineering attacks that target the mobile service operator are
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-Another variant that is technically more complex, but feasible, is the \gls{sim} card cloning. This allows the attacker to intercept the \gls{totp}, too. Even if the phone number can not be registered twice, it still enables the eavesdropping.\footcites[See][873]{eckert-it-sec-9}[See][11--12]{sim-clone}
+Another variant that is technically more complex, but feasible, is the \gls{sim} card cloning. This allows the attacker to intercept the \gls{totp}, too. Even if the phone number cannot be registered twice, it still enables the eavesdropping.\footcites[See][873]{eckert-it-sec-9}[See][11--12]{sim-clone}
 
 Given all these facts, \gls{sms} transportation should be avoided for the usage with \glspl{otp}, since there are multiple flaws in the \gls{ss7} network itself and the process of how the \gls{sms} reaches the user. It is also not resistant against phishing or mobile phone trojans. Both the \gls{bsi} and the \gls{nist} advise service providers not to use \gls{sms} for the transmission of \glspl{otp} and \glspl{tan} anymore.\footcites[See][8]{JAKOBSSON20186}[See][27]{bsi2019recommendations2}[See][19]{SP80063B}[See][407]{10.1007/978-3-662-54970-4_24}
 
