@@ -34,7 +34,7 @@ Sometimes the \gls{mac} is also called \gls{mic} in order to avoid confusion wit
 
 Further, while the \gls{mac} provides authenticity regarding the origin of the data and the data integrity, it does not provide any authenticity regarding the content of the data. For example, mobile code is not detected by the \gls{mac}, as long as the \gls{mac} belongs to the sent message. This implication has to be taken into account when using the \gls{mac} to authenticate and evaluate the trustworthiness of received messages. The encrypted traffic is increasing, but at the same time, the encrypted malware traffic is, too.\footcites[See][100]{weldon2015}
 
-\subsection{HMAC}
+\subsection{Keyed-Hash Message Authentication Code}
 
 The \glsfirst{hmac} extends the \gls{mac} and is standardized in \gls{rfc} 2104 and \gls{nist}'s standard \gls{fips} 198-1. It allows the usage of any cryptographic hash function, such as \gls{sha} family, \glspl{md} algorithms, bcrypt, or whirlpool. Because of the black-box design of the \gls{hmac}, the easy replacement of the used cryptographic hash function is possible. Besides authentication, the \gls{hmac} is, e.g., used in \gls{tls} and \glspl{jwt} to ensure data authenticity and integrity.\footcites[See][]{krawczyk1997rfc}[See][]{FIPS198}[See][14]{rfc5246}[See][8]{rfc7519}[See][3--4]{s2011rfc}
 
