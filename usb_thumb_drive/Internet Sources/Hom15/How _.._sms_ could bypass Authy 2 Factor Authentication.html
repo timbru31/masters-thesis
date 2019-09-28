@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://sakurity.com/blog/2015/03/15/authy_bypass.html -->
+<html class="no-js" xmlns="https://www.w3.org/1999/xhtml" xmlns:fb="https://ogp.me/ns/fb#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--<base href="https://sakurity.com">--><base href=".">
+
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>How "../sms" could bypass Authy 2 Factor Authentication</title>
+
+    <meta name="description" content="We do penetration testing, source code auditing and vulnerability assessments">
+    <meta name="keywords" content="Fintech Security, OAuth, Bitcoin Security, Layer2, Lightning network">
+
+
+    <link rel="icon" type="image/x-icon" href="https://sakurity.com/images/favicon.ico">
+    <link rel="stylesheet" href="./How _.._sms_ could bypass Authy 2 Factor Authentication_files/vendor.css">
+    <link rel="stylesheet" href="./How _.._sms_ could bypass Authy 2 Factor Authentication_files/main.css">
+<meta property="og:image" content="https://www.sakurity.com/images/sakurity-logo@2x.png">
+
+
+  <link rel="canonical" href="https://sakurity.com/blog/2015/03/15/authy_bypass.html">
+  <link rel="alternate" type="application/rss+xml" title="The Sakurity Blog" href="https://sakurity.com/blog/feed.xml">
+
+
+
+</head>
+
+<body>
+
+
+
+<nav class="top-bar row" data-topbar="">
+    <section class="top-bar-section">
+
+        <ul class="left">
+            <li><a href="https://sakurity.com/">Home</a></li>
+            <li><a href="https://sakurity.com/blog">Blog</a></li>
+            <li><a href="https://sakurity.com/research">Research</a></li>
+            <li><a href="https://sakurity.com/contact">Contact Us</a></li>
+
+        </ul>
+
+    </section>
+</nav>
+    <div class="page-content">
+      <div class="wrapper">
+
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">How "../sms" could bypass Authy 2 Factor Authentication</h1>
+  </header>
+
+  <article class="post-content">
+<p><a href="https://sakurity.com/blog/2015/03/03/duo_format_injection.html">The first part defines Format Injection and explains interesting but low severity bug in Duo Web SDK.</a></p>
+
+<p><strong>Update 20 March</strong> Authy contacted me to clarify that not everybody was vulnerable, and vulnerable API libraries <strong>were limited to Node.JS by Daniel Barnes, Authy.NET by Devin Martin and Authy OpenVPN</strong>.</p>
+
+<p>Meanwhile we audited another popular 2FA provider and found a High-severity format injection in Authy API. In fact the root of the problem was default Sinatra dependency “rack-protection”! I responsibly disclosed this vulnerability to Authy on February 8 and worked with them to fix the issue that same day.</p>
+
+<p><img src="./How _.._sms_ could bypass Authy 2 Factor Authentication_files/authylogo.svg" alt=""></p>
+
+<p>There are two API calls:</p>
+
+<ol>
+  <li>
+    <p>The client requests new token: <code class="highlighter-rouge">https://api.authy.com/protected/json/sms/AUTHY_ID?api_key=KEY</code> where AUTHY_ID is publicly available identifier associated with current user account. Expected response: <code class="highlighter-rouge">{"success":true,"message":"SMS token was sent","cellphone":"+1-XXX-XXX-XX85"}</code> with 200 status.</p>
+  </li>
+  <li>
+    <p>The user sends the token back and the client verifies if the token is valid with <code class="highlighter-rouge">https://api.authy.com/protected/json/verify/SUPPLIED_TOKEN/AUTHY_ID?api_key=KEY</code> and authenticates with second factor if API responds with 200 status (body is ignored):
+ <code class="highlighter-rouge">{"success":true,"message":"Token is valid.","token":"is valid"}</code></p>
+  </li>
+</ol>
+
+<h3 id="authy-node-does-not-encode-token-from-user-params">Authy-node does not encode token from user params</h3>
+
+<p>There was a blatant bug in authy-node (<strong>not an official library</strong>, btw another popular <a href="https://www.npmjs.com/package/co-authy">node library</a> wasn’t vulnerable) - “token” supplied by the user was not URL encoded at all: <code class="highlighter-rouge">this._request("get", "/protected/json/verify/" + token + "/" + id, {}, callback, qs);</code></p>
+
+<p>Which means by typing <code class="highlighter-rouge">VALID_TOKEN_FOR_OTHER_AUTHY_ID/OTHER_AUTH_ID#</code> we would overwrite the path and make the client send <code class="highlighter-rouge">/protected/json/verify/VALID_TOKEN_FOR_OTHER_AUTHY_ID/OTHER_AUTH_ID#/AUTH_ID</code>. Anything after hash <code class="highlighter-rouge">#</code> is ignored and Authy’s response with 200 status for <code class="highlighter-rouge">/protected/json/verify/VALID_TOKEN_FOR_OTHER_AUTHY_ID/OTHER_AUTH_ID?api_key=KEY</code> let’s the attacker in.</p>
+
+<p>It’s impossible to distinguish forged request from a valid one on the server side because <code class="highlighter-rouge">#/AUTHY_ID</code> is not sent.</p>
+
+<h3 id="authy-python-is-vulnerable-too">Authy-python is vulnerable too</h3>
+
+<p>Then I noticed Python’s urllib.quote doesn’t escape slashes. Indeed, for some reason it escapes everything but slashes and it’s <a href="https://docs.python.org/2/library/urllib.html#urllib.quote">a documented feature</a> - <code class="highlighter-rouge">urllib.quote("#?&amp;=/")</code> returns <code class="highlighter-rouge">%23%3F%26%3D/</code>. Which means our “../sms” will not be encoded (/../ means “go one directory up”).</p>
+
+<p>Web browsers parse /../, /%2e%2e/ and even /%252e%252e/ and go “one directory up”, but web servers don’t have to do it. Anyway, I tried and it worked - Authy API was removing directories before <code class="highlighter-rouge">/../</code>.</p>
+
+<p>It introduces path traversal making attacker’s job much easier - you only need to type <code class="highlighter-rouge">../sms</code> to turn /verify API call into /sms (<code class="highlighter-rouge">/verify/../sms/authy_id</code>) which will always return 200 status and will bypass 2FA.</p>
+
+<h3 id="no-wait-everyone-is-vulnerable">No, wait. Everyone is vulnerable!</h3>
+
+<p>Few hours later I realized what made path traversal work: I recently read <a href="https://stackshare.io/posts/how-authy-built-a-fault-tolerant-two-factor-authentication-service/">Daniel’s interview on Authy</a> and recalled it runs Sinatra, which uses rack-protection by default.</p>
+
+<p>It turns out even URL encoding was futile - <a href="https://github.com/rkh/rack-protection/blob/master/lib/rack/protection/path_traversal.rb#L34">path_traversal module in rack-protection</a> was decoding %2f back to slashes! This literally affects every API running Sinatra and reading parameters from the path. This is also a great example how libraries or features that aim to add security actually introduce security vulnerabilities (see also <a href="https://homakov.blogspot.com/2014/01/using-content-security-policy-for-evil.html">CSP for evil</a> and <a href="https://homakov.blogspot.com/2013/02/hacking-with-xss-auditor.html">XSS auditor for evil</a>)</p>
+
+<p><img src="./How _.._sms_ could bypass Authy 2 Factor Authentication_files/smsauthy.png" alt=""></p>
+
+<ol>
+  <li>
+    <p>The attacker types <code class="highlighter-rouge">../sms</code> in the SMS token field</p>
+  </li>
+  <li>
+    <p>The client app encodes it as <code class="highlighter-rouge">..%2fsms</code> and makes an API call to Authy - <code class="highlighter-rouge">https://api.authy.com/protected/json/verify/..%2fsms/authy_id</code></p>
+  </li>
+  <li>
+    <p>Path_traversal middleware decodes path to <code class="highlighter-rouge">https://api.authy.com/protected/json/verify/../sms/authy_id</code>, splits by slashes and removes the directory in front of <code class="highlighter-rouge">/..</code>.</p>
+  </li>
+  <li>
+    <p>Actual Authy API sees modified path <code class="highlighter-rouge">https://api.authy.com/protected/json/sms/authy_id</code>, simply sends another SMS to authy_id (the victim) and responds with 200 status and <code class="highlighter-rouge">{"success":true,"message":"SMS token was sent","cellphone":"+1-XXX-XXX-XX85"}</code></p>
+  </li>
+  <li>
+    <p>All Authy SDK libraries consider 200 status as a successful response and let the attacker in. Even a custom integration most likely will look for <code class="highlighter-rouge">"success":true</code> in the JSON body, and our <code class="highlighter-rouge">/sms</code> response body has it. So the only secure way to verify the response is to search for <code class="highlighter-rouge">"token":"is valid"</code> substring (which is what Authy libraries do now).</p>
+  </li>
+</ol>
+
+<p>Yes, the attacker was able to bypass 2 factor authentication on any website using Authy with something as simple as ../sms in the token field!</p>
+
+<p><strong>Timeline</strong>: reported on Feb 8, the path_traversal module was patched right away and we waited for a month to let authy-node users to update.</p>
+
+<p><strong>Update 20 March</strong> Authy contacted me to clarify that not everybody was vulnerable, and vulnerable API libraries <strong>were limited to Node.JS by Daniel Barnes, Authy.NET by Devin Martin and Authy OpenVPN</strong>.</p>
+
+<p>This is another example of format injection and why you need to treat URLs as a format like JSON or XML. <a href="https://sakurity.com/blog/2015/03/03/duo_format_injection.html">Read our first post on format injection in Duo Security Web SDK.</a></p>
+
+
+
+<h3>Mar 15, 2015 • Egor Homakov (<a href="https://twitter.com/homakov">@homakov</a>)</h3>
+
+
+
+  </article>
+
+
+
+
+
+
+<div id="spot-im-frame-inpage" data-post-id=""></div>
+
+
+</div></div>
+
+
+
+<div class="content">
+
+
+</div>
+
+
+
+<footer>
+    <div class="row">
+        <div class="small-6 medium-3 large-2 columns">
+            <h4>Sakurity</h4>
+            <ul>
+            <li><a href="https://sakurity.com/">Home</a></li>
+            <li><a href="https://sakurity.com/blog">Blog</a></li>
+            <li><a href="https://sakurity.com/research">Research</a></li>
+            <li><a href="https://sakurity.com/contact">Contact Us</a></li>
+
+            </ul>
+        </div>
+
+
+
+        <div class="small-12 medium-6 large-8 small-text-center medium-text-right columns">
+            <div class="logo-monochrome"></div>
+            <p class="copyright">Sakurity Ltd, a Hong Kong company established in 2012.</p>
+        </div>
+    </div>
+</footer>
+
+
+</div></body></html>

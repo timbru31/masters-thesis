@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- saved from url=(0247)https://www.playstation.com/en-us/oauth-redirect/?postSignInURL=https%3A%2F%2Fwww.playstation.com%2Fen-us%2Faccount-security%2F2-step-verification%2F&error=login_required&error_code=4165&error_description=User+is+not+authenticated&no_captcha=false -->
+<html class="html-page no-js" xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+    <title>Authenticating...</title><iframe src="javascript:void(0)" title="" style="width: 0px; height: 0px; border: 0px; display: none;" src="./saved_resource(1).html"></iframe><script type="text/javascript">
+        function queryString(parameter, locations) {
+            var loc = location.search.substring(1, location.search.length),
+                    paramValue = false,
+                    locations = locations || loc,
+                    params = locations.split("&");
+            for (i=0; i<params.length;i++) {
+                var paramName = params[i].substring(0,params[i].indexOf('='));
+                if (paramName == parameter) {
+                    paramValue = params[i].substring(params[i].indexOf('=')+1);
+                }
+            }
+            if (paramValue) {
+                return paramValue;
+            }
+            else {
+                return false;
+            }
+        }
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length == 2) {
+                return parts.pop().split(";").shift();
+            }
+            else {
+                return false;
+            }
+        }
+
+                var globalLocale = "en_US";
+                var psnAuth = "/playstation/psn";
+                if(globalLocale == "ja_JP" || globalLocale == "en_HK" || globalLocale == "cht_HK" || globalLocale == "chs_HK" || globalLocale == "en_ID" || globalLocale == "ko_KR" || globalLocale == "en_MY" || globalLocale == "en_PH" || globalLocale == "en_SG" || globalLocale == "cht_TW" || globalLocale == "en_TH" || globalLocale == "th_TH" || globalLocale == "en_VN"){
+                		psnAuth = "/auth";
+                }
+        var environmentURL = "https://io.playstation.com" +psnAuth;
+        if(!(queryString("error_description") || queryString("error_code") || queryString("auth_code") == "not_logged_in") && (queryString("code") || queryString("auth_code"))) {
+
+        	if(!getCookie("userinfo")) {
+        		var codeReceived = queryString("auth_code") || queryString("code"),
+        				postSignInURL = queryString("postSignInURL"),
+        				serviceURL = "/acceptLogin?code=";
+                var currentPageUrl = window.location.href.substring(0, window.location.href.lastIndexOf("&code"));
+                serviceURL = environmentURL + serviceURL + codeReceived + "&postSignInURL=" + postSignInURL + "&redirect_uri=" + encodeURIComponent(currentPageUrl);
+        		window.parent.location.href = serviceURL;
+        	}
+        }
+        else {
+
+        	if(getCookie("userinfo") || getCookie("wordpress_logged_in_")) {
+        		window.parent.location.href = environmentURL + "/logout?postSignOutURL=" + encodeURIComponent(window.parent.location.href);
+        	}
+        }
+    </script>
+    
+
+<script>(window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"rua.upush":"false","rua.cpush":"false","rua.upre":"false","rua.cpre":"false","rua.uprl":"false","rua.cprl":"false","rua.cprf":"false","rua.trans":"SJ-967903d7-54e0-46b8-b556-f17d604fa41d","rua.cook":"true","rua.ims":"false","rua.ufprl":"false","rua.cfprl":"false"}]);</script>
+<script>!function(){function o(n,i){if(n&&i)for(var r in i)i.hasOwnProperty(r)&&(void 0===n[r]?n[r]=i[r]:n[r].constructor===Object&&i[r].constructor===Object?o(n[r],i[r]):n[r]=i[r])}try{var n=decodeURIComponent("");if(n.length>0&&window.JSON&&"function"==typeof window.JSON.parse){var i=JSON.parse(n);void 0!==window.BOOMR_config?o(window.BOOMR_config,i):window.BOOMR_config=i}}catch(r){window.console&&"function"==typeof window.console.error&&console.error("mPulse: Could not parse configuration",r)}}();</script>
+<script>!function(a){var e="https://s.go-mpulse.net/boomerang/",t="addEventListener";if("False"=="True")a.BOOMR_config=a.BOOMR_config||{},a.BOOMR_config.PageParams=a.BOOMR_config.PageParams||{},a.BOOMR_config.PageParams.pci=!0,e="https://s2.go-mpulse.net/boomerang/";if(function(){function n(e){a.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!a.BOOMR||!a.BOOMR.version&&!a.BOOMR.snippetExecuted){a.BOOMR=a.BOOMR||{},a.BOOMR.snippetExecuted=!0;var i,o,r,O=document.createElement("iframe");if(a[t])a[t]("load",n,!1);else if(a.attachEvent)a.attachEvent("onload",n);O.src="javascript:void(0)",O.title="",O.role="presentation",(O.frameElement||O).style.cssText="width:0;height:0;border:0;display:none;",r=document.getElementsByTagName("script")[0],r.parentNode.insertBefore(O,r);try{o=O.contentWindow.document}catch(_){i=document.domain,O.src="javascript:var d=document.open();d.domain='"+i+"';void(0);",o=O.contentWindow.document}o.open()._l=function(){var a=this.createElement("script");if(i)this.domain=i;a.id="boomr-if-as",a.src=e+"FZ29U-GWEB6-F5YGN-ND96F-S7VWT",BOOMR_lstart=(new Date).getTime(),this.body.appendChild(a)},o.write("<bo"+'dy onload="document._l();">'),o.close()}}(),"".length>0)if(a&&"performance"in a&&a.performance&&"function"==typeof a.performance.setResourceTimingBufferSize)a.performance.setResourceTimingBufferSize();!function(){if(BOOMR=a.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var e="false"=="true"?1:0,t="cookiepresent",n="ficc7aaabiaqakqce3yaccqdtbou3cci-f-a5b3e3e44-clienttons-s.akamaihd.net",i={"ak.v":22,"ak.cp":"354192","ak.ai":parseInt("172858",10),"ak.ol":"0","ak.cr":76,"ak.ipv":6,"ak.proto":"h2","ak.rid":"10c61e41","ak.r":30975,"ak.a2":e,"ak.m":"dscx","ak.n":"essl","ak.bpcip":"2a04:2f80:a:100::","ak.cport":54020,"ak.gh":"92.123.220.22","ak.quicv":"","ak.tlsv":"tls1.2","ak.0rtt":"","ak.csrc":"-","ak.acc":"","ak.t":"1565362248"};if(""!==t)i["ak.ruds"]=t;var o={i:!1,av:function(e){var t="http.initiator";if(e&&(!e[t]||"spa_hard"===e[t]))i["ak.feo"]=void 0!==a.aFeoApplied?1:0,BOOMR.addVar(i)},rv:function(){var a=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.r","ak.acc","ak.t"];BOOMR.removeVar(a)}};BOOMR.plugins.AK={akVars:i,akDNSPreFetchDomain:n,init:function(){if(!o.i){var a=BOOMR.subscribe;a("before_beacon",o.av,null,null),a("onbeacon",o.rv,null,null),o.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head><body>
+</body></html>

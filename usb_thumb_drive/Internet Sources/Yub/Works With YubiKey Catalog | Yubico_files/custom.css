@@ -1,0 +1,66 @@
+/* Have fun adding your style here :) - PS: At all times this file should contain a comment or a rule, otherwise opera might act buggy :( */
+
+/* General Custom CSS */
+
+
+
+
+/*
+Desktop Styles
+================================================== */
+/* Note: Add new css to the media query below that you want to only effect the desktop view of your site */
+
+@media only screen and (min-width: 768px) {
+  /* Add your Desktop Styles here */
+
+}
+
+
+
+/*
+Mobile Styles
+================================================== */
+/* Note: Add new css to the media query below that you want to only effect the Mobile and Tablet Portrait view */
+
+@media only screen and (max-width: 767px) {
+  /* Add your Mobile Styles here */
+
+  .post-entry-362101 .flex_column, #subnav-wwyk .flex_column {
+    padding: 20px 0 0 0 !important;
+    margin: 0 5% 20px 5% !important;
+    width: 90% !important;
+  }
+
+  #subnav-wwyk .product-presentation-link {
+    padding-left: 20px ;
+    width: 150px !important;
+  }
+
+  .post-entry-362101 .sec2 h2 {
+    line-height: 1em !important ;
+  }
+
+  .post-entry-362101 .sec2 img {
+    margin-top: 0 !important;
+  }
+
+  .post-entry-362101 .hp-cta img {
+    max-width: 600px !important;
+    height: 100% !important;
+    width: auto !important;
+  }
+
+  #yk-lineup #buy-yks {
+    align-self: none !important;
+    width: 90% !important;
+    margin: 20px auto ;
+    text-align: center ;
+
+  }
+
+  #yk-lineup .flex {
+    display: block !important ;
+  }
+
+
+}

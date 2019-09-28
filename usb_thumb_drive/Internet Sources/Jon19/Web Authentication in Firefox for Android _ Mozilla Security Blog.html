@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)https://blog.mozilla.org/security/2019/08/05/web-authentication-in-firefox-for-android/ -->
+<html lang="en-US" id="mozilla-blog"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- For Facebook -->
+  <meta property="og:site_name" content="Mozilla Security Blog">
+  <meta property="og:title" content="Web Authentication in Firefox for Android">
+  <meta property="og:url" content="https://blog.mozilla.org/security/2019/08/05/web-authentication-in-firefox-for-android/">
+  <meta property="og:description" content="Firefox for Android (Fennec) now supports the Web Authentication API as of version 68. WebAuthn blends public-key cryptography into web application logins, and is our ...">
+                  <meta property="og:image" content="https://blog.mozilla.org/security/files/2019/07/webauthn-android-fennec-252x415.png">
+          <meta property="og:image" content="https://blog.mozilla.org/security/wp-content/themes/OneMozilla/img/mozilla-wordmark.png">
+
+
+  <meta name="title" content="Web Authentication in Firefox for Android | Mozilla Security Blog">
+  <meta name="description" content="Firefox for Android (Fennec) now supports the Web Authentication API as of version 68. WebAuthn blends public-key cryptography into web application logins, and is our ...">
+
+  <meta name="Rating" content="General">
+  <!--[if IE]>
+  <meta name="MSSmartTagsPreventParsing" content="true">
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/security/wp-content/themes/OneMozilla/js/html5.js"></script>
+  <![endif]-->
+
+  <link rel="copyright" href="https://blog.mozilla.org/security/2019/08/05/web-authentication-in-firefox-for-android/#colophon">
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="shortcut icon" type="image/ico" href="https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/security/wp-content/themes/OneMozilla/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/style.css">
+  <link rel="stylesheet" type="text/css" media="print" href="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/print.css">
+  <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/security/wp-content/themes/OneMozilla/css/ie7.css"><![endif]-->
+
+  <link rel="alternate" type="application/rss+xml" title="Mozilla Security Blog RSS Feed" href="https://blog.mozilla.org/security/feed/">
+  <link rel="pingback" href="https://blog.mozilla.org/security/xmlrpc.php">
+
+  <title>Web Authentication in Firefox for Android | Mozilla Security Blog</title>
+
+    <meta name="blog-name" content="Mozilla Security Blog">
+
+<!-- This site is optimized with the Yoast SEO plugin v11.6 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Firefox for Android now supports Web Authentication anti-phishing technology. WebAuthn permits passwordless logins using mobile biometric scanners.">
+<link rel="canonical" href="https://blog.mozilla.org/security/2019/08/05/web-authentication-in-firefox-for-android/">
+<script type="application/ld+json" class="yoast-schema-graph yoast-schema-graph--main">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://blog.mozilla.org/security/#website","url":"https://blog.mozilla.org/security/","name":"Mozilla Security Blog","potentialAction":{"@type":"SearchAction","target":"https://blog.mozilla.org/security/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://blog.mozilla.org/security/2019/08/05/web-authentication-in-firefox-for-android/#webpage","url":"https://blog.mozilla.org/security/2019/08/05/web-authentication-in-firefox-for-android/","inLanguage":"en-US","name":"Web Authentication in Firefox for Android - Mozilla Security Blog","isPartOf":{"@id":"https://blog.mozilla.org/security/#website"},"datePublished":"2019-08-05T14:00:44+00:00","dateModified":"2019-08-01T16:59:37+00:00","author":{"@id":"https://blog.mozilla.org/security/#/schema/person/ff7006d539a011babd1a38233028c96a"},"description":"Firefox for Android now supports Web Authentication anti-phishing technology. WebAuthn permits passwordless logins using mobile biometric scanners."},{"@type":["Person"],"@id":"https://blog.mozilla.org/security/#/schema/person/ff7006d539a011babd1a38233028c96a","name":"J.C. Jones","image":{"@type":"ImageObject","@id":"https://blog.mozilla.org/security/#authorlogo","url":"https://secure.gravatar.com/avatar/64eb1412c9354cf356df31936368cdac?s=96&d=identicon&r=g","caption":"J.C. Jones"},"description":"Keeping people safe on the 'net. Cryptography Engineering lead for Firefox.","sameAs":["https://twitter.com/JamesPugJones"]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="https://s.w.org/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blog.mozilla.org\/security\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.2.2"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="mediaelement-css" href="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/mediaelementplayer-legacy.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-mediaelement-css" href="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/wp-mediaelement.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="sand-css" href="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/sand.css" type="text/css" media="all">
+<script type="text/javascript" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/jquery.js"></script>
+<script type="text/javascript" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/jquery-migrate.min.js"></script>
+<script type="text/javascript">
+var mejsL10n = {"language":"en","strings":{"mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen-off":"Turn off Fullscreen","mejs.fullscreen-on":"Go Fullscreen","mejs.download-video":"Download Video","mejs.fullscreen":"Fullscreen","mejs.time-jump-forward":["Jump forward 1 second","Jump forward %1 seconds"],"mejs.loop":"Toggle Loop","mejs.play":"Play","mejs.pause":"Pause","mejs.close":"Close","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.time-skip-back":["Skip back 1 second","Skip back %1 seconds"],"mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.mute-toggle":"Mute Toggle","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.ad-skip":"Skip ad","mejs.ad-skip-info":["Skip in 1 second","Skip in %1 seconds"],"mejs.source-chooser":"Source Chooser","mejs.stop":"Stop","mejs.speed-rate":"Speed Rate","mejs.live-broadcast":"Live Broadcast","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+</script>
+<script type="text/javascript" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/mediaelement-and-player.min.js"></script>
+<script type="text/javascript" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/mediaelement-migrate.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/security\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/ga-snippet.js"></script>
+<script type="text/javascript" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/fc-checkcomment.js"></script>
+<link rel="https://api.w.org/" href="https://blog.mozilla.org/security/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.mozilla.org/security/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.mozilla.org/security/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="https://blog.mozilla.org/security/?p=2462">
+<link rel="alternate" type="application/json+oembed" href="https://blog.mozilla.org/security/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.mozilla.org%2Fsecurity%2F2019%2F08%2F05%2Fweb-authentication-in-firefox-for-android%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://blog.mozilla.org/security/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.mozilla.org%2Fsecurity%2F2019%2F08%2F05%2Fweb-authentication-in-firefox-for-android%2F&amp;format=xml">
+</head>
+
+<body class="post-template-default single single-post postid-2462 single-format-standard sand">
+<div id="page"><div class="wrap">
+  <nav id="nav-access">
+    <ul>
+      <li><a href="https://blog.mozilla.org/security/2019/08/05/web-authentication-in-firefox-for-android/#content-main" tabindex="1">Skip to main content</a></li>
+      <li><a href="https://blog.mozilla.org/security/2019/08/05/web-authentication-in-firefox-for-android/#content-sub" tabindex="2">Skip to sidebar</a></li>
+          <li><a href="https://blog.mozilla.org/security/2019/08/05/web-authentication-in-firefox-for-android/#search" tabindex="3">Skip to blog search</a></li>
+        </ul>
+  </nav>
+
+    <header id="masthead">
+    <hgroup>
+          <h1 id="site-title"><a href="https://blog.mozilla.org/security/" rel="home" title="Go to the front page">Mozilla Security Blog</a></h1>
+            </hgroup>
+
+    <span id="tabzilla">
+      <a href="https://www.mozilla.org/">Mozilla</a>
+    </span>
+
+    
+  </header><!-- #masthead -->
+
+  
+  <main id="content">
+
+  <div id="content-main" class="main" role="main">
+
+    
+      <article id="post-2462" class="post-2462 post type-post status-publish format-standard hentry category-crypto-engineering category-security tag-authentication tag-biometric tag-fennec tag-firefox-for-android tag-web-authentication show-author no-comments">
+  <header class="entry-header">
+    <h1 class="entry-title">Web Authentication in Firefox for Android</h1>
+
+    <div class="entry-info">
+  
+                                <address class="vcard">
+          <cite class="author fn">
+            <a class="url" href="https://blog.mozilla.org/security/author/jjonesmozilla-com/" title="See all posts by J.C. Jones">
+              J.C. Jones <img alt="" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/64eb1412c9354cf356df31936368cdac.jpeg" srcset="https://secure.gravatar.com/avatar/64eb1412c9354cf356df31936368cdac?s=48&amp;d=identicon&amp;r=g 2x" class="avatar avatar-24 photo" height="24" width="24">            </a>
+          </cite>
+        </address>
+          
+  
+      </div>
+
+      <p class="entry-posted">
+      <time class="published" title="2019-08-05T07:00:44-07:00" datetime="2019-08-05T07:00:44-07:00">
+        <a class="posted-month" href="https://blog.mozilla.org/security/2019/08/" title="See all posts from August, 2019">
+          Aug        </a>
+        <span class="posted-date">
+          5        </span>
+        <a class="posted-year" href="https://blog.mozilla.org/security/2019/" title="See all posts from 2019">
+          2019        </a>
+      </time>
+    </p>
+  
+        </header><!-- .entry-header -->
+
+  <div class="entry-content">
+        <p><a href="https://www.mozilla.org/en-US/firefox/android/all/">Firefox for Android</a> (Fennec) now supports the<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API"> Web Authentication API</a> as of<a href="https://www.mozilla.org/en-US/firefox/android/68.0/releasenotes/"> version 68</a>. WebAuthn blends public-key cryptography into web application logins, and is our best technical response to credential phishing. Applications leveraging WebAuthn gain new&nbsp; second factor and “passwordless” biometric authentication capabilities. Now, Firefox for Android matches our support for<a href="https://blog.mozilla.org/security/2019/03/19/passwordless-web-authentication-support-via-windows-hello/"> Passwordless Logins using Windows Hello</a>. As a result, even while mobile you can still obtain the highest level of anti-phishing account security.</p>
+<div style="width: 400px;" class="wp-video"><span class="mejs-offscreen">Video Player</span><div id="mep_0" class="mejs-container mejs-container-keyboard-inactive wp-video-shortcode mejs-video" tabindex="0" role="application" aria-label="Video Player" style="width: 400px; height: 711px; min-width: 217px;"><div class="mejs-inner"><div class="mejs-mediaelement"><mediaelementwrapper id="video-2462-3"><video class="wp-video-shortcode" id="video-2462-3_html5" width="400" height="711" poster="https://blog.mozilla.org/security/files/2019/07/webauthn-android-fennec.png" loop="1" preload="metadata" src="https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/security/files/2019/07/webauthn-android-fennec-1.mp4?_=3" style="width: 400px; height: 711px;"><source type="video/mp4" src="https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/security/files/2019/07/webauthn-android-fennec-1.mp4?_=3"><source type="video/webm" src="https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/security/files/2019/07/webauthn-android-fennec-1.webm?_=3"><a href="https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/security/files/2019/07/webauthn-android-fennec-1.mp4">https://blog.mozilla.org/security/files/2019/07/webauthn-android-fennec-1.mp4</a></video></mediaelementwrapper></div><div class="mejs-layers"><div class="mejs-poster mejs-layer" style="background-image: url(&quot;https://blog.mozilla.org/security/files/2019/07/webauthn-android-fennec.png&quot;); width: 100%; height: 100%;"><img class="mejs-poster-img" width="0" height="0" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/webauthn-android-fennec.png"></div><div class="mejs-overlay mejs-layer" style="width: 100%; height: 100%; display: none;"><div class="mejs-overlay-loading"><span class="mejs-overlay-loading-bg-img"></span></div></div><div class="mejs-overlay mejs-layer" style="display: none; width: 100%; height: 100%;"><div class="mejs-overlay-error"></div></div><div class="mejs-overlay mejs-layer mejs-overlay-play" style="width: 100%; height: 100%;"><div class="mejs-overlay-button" role="button" tabindex="0" aria-label="Play" aria-pressed="false"></div></div></div><div class="mejs-controls"><div class="mejs-button mejs-playpause-button mejs-play"><button type="button" aria-controls="mep_0" title="Play" aria-label="Play" tabindex="0"></button></div><div class="mejs-time mejs-currenttime-container" role="timer" aria-live="off"><span class="mejs-currenttime">00:00</span></div><div class="mejs-time-rail"><span class="mejs-time-total mejs-time-slider" role="slider" tabindex="0" aria-label="Time Slider" aria-valuemin="0" aria-valuemax="NaN" aria-valuenow="0" aria-valuetext="00:00"><span class="mejs-time-buffering" style="display: none;"></span><span class="mejs-time-loaded"></span><span class="mejs-time-current" style="transform: scaleX(0);"></span><span class="mejs-time-hovered no-hover"></span><span class="mejs-time-handle" style="transform: translateX(0px);"><span class="mejs-time-handle-content"></span></span><span class="mejs-time-float"><span class="mejs-time-float-current">00:00</span><span class="mejs-time-float-corner"></span></span></span></div><div class="mejs-time mejs-duration-container"><span class="mejs-duration">00:16</span></div><div class="mejs-button mejs-volume-button mejs-mute"><button type="button" aria-controls="mep_0" title="Mute" aria-label="Mute" tabindex="0"></button><a href="javascript:void(0);" class="mejs-volume-slider" aria-label="Volume Slider" aria-valuemin="0" aria-valuemax="100" role="slider" aria-orientation="vertical" aria-valuenow="80" aria-valuetext="80%"><span class="mejs-offscreen">Use Up/Down Arrow keys to increase or decrease volume.</span><div class="mejs-volume-total"><div class="mejs-volume-current" style="bottom: 0px; height: 80%;"></div><div class="mejs-volume-handle" style="bottom: 80%; margin-bottom: -3px;"></div></div></a></div><div class="mejs-button mejs-fullscreen-button"><button type="button" aria-controls="mep_0" title="Fullscreen" aria-label="Fullscreen" tabindex="0"></button></div></div></div></div></div>
+<p>Firefox for Android uses your device’s native capabilities: On certain devices, you can use built-in biometrics scanners for authentication. You can also use security keys that support Bluetooth, NFC, or can be plugged into the phone’s USB port.</p>
+<p>The attached video shows the usage of Web Authentication with a built-in fingerprint scanner: The <a href="https://webauthn.io/">demo website</a> enrolls a new security key in the account using the fingerprint, and then subsequently logs in using that fingerprint (and without requiring a password).</p>
+<p>Adoption of Web Authentication by major websites is underway: Google, Microsoft, and Dropbox all support WebAuthn via their respective Account Security Settings’ “2-Step Verification” menu.</p>
+<h2>A few notes</h2>
+<ul>
+<li>For Microsoft Accounts, you’ll need to be running the latest release of Windows 10. Look under the heading “Windows Hello and security keys”.</li>
+<li>For Google Accounts, due to Google limitations you must enroll your security keys via a desktop browser, and then you can use them with Firefox for Android. Look for the heading “Security keys” and choose a USB or NFC key.</li>
+<li>Additionally you can try Web Authentication out at a variety of demo sites:<a href="https://webauthn.org/"> https://webauthn.org/</a>,<a href="https://webauthn.io/"> https://webauthn.io/</a>,<a href="https://webauthn.me/"> https://webauthn.me/</a>,<a href="https://webauthndemo.appspot.com/"> https://webauthndemo.appspot.com/</a>, or<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API"> learn more about it on MDN</a>.</li>
+</ul>
+<p>For technical reasons, Firefox for Android does not support the older, backwards-compatible FIDO U2F Javascript API, which we<a href="https://blog.mozilla.org/security/2019/04/04/shipping-fido-u2f-api-support-in-firefox/"> enabled on Desktop earlier in 2019</a>. For details as to why, see<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1550625"> bug 1550625</a>.</p>
+<p>Currently<a href="https://blog.mozilla.org/futurereleases/2019/06/27/reinventing-firefox-for-android-a-preview/"> Firefox Preview</a> for Android does not support Web Authentication. As Preview matures, Web Authentication will be joining its feature set.</p>
+<p>&nbsp;</p>
+      </div><!-- .entry-content -->
+
+  <footer class="entry-meta">
+            <p class="meta"><b>Tags:</b> <a href="https://blog.mozilla.org/security/tag/authentication/" rel="tag">Authentication</a>, <a href="https://blog.mozilla.org/security/tag/biometric/" rel="tag">Biometric</a>, <a href="https://blog.mozilla.org/security/tag/fennec/" rel="tag">Fennec</a>, <a href="https://blog.mozilla.org/security/tag/firefox-for-android/" rel="tag">Firefox for Android</a>, <a href="https://blog.mozilla.org/security/tag/web-authentication/" rel="tag">Web Authentication</a></p>
+          <p class="meta"><b>Categories:</b> <a href="https://blog.mozilla.org/security/category/crypto-engineering/" rel="category tag">Crypto Engineering</a>, <a href="https://blog.mozilla.org/security/category/security/" rel="category tag">Security</a></p>
+    </footer><!-- .entry-meta -->
+</article><!-- #post -->
+
+      
+
+    
+  </div><!-- #content-main -->
+
+<div id="content-sub" class="sub sidebar widgets" role="complementary">
+
+  
+          
+                      <aside class="widget vcard author-bio">
+          <h3 class="widget-title">
+                      <a class="url fn author" href="https://blog.mozilla.org/security/author/jjonesmozilla-com/">J.C. Jones            <span class="photo"><img alt="" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/64eb1412c9354cf356df31936368cdac(1).jpeg" srcset="https://secure.gravatar.com/avatar/64eb1412c9354cf356df31936368cdac?s=136&amp;d=identicon&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"></span>            </a>
+                    </h3>
+
+                    <p>Keeping people safe on the 'net. Cryptography Engineering lead for Firefox.</p>
+          
+                    <p><a class="url go" href="https://blog.mozilla.org/security/author/jjonesmozilla-com/">More from J.C. Jones</a></p>
+                  </aside>
+      
+    
+  
+  <aside id="categories" class="widget widget_categories">
+    <h3 class="widget-title">Categories</h3>
+    <ul>
+      	<li class="cat-item cat-item-47"><a href="https://blog.mozilla.org/security/category/announcements/">Announcements</a>
+</li>
+	<li class="cat-item cat-item-8630"><a href="https://blog.mozilla.org/security/category/automated-testing/">Automated Testing</a>
+</li>
+	<li class="cat-item cat-item-8632"><a href="https://blog.mozilla.org/security/category/browserid/">BrowserID</a>
+</li>
+	<li class="cat-item cat-item-45538"><a href="https://blog.mozilla.org/security/category/ca-program/">CA Program</a>
+</li>
+	<li class="cat-item cat-item-70"><a href="https://blog.mozilla.org/security/category/conferences/">Conferences</a>
+</li>
+	<li class="cat-item cat-item-320796"><a href="https://blog.mozilla.org/security/category/crypto-engineering/" title="News and updates from the Mozilla Cryptography Engineering team">Crypto Engineering</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="https://blog.mozilla.org/security/category/firefox/">Firefox</a>
+</li>
+	<li class="cat-item cat-item-24660"><a href="https://blog.mozilla.org/security/category/firefox-os/">Firefox OS</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="https://blog.mozilla.org/security/category/general/">General</a>
+</li>
+	<li class="cat-item cat-item-8633"><a href="https://blog.mozilla.org/security/category/identity/">Identity</a>
+</li>
+	<li class="cat-item cat-item-78"><a href="https://blog.mozilla.org/security/category/musings/">Musings</a>
+</li>
+	<li class="cat-item cat-item-8629"><a href="https://blog.mozilla.org/security/category/passwords-2/">Passwords</a>
+</li>
+	<li class="cat-item cat-item-71"><a href="https://blog.mozilla.org/security/category/press/">Press</a>
+</li>
+	<li class="cat-item cat-item-847"><a href="https://blog.mozilla.org/security/category/privacy/">Privacy</a>
+</li>
+	<li class="cat-item cat-item-812"><a href="https://blog.mozilla.org/security/category/regressions/">Regressions</a>
+</li>
+	<li class="cat-item cat-item-69"><a href="https://blog.mozilla.org/security/category/security/">Security</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="https://blog.mozilla.org/security/category/security-updates/">Security Updates</a>
+</li>
+	<li class="cat-item cat-item-301283"><a href="https://blog.mozilla.org/security/category/security-bytes-podcast/">security-bytes-podcast</a>
+</li>
+	<li class="cat-item cat-item-45499"><a href="https://blog.mozilla.org/security/category/tls/">TLS</a>
+</li>
+	<li class="cat-item cat-item-610"><a href="https://blog.mozilla.org/security/category/tools/">tools</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://blog.mozilla.org/security/category/uncategorized/">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-73"><a href="https://blog.mozilla.org/security/category/vulnerabilities/">Vulnerabilities</a>
+</li>
+    </ul>
+  </aside>
+  <form id="search" class="fm-search" method="get" action="https://blog.mozilla.org/security/">
+  <fieldset>
+    <p><input type="search" value="" name="s" id="s"></p>
+  </fieldset>
+</form>
+
+</div><!-- #content-sub -->
+
+  </main><!-- #content -->
+</div></div><!-- /.wrap /#page -->
+
+<footer id="site-info">
+  <div class="wrap">
+    <p id="foot-logo">
+      <a class="top" href="https://blog.mozilla.org/security/2019/08/05/web-authentication-in-firefox-for-android/#page">Return to top</a>
+      <a class="logo" href="https://www.mozilla.org/" rel="external">Mozilla</a>
+    </p>
+
+    <p id="colophon">
+      Except where otherwise <a href="https://www.mozilla.org/about/legal.html" rel="external">noted</a>, content on this site is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="external license">Creative Commons Attribution Share-Alike License v3.0</a> or any later version.    </p>
+
+    <nav id="nav-meta">
+      <ul>
+        <li><a href="https://www.mozilla.org/contact/" rel="external">Contact Us</a></li>
+        <li><a href="https://www.mozilla.org/privacy/" rel="external">Privacy Policy</a></li>
+        <li><a href="https://www.mozilla.org/about/" rel="external">Legal Notices</a></li>
+        <li><a href="https://www.mozilla.org/legal/fraud-report/" rel="external">Report Trademark Abuse</a></li>
+        <li><a href="https://github.com/mozilla/One-Mozilla-blog/" rel="external">Theme Code </a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script type="text/javascript" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/wp-mediaelement.min.js"></script>
+<script type="text/javascript" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/vimeo.min.js"></script>
+<script type="text/javascript" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/comment-reply.min.js"></script>
+<script type="text/javascript" src="./Web Authentication in Firefox for Android _ Mozilla Security Blog_files/wp-embed.min.js"></script>
+
+
+
+</body></html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>U2F nowhere near ready for prime time | The Daily Swig</title>
+
+        <meta name="description" content="Anti-phishing tech is anything but universal">
+        
+<!-- Twitter data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@DailySwig">
+<meta name="twitter:title" content="U2F nowhere near ready for prime time">
+    <meta name="twitter:description" content="Anti-phishing tech is anything but universal">
+    <meta name="twitter:creator" content="@jleyden">
+<meta name="twitter:image" content="https://portswigger.net/cms/images/90/c1/ac7c2dd3fa5b-twittercard-u2f_authentication_main_header.jpg">
+
+<!-- Open Graph data -->
+<meta property="og:title" content="U2F nowhere near ready for prime time">
+    <meta property="og:description" content="Anti-phishing tech is anything but universal">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://portswigger.net/daily-swig/u2f-nowhere-near-ready-for-prime-time">
+<meta property="og:image" content="https://portswigger.net/cms/images/90/c1/ac7c2dd3fa5b-twittercard-u2f_authentication_main_header.jpg">
+    <meta property="og:site_name" content="The Daily Swig | Web security digest">
+    <meta property="article:published_time" content="2019-02-06T13:50:00">
+
+        <link rel="canonical" href="https://portswigger.net/daily-swig/u2f-nowhere-near-ready-for-prime-time">
+        <link rel="icon" href="https://portswigger.net/content/images/logos/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="https://portswigger.net/content/images/logos/apple-touch-icon.png">
+        <link rel="stylesheet" href="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/PSDailySwig.css" type="text/css">
+    </head>
+    <body theme="dailyswig">
+        
+        <section id="top" class="banner-container dailyswig">
+            <div class="container">
+                <div class="titlecontainer">
+
+                    <a href="https://portswigger.net/daily-swig" class="banner-main">
+                        <img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/swig-white-logo.svg" alt="The Daily Swig">
+                    </a>
+                    <a href="https://portswigger.net/daily-swig" class="banner-sub">
+                            <span>Web security digest</span>
+                    </a>
+                </div>
+                <div class="linkscontainer-left">
+                    <a href="https://portswigger.net/" class="is-icon"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/ps-logo-dailyswig.svg" alt="PortSwigger Logo"></a>
+                </div>
+                <div class="linkscontainer">
+                    <a href="https://portswigger.net/" class="portswigger-home is-icon"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/ps-logo-dailyswig.svg" alt="PortSwigger Logo"></a>
+                    <a href="https://portswigger.net/daily-swig/about" class="aboutlink"></a>
+                    <a href="https://twitter.com/DailySwig" class="icon-ps-twitter is-icon"></a>
+                    <a href="https://www.facebook.com/DailySwig/" class="icon-ps-facebook is-icon"></a>
+                    <a href="https://portswigger.net/daily-swig/rss" class="is-rss icon-ps-rss is-icon"></a>
+                </div>
+            </div>
+        </section>
+        
+
+<input id="MediaId" name="MediaId" type="hidden" value="011732BAE3F1B70A861C4E9CF4C2DF40">
+
+<section class="maincontainer dailyswig">
+    <div class="container is-flex">
+        <div class="maincol">
+            <div class="post-card">
+                <h1>U2F nowhere near ready for prime time</h1>
+                
+                <div class="post-additionalinfo">
+                    <a href="https://portswigger.net/daily-swig/by/john-leyden">John Leyden</a>
+06 February 2019 at 13:50 UTC
+                </div>
+                <div class="post-labels">
+                            <a href="https://portswigger.net/daily-swig/u2f">
+            <span>U2F</span>
+        </a>
+        <a href="https://portswigger.net/daily-swig/secure-development">
+            <span>Secure Development</span>
+        </a>
+        <a href="https://portswigger.net/daily-swig/2fa">
+            <span>2FA</span>
+        </a>
+
+                </div>
+                
+
+<div class="sharebuttoncontainer is-smallicons">
+    <a href="https://twitter.com/share?url=https%3a%2f%2fportswigger.net%2fdaily-swig%2fu2f-nowhere-near-ready-for-prime-time&amp;text=U2F+nowhere+near+ready+for+prime+time+%7c+The+Daily+Swig%0A" target="_blank" data-ga-click-label="twitter">
+        <span class="share-twitter ">
+            <span class="share-icon icon-ps-twitter"></span>
+            <span class="share-text">Twitter</span>
+        </span>
+    </a>
+    <a href="https://api.whatsapp.com/send?text=https%3a%2f%2fportswigger.net%2fdaily-swig%2fu2f-nowhere-near-ready-for-prime-time" target="_blank" data-ga-click-label="whatsapp">
+        <span class="share-whatsapp ">
+            <span class="share-icon icon-ps-whatsapp"></span>
+            <span class="share-text">WhatsApp</span>
+        </span>
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fportswigger.net%2fdaily-swig%2fu2f-nowhere-near-ready-for-prime-time" target="_blank" data-ga-click-label="facebook">
+        <span class="share-facebook ">
+            <span class="share-icon icon-ps-facebook"></span>
+            <span class="share-text">Facebook</span>
+        </span>
+    </a>
+    <a href="https://reddit.com/submit?url=https%3a%2f%2fportswigger.net%2fdaily-swig%2fu2f-nowhere-near-ready-for-prime-time" target="_blank" data-ga-click-label="reddit">
+        <span class="share-reddit ">
+            <span class="share-icon icon-ps-reddit"></span>
+            <span class="share-text">Reddit</span>
+        </span>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?url=https%3a%2f%2fportswigger.net%2fdaily-swig%2fu2f-nowhere-near-ready-for-prime-time" target="_blank" data-ga-click-label="linkedin">
+        <span class="share-linkedin ">
+            <span class="share-icon icon-ps-linkedin"></span>
+            <span class="share-text">LinkedIn</span>
+        </span>
+    </a>
+    <a href="mailto:?subject=U2F+nowhere+near+ready+for+prime+time+%7c+The+Daily+Swig&amp;body=U2F+nowhere+near+ready+for+prime+time+%7c+The+Daily+Swig%0A%0AAnti-phishing+tech+is+anything+but+universal%0A%0Ahttps://portswigger.net/daily-swig/u2f-nowhere-near-ready-for-prime-time" data-ga-click-label="email">
+        <span class="share-email ">
+            <span class="share-icon icon-ps-email"></span>
+            <span class="share-text">Email</span>
+        </span>
+    </a>
+</div>
+                <div class="post-content">
+                    <!-- Article Start -->
+                    <p class="standfirst">Anti-phishing tech is anything but universal</p><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/ac7c2dd3fa5b-article-u2f_authentication_main_header.jpg" title="PortSwigger Ltd"></p><p>The
+ use of hardware security keys to secure online accounts against 
+phishing is being heavily promoted by the industry, but tests by <span class="italic">The Daily Swig</span> have shown that the technology remains poorly supported by websites and browsers.</p><p>Even
+ some consumer-focused services that support U2F-based authentication – 
+such as Facebook and Twitter – fall back to supporting less secure app 
+or SMS-based authentication in the absence of a hardware key, 
+undermining most of the extra security protections the tech might 
+otherwise offer.</p><p class="bold">Life, the Universe, and Authentication</p><p>U2F
+ (Universal 2nd Factor) is an open authentication standard designed to 
+strengthen two-factor authentication (2FA). The technology, managed by 
+the <a href="https://fidoalliance.org/what-is-fido/" target="_blank" rel="nofollow">FIDO Alliance</a>, makes use of USB or near-field communication (NFC) technology, and is similar to that widely found in smart cards.</p><p>Two-factor authentication renders a password and login ID alone not enough to log into an online account. </p><p>The
+ second factor typically comes in the form of a six-digit number sent by
+ a service provider to a user’s pre-registered mobile phone, either via 
+an SMS message or by an app.</p><p>After setup, a one-time 2FA code sent via SMS needs to be confirmed before access is granted.</p><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/ef3067e36a12-article-190206-yubikeys.jpg" title="Image: Yubico"></p><p class="bold">Fly in the ointment</p><p>The
+ growing prevalence of SIM-swap scams has rendered this approach 
+perilous. Using either an SMS message or automated phone call to receive
+ a one-time code is less secure than using a mobile authentication app 
+such as Google Authenticator or Authy to generate codes.</p><p><a href="https://blog.malwarebytes.com/cybercrime/2019/01/two-factor-authentication-defeated-spotlight-2fas-latest-challenge/" target="_blank" rel="nofollow">More sophisticated approaches</a>
+ to phishing that incorporate man-in-the-middle attacks can circumvent 
+these protections through schemes geared towards tricking users into 
+handing over their codes as well as their passwords.</p><p>Either 
+approach – more accurately described as two-step rather than two-factor 
+authentication – is much better than relying on a password alone, even 
+though it’s far from bullet-proof.</p><p>The threat is far from academic. Various forms of malware-based attacks targeting 2FA have already been developed.</p><p>Hackers
+ have even developed web-based attack tools to dumb down the process of 
+circumventing 2FA, such as the recently uncovered <a href="https://www.grahamcluley.com/automated-phishing-attack-tool-bypasses-2fa-protection/" target="_blank">Modlishka utility</a>.</p><p>More
+ secure forms of authentication involve “something that you know” 
+alongside “something that you have” (a token) or “something that you 
+are” (biometrics).</p><p>This is where U2F comes in.</p><p>Google <a href="https://krebsonsecurity.com/2018/07/google-security-keys-neutralized-employee-phishing/" target="_blank" rel="nofollow">proudly states</a>
+ that it has avoided a successful phishing attack against any of its 
+workers since the mandatory introduction of U2F back in 2017.</p><p>The tech firm’s <a href="https://landing.google.com/advancedprotection/" target="_blank" rel="nofollow">Advanced Protection Program</a>
+ is also built on the foundation of U2F tech. The program is aimed at 
+journalists, activists, and political campaign teams, but isn’t 
+available for business-focused G Suite accounts.</p><p>Google is by far 
+the only organization to promote U2F hardware key authentication tech. 
+Last month, the Committee to Protect Journalists started&nbsp;<a href="https://cpj.org/2019/01/digital-safety-using-security-keys-to-secure-accou.php" target="_blank" rel="nofollow">actively encouraging reporters</a> to use security keys to access online accounts.</p><p>U2F hardware keys are hot right now. The devices cost from just $20, they clearly fulfill a need, and their promise is enticing.</p><br><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/329d0997b686-article-14-select-your-yubikey.jpg"></p><p class="italic text-center">Select your YubiKey</p><br><p>Recently, <span class="italic">The Daily Swig</span>
+ sourced samples of the tech. We obtained a YubiKey from Yubico – 
+probably the best-known brand in the market – as well as U2F security 
+keys from Nitrokey and start-up SoloKey.</p><p>We would have also liked to have gotten our hands on Google’s <a href="https://cloud.google.com/titan-security-key/" target="_blank">Titan security key</a>, but these are not yet available in Europe, thwarting our ambitions in that direction.</p><br><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/e12ba55deacb-article-2-solokeys.jpg" title="PortSwigger Ltd"></p><p class="italic text-center">SoloKeys and sheaths</p><br><p>We
+ set off wanting to do a comparative review, but it quickly became 
+apparent that, at this point, support for U2F technology among web 
+services in general was a much bigger issue than the competitive 
+features of different devices.</p><p>Accordingly, we decided to explore this technology, rather than writing a straight product review.</p><p>As the <a href="https://www.dongleauth.info/" target="_blank" rel="nofollow">dongleauth.info</a>
+ tracker site notes, consumer-facing sites that support U2F include 
+Twitter, Facebook, and Dropbox, as well as Google and its various 
+properties (including, but not limited to, Gmail). The websites and web 
+services of both Apple and Microsoft are yet to support U2F.</p><br><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/57aeb3d97f1f-article-3-u2f-supported-sites.jpg" title="PortSwigger Ltd"></p><p class="italic text-center">U2F supported sites</p><br><p>In
+ the financial services sector, an obvious arena for the application of 
+U2F and the stronger authentication it promises, the picture is even 
+more patchy.</p><p>For example, online payment technology Stripe 
+supports U2F, but PayPal does not. PayPal is a particularly striking 
+omission since it’s a member of the FIDO2 Project alliance. Likewise, 
+eBay’s adoption has yet to materialize.</p><p>U2F is a technology well 
+suited to the requirement of enterprise-focused services. GitLab and 
+BitBucket support its use by software developers, the main users of both
+ services.</p><p>Support for U2F is also found in Amazon Web Services, if not on the e-commerce side of Amazon’s business.</p><br><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/ffef6210ff64-article-4-linkedin-1.png" title="PortSwigger Ltd"></p><p class="italic text-center">LinkedIn only supports two-step verification</p><br><p>If
+ there’s one area where you’d expect U2F technology to be encouraged, 
+it’s among password managers. Here again, though, matters are lacking.<br></p><p><span>LastPass</span> endorses U2F, but only in the premium version of its product.</p><br><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/c8f1c8610939-article-5-lastpass-premium.png" title="PortSwigger Ltd"></p><p class="italic text-center">LastPass only supports U2F with the premium version of its service</p><br><p>It’s a <a href="https://twitter.com/DashlaneSupport/status/1082378840746479626" target="_blank" rel="nofollow">similar story</a> with <span>Dashlane</span>. We found adding a security key to a Windows installation of the Dashlane app to be a cumbersome process.</p><p>Another major player, <span>1Password</span>, only supports YubiKey for <a href="https://twitter.com/1Password/status/1080608656662675456" target="_blank" rel="nofollow">hardware key-based authentication</a>.</p><p class="bold">Four-squared</p><p>With
+ a limited list of (consumer-focused) targets, we decided to focus on 
+signing up to use U2F for Google (Gmail), social media (Twitter and 
+Facebook), and Dropbox accounts. We used a Chromebook and Windows 7 
+machine in our testing.</p><p>Phase one of enrolment generally involves 
+associating an account with a mobile phone and sending a code via text 
+to confirm it. Users can then switch to the more convenient route of 
+receiving their codes through an app.</p><p>Our testing failed to 
+uncover any example of jumping straight to using U2F hardware keys 
+without preliminaries – you had to enroll for SMS or app-based 
+authentication first.</p><p>During the process of adding a hardware key,
+ you’ll be asked to log back into an account. It’s a good idea to sign 
+up with a backup key at the same time, just in case you lose your main 
+one.</p><p>One of these keys should be NFC compatible so that it works 
+with your smartphone. If you lose one of your keys you can use the other
+ to login, un-enroll the lost key, and sign up with a new one.</p><p>If 
+you’re unfortunate enough to somehow lose both your hardware keys, then 
+you’ll be locked out of your account. That’s why it’s a good idea to a 
+set of emergency access backup codes, which you’re able to either store 
+digitally or print – either way, keep them in a safe place.</p><p>Backup codes aren’t an option for Google Advanced Protection, which has a more stringent account recovery regime.</p><p>The
+ enrollment process for various sites is multi-stage, but not especially
+ difficult. In the case of Google, once you jump through a few hoops (as
+ explained in some depth in a <a href="https://www.troyhunt.com/beyond-passwords-2fa-u2f-and-google-advanced-protection/" target="_blank" rel="nofollow">blog post</a> by Troy Hunt), you’ll be able to login with security keys as default.</p><p>Google’s
+ multi-stage process is quite well designed, and this might be partly 
+because its web services align naturally with its Chrome browser.</p><br><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/a815b9220dd9-article-6-gmail-security-key-added.jpg" title="PortSwigger Ltd"></p><p class="italic text-center">Gmail login with hardware security key enabled</p><br><p>In
+ the case of Facebook, by contrast, hardware security keys are only 
+supported as backup. Users cannot establish the security key as the 
+default option, even after you’ve enrolled a device.</p><p>We found that
+ if you attempted to remove verification via an authenticator app, or 
+dissociate an account from a mobile phone number, then the system would 
+disable 2FA as a whole and you’d be back to square one.</p><br><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/dbf98ff4bd6b-article-7-facebook-security-key.jpg" title="PortSwigger Ltd"></p><p class="italic text-center">Adding a security key to Facebook</p><br><p>Facebook explains that this is a <a href="https://www.facebook.com/notes/facebook-security/security-key-for-safer-logins-with-a-touch/10154125089265766/" target="_blank" rel="nofollow">deliberate design choice</a>, prompted by what it describes as a lack of support for U2F within some browsers and by some (unnamed) mobile devices.</p><p>“Security
+ keys for Facebook logins currently only work with certain web browsers 
+and mobile devices, so we’ll ask you to also register an additional 
+login approval method, such as your mobile phone or Code Generator,” the
+ company said.</p><p>U2F vendor Nitrokey has acknowledged this browser compatibility problem in its <a href="https://www.nitrokey.com/documentation/installation#p:nitrokey-fido-u2f&amp;os:windows" target="_blank" rel="nofollow">setup documentation</a>.</p><p>Twitter,
+ which introduced U2F compatibility last June, doesn’t let you select 
+hardware-based security keys as the default authentication option, 
+either. </p><p>If you disable both the mobile security app and 
+Time-based One-time Password (TOTP) options, then you disable login 
+verification. Establishing hardware security keys as the default option 
+isn’t possible, according to our tests.</p><p>Twitter itself confirms this, again telling users they need to have a <a href="https://help.twitter.com/en/managing-your-account/two-factor-authentication#security-key" target="_blank" rel="nofollow">phone number associated with your account</a> for ‘account recovery’.</p> Keys alone aren’t an option.<p></p><p></p><br><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/c596e61cb4e5-article-8-twitter-2fa-setup.jpg" title="PortSwigger Ltd"></p><p class="italic text-center">Twitter account with hardware security key authentication enabled</p><br><p>It’s
+ the same story with Dropbox. You have to have an alternate second 
+factor system set up first before adding a hardware key as an additional
+ authentication option. Even when you add a hardware security key, your 
+U2F device can only be set up as a backup and not enforced as the 
+default option.</p><br><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/3d96309160e8-article-9-dropbox.jpg" title="PortSwigger Ltd" width="600"></p><p class="italic text-center">Dropbox security key added</p><br><p>In
+ the case of Gmail, our tests found that if you’ve only enrolled with 
+one U2F hardware key, and that hardware wasn’t present on a system, the 
+process would fall back to accepting codes from an app.</p><p>This happens even when using a PC that hadn’t been previously used to log in.</p><br><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/6b6fcfc0cb15-article-10-google-2fa-setup.png" title="PortSwigger Ltd"></p><p class="italic text-center">YubiKey selected as the default option on a Gmail account, but other options can’t be disallowed</p><br><p>The
+ above U2F fallback mechanisms partially frustrate the purpose of using 
+stronger hardware-based authentication. We say partially because there 
+are still some ancillary benefits.</p><p>If you associate a hardware key
+ with an online account, then you avoid the hassle of having to manually
+ enter an authentication code yourself, while the hardware token 
+provides cryptographic proof to a web service that it’s in your machine.</p><p>You’d
+ simply tap a small hardware device that goes in the USB drive of your 
+computer – less hassle than using a code generated via an app or (yet 
+more trouble) an SMS message.</p><p>This falls short of ensuring your 
+login is immune to phishing because of backward support for less 
+sophisticated authentication schemes, as with Facebook and Twitter.</p><p>Google
+ Advanced Protection, however, goes the extra mile to lock down 
+accounts. Once an account is enrolled, using a hardware security key is 
+mandated, as our tests confirmed. </p><p>This approach defends against 
+man-in-the middle phishing attacks designed to capture both login 
+details and authentication codes, Google <a href="https://landing.google.com/advancedprotection/" target="_blank">explains</a>.</p><p>Additional
+ security measures in Advanced Protection mean only Google and select 
+third-party apps retain the ability to access an enrolled user’s emails 
+and Drive files – an inconvenience for some, if not many.</p><br><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/c1a9fe3c39e9-article-190205-google-fallback-1.jpg" title="PortSwigger Ltd"></p><p class="italic text-center">Google’s Advanced Protection does not offer a fallback to weaker SMS authentication</p><br><p class="bold">Two-step</p><p>In
+ conclusion, we found that multi-factor authentication (2FA, but more 
+accurately described) through a mobile app is much easier to set up, and
+ more widely supported than hardware token-based U2F.</p><p>Consumer-focused
+ web-services – with the important exception of Google’s Advanced 
+Protection program – only support hardware token-based authentication as
+ a backup, limiting the utility of the technology as things stand.</p><p>This assessment isn’t far out of line with what other experts have found.</p><p>“Password
+ and soft token is probably the best balance of security, usability and 
+cost we have going for us today,” Hunt notes in his <a href="https://www.troyhunt.com/beyond-passwords-2fa-u2f-and-google-advanced-protection/" target="_blank" rel="nofollow">blog post</a> on U2F and Google Advanced Protection.</p><p>While
+ Google’s Advanced Protection scheme works, it isn’t really ready for 
+mainstream use. This is disappointing given U2F technology is needed, 
+especially at a time when attacks against 2FA are growing in 
+sophistication.</p><p>Hacker Luke Berner, for example, recently <a href="https://medium.com/@lukeberner/how-i-abused-2fa-to-maintain-persistence-after-a-password-change-google-microsoft-instagram-7e3f455b71a1" target="_blank" rel="nofollow">demonstrated</a> how he was able to abuse app-based 2FA to maintain persistence even after a password change.</p><p>Google, Microsoft, and Instagram accounts were all potentially vulnerable, Berner discovered.</p><p class="text-center"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/7a03b5005941-article-190206-yubikey-1.jpg" title="Image: Yubico"></p><p class="bold">Back to the U2Future</p><p>Suppliers
+ of U2F-compatible tokens admit that the utility of their technology is 
+limited by partial or yet-to-arrive support by websites.</p><p>Despite this, they are still hopeful that change is in the air.</p><p>“U2F support is very disappointing,” Nicolas Stalder of SoloKeys told <span class="italic">The Daily Swig</span>. “The hope is that with FIDO2… approaching a standard, this will improve.”</p><p>U2F over NFC is even less supported than U2F on desktop or laptop, Stalder observed.</p><p>“U2F should be dead simple, for some reason it is shrouded in mystery, or at least obscurity to the wider audience,” he added.</p><p>Usability
+ studies sponsored by Yubico provide further evidence that consumers 
+find enrolling a U2F key and associating it with their account 
+problematic.</p><p>Different web services also have broadly similar, but inconsistent enrollment schemes, tests by <span class="italic">The Daily Swig</span> found.</p><p>This
+ may be a reason for the mediocre usability of what is otherwise a 
+promising and useful technology, one that fulfills a growing need to 
+fend off phishing – a form of attack that is growing in impact, 
+according to a Google-sponsored study and <a href="https://blackhat.com/html/webcast/11292018-two-factor-authentication-usable-or-not.html" target="_blank" rel="nofollow">other sources</a>.</p><p>Stalder offered <span class="italic">The Daily Swig</span> a prescription to ease these woes.</p><span class="stylised-indent">U2F would be so easy if sites supported things properly:<br><br>•&nbsp;Have a visible invitation to register keys (instead of hiding behind multiple submenus)<br>•&nbsp;Suggest that users register at least two, or better, three keys<br>•&nbsp;Offer ‘one-time use codes’ as a backup, advising users to print them out and store them in a safe place<br>•&nbsp;If
+ a [hardware security] key gets lost, a thief is probably not going to 
+be able to use it immediately (either does not know the username, or has
+ to crack password), so upon noticing this the user just logs in with a 
+backup key and removes the stolen key from the whitelist/registered list<br></span><p>Part
+ of the problem is that sites don’t want to handle out-of-band 
+verification of ownership to re-enable login of users in cases where 
+problems occur, according to Stalder.</p><p>“I think the reason why 
+sites often don’t allow ‘U2F only’ is that it’s actually secure – if a 
+user loses [all] the key[s], they won't get in! Or as some say, if they 
+still can get in, it was all a ‘security theatre’,” he said</p><p>We asked the FIDO Alliance, as backers of the technology, to comment on our findings.</p><p>Chief
+ marketing officer Andrew Shikiar declined to comment on specific 
+implementations of U2F, although he did offer an explanation of how the 
+FIDO2 specification will move authentication technology forward, 
+ultimately leading onto more widespread adoption of stronger login 
+security technology.</p><p>“FIDO2 includes the W3C Web Authentication 
+API (Webauthn) and CTAP (Client-to-Authenticator Protocols) from 
+the&nbsp;FIDO&nbsp;Alliance,” Shikiar explained.</p><p>“The specs 
+enable&nbsp;FIDO&nbsp;Authentication support to be built directly into 
+browsers and platforms, and will greatly expand the addressable market 
+for&nbsp;FIDO&nbsp;as these browsers and operating systems push out 
+updates to billions of devices.”</p><p>In developing FIDO2, the 
+FIDO&nbsp;Alliance partnered with the World Wide Web Consortium on how 
+to standardize&nbsp;FIDO&nbsp;across the web. The collaboration is 
+designed to expand the addressable user base, as well as the available 
+authentication use cases.</p><p>“The specs were <a href="https://fidoalliance.org/fido-alliance-and-w3c-achieve-major-standards-milestone-in-global-effort-towards-simpler-stronger-authentication-on-the-web/" target="_blank" rel="nofollow">announced</a>
+ only nine months ago, and&nbsp;FIDO2 technologies are already built 
+into the latest versions of Windows 10, Google Play Services on Android,
+ and the Chrome, Firefox, and Edge web browsers,” said Shikiar.</p><p>“WebKit,
+ the technology behind Apple’s Safari web browser, is also previewing 
+support for FIDO2. Native support across browsers and platforms 
+eliminates a lot of the complexity of building strong authentication 
+into apps, so we do believe it will lead to broad FIDO adoption.”&nbsp;</p><p>Greater
+ usability for U2F is certainly desirable, but even that may not be 
+enough to ensure widespread uptake –early last year, seven years after 
+Google introduced less stringent 2FA, a Google engineer <a href="http://www.theregister.co.uk/2018/01/17/no_one_uses_two_factor_authentication/" target="_blank" rel="nofollow">admitted</a> that take-up was still under 10%.</p>
+                    <!-- Article End -->
+                </div>
+                <div class="post-labels">
+                            <a href="https://portswigger.net/daily-swig/u2f">
+            <span>U2F</span>
+        </a>
+        <a href="https://portswigger.net/daily-swig/secure-development">
+            <span>Secure Development</span>
+        </a>
+        <a href="https://portswigger.net/daily-swig/2fa">
+            <span>2FA</span>
+        </a>
+
+                </div>
+                <div class="post-authorinfo">
+                    <img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/john-leyden.png" alt="John Leyden">
+<div class="post-authorinfo-text">
+    <p class="post-authorinfo-name">
+        <!-- Author Start -->
+        <a href="https://portswigger.net/daily-swig/by/john-leyden">John Leyden</a>
+        <!-- Author} End -->
+    </p>
+        <p>
+            <a href="https://twitter.com/jleyden">@jleyden <span class="icon cmsicon-twitter"></span></a>
+        </p>
+</div>
+
+                </div>
+                
+
+<div class="sharebuttoncontainer is-aftercontent">
+    <a href="https://twitter.com/share?url=https%3a%2f%2fportswigger.net%2fdaily-swig%2fu2f-nowhere-near-ready-for-prime-time&amp;text=U2F+nowhere+near+ready+for+prime+time+%7c+The+Daily+Swig%0A" target="_blank" data-ga-click-label="twitter">
+        <span class="share-twitter is-wide">
+            <span class="share-icon icon-ps-twitter"></span>
+            <span class="share-text">Twitter</span>
+        </span>
+    </a>
+    <a href="https://api.whatsapp.com/send?text=https%3a%2f%2fportswigger.net%2fdaily-swig%2fu2f-nowhere-near-ready-for-prime-time" target="_blank" data-ga-click-label="whatsapp">
+        <span class="share-whatsapp is-wide">
+            <span class="share-icon icon-ps-whatsapp"></span>
+            <span class="share-text">WhatsApp</span>
+        </span>
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fportswigger.net%2fdaily-swig%2fu2f-nowhere-near-ready-for-prime-time" target="_blank" data-ga-click-label="facebook">
+        <span class="share-facebook is-wide">
+            <span class="share-icon icon-ps-facebook"></span>
+            <span class="share-text">Facebook</span>
+        </span>
+    </a>
+    <a href="https://reddit.com/submit?url=https%3a%2f%2fportswigger.net%2fdaily-swig%2fu2f-nowhere-near-ready-for-prime-time" target="_blank" data-ga-click-label="reddit">
+        <span class="share-reddit is-wide">
+            <span class="share-icon icon-ps-reddit"></span>
+            <span class="share-text">Reddit</span>
+        </span>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?url=https%3a%2f%2fportswigger.net%2fdaily-swig%2fu2f-nowhere-near-ready-for-prime-time" target="_blank" data-ga-click-label="linkedin">
+        <span class="share-linkedin is-wide">
+            <span class="share-icon icon-ps-linkedin"></span>
+            <span class="share-text">LinkedIn</span>
+        </span>
+    </a>
+    <a href="mailto:?subject=U2F+nowhere+near+ready+for+prime+time+%7c+The+Daily+Swig&amp;body=U2F+nowhere+near+ready+for+prime+time+%7c+The+Daily+Swig%0A%0AAnti-phishing+tech+is+anything+but+universal%0A%0Ahttps://portswigger.net/daily-swig/u2f-nowhere-near-ready-for-prime-time" data-ga-click-label="email">
+        <span class="share-email is-wide">
+            <span class="share-icon icon-ps-email"></span>
+            <span class="share-text">Email</span>
+        </span>
+    </a>
+</div>
+            </div>
+        </div>
+<div id="widgetcolumn" class="post-widgetcolumn rightcol">
+    <noscript>
+        <div class="noscript-warning">This page requires JavaScript for an enhanced user experience.</div>
+    </noscript>
+    <div class="widget-tile-container">
+        <div class="widget-title">Latest Posts</div>
+        <div class="widget-content">
+
+
+<a href="https://portswigger.net/daily-swig/researcher-gives-low-down-on-serious-uxss-flaw-in-microsoft-edge" class="tile-container dailyswig onecolumn widget-tile size0 style1 textstyle2" data-backgroundcolorid="0" style="background-image: url(&quot;/cms/images/9b/aa/a2b879414798-tile-190906-uxss-edge-1x1.jpg&quot;); background-color: rgb(255, 255, 255); opacity: 0.9;">
+    
+<h3 class="tile-text1 notext2">
+Researcher gives low-down on serious UXSS flaw in Microsoft Edge</h3>
+    <span class="tile-date">06 September 2019</span>
+    <span class="tile-text1-alt">Researcher gives low-down on serious UXSS flaw in Microsoft Edge</span>
+            <span class="tile-text2-alt">Edge of darkness</span>
+
+</a>
+
+<a href="https://portswigger.net/daily-swig/circleci-devops-platform-issues-warning-over-data-breach" class="tile-container dailyswig onecolumn widget-tile size0 style0 textstyle2" data-backgroundcolorid="0" style="background-image: url(&quot;/cms/images/d8/26/6231eb2d8bb3-tile-190905-circleci-1x11.jpg&quot;); background-color: rgb(255, 255, 255); opacity: 0.9;">
+    
+<h3 class="tile-text1 notext2">
+DevOps platform CircleCI issues data breach warning</h3>
+    <span class="tile-date">05 September 2019</span>
+    <span class="tile-text1-alt">DevOps platform CircleCI issues data breach warning</span>
+            <span class="tile-text2-alt">Attacker accessed user details via compromised third-party vendor account</span>
+
+</a>
+
+<a href="https://portswigger.net/daily-swig/security-flaws-discovered-in-kids-friendly-gps-trackers" class="tile-container dailyswig onecolumn widget-tile size0 style0 textstyle0" data-backgroundcolorid="0" style="background-image: url(&quot;/cms/images/b9/d2/ed2cca34738e-tile-190905-kids-gps-1x1.jpg&quot;); background-color: rgb(255, 255, 255); opacity: 0.9;">
+    
+<h3 class="tile-text1 ">
+Security flaws discovered in ‘kids friendly’ GPS trackers</h3>
+
+
+    <span class="tile-text2">
+Avast estimates 600,000 IoT products are currently vulnerable    </span>
+    <span class="tile-date">05 September 2019</span>
+    <span class="tile-text1-alt">Security flaws discovered in ‘kids friendly’ GPS trackers</span>
+            <span class="tile-text2-alt">Avast estimates 600,000 IoT products are currently vulnerable</span>
+
+</a>
+
+<a href="https://portswigger.net/daily-swig/tails-3-16-security-release-addresses-multiple-vulnerabilities" class="tile-container dailyswig onecolumn widget-tile size0 style1 textstyle5" data-backgroundcolorid="0" style="background-image: url(&quot;/cms/images/f4/72/6aac4b4072c9-tile-190905-tails-1x1.png&quot;); background-color: rgb(255, 255, 255); opacity: 0.9;">
+    
+<h3 class="tile-text1 ">
+        <span class="tile-text-container">Tails 3.16</span>
+</h3>
+
+
+    <span class="tile-text2">
+Security release addresses multiple vulnerabilities    </span>
+    <span class="tile-date">05 September 2019</span>
+    <span class="tile-text1-alt">Tails 3.16</span>
+            <span class="tile-text2-alt">Security release addresses multiple vulnerabilities</span>
+
+</a>        </div>
+    </div>
+</div>    </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "author": {
+    "@type": "Person",
+    "email": "dailyswig@portswigger.net",
+    "name": "John Leyden"
+  },
+  "dateModified": "2019-09-03",
+  "datePublished": "2019-02-06",
+  "genre": "web security",
+  "headline": "U2F nowhere near ready for prime time",
+  "image": "https://portswigger.net/content/images/logos/dailyswig-logo.jpg",
+  "keywords": "PS.Net.Areas.CMS.Models.Default.LabelInfo,PS.Net.Areas.CMS.Models.Default.LabelInfo,PS.Net.Areas.CMS.Models.Default.LabelInfo",
+  "mainEntityOfPage": "https://portswigger.net/daily-swig",
+  "publisher": {
+    "@type": "Organization",
+"contactPoint": [
+  {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "email": "office@portswigger.net",
+    "url": "https://portswigger.net/contact"
+  },
+  {
+    "@type": "ContactPoint",
+    "contactType": "technical support",
+    "email": "support@portswigger.net",
+    "url": "https://portswigger.net/contact"
+  }
+],
+"founder": {
+  "@type": "Person",
+  "familyName": "Stuttard",
+  "givenName": "Dafydd"
+},
+"foundingDate": "2008",
+"legalName": "PortSwigger Ltd",
+"location": {
+  "@type": "PostalAddress",
+  "addressLocality": "Knutsford, United Kingdom",
+  "postalCode": "WA16 0PF",
+  "streetAddress": "Victoria Court, Bexton Road"
+},
+"logo": {
+  "@type": "ImageObject",
+  "url": "https://portswigger.net/content/images/logos/thumbnail.png"
+},
+"name": "PortSwigger Web Security Ltd",
+"owns": [
+  {
+    "@type": "Product",
+    "name": "Burp Suite Enterprise Edition",
+    "url": "https://portswigger.net/burp"
+  },
+  {
+    "@type": "Product",
+    "name": "Burp Suite Professional",
+    "url": "https://portswigger.net/burp"
+  },
+  {
+    "@type": "Product",
+    "name": "Burp Suite Community Edition",
+    "url": "https://portswigger.net/burp"
+  }
+],
+"sameAs": [
+  "https://twitter.com/Burp_Suite"
+],
+"url": "https://portswigger.net",
+"vatID": "GB948563085"
+  },
+  "url": "https://portswigger.net/daily-swig/u2f-nowhere-near-ready-for-prime-time"
+}
+</script>
+
+<script async="" src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/details.js"></script>
+
+        <section class="prefootercontainer dailyswig"></section>
+        
+<footer>
+    <div class="container">
+        <div>
+            <p>Burp Suite</p>
+            <a href="https://portswigger.net/vulnerability-scanner">Web vulnerability scanner</a>
+            <a href="https://portswigger.net/burp">Burp Suite Editions</a>
+            <a href="http://releases.portswigger.net/">Release Notes</a>
+        </div>
+        <div>
+            <p>Vulnerabilities</p>
+            <a href="https://portswigger.net/web-security/cross-site-scripting">Cross-site scripting (XSS)</a>
+            <a href="https://portswigger.net/web-security/sql-injection">SQL injection</a>
+            <a href="https://portswigger.net/web-security/csrf">Cross-site request forgery</a>
+            <a href="https://portswigger.net/web-security/xxe">XML external entity injection</a>
+            <a href="https://portswigger.net/web-security/file-path-traversal">Directory traversal</a>
+            <a href="https://portswigger.net/web-security/ssrf">Server-side request forgery</a>
+        </div>
+        <div>
+            <p>Customers</p>
+            <a href="https://portswigger.net/organizations">Organizations</a>
+            <a href="https://portswigger.net/testers">Testers</a>
+            <a href="https://portswigger.net/developers">Developers</a>
+        </div>
+        <div>
+            <p>Company</p>
+            <a href="https://portswigger.net/about">About</a>
+            <a href="https://portswigger.net/news">PortSwigger News</a>
+            <a href="https://portswigger.net/careers">Careers</a>
+            <a href="https://portswigger.net/contact">Contact</a>
+            <a href="https://portswigger.net/legal">Legal</a>
+
+            <a href="https://portswigger.net/privacy">Privacy Notice</a>
+        </div>
+        <div>
+            <p>Insights</p>
+            <a href="https://portswigger.net/web-security">Web Security Academy</a>
+            <a href="https://portswigger.net/blog">Blog</a>
+            <a href="https://portswigger.net/daily-swig">The Daily Swig</a>
+
+        </div>
+        <div>
+            <a href="https://portswigger.net/"><img src="U2F%20nowhere%20near%20ready%20for%20prime%20time%20|%20The%20Daily%20Swig_files/portswigger-logo.svg" alt="PortSwigger Logo" class="footer-logo"></a>
+            <a class="btn" href="https://twitter.com/Burp_Suite" rel="noreferrer"><span class="icon-ps-twitter"></span>  Follow us</a>
+            <p class="grey">© 2019 PortSwigger Ltd.</p>
+        </div>
+    </div>
+</footer>
+<a href="#top" class="back-to-top"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"><polygon points="4.07 14.7 5.03 15.78 12.48 9.13 19.94 15.78 20.9 14.7 12.48 7.2 4.07 14.7" fill="#f63"></polygon><path d="M13,0A13,13,0,1,0,26,13,13,13,0,0,0,13,0Zm0,24.56A11.56,11.56,0,1,1,24.56,13,11.58,11.58,0,0,1,13,24.56Z" fill="#f63"></path></svg></a>
+
+    
+</body></html>

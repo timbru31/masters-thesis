@@ -1,0 +1,367 @@
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 1px) and (max-width: 767px) { 
+
+        body > nav {
+            margin-bottom: 0px;
+            }
+    
+        div#navbar {
+            background-color: #111;
+            opacity: 0.95;
+            background-image: none; 
+            margin-top: 0px;
+            padding-top: 0px;
+            }
+    
+        #navbar > ul.nav.navbar-nav.navbar-right.uppercase  {
+            display: block;
+        }
+        
+        #navbar > ul > div > a {
+            background-color: #111;
+            opacity: 0.95;
+            background-image: none; 
+        }
+    
+        body > nav > div > div.navbar-header > p {
+            margin-bottom: 0px;
+        }
+    
+        .equal {
+            display:block;
+        }
+    
+     .featureheader {
+            padding-bottom: 10%;
+        }
+    
+}
+ 
+/*          XS Screens */
+@media (min-width: 328px) and (max-width: 432px) { 
+        .expborder {
+            border: 1px solid #bbb;
+        }
+            .serv {
+            margin-bottom: 20px;
+            width: 95%;
+        }
+
+        #section0 .field {
+            display: block;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    
+        #conbtn {
+            display: block;
+            margin-left: 0;
+            margin-top: 4px;
+            margin-bottom: 50px;
+        }
+    
+        .context {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    
+         .context2 {
+            padding-left: 40px;
+            padding-right: 40px;
+            
+        }
+    
+        .form input[type=submit]{ 
+            width: 45%; 
+        } 
+    
+        .calendar {
+            display: none;
+        }
+    
+        .pager {
+            margin-bottom: 50px;
+        }
+    
+        .blog-sidebar {
+            padding-left: 5%;
+        }
+    
+        .blog-main {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+    
+        body > nav > div > div.navbar-header {
+            padding-left: 5%;
+        }
+    
+        .tileblock {
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-bottom: 10%;
+        }
+    
+        .jumbotronmain h1 {
+            font-family: Cinzel, serif;
+            font-size: 42px;
+            text-shadow: 0px 0px 5px #111;
+        }
+    
+        .jumbotronmain p {
+            color: #eee;
+            text-shadow: 0px 0px 5px #111;
+            font-size: 16px;
+        }
+    
+            
+        #logo {
+            margin-right: 10px;
+        }
+    
+        .asbottombtn {
+        font-size: 16px;
+    }
+    
+     .featureheader {
+            padding-bottom: 10%;
+        }
+
+}
+    
+
+/*          SM Screens */
+@media (min-width: 433px) and (max-width: 571px) { 
+        .expborder {
+            border: 1px solid #bbb;
+        }
+
+            .serv {
+                margin-bottom: 20px;
+                width: 95%;
+        }
+    
+            #section0 .field {
+                display: block;
+                padding-top: 5px;
+                padding-bottom: 5px;
+        }
+    
+            #conbtn {
+                display: block;
+                margin-left: 0;
+                margin-top: 4px;
+                margin-bottom: 50px;
+        }
+
+            .context {
+                padding-left: 20px;
+                padding-right: 20px;
+        }
+    
+            .context2 {
+                padding-left: 40px;
+                padding-right: 40px;
+        }
+    
+            .form input[type=submit]{ 
+                width: 40%; 
+        }
+    
+            .calendar {
+                display: none;
+        }
+    
+        .pager {
+            margin-bottom: 50px;
+        }
+    
+        .blog-sidebar {
+            padding-left: 5%;
+        }
+    
+        .blog-main {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+    
+         body > nav > div > div.navbar-header {
+            padding-left: 5%;
+        }
+    
+        .tileblock {
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-bottom: 10%;
+        }
+    
+        .jumbotronmain h1 {
+            font-family: Cinzel, serif;
+            font-size: 56px;
+            text-shadow: 0px 0px 5px #111;
+        }
+    
+        .jumbotronmain p {
+            color: #eee;
+            text-shadow: 0px 0px 5px #111;
+            font-size: 18px;
+        }
+    
+        #logo {
+            margin-right: 10px;
+        }
+
+     .asbottombtn {
+        font-size: 16px;
+    }
+    
+     .featureheader {
+            padding-bottom: 10%;
+        }
+    
+}
+  
+/*          MD Screens */
+@media (min-width: 572px) and (max-width: 767px) { 
+        .expborder {
+            border: 1px solid #bbb;
+        }
+    
+         .serv {
+            margin-bottom: 20px;
+            width: 95%;
+        }       
+
+        #conbtn {
+            display: block;
+            margin-top: 4px;
+            margin-bottom: 50px;
+        }
+                
+        
+        .form input[type=submit]{ 
+             width: 25%; 
+        } 
+    
+        .calendar {
+            border: 0px;
+            width: 450px;
+            height: 500px;
+            margin-top: 20px;
+            margin-left: 15%;
+        }
+    
+        .pager {
+            margin-bottom: 50px;
+        }
+    
+        .blog-sidebar {
+            padding-left: 5%;
+        }
+    
+        .blog-main {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+    
+         body > nav > div > div.navbar-header {
+            padding-left: 5%;
+        }
+    
+        .tileblock {
+            padding-right: 30px;
+            margin-bottom: 10%;
+        }
+
+        #logo {
+            margin-right: 10px;
+        }
+    
+     .asbottombtn {
+        font-size: 16px;
+    }
+    
+     .featureheader {
+            padding-bottom: 10%;
+        }
+}
+
+
+/*          LG Screens */
+@media (min-width: 768px) and (max-width: 991px) { 
+        .expborder {
+            border: 1px solid #bbb;
+        }
+    
+        .serv {
+            margin-bottom: 20px;
+            width: 95%;
+        }
+    
+        .equal {
+            display: block;
+        }
+    
+        #conbtn {
+            display: block;
+            margin-top: 4px;
+            margin-bottom: 50px;
+        }
+    
+        .form input[type=submit]{ 
+             width: 25%; 
+        } 
+    
+        .calendar {
+            border: 0px;
+            width: 550px;
+            height: 500px;
+            margin-top: 20px;
+            margin-left: 10%;
+        }
+    
+        .tileblock {
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-bottom: 10%;
+            display: inline-block;
+        }
+        
+        .featureheader {
+            padding-bottom: 10%;
+        }
+        
+    
+
+}
+
+
+/*          XL Screens */
+@media (min-width: 992px) and (max-width: 1199px) { 
+        .servcode {
+            padding-bottom: 32px;
+        }
+    
+        .form input[type=submit]{ 
+             width: 35%; 
+        } 
+
+        .calendar {
+            border: 0px;
+            width: 550px;
+            height: 500px;
+            margin-top: 20px;
+            margin-left: 10%;
+        }
+    
+        .tileblock {
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-bottom: 1%;
+        }
+    
+        .tiletext {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+}

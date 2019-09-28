@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://webkit.org/blog/8517/release-notes-for-safari-technology-preview-71/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="robots" content="noodp">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, viewport-fit=cover">
+
+    <title>  Release Notes for Safari Technology Preview 71 | WebKit</title>
+
+    <meta name="application-name" content="WebKit">
+
+    <link rel="stylesheet" type="text/css" href="./Release Notes for Safari Technology Preview 71 _ WebKit_files/style.css" media="all">
+    <link rel="stylesheet" href="./Release Notes for Safari Technology Preview 71 _ WebKit_files/fonts" type="text/css">
+    <link rel="stylesheet" href="./Release Notes for Safari Technology Preview 71 _ WebKit_files/fonts(1)" type="text/css">
+    <meta name="supported-color-schemes" content="light dark">
+
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://webkit.org/feed/">
+    <link rel="alternate" type="text/xml" title="RSS .92" href="https://webkit.org/feed/rss/">
+    <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="https://webkit.org/feed/atom/">
+    <link rel="pingback" href="https://webkit.org/wp/xmlrpc.php">
+
+    <link rel="shortcut icon" sizes="32x32" type="image/x-icon" href="https://webkit.org/favicon.ico">
+
+    <link rel="stylesheet" id="wp-block-library-css" href="./Release Notes for Safari Technology Preview 71 _ WebKit_files/style.min.css" type="text/css" media="all">
+<link rel="https://api.w.org/" href="https://webkit.org/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://webkit.org/wp/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://webkit.org/wp/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Release Notes for Safari Technology Preview 70" href="https://webkit.org/blog/8496/release-notes-for-safari-technology-preview-70/">
+<link rel="next" title="Release Notes for Safari Technology Preview 72" href="https://webkit.org/blog/8547/release-notes-for-safari-technology-preview-72/">
+<meta name="generator" content="WordPress 5.2.2">
+<link rel="canonical" href="https://webkit.org/blog/8517/release-notes-for-safari-technology-preview-71/">
+<link rel="shortlink" href="https://webkit.org/?p=8517">
+<link rel="alternate" type="application/json+oembed" href="https://webkit.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwebkit.org%2Fblog%2F8517%2Frelease-notes-for-safari-technology-preview-71%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://webkit.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwebkit.org%2Fblog%2F8517%2Frelease-notes-for-safari-technology-preview-71%2F&amp;format=xml">
+
+    <!-- Schema.org markup -->
+    <meta itemprop="name" content="Release Notes for Safari Technology Preview 71">
+    <meta itemprop="description" content="Safari Technology Preview Release 71 is now available for download for macOS Mojave and macOS High Sierra.">
+    <meta itemprop="image" content="https://webkit.org/wp-content/themes/webkit/images/ogimage.png">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@webkit">
+    <meta name="twitter:title" content="Release Notes for Safari Technology Preview 71">
+    <meta name="twitter:description" content="Safari Technology Preview Release 71 is now available for download for macOS Mojave and macOS High Sierra.">
+    <meta name="twitter:creator" content="@jonathandavis">
+    <meta name="twitter:image:src" content="https://webkit.org/wp-content/themes/webkit/images/ogimage.png">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Release Notes for Safari Technology Preview 71">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://webkit.org/blog/8517/release-notes-for-safari-technology-preview-71/">
+    <meta property="og:image" content="https://webkit.org/wp-content/themes/webkit/images/ogimage.png">
+    <meta property="og:description" content="Safari Technology Preview Release 71 is now available for download for macOS Mojave and macOS High Sierra.">
+    <meta property="og:site_name" content="WebKit">
+    <meta property="article:published_time" content="2018-12-05T10:00:49-07:00">
+    <meta property="article:modified_time" content="2018-12-05T09:49:10-07:00">
+    <meta property="article:section" content="Safari Technology Preview">
+    <meta property="fb:admins" content="1085088865">
+    <meta property="fb:admins" content="854565306">
+</head>
+<body class="post-template-default single single-post postid-8517 single-format-standard">
+    <!--?xml version="1.0" encoding="utf-8"?-->
+<!-- Copyright © 2018 Apple Inc. All rights reserved. -->
+<svg xmlns="http://www.w3.org/2000/svg">
+	<style> svg { display: block; width: 0; height: 0; } </style>
+    <filter id="invertLightness" x="0" y="0" style="color-interpolation-filters: sRGB">
+        <fecolormatrix type="matrix" in="SourceGraphic" result="red" values="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1"></fecolormatrix>
+        <fecolormatrix type="matrix" in="SourceGraphic" result="green" values="0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1"></fecolormatrix>
+        <fecolormatrix type="matrix" in="SourceGraphic" result="blue" values="0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 1"></fecolormatrix>
+        <feblend in="red" in2="green" mode="lighten" result="maxyellow"></feblend>
+        <feblend in="maxyellow" in2="blue" mode="lighten" result="max"></feblend>
+        <feblend in="red" in2="green" mode="darken" result="minyellow"></feblend>
+        <feblend in="minyellow" in2="blue" mode="darken" result="min"></feblend>
+        <fecomponenttransfer result="adjustment" in="min">
+            <fefuncr type="linear" intercept="1" slope="-1"></fefuncr>
+            <fefuncg type="linear" intercept="1" slope="-1"></fefuncg>
+            <fefuncb type="linear" intercept="1" slope="-1"></fefuncb>
+        </fecomponenttransfer>
+        <fecomposite operator="arithmetic" in="SourceGraphic" in2="adjustment" k1="0" k2="1" k3="1" k4="-1" result="channelAdjustment"></fecomposite>
+        <fecomposite operator="arithmetic" in="channelAdjustment" in2="max" k1="0" k2="1" k3="-1" k4="1" result="finalColors"></fecomposite>
+        <fecomposite operator="in" in="finalColors" in2="SourceAlpha"></fecomposite>
+    </filter>
+</svg>    <header aria-label="WebKit.org Header" id="header">
+        <div class="page-width">
+        <a href="https://webkit.org/"><div id="logo" class="site-logo">WebKit</div></a>
+        <nav id="site-nav" aria-label="Site Menu">
+<div class="menu-main-menu-container"><input type="checkbox" id="menu-main-menu-toggle" class="menu-toggle"><label for="menu-main-menu-toggle" class="label-toggle main-menu" data-open="Main Menu" data-close="Close Menu"></label><ul id="menu-main-menu" class="menu" role="menubar"><li id="menu-item-4270" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-4270"><a href="https://webkit.org/blog/" role="menuitem">Blog</a></li>
+<li id="menu-item-6091" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6091"><a href="https://webkit.org/downloads/" role="menuitem">Downloads</a></li>
+<li id="menu-item-4272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4272"><a href="https://webkit.org/status/" role="menuitem">Feature Status</a></li>
+<li id="menu-item-4273" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4273"><a href="https://webkit.org/reporting-bugs/" role="menuitem">Reporting Bugs</a></li>
+<li id="menu-item-4274" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4274"><input type="checkbox" id="toggle-4274" class="menu-toggle"><a href="https://webkit.org/blog/8517/release-notes-for-safari-technology-preview-71/#nav-sub-menu" role="menuitem" aria-haspopup="true" aria-owns="sub-menu-for-4274" aria-controls="sub-menu-for-4274" aria-expanded="true"><label for="toggle-4274" class="label-toggle">Contribute</label></a>
+<ul class="sub-menu sub-menu-layer" role="menu" id="sub-menu-for-4274">
+	<li id="menu-item-4277" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4277"><input type="checkbox" id="toggle-4274" class="menu-toggle"><a href="https://webkit.org/getting-started/" role="menuitem">Getting Started</a></li>
+	<li id="menu-item-4284" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4284"><input type="checkbox" id="toggle-4274" class="menu-toggle"><a href="https://webkit.org/contributing-code/" role="menuitem">Contributing Code</a></li>
+	<li id="menu-item-4281" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4281"><input type="checkbox" id="toggle-4274" class="menu-toggle"><a href="https://webkit.org/testing-contributions/" role="menuitem">Testing Contributions</a></li>
+	<li id="menu-item-4282" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4282"><input type="checkbox" id="toggle-4274" class="menu-toggle"><a href="https://webkit.org/policy-and-guidelines/" role="menuitem">Policy and Guidelines</a></li>
+	<li id="menu-item-4278" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4278"><input type="checkbox" id="toggle-4274" class="menu-toggle"><a href="http://trac.webkit.org/" role="menuitem">Trac Timeline</a></li>
+</ul>
+</li>
+</ul></div></nav>
+        </div>
+    </header>
+
+<main id="content">
+    <div class="page-width">
+    
+        <article class="post-8517 post type-post status-publish format-standard hentry category-safari-technology-preview" id="post-8517">
+            <h1><a href="https://webkit.org/blog/8517/release-notes-for-safari-technology-preview-71/" rel="bookmark" title="Permanent Link: Release Notes for Safari Technology Preview 71">Release Notes for Safari Technology Preview 71</a></h1>
+            <div class="byline">
+                <p class="date">Dec 5, 2018</p>
+                <p class="author">by <span>Jon Davis</span></p>
+                                <p class="twitter"><a href="https://twitter.com/jonathandavis" target="_blank">@jonathandavis</a></p>
+                            </div>
+
+            <div class="bodycopy">
+                <p><a href="https://webkit.org/blog/6017/introducing-safari-technology-preview/">Safari Technology Preview</a> Release 71 is now <a href="https://webkit.org/downloads/">available for download</a> for macOS Mojave and macOS High Sierra. If you already have Safari Technology Preview installed, you can update in the Software Update pane of System Preferences on macOS Mojave and from the Mac App Store’s Updates tab on macOS High Sierra. After updating to macOS Mojave, you may have to reinstall Safari Technology Preview.</p>
+<p>This release covers WebKit revisions <a href="https://trac.webkit.org/log?stop_rev=237919&amp;rev=238607&amp;limit=999">237919-238607</a>.</p>
+<h3>Dark Mode</h3>
+<ul>
+<li>Enabled Dark Mode CSS Support by default in the Experimental Features menu (<a href="https://trac.webkit.org/changeset/238213/webkit/">r238213</a>)</li>
+<li>Added experimental support for a <code>supported-color-schemes</code> CSS property (<a href="https://trac.webkit.org/changeset/238001/webkit/">r238001</a>)</li>
+<li>Updated <code>prefers-color-scheme</code> media query matching to better match the draft spec (<a href="https://trac.webkit.org/changeset/238200/webkit/">r238200</a>)</li>
+<li>Changed the default document background and text colors in dark mode and when <code>dark</code> is listed as a <code>supported-color-schemes</code> on the document or body element (<a href="https://trac.webkit.org/changeset/238212/webkit/">r238212</a>)</li>
+<li>Added support for forcing color scheme (dark or light mode) in Web Inspector’s Elements tab (<a href="https://trac.webkit.org/changeset/238570/webkit/">r238570</a>)</li>
+</ul>
+<h3>Web Animations</h3>
+<ul>
+<li>Enabled Web Animations by default in the Experimental Features menu (<a href="https://trac.webkit.org/changeset/238095/webkit/">r238095</a>)</li>
+</ul>
+<h3>Intersection Observer</h3>
+<ul>
+<li>Enabled Intersection Observer by default in the Experimental Features menu (<a href="https://trac.webkit.org/changeset/238129/webkit/">r238129</a>)</li>
+</ul>
+<h3>Web Authentication</h3>
+<ul>
+<li>Added Web Authentication as an experimental feature with support for USB-based CTAP2 devices (<a href="https://trac.webkit.org/changeset/238466/webkit/">r238466</a>)</li>
+</ul>
+<h3>Web API</h3>
+<ul>
+<li>Fixed click event and touch event listeners on the body element (<a href="https://trac.webkit.org/changeset/237978/webkit/">r237978</a>)</li>
+<li>Fixed input element gaining focus when a <code>selectstart</code> event listener on the document prevents the default action (<a href="https://trac.webkit.org/changeset/238409/webkit/">r238409</a>)</li>
+<li>Fixed phantom focus events and blur events firing when clicking between text input fields with <code>addEventListener</code> (<a href="https://trac.webkit.org/changeset/238440/webkit/">r238440</a>)</li>
+<li>Fixed <code>Content-Type</code> parameter values to allow empty quoted strings (<a href="https://trac.webkit.org/changeset/238124/webkit/">r238124</a>)</li>
+<li>Changed CSS Painting API to pass size, arguments, and input properties to the paint callback (<a href="https://trac.webkit.org/changeset/237981/webkit/">r237981</a>)</li>
+</ul>
+<h3>SVG</h3>
+<ul>
+<li>Fixed incorrectly sized monospace text when an SVG is included as an <code>&lt;img&gt;</code> (<a href="https://trac.webkit.org/changeset/238447/webkit/">r238447</a>)</li>
+<li>Fixed SVG <code>&lt;use&gt;</code> element inside a shadow tree to be able to reference an element in the same tree (<a href="https://trac.webkit.org/changeset/238524/webkit/">r238524</a>)</li>
+<li>Fixed updating <code>href</code> on <code>textPath</code> to properly update its rendering (<a href="https://trac.webkit.org/changeset/238464/webkit/">r238464</a>)</li>
+</ul>
+<h3>CSS</h3>
+<ul>
+<li>Unprefixed <code>text-decoration</code> CSS3 properties (<a href="https://trac.webkit.org/changeset/238002/webkit/">r238002</a>)</li>
+<li>Fixed normal-flow-only flex items to correctly respect <code>z-index</code> (<a href="https://trac.webkit.org/changeset/238058/webkit/">r238058</a>)</li>
+<li>Fixed overlays with <code>-webkit-overflow-scrolling:touch</code> to become scrollable after added text makes it taller (<a href="https://trac.webkit.org/changeset/238266/webkit/">r238266</a>)</li>
+</ul>
+<h3>Rendering</h3>
+<ul>
+<li>Made compositing updates incremental (<a href="https://trac.webkit.org/changeset/238090/webkit/">r238090</a>)</li>
+<li>Changed to update the transform of a composited layer when the layer also needs repainted (<a href="https://trac.webkit.org/changeset/238170/webkit/">r238170</a>)</li>
+<li>Fixed the caret disappearing at the end of a password field when the caps lock indicator is shown (<a href="https://trac.webkit.org/changeset/238522/webkit/">r238522</a>)</li>
+<li>Fixed invisible dotted underlines that skip descenders (<a href="https://trac.webkit.org/changeset/237948/webkit/">r237948</a>)</li>
+<li>Added support for dynamic pseudo-classes on elements with <code>display: contents</code> (<a href="https://trac.webkit.org/changeset/238097/webkit/">r238097</a>)</li>
+<li>Fixed positioned text underlines that can look like a strike-through (<a href="https://trac.webkit.org/changeset/237955/webkit/">r237955</a>)</li>
+</ul>
+<h3>Intelligent Tracking Prevention</h3>
+<ul>
+<li>Enabled a cap on partitioned cache max age (<a href="https://trac.webkit.org/changeset/237949/webkit/">r237949</a>)</li>
+</ul>
+<h3>WebRTC</h3>
+<ul>
+<li>Required <code>&lt;iframe allow="display"&gt;</code> for an iframe to use getDisplayMedia (<a href="https://trac.webkit.org/changeset/238091/webkit/">r238091</a>)</li>
+<li>Added support for <code>RTCRtpCodecParameters.sdpFmtpLine</code> (<a href="https://trac.webkit.org/changeset/238172/webkit/">r238172</a>)</li>
+<li>Added support for <code>transportStats</code> and <code>peerConnectionStats</code> (<a href="https://trac.webkit.org/changeset/238171/webkit/">r238171</a>)</li>
+<li>Enabled setting <code>RTCRtpTransceiver.direction</code> (<a href="https://trac.webkit.org/changeset/237974/webkit/">r237974</a>)</li>
+<li>Fixed <code>RTCPeerConnection.getTransceivers</code> to always expose all transceivers (<a href="https://trac.webkit.org/changeset/238150/webkit/">r238150</a>)</li>
+</ul>
+<h3>Web Inspector</h3>
+<ul>
+<li>Added support for the tab bar to automatically add a new Audit tab for running page audits when enabled in Web Inspector Experimental settings (<a href="https://trac.webkit.org/changeset/238500/webkit/">r238500</a>)</li>
+<li>Added default tests to the Audit tab (<a href="https://trac.webkit.org/changeset/238334/webkit/">r238334</a>)</li>
+<li>Added support for drag-and-drop for importing Audits in the Audits tab and Recordings in the Canvas tab (<a href="https://trac.webkit.org/changeset/238198/webkit/">r238198</a>)</li>
+<li>Changed to not start the Canvas tab with auto-capture enabled (<a href="https://trac.webkit.org/changeset/238169/webkit/">r238169</a>)</li>
+<li>Added support for the copy keyboard shortcut and context menu to the Cookies table (<a href="https://trac.webkit.org/changeset/238569/webkit/">r238569</a>)</li>
+<li>Fixed the Debugger Popover to work when paused in a Worker (<a href="https://trac.webkit.org/changeset/238003/webkit/">r238003</a>)</li>
+<li>Fixed Elements tab to allow selecting and deleting multiple DOM nodes (<a href="https://trac.webkit.org/changeset/238602/webkit/">r238602</a>)</li>
+<li>Fixed missing minimum sizes in Network graphs that could cause no graph to be shown (<a href="https://trac.webkit.org/changeset/238168/webkit/">r238168</a>)</li>
+<li>Added secure certificate details per-request in the Network tab (<a href="https://trac.webkit.org/changeset/238122/webkit/">r238122</a>)</li>
+<li>Added a button to show the system certificate dialog in the Network tab (<a href="https://trac.webkit.org/changeset/238350/webkit/">r238350</a>)</li>
+<li>Fixed a potential issue for watch expressions that never show results (<a href="https://trac.webkit.org/changeset/238005/webkit/">r238005</a>)</li>
+<li>Added support for ⌘A (Command-A) to select all properties in the Styles sidebar (<a href="https://trac.webkit.org/changeset/238135/webkit/">r238135</a>)</li>
+<li>Added support for ⇧Click (Shift-click) on a property to extend the selection in the Styles sidebar (<a href="https://trac.webkit.org/changeset/238201/webkit/">r238201</a>)</li>
+<li>Fixed inline swatches when multiple properties selection is enabled in the Styles sidebar (<a href="https://trac.webkit.org/changeset/238120/webkit/">r238120</a>)</li>
+<li>Changed Pressing ⇥ (Tab) or Enter to start editing the focused property in the Styles sidebar (<a href="https://trac.webkit.org/changeset/238096/webkit/">r238096</a>)</li>
+<li>Added support to allow expanding properties to show list of overridden values in the Computed sidebar (<a href="https://trac.webkit.org/changeset/238589/webkit/">r238589</a>)</li>
+<li>Fixed the experimental Computed sidebar in Dark Mode (<a href="https://trac.webkit.org/changeset/238594/webkit/">r238594</a>)</li>
+<li>Updated tables to recalculate scrollable height when resized (<a href="https://trac.webkit.org/changeset/238203/webkit/">r238203</a>)</li>
+<li>Updated tables to support Select All ⌘A (Command-A) (<a href="https://trac.webkit.org/changeset/238140/webkit/">r238140</a>)</li>
+<li>Updated tables to support extending the row selection with the ⇧ (Shift) key (<a href="https://trac.webkit.org/changeset/238121/webkit/">r238121</a>)</li>
+<li>Updated tables with no selection to select the first or last row when pressing the down or up arrow key (<a href="https://trac.webkit.org/changeset/238139/webkit/">r238139</a>)</li>
+<li>Added a Media timeline in the Timelines tab (<a href="https://trac.webkit.org/changeset/238484/webkit/">r238484</a>)</li>
+<li>Updated TreeOutline to re-use multiple-selection logic from Table (<a href="https://trac.webkit.org/changeset/238599/webkit/">r238599</a>)</li>
+<li>Updated TreeOutline to prevent selecting the first child of an expanded element when pressing the right arrow key (<a href="https://trac.webkit.org/changeset/238305/webkit/">r238305</a>)</li>
+<li>Added a button to clear filters with “No Filter Results” in the Navigation sidebar (<a href="https://trac.webkit.org/changeset/238502/webkit/">r238502</a>)</li>
+<li>Made the “Reload Web Inspector” button more reliable when toggling experimental features (<a href="https://trac.webkit.org/changeset/238378/webkit/">r238378</a>)</li>
+</ul>
+<h3>CSS Grid</h3>
+<ul>
+<li>Fixed absolute positioned child getting incorrectly sized when using auto-fit, generating spurious collapsed tracks (<a href="https://trac.webkit.org/changeset/238491/webkit/">r238491</a>)</li>
+<li>Fixed <code>align-self:center</code> and <code>position:sticky</code> to work together (<a href="https://trac.webkit.org/changeset/238551/webkit/">r238551</a>)</li>
+<li>Fixed grid container sizing under <code>min-content</code> height (<a href="https://trac.webkit.org/changeset/238488/webkit/">r238488</a>)</li>
+<li>Implemented Baseline Alignment for grid items (<a href="https://trac.webkit.org/changeset/238457/webkit/">r238457</a>)</li>
+</ul>
+<h3>Media</h3>
+<ul>
+<li>Fixed frame re-ordering preventing iframes from getting enqueued (<a href="https://trac.webkit.org/changeset/238086/webkit/">r238086</a>)</li>
+<li>Enabled external playback for video in element fullscreen (<a href="https://trac.webkit.org/changeset/238327/webkit/">r238327</a>)</li>
+<li>Fixed SourceBuffer to prevent throwing an error when appending a second init segment after <code>changeType()</code> (<a href="https://trac.webkit.org/changeset/238054/webkit/">r238054</a>)</li>
+</ul>
+<h3>Payment Request</h3>
+<ul>
+<li>Fixed <code>canMakePayment()</code> to not consider serialized payment method data (<a href="https://trac.webkit.org/changeset/238042/webkit/">r238042</a>)</li>
+</ul>
+<h3>JavaScript</h3>
+<ul>
+<li>Added BigInt support into ValueAdd (<a href="https://trac.webkit.org/changeset/237972/webkit/">r237972</a>)</li>
+</ul>
+
+                            </div>
+        </article>
+
+        <aside class="nextrouter" aria-label="Next/Previous posts">
+            <div class="bodycopy">
+                        <a class="page-numbers next-post" href="https://webkit.org/blog/8547/release-notes-for-safari-technology-preview-72/" rel="next"><div class="nextrouter-copy"><span class="label">Next</span><span class="title">Release Notes for Safari Technology Preview 72</span><span class="link">Learn more</span></div></a>            </div>
+        </aside>
+        <aside class="nextrouter previous" aria-label="Next/Previous posts">
+            <div class="bodycopy">
+            <a class="page-numbers prev-post" href="https://webkit.org/blog/8496/release-notes-for-safari-technology-preview-70/" rel="prev"><div class="nextrouter-copy"><span class="label">Previously</span><span class="title">Release Notes for Safari Technology Preview 70</span><span class="link">Learn more</span></div></a>            </div>
+        </aside>
+
+    
+    
+    </div><!--.page-width-->
+</main><!-- #content -->
+
+<footer>
+    <div class="page-width">
+        <nav id="footer-nav" aria-label="Footer menu"><div class="menu-footer-menu-container"><ul id="menu-footer-menu" class="menu"><li id="menu-item-7617" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7617"><a href="https://twitter.com/webkit">@webkit</a></li>
+<li id="menu-item-5365" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5365"><a href="https://webkit.org/sitemap/">Site Map</a></li>
+<li id="menu-item-4185" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4185"><a href="http://www.apple.com/legal/privacy/">Privacy Policy</a></li>
+<li id="menu-item-4287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4287"><a href="https://webkit.org/licensing-webkit/">Licensing WebKit</a></li>
+<li id="menu-item-4187" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4187"><a href="https://webkit.org/terms-of-use/">WebKit and the WebKit logo are trademarks of Apple Inc.</a></li>
+</ul></div></nav>
+    </div>
+</footer>
+
+
+<script type="text/javascript" src="./Release Notes for Safari Technology Preview 71 _ WebKit_files/global.js"></script>
+<script type="text/javascript" src="./Release Notes for Safari Technology Preview 71 _ WebKit_files/wp-embed.min.js"></script>
+
+
+<!-- Dynamic page generated in 0.168 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2019-08-15 07:04:18 -->
+
+<!-- super cache --></body></html>

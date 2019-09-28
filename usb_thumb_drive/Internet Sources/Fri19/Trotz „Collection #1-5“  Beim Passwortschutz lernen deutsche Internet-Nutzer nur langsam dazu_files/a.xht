@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src chrome:" />
+    <title>Server Not Found</title>
+    <link rel="stylesheet" href="chrome://browser/skin/aboutNetError.css" type="text/css" media="all" />
+    <!-- If the location of the favicon is changed here, the FAVICON_ERRORPAGE_URL symbol in
+         toolkit/components/places/src/nsFaviconService.h should be updated. -->
+    <link rel="icon" id="favicon" href="chrome://global/skin/icons/warning.svg" />
+  </head>
+
+  <body dir="ltr" class="illustrated dnsNotFound neterror">
+    <!-- ERROR ITEM CONTAINER (removed during loading to avoid bug 39098) -->
+    
+
+    <!-- PAGE CONTAINER (for styling purposes only) -->
+    <div id="errorPageContainer" class="container">
+      <div id="text-container">
+        <!-- Error Title -->
+        <div class="title">
+          <h1 class="title-text">Hmm. We’re having trouble finding that site.</h1>
+        </div>
+
+        <!-- LONG CONTENT (the section most likely to require scrolling) -->
+        <div id="errorLongContent">
+
+          <!-- Short Description -->
+          <div id="errorShortDesc">
+            <p id="errorShortDescText">We can’t connect to the server at www.slideshare.net.</p>
+          </div>
+
+          <div id="errorShortDesc2">
+              <p id="errorShortDescText2"></p>
+          </div>
+
+          <div id="errorWhatToDoTitle">
+              <p id="errorWhatToDoTitleText"></p>
+          </div>
+
+          <div id="errorWhatToDo">
+              <p id="badStsCertExplanation" hidden="true"><span class="hostname"></span>
+ has a security policy called HTTP Strict Transport Security (HSTS), 
+which means that Firefox can only connect to it securely. You can’t add 
+an exception to visit this site.</p>
+              <p id="errorWhatToDoText"></p>
+          </div>
+
+          <div id="errorWhatToDo2">
+              <p id="errorWhatToDoText2"></p>
+              <p id="badStsCertExplanation" hidden="true"><span class="hostname"></span>
+ has a security policy called HTTP Strict Transport Security (HSTS), 
+which means that Firefox can only connect to it securely. You can’t add 
+an exception to visit this site.</p>
+          </div>
+
+          <!-- Long Description (Note: See netError.dtd for used XHTML tags) -->
+          <div id="errorLongDesc">
+<strong xmlns="http://www.w3.org/1999/xhtml">If that address is correct, here are three other things you can try:</strong>
+<ul xmlns="http://www.w3.org/1999/xhtml">
+  <li>Try again later.</li>
+  <li>Check your network connection.</li>
+  <li>If you are connected but behind a firewall, check that Firefox has permission to access the Web.</li>
+</ul>
+</div>
+
+          <div id="learnMoreContainer">
+            <p><a id="learnMoreLink" target="new" data-telemetry-id="learn_more_link" href="https://support.mozilla.org/1/firefox/68.0.2/WINNT/en-US/connection-not-secure">Learn more…</a></p>
+          </div>
+        </div>
+
+        <!-- UI for option to report certificate errors to Mozilla. Removed on
+             init for other error types .-->
+        <div id="prefChangeContainer" class="button-container">
+          <p>It looks like your network security settings might be causing this. Do you want the default settings to be restored?</p>
+          <button id="prefResetButton" class="primary">Restore default settings</button>
+        </div>
+
+        <div id="certErrorAndCaptivePortalButtonContainer" class="button-container">
+          <button id="returnButton" class="primary" data-telemetry-id="return_button_top">Go Back (Recommended)</button>
+          <button id="openPortalLoginPageButton" class="primary">Open Network Login Page</button>
+          <button class="primary try-again">Try Again</button>
+          <button id="advancedButton" data-telemetry-id="advanced_button">Advanced…</button>
+        </div>
+      </div>
+
+      <div id="netErrorButtonContainer" class="button-container">
+        <button class="primary try-again">Try Again</button>
+      </div>
+
+      <div id="advancedPanelContainer">
+        <div id="badCertAdvancedPanel" class="advanced-panel">
+          <p id="badCertTechnicalInfo"></p>
+          <a id="viewCertificate" href="javascript:void(0)">View Certificate</a>
+          <div id="advancedPanelButtonContainer" class="button-container">
+            <button id="advancedPanelReturnButton" class="primary" data-telemetry-id="return_button_adv">Go Back (Recommended)</button>
+            <button class="primary try-again">Try Again</button>
+            <div class="exceptionDialogButtonContainer">
+              <button id="exceptionDialogButton" data-telemetry-id="exception_button">Accept the Risk and Continue</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="certificateErrorReporting">
+            <p class="toggle-container-with-text">
+                <input type="checkbox" id="automaticallyReportInFuture" role="checkbox" data-telemetry-id="auto_report_cb" />
+                <label for="automaticallyReportInFuture">Report errors like this to help Mozilla identify and block malicious sites</label>
+            </p>
+        </div>
+
+        <div id="certificateErrorDebugInformation">
+          <button id="copyToClipboard" data-telemetry-id="clipboard_button_top">Copy text to clipboard</button>
+          <div id="certificateErrorText"></div>
+          <button id="copyToClipboard" data-telemetry-id="clipboard_button_bot">Copy text to clipboard</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="chrome://browser/content/aboutNetError.js"></script>
+</html>

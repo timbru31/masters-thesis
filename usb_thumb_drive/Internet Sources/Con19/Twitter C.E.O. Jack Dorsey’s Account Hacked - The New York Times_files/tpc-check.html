@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252"></head>
+  <body>
+    <script>
+      function setCookie(name,value) {
+        var expires = "";
+        var date = new Date();
+        date.setTime(date.getTime() + 300000);
+        expires = "; expires=" + date.toUTCString();
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+      }
+
+      // function createScript(src) {
+      //   var targetNode = document.getElementsByTagName('script')[0];
+      //   var script = document.createElement('script');
+
+      //   script.src = src;
+      //   script.async = true;
+      //   targetNode.parentNode.appendChild(script, targetNode);
+      // }
+      
+      function getCookie() {
+        var c_name = 'nyt-check3pc';
+        var message = '3PCookieSupported';
+        if (document.cookie.length > 0) {
+          var c_start = document.cookie.indexOf(c_name + "=");
+          if (c_start !== -1) {
+            window.parent.postMessage(message, "*");
+          } else {
+            message = '3PCookieNotSupported';
+            window.parent.postMessage(message, "*");
+          }
+        } else {
+          message = '3PCookieNotSupported';
+          window.parent.postMessage(message, "*");
+        }
+      }
+
+    setCookie('nyt-check3pc', 'true');
+      // createScript('https://static01.nyt.com/ads/readTpc.js');
+    getCookie();
+    </script>
+  
+</body></html>

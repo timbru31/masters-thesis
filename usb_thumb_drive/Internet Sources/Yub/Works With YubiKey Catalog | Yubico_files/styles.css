@@ -1,0 +1,222 @@
+.nav-menu select {
+    background-position: center right 10px !important ;
+}
+
+.nav-menu {
+    text-align: center;
+    display: inline-block;
+    width: 23%;
+}
+
+.nav-menu p,
+.item-info h1 {
+    font-family: HelvelticaNeue, sans-serif;
+}
+
+.nav-menu p {
+    margin-bottom: 0;
+}
+
+#keyword-search {
+    font-size: 13px !important;
+}
+
+.company-content {
+    display: inline-block;
+    position: relative;
+    width: 340px;
+    height: 400px;
+    background-color: #fff ;
+    border-radius: 12px;
+    margin: 8px;
+    border: solid 2px rgb(242, 242, 242) !important;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.company-content:hover {
+    box-shadow: 0px 2px 12px 4px rgba(0,0,0,0.1) ;
+}
+
+.co-desc {
+    margin: 0 20px ;
+    position: relative ;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.coname {
+    text-align: left;
+    display: block ;
+    position: relative ;
+    margin: 0 20px ;
+    font-size: 24px ;
+    line-height: 28px ;
+    font-weight: 700 !important ;
+    color: #325f74 ;
+}
+
+.codesc {
+    text-align: left ;
+    display: block ;
+    position: relative ;
+    margin: 20px ;
+    font-size: 16px ;
+    color: #676767 ;   
+}
+
+.learnmore {
+    position: absolute;
+    bottom: 40px ;
+    left: 40px ;
+    color: #325f74 ;
+    font-size: 16px ;
+    line-height: 20px ;
+}
+
+.learnmore img {
+    width: 20px ;
+    height: 20px ;
+    margin-left: 8px ;
+    margin-bottom: -5px ;
+}
+
+.old-company-content {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(242, 242, 242);
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#app, #nav {
+    text-align: center;
+    margin: 25px 0;
+}
+
+#nav .nav-menu:first-child p {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+#nav .nav-menu:last-child p {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+#nav p {
+    background-color: #284C61;
+    color: white;
+    padding: 3px 0;
+}
+
+#filler-input {
+    opacity: 0;
+}
+
+.item-info {
+    margin: 0 auto;
+    background-color: rgb(242, 242, 242);
+    border-radius: 5px;
+}
+
+.item-content {
+    text-align: left;
+    margin: 10px;
+    padding: 10px 20px;
+}
+
+.item-content p {
+    font-family: HelvelticaNeue, sans-serif;
+    font-size: 17px;
+}
+
+.item-content p {
+    font-family: HelvelticaNeue, sans-serif;
+    font-size: 17px;
+}
+
+#close {
+    text-align: right;
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px;
+}
+
+.link-container {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+a.partner-page-link {
+    background-color: transparent;
+    color: #3f7286;
+    border: 1px solid #3f7286;
+    border-radius: 4px;
+    text-align: center;
+    padding: 7px 16px;
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 28px;
+}
+
+a.partner-page-link:hover {
+    color: #fff;
+    background-color: #3f7286;
+    text-decoration: none;
+}
+
+.opened {
+    position: relative;
+}
+
+.opened::after {
+    content: '';
+    position: absolute;
+    left: 45%;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgb(242, 242, 242);
+    clear: both;
+}
+
+@media only screen and (max-width: 840px) {
+    .full-width {
+        width: auto;
+        position: relative;
+        left: 0;
+        right: 0;
+        margin-left: 0;
+        margin-right: 0;        
+        padding: 0 10px ;
+    }
+
+    .full-width img {
+        display: none ;
+    }
+
+    .nav-menu {
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .company-content {
+        margin: 8px auto ;
+    }
+
+    #filler-input {
+        display: none !important;
+    }
+
+    .nav-menu:first-child p {
+        margin-bottom: 10px;
+    }
+}

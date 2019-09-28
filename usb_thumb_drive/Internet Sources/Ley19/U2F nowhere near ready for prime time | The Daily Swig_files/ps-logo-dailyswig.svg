@@ -1,0 +1,8 @@
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" width="42" height="39.35" viewBox="0 0 42 39.35">
+    <title>PortSwigger Logo</title>
+    <polygon points="21 39.35 0 35.33 0 4.03 21 0 21 39.35" fill="#fff"/>
+    <polygon points="23 38.35 41 34.33 41 5.03 23 1 23 38.35" stroke="#fff" stroke-width="1"
+             stroke-linecap="round" fill="none" stroke-linejoin="round"/>
+    <path d="M31.13,4.74A14.58,14.58,0,0,0,33,5.09v5.4c-2,2-3.12,3.12-5.21,5.49L33,16.2v5.36l7.14-.22A65.44,65.44,0,0,0,33,29.47v4.21c-1,.16-1,.22-2,.34v-4.9c3-2.62,3.14-3.87,5.19-6.15-2.09.13-3.19.16-5.19.28V17.76l-7.14-.16C26.09,14.83,29,12.18,31,9.69V7.43C31,6.37,31.13,5.84,31.13,4.74Z"
+          fill="#fff"/>
+</svg>

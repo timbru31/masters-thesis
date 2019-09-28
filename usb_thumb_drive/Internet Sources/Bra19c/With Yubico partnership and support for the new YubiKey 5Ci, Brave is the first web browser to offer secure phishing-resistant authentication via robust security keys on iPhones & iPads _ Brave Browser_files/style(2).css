@@ -1,0 +1,149 @@
+/*
+ Theme Name:   Brave
+ Theme URI:    https://brave.com
+ Description:  Child them to Divi
+ Author:       Sampson
+ Author URI:   https://twitter.com/bravesampson
+ Template:     Divi
+ Version:      1.0.1
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         Brave, Custom
+ Text Domain:  Divi-child
+*/
+
+@font-face {
+  font-family: 'Muli';
+  src: url(fonts/Muli/Muli-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(fonts/Poppins/Poppins-Regular.ttf) format('truetype');
+}
+
+/* https://productforums.google.com/forum/#!topic/chrome/RnMqdh6w7jM */
+input {
+	transform: scale(1.00001) !important
+}
+
+/* Wufoo Form Styling 
+form.wufoo #header {
+  display: none;
+}
+
+form.wufoo > ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+form.wufoo .wufoo-name label,
+form.wufoo .wufoo-email label,
+form.wufoo .wufoo-code label,
+form.wufoo .wufoo-accept legend {
+  display: none;
+}
+
+form.wufoo .wufoo-name input,
+form.wufoo .wufoo-email input,
+form.wufoo .wufoo-code input {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 0;
+    color: #999;
+    background: #eee;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+form.wufoo .wufoo-name input:focus,
+form.wufoo .wufoo-email input:focus,
+form.wufoo .wufoo-code input:focus {
+  outline: none;
+}
+
+form.wufoo .wufoo-name,
+form.wufoo .wufoo-email,
+form.wufoo .wufoo-code,
+form.wufoo .wufoo-accept,
+form.wufoo .wufoo-accept + li {
+  padding: 0;
+  background: none !important;
+}
+
+form.wufoo li.wufoo-name,
+form.wufoo li.wufoo-email {
+  width: 50% !important;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+@media (max-width: 400px) {
+	form.wufoo li.wufoo-name,
+	form.wufoo li.wufoo-email {
+	  width: 100% !important;
+	  padding-left: 0 !important;
+	}
+	form.wufoo li.wufoo-email {
+	  margin-top: 1.5em;
+	}
+}
+
+form.wufoo ::after,
+form.wufoo ::after {
+  display: none !important;
+}
+
+form.wufoo .wufoo-email {
+  padding-left: 3%;
+}
+
+form.wufoo li.wufoo-code,
+form.wufoo li.wufoo-accept,
+form.wufoo li.buttons {
+  width: 100% !important;
+}
+
+form.wufoo li.error {
+  background: none !important;
+}
+
+form.wufoo li.wufoo-code {
+  margin: 1.5em 0;
+}
+
+form.wufoo li.buttons {
+    text-align: right;
+}
+
+form.wufoo li#errorLi {
+  display: none;
+}
+
+form.wufoo p.error {
+  font-weight: normal;
+  padding: 1em 0 !important;
+  margin: 0 !important;
+}
+
+form.wufoo li.buttons input[type='submit'] {
+    color: #FF5500;
+    display: inline-block;
+    margin: 0 0 0 15px;
+    cursor: pointer;
+    padding: .3em 1em;
+    border: 2px solid;
+    border-radius: 3px;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.7em !important;
+    transition: all .2s;
+    box-sizing: border-box;
+}
+
+form.wufoo li.buttons input[type='submit']:hover {
+  border: 2px solid transparent;
+  background-color: rgba(0, 0, 0, .05);
+}*/

@@ -1,0 +1,717 @@
+/* CSS Styles for Tricia */
+
+h4 {font-size: 16px !important;}
+
+Zebra_Tooltip_Message a {color:#9ACA3C !important;}
+
+img.flag-border {border-top: 3px solid #9aca3c;}
+
+img.flag-border:hover {border-top: 3px solid #FFF;}
+
+.gform_wrapper li.field_description_above .gfield_description {font-style:italic;}
+
+.main_color blockquote, .main_color .avia-bullet, .main_color .av-no-color.av-icon-style-border a.av-icon-char {
+    border-color: #ddd;
+}
+
+/*mega menu used for Shop menu item dropdown*/
+#header .avia_mega_div{
+width: 650px !important;
+}
+.av-main-nav ul li {
+	padding-right:15px;}
+
+
+/*grayscale images on start page*/
+
+img.grayimg:hover{
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+	filter: gray; /* IE6-9 */
+    -webkit-filter: invert(20%); /* Chrome 19+ & Safari 6+ */}
+
+/*breadcrumb styling*/
+
+p#breadcrumbs{
+    display:block;
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    font-size: 12px;
+	  line-height:12px;
+    padding-right:5px;
+  color: #ccc;
+}
+
+p#breadcrumbs a {color:#B1D669}
+
+.content, .sidebar{padding-top:40px;}
+
+@media screen and (max-width: 767px){
+.content, .sidebar{padding-top:0px;}
+}
+
+/*documentation page styling*/
+.linkbox {width:100%;padding:15px;text-align:center;font-weight:bold;background-color:#efefef;height:80px;line-height:50px;vertical-align:middle; border-radius:8px;}
+.linkbox span {vertical-align:middle;display: inline-block;line-height: normal;}
+
+/*affiliates assets page styling*/
+div#attachment_97202, div#attachment_96654, div#attachment_96655, div#attachment_96656, div#attachment_96657, div#attachment_96658, div#attachment_96659, div#attachment_96660, div#attachment_96661 {border:none !important;}
+
+body.page-id-96630 p.wp-caption-text {font-size:115%;}
+
+img.affiliate-badge-image {margin-right:35px;margin-bottom:40px;}
+
+
+body.page-id-293 a.avia-button.avia-size-medium {min-width:100%;}
+
+/*FAQ indentation*/
+div.qa-faq-answer {padding-left:2em !important;}
+
+h3.qa-faq-title {text-transform:none !important;
+	font-size: 14px !important;
+    font-weight: normal !important;
+	font-weight:normal !important;}
+
+div.shipping-blurb a, div.shipping-blurb a:link, div.shipping-blurb a:visited, div.shipping-blurb a:hover, div.shipping-blurb a:active  {color:#9aca3c !important; font-weight:bold !important;}
+
+div.shipping-blurb a, div.shipping-blurb a:link, div.shipping-blurb a:visited  {text-decoration:none !important}
+
+div.shipping-blurb a:hover, div.shipping-blurb a:active  {text-decoration:underline !important}
+
+#gform_submit_button_31 {border-radius: 6px;}
+#gform_submit_button_31:hover {background-color: #85AC37;
+	color: white;}
+
+input.gform_button {border-radius: 6px;}
+input.gform_button[type='submit']:hover {
+	background-color: #85AC37;
+	color: white;
+}
+
+
+@media all and (max-width: 989px){
+
+body.page-id-89049 #after_section_1{display:block;}
+
+p#breadcrumbs {
+    left:20px;
+}
+
+}
+
+@media only screen and (min-width: 811px) {
+
+table#yubikeywins {
+	table-layout: fixed;
+}
+table#yubikeywins td {
+	vertical-align: middle;
+}
+table#yubikeywins td.firstcolwins {
+	width: auto;
+}
+#yubikeywins td.columnwins {
+	font-size: 90%;
+	width: 85px;
+	vertical-align: bottom;
+	text-align: center;
+	white-space: nowrap;
+}
+table#yubikeywins td.yubicolumnwins {
+	font-size: 90%;
+	width: 340px;
+	vertical-align: middle;
+	text-align: center;
+	white-space: nowrap;
+}
+}
+
+@media only screen and (max-width: 810px) {
+
+table#yubikeywins td {
+	font-size: 75%;
+	line-height: 1.3em;
+	padding: 2px 3px 2px 3px;
+	vertical-align: middle;
+}
+table#yubikeywins td img {
+	height: 5px;
+	width: 5px;
+}
+table#yubikeywins td.firstcolwins {
+	min-width: 80px;
+}
+table#yubikeywins td.firstcolwins div {
+	height:74px;
+}
+table#yubikeywins td.yubicolumnwins {
+	width: 20%;
+	min-width: 80px;
+	max-width: 160px;
+	height: 20px;
+	text-align:center;
+}
+table#yubikeywins td.columnwins {
+	font-size: 75%;
+	width: 5%;
+	min-width: 20px;
+	max-width: 40px;
+}
+
+div.textonside {
+	white-space: nowrap;
+	-ms-transform-origin: 10% left 0px; /* IE 9 */
+	-webkit-transform-origin: 10% left 0px; /* Chrome, Safari, Opera */
+	transform-origin: 10% left 0px;
+	-ms-transform: rotate(270deg); /* IE 9 */
+	-webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+	transform: rotate(270deg);
+}
+
+/* MOBILE: Enterprise, Facebook, and Personal pages on mobile, stack columns */
+
+body.page-id-71137 div .flex_column, body.page-id-117429 div .flex_column, body.page-id-8744 div .flex_column {
+float:none !important;
+width: 100%;
+padding:10px !important;
+margin-left:0px;
+margin-right:0px;
+}
+
+body.page-id-71137 div.hr-invisible, body.page-id-117429 div.hr-invisible, body.page-id-8744 div.hr-invisible {height:10px !important;}
+body.page-id-71137 div.flex_column_table_cell, body.page-id-117429 div.flex_column_table_cell, body.page-id-8744 div.flex_column_table_cell {width:100% !important;background-color:#FFFFFF !important;}
+body.page-id-71137 div.avia-button-wrap, body.page-id-117429 div.avia-button-wrap, body.page-id-8744 div.avia-button-wrap {float:none !important;width:100% !important;margin:10px auto !important;}
+body.page-id-71137 a.avia-button, body.page-id-117429 a.avia-button, body.page-id-8744 a.avia-button {float:none !important;width:60% !important;margin:10px auto !important;}
+
+}
+
+/*Layerslider pages*/
+/*mobile thru desktop*/
+
+@media only screen and (max-width: 767px){
+  #layer_slider_1{
+    width:85% !important;
+    max-width:85% !important;
+    margin: auto !important;
+  }
+}
+
+body.page-id-116578 #after_layer_slider_1 > .container > div.template-page.content.av-content-full, body.page-id-119290 #after_layer_slider_1 > .container > div.template-page.content.av-content-full {
+  padding-top: 0;
+}
+
+body.page-id-116578 #after_layer_slider_1 > .container > div.template-page.content.av-content-full > div.post-entry-116578 > div.entry-content-wrapper.clearfix, body.page-id-119290 #after_layer_slider_1 > .container > div.template-page.content.av-content-full > div.post-entry-116578 > div.entry-content-wrapper.clearfix{
+  margin: 0 20px 0 20px;
+}
+
+
+/*///////////////// Footer Logos /////////////////*/
+
+.footer-logos {
+  vertical-align: middle;
+  display: table-cell;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.footer-logos img {
+  max-width: 100%;
+  opacity:.5;
+}
+
+.footer-logos img:hover{
+  opacity:1;
+}
+
+/* For mobile */
+#footer-logos-wrapper {
+  display:none;
+}
+
+/* styles the line between the logos and the rest of the footer */
+hr#logos-line{
+  border-top: 1px solid #f4f4f4;
+  width: 200%;
+  margin-left: -50%;
+  border-bottom-style: none;
+  display: none;
+}
+
+/* Footer Logos Text */
+#footer-logos-text{
+  min-width:157px;
+  padding-left: 0px;
+  font-family: "Open Sans";
+  font-weight:900;
+  font-size: 12px;
+  color: #CFCFCF;
+  letter-spacing:0.2px;
+  text-align:left;
+  padding-bottom:15px;
+}
+
+/* Homepage Link-Images Hover */
+
+img.homepageLogo {
+  opacity:.5;
+}
+img.homepageLogo:hover{
+  opacity:1;
+}
+
+/* Fix whitespace issue */
+div#text-13.widget.clearfix.widget_text {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.responsive-header-images-3{
+  display:none;
+  padding:0;
+  margin-left:0;
+  margin-bottom:30px;
+}
+
+.responsive-header-images-5{
+  display:none;
+  padding:0;
+  margin:0;
+}
+
+.compare-yubikeys-popup-section{
+  padding:0;
+  margin:0;
+  display:none;
+}
+
+.pakb-search-results-breadcrumbs{
+  padding-top:20px;
+  color:#A9AAAB;
+  font-size:1.1em;
+  border-bottom:1px solid #dddddd;
+  padding-bottom:2.2em;
+  margin-left:-16px;
+}
+
+/* For desktop */
+@media only screen and (min-width: 768px){
+  #footer-logos-wrapper {
+    display:block;
+  }
+  hr#logos-line{
+    display:block;
+  }
+  .responsive-header-images-3{
+    display:block;
+  }
+
+  .responsive-header-images-5{
+    display:block;
+  }
+
+  .pakb-search-box-wide{
+    margin-top:30px;
+    margin-bottom:30px;
+  }
+
+  .pakb-search-results-breadcrumbs{
+    padding-top:2px;
+  }
+
+}
+
+/*KB STUFF*/
+
+a.pakb-search-results-breadcrumbs-link{
+  color: #A9AAAB;
+}
+
+a.pakb-search-results-breadcrumbs-link:hover{
+  color: #9aca3c;
+}
+
+/*Team Member Job Title Bold Font and Color Correction */
+
+.team-member-job-title > b{
+  font-weight: 800 !important;
+  color: #666666 !important;
+}
+
+/* styling the "Support Ticket" hyperlink as a button */
+
+.hyperlink-button{
+  text-decoration: none;
+  padding: 10px 20px 10px 20px;
+  line-height:1.2em;
+  position:relative;
+  border-bottom: 1px solid;
+  text-decoration: none;
+  border-radius:3px;
+  font-size:14px;
+  background-color:#9aca3c;
+  color: white !important;
+}
+
+.hyperlink-button-support-page-row{
+  margin-bottom:24px !important;
+  margin-top:10px !important;
+}
+
+.support-links{
+  margin-bottom:20px !important;
+}
+
+.lesser-title-links{
+  color: #666666 !important;
+}
+
+.lesser-title-links:hover{
+  color: #9aca3c !important;
+}
+
+/* Store Page */
+
+/* For Mobile - Get rid of links */
+body.page-id-100402 #firstLinks-desktop, body.page-id-100402 #lastLinks-desktop, body.page-id-100402 #after_section_1{
+    display:none;
+}
+body.page-id-100402 #mobile{
+    display:block;
+}
+
+/* if screen size is wider than 768px */
+
+@media screen and (min-width:768px){
+     body.page-id-100402 #firstLinks-desktop, body.page-id-100402 #lastLinks-desktop, body.page-id-100402 #after_section_1{
+         display:block;
+     }
+     body.page-id-100402 #mobile{
+         display:none;
+     }
+}
+
+
+/*Cyber Monday Sale CSS*/
+
+.foobar-container-inner{
+  overflow:visible !important;
+}
+
+body.page-id-111341 main.template-page.content.av-content-full.alpha.units{
+  padding-top:0 !important;
+}
+
+@media only screen and (max-width:1050px) and (min-width:768px){
+  body.page-id-111341 #crown-text{
+    width:500px!important;
+    padding-top:22px!important;
+  }
+}
+
+@media only screen and (max-width:767px) and (min-width:540px){
+  body.page-id-111341 #crown-text{
+    width:400px!important;
+    padding-top:28px!important;
+  }
+}
+
+@media only screen and (max-width:539px){
+  body.page-id-111341 #crown-text{
+    width:250px!important;
+    padding-top:40px!important;
+  }
+}
+
+/* Post (Blog) left-margin fix on rescale */
+@media only screen and (max-width:1099px) and (min-width:768px){
+body.post-template-default article.post-entry.post-entry-type-standard{
+    margin-left:20px!important;
+  }
+}
+
+/* Honeypots for the Newsletter Sign-up Forms */
+#subscribe-email-2, #subscribe-email{
+  display:none!important;
+}
+
+/* WordPress Store Locator Styles */
+
+#wpsl-checkbox-filter.wpsl-checkbox-3-columns li{
+  width: auto !important;
+  margin-right:20px;
+}
+
+input#wpsl-search-input{
+  margin-bottom:0 !important;
+}
+
+div.wpsl-direction-wrap, div.wpsl-select-wrap, div.wpsl-info-actions, #wpsl-gmap{
+  display:none !important;
+}
+
+div#wpsl-result-list{
+  width:100%;
+  border-left: 1px dotted #cccccc;
+  border-right: 1px dotted #cccccc;
+}
+
+div.wpsl-listing-div, div.wpsl-contact-details-div{
+  width: 49%;
+  display:inline-block;
+  vertical-align:top;
+}
+
+p.wpsl_reseller_desc{
+  margin:10px 0 0 0 !important;
+  color: #999;
+  font-size: .94em;
+}
+
+div.wpsl-store-location{
+  margin-top: 10px;
+}
+
+#wpsl-search-btn{
+  margin:10px 0 20px 0;
+}
+
+#wpsl-category{
+  float:right !important;
+  margin-top:-75px;
+  width: 50%;
+}
+
+#wpsl-category > label{
+  width:100% !important;
+}
+
+#wpsl-dropdown{
+  margin-top:-1px;
+}
+
+.wpsl-selected-item{
+  color: #999 !important;
+  padding: 5pt !important;
+}
+
+div.wpsl-input>div{
+  width:100% !important;
+}
+
+#wpsl-stores{
+  padding-top:15px;
+  border-bottom: 1px dotted #ccc;
+}
+
+div.wpsl-search{
+  margin-bottom:0 !important;
+  margin-top:20px;
+}
+
+/*fix left-padding for responsive view*/
+@media only screen and (max-width: 675px){
+  #wpsl-wrap #wpsl-result-list li{
+    padding-left: 10px !important;
+  }
+}
+
+/*Sidebar*/
+
+body.page-id-115778 aside.sidebar_right>div.inner_sidebar{
+  margin-top: -1em;
+  padding:0;
+}
+
+/*Responsive*/
+@media only screen and (max-width: 825px){
+  div.wpsl-input{
+    margin-bottom:0;
+  }
+  div.wpsl-listing-div, div.wpsl-contact-details-div{
+    width: 100%;
+    display:block;
+  }
+  input#wpsl-search-input{
+    width:40%;
+  }
+}
+
+/* Fix Blog Top Whitespace Issue */
+
+@media only screen and (min-width: 768px){
+  body.post-template-default.single.single-post main.content.units.av-content-small.alpha, body.page-template.page-template-page-blog.page-template-page-blog-php.page-id-24 main.template-page.content.av-content-small.alpha.units {
+    padding-top:40px;
+  }
+  body.post-template-default.single.single-post aside.sidebar.sidebar_right.alpha.units, body.page-template.page-template-page-blog.page-template-page-blog-php.page-id-24 aside{
+    padding-top:40px;
+  }
+
+}
+
+/* Fix new cart in header */
+
+#navCart{
+  margin-right: 15px;
+}
+
+/* Fix YubiDeals checkbox on checkout */
+
+p.mc4wp-checkbox.mc4wp-checkbox-woocommerce{
+  padding-left:2px;
+  margin-bottom:0;
+  padding-bottom:15px;
+  color: #666666;
+}
+
+p.mc4wp-checkbox.mc4wp-checkbox-woocommerce > label > input {
+  margin-right:7px;
+}
+
+p.mc4wp-checkbox.mc4wp-checkbox-woocommerce > label > span {
+  color: #666666 !important;
+}
+
+p.woochimp_checkout_checkbox{
+  margin-bottom:0;
+}
+
+/*Fix sidebar and margin CSS in Search Results Page*/
+
+@media only screen and (max-width: 999px){
+  body.search aside.sidebar.sidebar_right{
+    display:none!important;
+  }
+  body.search main.content.template-search.av-content-small{
+    width:100%;
+    padding-right:30px!important;
+  }
+}
+
+@media only screen and (max-width: 767px){
+  body.search main.content.template-search{
+    margin-top:30px!important;
+  }
+}
+
+/*Fix Product Short Description List*/
+body.single-product .short-description ul{
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/*Old product page fixes (WC 3.0.0) to be removed for new product pages*/
+
+body.product-template-default .single-product-main-image .images a.woocommerce-main-image{
+  margin-bottom:15px;
+  width:100%!important;
+  display:block!important;
+}
+
+body.product-template-default .single-product-main-image .images a.lightbox-added {
+  width: 30%;
+  display: inline-block;
+  margin-right:10px;
+}
+
+div#modal-content-ajax .single-product-main-image .images a{
+  display:none;
+}
+
+div#modal-content-ajax .single-product-main-image .images{
+  border:none;
+  margin-left:0;
+}
+
+div#modal-content-ajax .single-product-main-image .images a.woocommerce-main-image{
+  display:block !important;
+  min-width:95px;
+}
+
+/* Menu Cart Pro */
+
+a.wpmenucart-contents{
+  display:block;
+  padding:6px 0!important;
+}
+
+.wpmenucart.wpmenucartli.wpmenucart-display-right{
+  padding-left:10px!important;
+}
+
+span.wpmenucart-thumbnail img{
+  box-shadow:none!important;
+  -webkit-box-shadow:!important;
+}
+
+.top_header_store_link{
+  font-size:11px;
+  font-weight:600;
+  color:#808080 !important;
+  float:right;
+  margin-top:5px;
+}
+
+.top_header_store_link:hover{
+  color:#9aca3c !important;
+}
+
+@media screen and (max-width:767px){
+  .top_header_store_link{
+    margin-top:0px;
+  }
+}
+
+body.woocommerce-order-received dl.variation{
+  display:none!important;
+}
+
+/* Fix Blog first entry Timestamp */
+
+div.av-magazine-hero.first header.entry-content-header time.av-magazine-time.updated{
+  margin-left:8px !important;
+}
+
+/* Product Popper text-above buy button styles */
+p.product-popper-name-price-text{
+	text-align:center;
+	margin-bottom: 8px;
+  font-size: 1em;
+}
+
+p.product-popper-name-price-text span{
+	color:#999999;
+}
+
+/* Fix VAT Number field after update 4/21/17 */
+
+#woocommerce_eu_vat_number{
+  display:inline-block!important;
+}
+
+/* Fix Cart and Checkout after update 4/23/17 */
+
+body.woocommerce-cart dl.variation, body.woocommerce-checkout dl.variation{
+  display: none;
+}
+
+/* Banner text on product pop-ups, store page only */
+
+body.page-id-100402 .av_one_third{
+  position:relative;
+  overflow:hidden;
+}
+
+.product-popper-banner{
+  position: absolute;
+  text-align: center;
+  background-color: #9aca3c;
+  width: 200px;
+  font-weight: 600;
+  color: white;
+  padding: 8px 0;
+  transform: rotate(45deg);
+  right: -60px;
+  top: 22px;
+}

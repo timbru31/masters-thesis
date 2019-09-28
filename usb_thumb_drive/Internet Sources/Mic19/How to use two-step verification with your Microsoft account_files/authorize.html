@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- saved from url=(1569)https://support.microsoft.com/silentauth#/id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InU0T2ZORlBId0VCb3NIanRyYXVPYlY4NExuWSIsImtpZCI6InU0T2ZORlBId0VCb3NIanRyYXVPYlY4NExuWSJ9.eyJhdWQiOiJmZGY5ODg1Yi1kZDM3LTQyYmYtODJlNS1jMzEyOWVmNWEzMDIiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mOGNkZWYzMS1hMzFlLTRiNGEtOTNlNC01ZjU3MWU5MTI1NWEvIiwiaWF0IjoxNTY1MzYyMDcxLCJuYmYiOjE1NjUzNjIwNzEsImV4cCI6MTU2NTM2NTk3MSwiYWlvIjoiQVVRQXUvOE1BQUFBTFM4QmRvRHNrVk45cGpJTFRFTWxoVnJwNldCcnkzbTRweERobG9JQXg0TGM4REtsRS9HM3Z2RXNEUWtqK2FEVVQrYTNaNitHTW0wZ3RLeEFodDNSVmc9PSIsImFsdHNlY2lkIjoiMTpsaXZlLmNvbTowMDA2N0ZGRUEwRDg4ODM3IiwiYW1yIjpbInB3ZCJdLCJlbWFpbCI6InRpbV8zMS4wM0Bob3RtYWlsLmRlIiwiZmFtaWx5X25hbWUiOiJCcnVzdCIsImdpdmVuX25hbWUiOiJUaW0iLCJpZHAiOiJsaXZlLmNvbSIsImlwYWRkciI6IjIxMy4yMDMuMjQyLjIyMCIsIm5vbmNlIjoiMTY4Njk3MGYtYTA5Ni00MmVlLWE3ZTctYjQ4NjQ5MmU0OTQwIiwic3ViIjoiZ3VPbkl1TUxqUHFPMlF5MTZLeTZ5R1EyQTYyVF9fc1l5clZqcW92c2ZScyIsInRpZCI6ImY4Y2RlZjMxLWEzMWUtNGI0YS05M2U0LTVmNTcxZTkxMjU1YSIsInVuaXF1ZV9uYW1lIjoibGl2ZS5jb20jdGltXzMxLjAzQGhvdG1haWwuZGUiLCJ1dGkiOiJwT3YzamQ4bFNrNjNUMy1ObC1jZEFBIiwidmVyIjoiMS4wIn0.Rm6GsOmM8D_JRgqyxT2lGF3EqdBZJXKpuY-%2DwI6zhySJRR5N99al2mbyDAWASDIf8MRSD5Elw7zW1RNmTANgD6o6KhrgsoHEU9I2Z87nenuJzhAyT4_MmpgxBHPF0hUmyH7Y2uM8Sx16PWZGADovhPpi0szfr-EzBS4_OTkgoJ0_9wVcvw46glGrlji58J7tyaW7TXW5y-cHPQh6_5fn7HgmJ8LrJBxea3L_020OVxz5ldUN5gJyp-ZuVXrp9JtYosMht-dRI6fTPFn5SFR53M5njuXU-9cr5eUWpbuer2Q5X5UJlzbdt9TFIWU6XfpJpjo1EBgtcJopLNwdHulKqQ&state=c4a71fc9-0842-4933-8182-2f9a4c01501b%7Cfdf9885b-dd37-42bf-82e5-c3129ef5a302&session_state=cc5c3a08-40dd-42cd-85d1-f97906703a07 -->
+<html ng-app="SupportPortalSilentAuth" text-direction="" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <!--<base href="/">--><base href=".">
+    
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--“Third party scripts or code, linked to, called or referenced from this web site, online service or product, are licensed to you by the third parties that own such code, not by Microsoft, see ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx.”-->
+    <script src="./adallibraries"></script>
+
+</head>
+<body>
+    <p>Return to <a href="https://support.microsoft.com/">support.microsoft.com</a></p>
+    <script type="text/javascript">
+        document.domain = 'microsoft.com';
+        var app = angular.module("SupportPortalSilentAuth", ['AdalAngular']);
+
+        app.config(['$httpProvider', 'adalAuthenticationServiceProvider', function ($httpProvider, adalProvider) {
+            adalProvider.init(
+            {
+                clientId: "fdf9885b-dd37-42bf-82e5-c3129ef5a302"
+            }, $httpProvider);
+        }]);
+    </script>
+
+
+
+
+
+</body></html>

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)https://paragonie.com/blog/2018/08/security-concerns-surrounding-webauthn-don-t-implement-ecdaa-yet -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="alternate" title="RSS Feed for the Paragon Initiative Enterprises Blog" href="https://paragonie.com/rss/" type="application/rss+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Authentication, Authorization, Cryptography, Login, Public Key Cryptography, Signatures, Vulnerability">     <meta name="description" content="If you&#39;re planning on implementing the W3C and FIDO Alliance&#39;s new WebAuthn standard for hardware security token support, skip ECDAA for now.">            <link rel="icon" href="https://paragonie.com/favicon.ico">
+
+    <title>Security Concerns Surrounding WebAuthn: Don't Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog</title>
+
+    <!-- Google Fonts -->
+    <link href="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/css" rel="stylesheet" type="text/css">
+    <link href="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/css(1)" rel="stylesheet" type="text/css">
+    <link href="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/css(2)" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+    <!-- Bootstrap core CSS -->
+    <link href="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="icon" type="image/png" href="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/logo.png">
+    <link href="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/Envy.css" rel="stylesheet">
+    <link href="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/Components.css" rel="stylesheet">
+    <link href="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/responsive.css" rel="stylesheet">
+    <link href="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/github.css" rel="stylesheet">
+    <link href="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/blog.css" rel="stylesheet"><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Blank; src: url('about:blank')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+    <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top btn-glass navbar-trans">
+        <div class="container" id="top-container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://paragonie.com/">
+                    <img alt="Paragon Initiative Enterprises" id="logo" src="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/logo.png" title="Paragon Initiative Enterprises">
+                </a>
+                <p class="navbar-text"><a title="Paragon Initiative Enterprises" href="https://paragonie.com/" class="white">PARAGON <span class="visible-lg-inline">INITIATIVE</span> </a></p>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right uppercase">
+                    <li class="">
+                        <a title="Information" id="nav_menu_info" href="https://paragonie.com/blog/2018/08/security-concerns-surrounding-webauthn-don-t-implement-ecdaa-yet#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Info
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a title="About Paragon Initiative Enterprises" href="https://paragonie.com/info/">About Us</a></li>
+                            <li><a title="Our Experience" href="https://paragonie.com/experience">Our Experience</a></li>
+                            <li><a title="Quick Answers" href="https://paragonie.com/quick-answers">Quick Answers</a></li>
+                            <li><a title="Technology Books" href="https://paragonie.com/book">Technology Books</a></li>
+                            <li><a title="White Papers" href="https://paragonie.com/white-papers">White Papers</a></li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a title="Services" href="https://paragonie.com/blog/2018/08/security-concerns-surrounding-webauthn-don-t-implement-ecdaa-yet#" id="nav_menu_services" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a title="Technology Consulting Services" href="https://paragonie.com/service/technology-consulting">Consulting</a></li>
+                            <li><a title="Code Review Services" href="https://paragonie.com/service/code-review">Code Auditing</a></li>
+                            <li><a title="Business Intelligence Services" href="https://paragonie.com/service/business-intelligence">Business Intelligence</a></li>
+                            <li><a title="Application Security Services" href="https://paragonie.com/service/appsec">App Security</a></li>
+                            <li><a title="Application Development Services" href="https://paragonie.com/service/app-dev">App Development</a></li>
+                            <li><a title="Website Development Services" href="https://paragonie.com/service/web-development">Web Development</a></li>
+                        </ul>
+                    </li>
+                                        <li><a title="Software" href="https://paragonie.com/software">Software</a></li>
+                    <li class="">
+                        <a title="Security" href="https://paragonie.com/menu/security" id="nav_menu_security" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Security
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a title="Security - Advisories" href="https://paragonie.com/security/advisories">Advisories</a></li>
+                            <li><a title="Security - Code Audits" href="https://paragonie.com/security/audits">Code Audits</a></li>
+                                                    </ul>
+                    </li><li><a title="Our Blog" href="https://paragonie.com/blog">Blog</a></li>
+                    <li><a title="Contact Us" href="https://paragonie.com/contact">Contact</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    </header>
+
+    <div class="wallpaper">
+    <div class="container container-fluid">
+            <div class="header">
+        <div class="row row-centered">
+            <div class="col-lg-12 text-left">
+                <h2>Paragon Initiative Enterprises Blog</h2>
+                <h4>The latest information from the team that develops cryptographically secure PHP software.</h4>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+                        <div class="blog-post">
+            <div class="blogpost_header">
+                <h2 class="blog-post-title">Security Concerns Surrounding WebAuthn: Don't Implement ECDAA (Yet) </h2>
+                <p class="blog-post-meta">
+                    <time datetime="2018-08-23 09:34:45">
+                        August 23, 2018 9:34 am
+                    </time> by 
+                    <a href="https://paragonie.com/blog/author/p-i-e-staff">P.I.E. Staff</a>
+                </p>
+            </div>
+            <div class="blogpost_subhead">
+                <div class="blogpost_category">
+                    <a href="https://paragonie.com/blog/category/security-engineering"><i class="fa fa-folder-open"></i>Security Engineering</a>
+                </div>
+            </div>
+            <div class="blog-post-body">
+                    <p>Earlier this year, the World Wide Web Consortium (W3C) and FIDO Alliance shared their latest drafts for a standard Web Authentication API called <strong>WebAuthn</strong>.</p>
+<p>For context (present and historical): The current version (as of this writing) of the WebAuthn specification lives <a href="https://www.w3.org/TR/2018/CR-webauthn-20180807/">here</a>, and the most up-to-date version can be found <a href="https://www.w3.org/TR/webauthn/">here</a>.</p>
+<p>Our security team took an interest to this proposal since WebAuthn would be used in conjunction hardware two-factor authentication devices. Hardware 2FA has proven to be far more resilient against phishing attacks than HOTP or TOTP (meanwhile, SMS-based 2FA is essentially security theater; <em>avoid like the plague</em>).</p>
+<p>Despite the importance of WebAuthn to web security for the years to come, our analysis of the standard reveals a <em>lot</em> of concerns that almost any cryptographer should have been able to identify and remedy earlier in the design phase.</p>
+<p>Regardless of whether this was a failure of the W3C and/or FIDO Alliance to enlist the aid of cryptography engineers, or of the cryptography community to be more proactive in preventing the deployment of error-prone cryptographic designs, there is only one path forward; and that is to fix the design of WebAuthn <em>before</em> it's set in stone.</p>
+<span id="after-fold"></span><h2>WebAuthn Security Risk Overview</h2>
+<p></p><h3 id="update-2018-09-18">Update (2018-09-18)</h3><p></p>
+<p>Since this blog post was referenced in a <a href="https://www.zdnet.com/article/worries-arise-about-security-of-new-webauthn-protocol">ZDNet article about WebAuthn and ECDAA</a>, it's made the rounds on social media and some people have been exaggerating its contents. We suspect this was because of a lack of clarity on our part, and wish to preemptively remedy this going forward:</p>
+<p>What follows isn't a list of critical, game over vulnerabilities in WebAuthn. Rather, this is a list of design grievances that, in similar protocols, have led to security disasters over the years.</p>
+<p><strong>If you were already doing so, you should still use WebAuthn.</strong></p>
+<p>Our purpose in publishing this document was to have a publicly accessible resource that can be easily referenced in our ongoing discussions with the FIDO Alliance and their member organizations without having to dig through email threads that might not have been consistently forwarded or carbon copied.</p>
+<p>A lot of our criticism is easily remedied by updating the relevant documentation to clarify and/or provide a justification for specific design decisions.</p>
+<p>For example, until August of this year, <a href="https://patents.google.com/patent/US6130946A/en">point compression was covered by a non-expired patent</a>, so the FIDO Alliance didn't consider it an option in earlier designs. However, they failed to make it explicit in their specification that point validation should be mandatory. (Instead, this is spelled out in <a href="https://fidoalliance.org/certification/authenticator-certification-levels/">their compliance/policy documents</a>. The FIDO Alliance's security secretariat agreed that this should be made clearer in the specifications themselves.) While we stand by point compression being a significantly more robust design than expecting implementors to validate points (and not telling them about this requirement until it's time to get certified), the FIDO Alliance and W3C can remedy this by updating the specification documentation to make it mandatory. No change is absolutely necessary, although it would certainly be an improvement.</p>
+<p>The call to action was intended for implementors, not users:</p>
+<ol>
+<li>
+<a href="https://latacora.singles/2018/04/03/cryptographic-right-answers.html">Help your users avoid RSA entirely</a>, if possible. EdDSA is your best bet, followed by <a href="https://tools.ietf.org/html/rfc6979">deterministic ECDSA</a>.</li>
+<li>Don't implement ECDAA in its current incarnation, because it's likely to be changed in some ways, and the less we get trapped in the quagmire of backward compatibility, the better off the Internet of tomorrow will be.</li>
+</ol>
+<p>WebAuthn and ECDAA are not doomed. Don't throw away your hardware tokens, revert your codebases to use SMS or TOTP, or any other such drastic measures.</p>
+<blockquote>
+<p>The remainder of this article continues below, unedited.</p>
+</blockquote>
+<hr>
+<p>WebAuthn employs a standard called <a href="https://tools.ietf.org/html/rfc8152">COSE (RFC 8152)</a>, which builds on the <a href="https://paragonie.com/blog/2017/03/jwt-json-web-tokens-is-bad-standard-that-everyone-should-avoid">error-prone JOSE standards</a>.</p>
+<p>In the <a href="https://www.w3.org/TR/2018/CR-webauthn-20180807/#sctn-cose-alg-reg">COSE Algorithm Registrations</a> section of the WebAuthn specification, it notes that RSASSA-PKCS1-v1_5 is already registered by COSE and then registers two additional COSE algorithm identifiers for use in WebAuthn, based on the FIDO Alliance's <strong>ECDAA</strong> algorithm.</p>
+<p></p><h3 id="bleichenbacher">Bleichenbacher's Monster Returns</h3><p></p>
+<p>As a consequence of its COSE legacy, WebAuthn specifically requires ongoing support for RSA with PKCS1v1.5 padding. Much has been written about the past <strong><em>twenty years</em></strong> of padding oracle and signature forgery vulnerabilities inherent to PKCS1v1.5 padding.</p>
+<p>If you're not familiar with RSA with PKCS1v1.5 padding, just know that a team of researchers won <a href="https://pwnies.com/winners/#crypto">a prestigious information security award</a> at the Black Hat conference this year for discovering that systems are still vulnerable to decades-old vulnerabilities <strong>simply because they <em>still</em> support RSA PKCS1v1.5 padding</strong>.</p>
+<p>As we covered in a previous blog post, it <em>is</em> possible to <a href="https://paragonie.com/blog/2018/04/protecting-rsa-based-protocols-against-adaptive-chosen-ciphertext-attacks#rsa-anti-bb98">implement PKCS1v1.5 securely</a>, but this requires an application-layer mitigation; your library can't do it for you.</p>
+<p>If you didn't explicitly write your RSA-based protocol to side-step these PKCS1v1.5 vulnerabilities (and, instead, you just used whatever API your version of OpenSSL and/or programming language gave you), you're probably vulnerable! (Unless you don't use this padding mode, of course.)</p>
+<p>So while <a href="https://fidoalliance.org/specs/fido-v2.0-rd-20180702/fido-server-v2.0-rd-20180702.html#other">support for RSA with PKCS1v1.5 padding is explicitly required</a> in the FIDO2 server requirements, we implore nobody to ever actually <em>allow</em> this padding mode to be used.</p>
+<blockquote>
+<p><strong>In short:</strong> PKCS1v1.5 is bad. The exploits are almost old enough to legally drink alcohol in the United States. Don't use it!</p>
+</blockquote>
+<p>Fortunately, WebAuthn only uses RSA for signatures, so the relevant exploits are <a href="https://blog.filippo.io/bleichenbacher-06-signature-forgery-in-python-rsa/#practicesafecrypto">much easier to work around</a>. You're still much safer not using RSA at all, or if you must, only using RSASSA-PSS.</p>
+<p></p><h2 id="ecdaa">ECDAA: Exceedingly Concerning Decisions About Authentication</h2><p></p>
+<p>To fully appreciate the security concerns with <a href="https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-ecdaa-algorithm-v2.0-id-20180227.html">the FIDO Alliance's ECDAA specification</a>, it's worth skimming over the past two decades of research into elliptic curve cryptography.</p>
+<p></p><h3 id="ecc-history">A Brief History of Real World Elliptic Curve Cryptography</h3><p></p>
+<p>In the year <strong>2000</strong>, Biehl, et al. publishes a paper on <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.3920&amp;rep=rep1&amp;type=pdf">Differential Fault Attacks on Elliptic Curve Cryptosystems</a> (PDF), presented at CRYPTO 2000. This paper laid the groundwork for a class of active attacks against elliptic curve cryptosystems called <strong>invalid curve attacks</strong>. As recently as 2017, <a href="https://blogs.adobe.com/security/2017/03/critical-vulnerability-uncovered-in-json-encryption.html">invalid curve attacks have threatened ECDH-ES in the JOSE standards</a>.</p>
+<p>In <strong>2010</strong> at the Chaos Communication Congress, fail0verflow exploits a k-value reuse to <a href="https://events.ccc.de/congress/2010/Fahrplan/events/4087.en.html">steal Sony's ECDSA secret key</a>.</p>
+<p>Cryptographers argued for a while about who to blame for this ECDSA failure, then Thomas Pornin published <a href="https://tools.ietf.org/html/rfc6979">RFC 6797: Deterministic (EC)DSA</a> in <strong>2013</strong> to prevent k-value reuse in ECDSA implementations (without breaking backwards compatibility). However, cryptographers arguing about the ECDSA failure wasn't a fruitless effort.</p>
+<p>In <strong>2013</strong>, Daniel J. Bernstein and Tanja Lange published <a href="https://safecurves.cr.yp.to/">SafeCurves</a>, a website that evaluated a lot of popular elliptic curve designs on very rigorous criteria: It isn't sufficient for an elliptic curve cryptography algorithm to be secure against ECDLP attacks, there are a lot more requirements for making these algorithms secure in real world ECC. SafeCurves takes these requirements into account.</p>
+<p>In <strong>2016</strong>, the <a href="https://irtf.org/cfrg">Crypto Forum Research Group</a> approves the publication of <a href="https://tools.ietf.org/html/rfc7748">RFC 7748</a> and <a href="https://tools.ietf.org/html/rfc8032">RFC 8032</a>.</p>
+<p>These RFCs were the result of <em>years</em> of bikeshedding over the subtleties of elliptic curve designs and parameter choices: Weierstrass vs Montgomery vs Edwards curves, cofactors, twists, the tradeoffs of 1 mod 4 versus 3 mod 4, etc.</p>
+<p>CFRG discussions are very intense, deeply technical, and at many points heated.</p>
+<p>At some point the mounting tension in the CFRG was briefly broken by someone vigorously demanding feedback for <a href="https://www.ietf.org/mail-archive/web/cfrg/current/msg06791.html">their homemade cipher "Crystalline"</a>, to which renowned security expert and nocoiner Tony Arcieri eventually <a href="https://www.ietf.org/mail-archive/web/cfrg/current/msg06805.html">obliged</a>.</p>
+<h4>Takeaway</h4>
+<ol>
+<li>Invalid curve attacks leak your secret key</li>
+<li>Nonce reuse in ECDSA leaks your secret key</li>
+<li>Elliptic Curve Cryptography parameter choice is a very complicated issue best left to experts (who will still take years to arrive at a satisfactory answer)</li>
+<li>Don't roll your own crypto</li>
+</ol>
+<p></p><h2 id="ecdaa-harmful">ECDAA Considered Harmful</h2><p></p>
+<p>Out of all the hard-won ECC security lessons one could glean from the past two decades of real world security failures, ECDAA seems to have learned precisely <strong>none</strong> of them.</p>
+<p></p><h3 id="ecdaa-uncompressed-points">ECDAA Specifies Uncompressed Points</h3><p></p>
+<p>There are two schools of thought for preventing Invalid Curve Attacks:</p>
+<ol>
+<li>Tell implementors to verify that any points they receive are on the curve, and hope they remember to do so consistently.</li>
+<li>Use point compression and make it <em>not their problem</em>.</li>
+</ol>
+<p>Point compression means sending only the X or Y coordinate, and the sign (positive or negative) of the other coordinate.</p>
+<p class="text-center"><img src="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/ecc-point-compression.png" class="img-responsive" title="Visual difference between compressed and uncompressed ECC points."></p>
+<p>Point compression is widely regarded among cryptographers and cryptography engineers as the preferred mitigation strategy for preventing invalid curve attacks.</p>
+<p>ECDAA explicitly specifies using uncompressed points (<a href="https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-ecdaa-algorithm-v2.0-id-20180227.html#encoding-ecpoint-values-as-byte-strings-ecpointtob">ECDAA specification, section 3.1.2</a> and <a href="https://www.w3.org/TR/2018/CR-webauthn-20180807/#fido-u2f-attestation">WebAuthn, section 8.6</a>), which allows an attacker to choose an (x,y) pair that isn't on the curve.</p>
+<p>Point compression, by contrast, is not allowed per the current ECDAA specification; nor is it mentioned anywhere.</p>
+<p></p><h3 id="ecdaa-non-deterministic">ECDAA Specifies Non-Deterministic Signatures</h3><p></p>
+<p><a href="https://fidoalliance.org/specs/fido-uaf-v1.1-id-20170202/fido-ecdaa-algorithm-v1.1-id-20170202.html#ecdaa-sign">Section 3.5 of the ECDAA specification</a> contains several invocations of randomness (i.e. <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mi&gt;D&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 4.791em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.833em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.716em, 1003.78em, 2.876em, -999.997em); top: -2.518em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: STIXGeneral-Italic;">R</span><span class="mi" id="MathJax-Span-4" style="font-family: STIXGeneral-Italic;">A</span><span class="mi" id="MathJax-Span-5" style="font-family: STIXGeneral-Italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.053em;"></span></span><span class="mi" id="MathJax-Span-6" style="font-family: STIXGeneral-Italic;">D</span><span class="mo" id="MathJax-Span-7" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-8" style="font-family: STIXGeneral-Italic;">p</span><span class="mo" id="MathJax-Span-9" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.523em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.191em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi><mi>A</mi><mi>N</mi><mi>D</mi><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-1">RAND(p)</script>).</p>
+<p>As we saw in the <a href="https://paragonie.com/blog/2018/08/security-concerns-surrounding-webauthn-don-t-implement-ecdaa-yet#ecc-history">history of real world ECC security</a> section of this post, randomly generated k-values have historically led to security disaster (i.e. revealing the secret keys for the ECDSA signatures that helped secure the PlayStation 3). The correct way to use ECDSA is with deterministic signatures.</p>
+<p>Further, it is worth noting that the ECDAA specification's definition of <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mi&gt;D&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-10" style="width: 4.69em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.783em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.716em, 1003.73em, 2.876em, -999.997em); top: -2.518em; left: 0em;"><span class="mrow" id="MathJax-Span-11"><span class="mi" id="MathJax-Span-12" style="font-family: STIXGeneral-Italic;">R</span><span class="mi" id="MathJax-Span-13" style="font-family: STIXGeneral-Italic;">A</span><span class="mi" id="MathJax-Span-14" style="font-family: STIXGeneral-Italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.053em;"></span></span><span class="mi" id="MathJax-Span-15" style="font-family: STIXGeneral-Italic;">D</span><span class="mo" id="MathJax-Span-16" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-17" style="font-family: STIXGeneral-Italic;">x<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-18" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.523em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.191em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi><mi>A</mi><mi>N</mi><mi>D</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-2">RAND(x)</script> <a href="https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-ecdaa-algorithm-v2.0-id-20180227.html#notation">does not include any cryptographic security requirements</a>. It is incredibly likely that developers would implement this using a Linear Congruent Generator or Mersenne Twister, rather than <a href="https://paragonie.com/blog/2016/05/how-generate-secure-random-numbers-in-various-programming-languages">the kernel's CSPRNG</a>.</p>
+<p>Therefore, it is very likely that continuing to rely on randomness in ECDAA signing will lead to more ECC security disasters.</p>
+<p></p><h3 id="ecdaa-bn-curves">ECDAA in WebAuthn is Specified over Barreto-Naehrig (BN) Curves</h3><p></p>
+<p>WebAuthn <a href="https://www.w3.org/TR/2018/CR-webauthn-20180807/#sctn-cose-alg-reg">specifies</a> two ECDSA algorithms: ED256 (<a href="https://trustedcomputinggroup.org/wp-content/uploads/TCGAlgorithmRegistry_Rev01.15.pdf">TPM_ECC_BN_P256</a> with SHA256) and ED512 (ECC_BN_ISOP512 with SHA512). These are both Barreto-Naehrig curves used for pairing-based cryptography, and suffer from a <a href="https://moderncrypto.org/mail-archive/curves/2016/000740.html">pretty serious security reduction</a>.</p>
+<p>Generally, if you have an elliptic curve with a prime of magnitude <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msup&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-19" style="width: 1.162em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.91em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.515em, 1000.91em, 2.523em, -999.997em); top: -2.366em; left: 0em;"><span class="mrow" id="MathJax-Span-20"><span class="msubsup" id="MathJax-Span-21"><span style="display: inline-block; position: relative; width: 0.91em; height: 0px;"><span style="position: absolute; clip: rect(3.178em, 1000.46em, 4.136em, -999.997em); top: -3.979em; left: 0em;"><span class="mn" id="MathJax-Span-22" style="font-family: STIXGeneral-Regular;">2</span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; top: -4.383em; left: 0.507em;"><span class="texatom" id="MathJax-Span-23"><span class="mrow" id="MathJax-Span-24"><span class="mi" id="MathJax-Span-25" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">n</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.371em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>2</mn><mrow class="MJX-TeXAtom-ORD"><mi>n</mi></mrow></msup></math></span></span><script type="math/tex" id="MathJax-Element-3">2^{n}</script>, you have roughly <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mfrac&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-26" style="width: 0.809em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.658em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.515em, 1000.66em, 2.926em, -999.997em); top: -2.366em; left: 0em;"><span class="mrow" id="MathJax-Span-27"><span class="mfrac" id="MathJax-Span-28"><span style="display: inline-block; position: relative; width: 0.456em; height: 0px; margin-right: 0.103em; margin-left: 0.103em;"><span style="position: absolute; clip: rect(3.531em, 1000.36em, 4.136em, -999.997em); top: -4.383em; left: 50%; margin-left: -0.199em;"><span class="mi" id="MathJax-Span-29" style="font-size: 70.7%; font-family: STIXGeneral-Italic;">n</span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.38em, 1000.36em, 4.136em, -999.997em); top: -3.576em; left: 50%; margin-left: -0.199em;"><span class="mn" id="MathJax-Span-30" style="font-size: 70.7%; font-family: STIXGeneral-Regular;">2</span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(0.859em, 1000.46em, 1.212em, -999.997em); top: -1.258em; left: 0em;"><span style="display: inline-block; overflow: hidden; vertical-align: 0em; border-top: 1.3px solid; width: 0.456em; height: 0px;"></span><span style="display: inline-block; width: 0px; height: 1.061em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.371em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.559em; border-left: 0px solid; width: 0px; height: 1.503em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>n</mi><mn>2</mn></mfrac></math></span></span><script type="math/tex" id="MathJax-Element-4">\frac{n}{2}</script>  bits of security against the Elliptic Curve Discrete Logarithm Problem (ECDLP). Therefore:</p>
+<ul>
+<li>128-bit curves should offer 64 bits of ECDLP security.</li>
+<li>256-bit curves should offer 128 bits of ECDLP security.</li>
+<li>512-bit curves should offer 256 bits of ECDLP security.</li>
+</ul>
+<p>However, due to advancements in cryptanalysis, 256-bit BN curves <a href="https://ellipticnews.wordpress.com/2016/09/02/crypto-and-ches-2016-santa-barbara-ca-usa/">"no longer offer 128 bits of security, but perhaps closer to 96 or so"</a>. This is a speedup factor of 32 bits (roughly 4 billion).</p>
+<p>The ill consequences of this curve choice are exacerbated by several <a href="https://safecurves.cr.yp.to/transfer.html">ECC</a>&nbsp;<a href="https://safecurves.cr.yp.to/disc.html">security</a>&nbsp;<a href="https://safecurves.cr.yp.to/ladder.html">deficits</a>&nbsp;<a href="https://safecurves.cr.yp.to/twist.html">inherent</a> to <a href="https://safecurves.cr.yp.to/complete.html">BN</a>&nbsp;<a href="https://safecurves.cr.yp.to/ind.html">curves</a>.</p>
+<p class="text-center"><img src="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/safecurves-table.png" class="img-responsive" title="Screenshot of the summary table on the SafeCurves website&#39;s front page."></p>
+<h3>The FIDO Alliance Rolled Their Own Crypto</h3>
+<p>To round off the list of takeaways that ECDAA failed to take into consideration, the FIDO Alliance designed their own cryptography standard for anonymous attestations (using pairing-based cryptography over elliptic curves).</p>
+<p>That puts us at 0 for 4 on <strong>learning from history so we're not doomed to repeat it.</strong></p>
+<p>In an interesting twist of fate, according to someone familiar with ECDAA and the FIDO Alliance, <a href="https://twitter.com/herrjemand/status/1031511164671483906">they hadn't yet implemented ECDAA themselves</a> (<a href="https://archive.fo/6CflR">mirrored</a>).</p>
+<p>While this is <em>really weird</em> to hear (why would anyone attempt to standardize a cryptography protocol they hadn't implemented, let alone tested, yet?), it does present to us an opportunity to fix the standard before it's burdened by backward compatibility requirements and we end up with an echo of <a href="https://www.openssl.org/~bodo/ssl-poodle.pdf">POODLE</a>.</p>
+<p></p><h2 id="recommendations">Recommendations</h2><p></p>
+<blockquote>
+<p>Developers: Please, do NOT implement ECDAA in your WebAuthn libraries.</p>
+</blockquote>
+<p>At least, not yet.</p>
+<p>It might sound like a tremendous amount of work to shore up the security of ECDAA but two of the three proposed fixes are very simple.</p>
+<p></p><h3 id="fix-ecdaa-point-compression">Fix #1: Require (Or, At Least Allow) Point Compression</h3><p></p>
+<p>This recommendation should be obvious at this point. <a href="https://paragonie.com/blog/2018/08/security-concerns-surrounding-webauthn-don-t-implement-ecdaa-yet#ecdaa-uncompressed-points">Read about point compression above</a>, if you haven't already done so.</p>
+<p>With point compression, you'll be eliminating an entire class of active attacks and preventing a long tail of implementation error.</p>
+<p></p><h3 id="fix-ecdaa-deterministic-nonces">Fix #2: Use Deterministic Nonces</h3><p></p>
+<p>There are two (good, but different) approaches to ensuring deterministic signatures:</p>
+<ol>
+<li>Implement an HMAC-based approach, similar to <a href="https://tools.ietf.org/html/rfc6979">RFC 6797 for DSA and ECDSA</a>
+</li>
+<li>Use a hash of the message (with optional domain separation) instead of a random integer.</li>
+</ol>
+<p>For example, there are two points in <a href="https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-ecdaa-algorithm-v2.0-id-20180227.html#ecdaa-sign">EcdaaSign</a> that random values are being generated.</p>
+<p>These could easily be replaced by <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-31" style="width: 5.748em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.64em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.666em, 1004.59em, 2.876em, -999.997em); top: -2.518em; left: 0em;"><span class="mrow" id="MathJax-Span-32"><span class="mi" id="MathJax-Span-33" style="font-family: STIXGeneral-Italic;">H<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.053em;"></span></span><span class="mo" id="MathJax-Span-34" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-35" style="font-family: STIXGeneral-Italic;">c</span><span class="mn" id="MathJax-Span-36" style="font-family: STIXGeneral-Regular;">1</span><span class="texatom" id="MathJax-Span-37"><span class="mrow" id="MathJax-Span-38"><span class="mo" id="MathJax-Span-39" style="font-family: STIXVariants;">|</span></span></span><span class="texatom" id="MathJax-Span-40"><span class="mrow" id="MathJax-Span-41"><span class="mo" id="MathJax-Span-42" style="font-family: STIXVariants;">|</span></span></span><span class="mi" id="MathJax-Span-43" style="font-family: STIXGeneral-Italic;">m</span><span class="mi" id="MathJax-Span-44" style="font-family: STIXGeneral-Italic;">s</span><span class="mi" id="MathJax-Span-45" style="font-family: STIXGeneral-Italic;">g</span><span class="mo" id="MathJax-Span-46" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.523em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.253em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>H</mi><mo stretchy="false">(</mo><mi>c</mi><mn>1</mn><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><mi>m</mi><mi>s</mi><mi>g</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-5">H(c1 || msg)</script> and  <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-47" style="width: 5.748em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.64em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.666em, 1004.59em, 2.876em, -999.997em); top: -2.518em; left: 0em;"><span class="mrow" id="MathJax-Span-48"><span class="mi" id="MathJax-Span-49" style="font-family: STIXGeneral-Italic;">H<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.053em;"></span></span><span class="mo" id="MathJax-Span-50" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-51" style="font-family: STIXGeneral-Italic;">c</span><span class="mn" id="MathJax-Span-52" style="font-family: STIXGeneral-Regular;">2</span><span class="texatom" id="MathJax-Span-53"><span class="mrow" id="MathJax-Span-54"><span class="mo" id="MathJax-Span-55" style="font-family: STIXVariants;">|</span></span></span><span class="texatom" id="MathJax-Span-56"><span class="mrow" id="MathJax-Span-57"><span class="mo" id="MathJax-Span-58" style="font-family: STIXVariants;">|</span></span></span><span class="mi" id="MathJax-Span-59" style="font-family: STIXGeneral-Italic;">m</span><span class="mi" id="MathJax-Span-60" style="font-family: STIXGeneral-Italic;">s</span><span class="mi" id="MathJax-Span-61" style="font-family: STIXGeneral-Italic;">g</span><span class="mo" id="MathJax-Span-62" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.523em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.253em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>H</mi><mo stretchy="false">(</mo><mi>c</mi><mn>2</mn><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><mi>m</mi><mi>s</mi><mi>g</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-6">H(c2 || msg)</script>, where <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-7-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-63" style="width: 1.212em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.96em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.716em, 1000.86em, 2.674em, -999.997em); top: -2.518em; left: 0em;"><span class="mrow" id="MathJax-Span-64"><span class="mi" id="MathJax-Span-65" style="font-family: STIXGeneral-Italic;">c</span><span class="mn" id="MathJax-Span-66" style="font-family: STIXGeneral-Regular;">1</span></span><span style="display: inline-block; width: 0px; height: 2.523em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi><mn>1</mn></math></span></span><script type="math/tex" id="MathJax-Element-7">c1</script> is the byte <code>0xF1</code> repeated a number of times equal to the block size of the hash function (32 for SHA256, 64 for SHA512), and <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-8-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-67" style="width: 1.212em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.96em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.716em, 1000.91em, 2.674em, -999.997em); top: -2.518em; left: 0em;"><span class="mrow" id="MathJax-Span-68"><span class="mi" id="MathJax-Span-69" style="font-family: STIXGeneral-Italic;">c</span><span class="mn" id="MathJax-Span-70" style="font-family: STIXGeneral-Regular;">2</span></span><span style="display: inline-block; width: 0px; height: 2.523em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi><mn>2</mn></math></span></span><script type="math/tex" id="MathJax-Element-8">c2</script> is the byte <code>0xD0</code> repeated the same number of times.</p>
+<p>(The constants <code>0xF1</code> and <code>0xD0</code> were chosen as a visual nod to the FIDO Alliance when represented in hexadecimal.)</p>
+<p>The motivation to use a domain-separated hash function instead of HKDF or HMAC is that ECDAA is going to be implemented in hardware, and since a hash function is already being used, the overhead for this change is minimal.</p>
+<p></p><h3 id="fix-ecdaa-curves">Fix #3: Reconsider BN Curves</h3><p></p>
+<p>In light of the BN curve security reduction mentioned previously, an alternative curve for pairing-based cryptography should be considered.</p>
+<p>When we shared our initial criticism of ECDAA with the FIDO Alliance, we CC'd Tony Arcieri (mentioned in the history section above) and he suggested looking at <a href="https://eprint.iacr.org/2017/1050">BLS12-381</a> ("JubJub") as an alternative to BN_P256.</p>
+<p></p><h3 id="fix-ecdaa-crypto-community">Fix #4: Hire Cryptographers to Review Your Designs and Implementations</h3><p></p>
+<p>Cryptography code is hard. <a href="http://www.cryptofails.com/post/70059600123/saltstack-rsa-e-d-1">Mistakes happen</a>. Misunderstandings are everywhere.</p>
+<p>While not everyone who works with cryptography is on board, there is a large community of computer security experts and cryptographers that prioritize solutions over blame, and that wants to see projects like W3C's WebAuthn succeed.</p>
+<p>If anyone wants to design a novel cryptography standard, reach out to cryptography experts. The CFRG is probably not the worst place to find one.</p>
+<p>If yours is a commercial product, contract or hire at least one cryptographer to review your design and suggest changes, then implement them.</p>
+<p>That being said, it <strong>cannot</strong> be the case that an alliance consisting of large companies and hardware security token vendors that advocates for improved web security fails to learn from the past two decades of real world cryptographic security research. Nobody wins in this scenario, except the attackers.</p>
+<!-- $$ -->
+            </div>
+            <div class="blogpost_footer blogpost_social">
+                <span class="blogpost_permalink">
+                                        <a href="https://paragonie.com/b/ya9unbDYhvmp2EUy"><i class="fa fa-link"></i>Permalink</a>
+                </span>
+                                    <div class="floatright">
+                        <a target="external nofollow" href="https://news.ycombinator.com/item?id=17852347">
+                            <i class="fab fa-hacker-news"></i>
+                            Discuss <span class="visible-xl-inline">on Hacker News</span>
+                        </a>
+                    </div>
+                            </div>
+            <div class="blogpost_footer">
+                <div class="blogpost_cc">
+                    License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license external nofollow">
+                        <span class="visible-xl-inline">Creative Commons Attribution-ShareAlike 4.0 International</span>
+                        <span class="hidden-xl-inline" title="Creative Commons Attribution-ShareAlike 4.0 International">CC-BY-SA 4.0 Intl</span>
+                    </a>
+                    <br>
+                    <a href="https://paragonie.com/blog/2018/08/security-concerns-surrounding-webauthn-don-t-implement-ecdaa-yet/source" target="_blank" rel="noopener">
+                        <i class="fa fa-search"></i>
+                        View source (Markdown)
+                    </a>
+                </div>
+                                    <ul class="blogpost_tags">
+                                                    <li><a href="https://paragonie.com/blog/tag/authentication"><i class="fa fa-tag blogpost-tag-icon"></i>Authentication</a></li>
+                                                    <li><a href="https://paragonie.com/blog/tag/authorization"><i class="fa fa-tag blogpost-tag-icon"></i>Authorization</a></li>
+                                                    <li><a href="https://paragonie.com/blog/tag/cryptography"><i class="fa fa-tag blogpost-tag-icon"></i>Cryptography</a></li>
+                                                    <li><a href="https://paragonie.com/blog/tag/login"><i class="fa fa-tag blogpost-tag-icon"></i>Login</a></li>
+                                                    <li><a href="https://paragonie.com/blog/tag/public-key-cryptography"><i class="fa fa-tag blogpost-tag-icon"></i>Public Key Cryptography</a></li>
+                                                    <li><a href="https://paragonie.com/blog/tag/signatures"><i class="fa fa-tag blogpost-tag-icon"></i>Signatures</a></li>
+                                                    <li><a href="https://paragonie.com/blog/tag/vulnerability"><i class="fa fa-tag blogpost-tag-icon"></i>Vulnerability</a></li>
+                                            </ul>
+                            </div>
+        </div>
+            <div id="blogpost_authorbox"><h3>About the Author</h3><h4 class="nomargin"><a href="https://paragonie.com/blog/author/p-i-e-staff">P.I.E. Staff</a></h4><div id="author_byline"><p>Paragon Initiative Enterprises</p></div><div id="author_bio"><p>Paragon Initiative Enterprises is a Florida-based company that provides software consulting, application development, code auditing, and security engineering services. We specialize in PHP Security and applied cryptography.</p></div></div>            </div>
+        <!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>About</h4>
+                <p class="text-justify">
+                    <strong>Paragon Initiative Enterprises</strong><br> offers 
+                    <a href="https://paragonie.com/service/technology-consulting">technology consulting</a> and 
+                    <a href="https://paragonie.com/service/web-development">web development</a>
+                    services to businesses with attention to <a href="https://paragonie.com/service/appsec">security above and beyond compliance</a>.
+                </p>
+                <p class="text-justify">
+                    <a class="btn btn-primary btn-block" href="https://paragonie.com/experience">
+                        <i class="fa fa-check"></i>
+                        Our Professional Experience
+                    </a>
+                </p>
+            </div>
+
+            <div class="sidebar-module" id="blog_menu">
+                <h4>Archives</h4>
+                <ol class="list-unstyled" id="blog_menu_dates">                    <li class="blog_year">
+                        <a href="https://paragonie.com/blog/2019"><i class="fa fa-calendar"></i> 2019</a>
+                        <ul>                            <li class="blog_month"><a href="https://paragonie.com/blog/2019/01"><i class="far fa-clock"></i> January 2019</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2019/03"><i class="far fa-clock"></i> March 2019</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2019/05"><i class="far fa-clock"></i> May 2019</a></li>
+                            </ul>
+                    </li>
+                                        <li class="blog_year">
+                        <a href="https://paragonie.com/blog/2018"><i class="fa fa-calendar"></i> 2018</a>
+                        <ul>                            <li class="blog_month"><a href="https://paragonie.com/blog/2018/01"><i class="far fa-clock"></i> January 2018</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2018/03"><i class="far fa-clock"></i> March 2018</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2018/04"><i class="far fa-clock"></i> April 2018</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2018/08"><i class="far fa-clock"></i> August 2018</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2018/09"><i class="far fa-clock"></i> September 2018</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2018/11"><i class="far fa-clock"></i> November 2018</a></li>
+                            </ul>
+                    </li>
+                                        <li class="blog_year">
+                        <a href="https://paragonie.com/blog/2017"><i class="fa fa-calendar"></i> 2017</a>
+                        <ul>                            <li class="blog_month"><a href="https://paragonie.com/blog/2017/01"><i class="far fa-clock"></i> January 2017</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2017/02"><i class="far fa-clock"></i> February 2017</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2017/03"><i class="far fa-clock"></i> March 2017</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2017/04"><i class="far fa-clock"></i> April 2017</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2017/05"><i class="far fa-clock"></i> May 2017</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2017/06"><i class="far fa-clock"></i> June 2017</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2017/07"><i class="far fa-clock"></i> July 2017</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2017/08"><i class="far fa-clock"></i> August 2017</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2017/09"><i class="far fa-clock"></i> September 2017</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2017/10"><i class="far fa-clock"></i> October 2017</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2017/12"><i class="far fa-clock"></i> December 2017</a></li>
+                            </ul>
+                    </li>
+                                        <li class="blog_year">
+                        <a href="https://paragonie.com/blog/2016"><i class="fa fa-calendar"></i> 2016</a>
+                        <ul>                            <li class="blog_month"><a href="https://paragonie.com/blog/2016/01"><i class="far fa-clock"></i> January 2016</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2016/02"><i class="far fa-clock"></i> February 2016</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2016/03"><i class="far fa-clock"></i> March 2016</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2016/04"><i class="far fa-clock"></i> April 2016</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2016/05"><i class="far fa-clock"></i> May 2016</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2016/06"><i class="far fa-clock"></i> June 2016</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2016/07"><i class="far fa-clock"></i> July 2016</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2016/08"><i class="far fa-clock"></i> August 2016</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2016/09"><i class="far fa-clock"></i> September 2016</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2016/10"><i class="far fa-clock"></i> October 2016</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2016/11"><i class="far fa-clock"></i> November 2016</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2016/12"><i class="far fa-clock"></i> December 2016</a></li>
+                            </ul>
+                    </li>
+                                        <li class="blog_year">
+                        <a href="https://paragonie.com/blog/2015"><i class="fa fa-calendar"></i> 2015</a>
+                        <ul>                            <li class="blog_month"><a href="https://paragonie.com/blog/2015/04"><i class="far fa-clock"></i> April 2015</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2015/05"><i class="far fa-clock"></i> May 2015</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2015/06"><i class="far fa-clock"></i> June 2015</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2015/07"><i class="far fa-clock"></i> July 2015</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2015/08"><i class="far fa-clock"></i> August 2015</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2015/09"><i class="far fa-clock"></i> September 2015</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2015/10"><i class="far fa-clock"></i> October 2015</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2015/11"><i class="far fa-clock"></i> November 2015</a></li>
+                                                        <li class="blog_month"><a href="https://paragonie.com/blog/2015/12"><i class="far fa-clock"></i> December 2015</a></li>
+                            </ul>
+                    </li>
+                    </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Blog Categories</h4>
+                <ol class="blog_categories list-unstyled">
+                     <li>
+    <a href="https://paragonie.com/blog/category/business"><i class="fa fa-folder"></i> Business</a>
+    </li>
+  <li>
+    <a href="https://paragonie.com/blog/category/paragon-initiative"><i class="fa fa-folder-open"></i> Paragon Initiative</a>
+            <ol class="list-unstyled blog_categories">
+                    <li>
+    <a href="https://paragonie.com/blog/category/community"><i class="fa fa-folder-open"></i> Community</a>
+            <ol class="list-unstyled blog_categories">
+                    <li>
+    <a href="https://paragonie.com/blog/category/open-source"><i class="fa fa-folder"></i> Open Source</a>
+    </li>
+
+                    <li>
+    <a href="https://paragonie.com/blog/category/pharaoh"><i class="fa fa-folder"></i> Pharaoh</a>
+    </li>
+
+                    <li>
+    <a href="https://paragonie.com/blog/category/security-advice"><i class="fa fa-folder"></i> Security Advice</a>
+    </li>
+
+                </ol>
+    </li>
+
+                    <li>
+    <a href="https://paragonie.com/blog/category/our-products"><i class="fa fa-folder-open"></i> Our Products</a>
+            <ol class="list-unstyled blog_categories">
+                    <li>
+    <a href="https://paragonie.com/blog/category/airship"><i class="fa fa-folder"></i> Airship</a>
+    </li>
+
+                    <li>
+    <a href="https://paragonie.com/blog/category/asgard"><i class="fa fa-folder"></i> ASGard</a>
+    </li>
+
+                    <li>
+    <a href="https://paragonie.com/blog/category/ward"><i class="fa fa-folder"></i> Ward</a>
+    </li>
+
+                </ol>
+    </li>
+
+                    <li>
+    <a href="https://paragonie.com/blog/category/slice-pie"><i class="fa fa-folder"></i> Slice of PIE</a>
+    </li>
+
+                </ol>
+    </li>
+  <li>
+    <a href="https://paragonie.com/blog/category/security-news"><i class="fa fa-folder"></i> Security News</a>
+    </li>
+  <li>
+    <a href="https://paragonie.com/blog/category/technology"><i class="fa fa-folder-open"></i> Technology</a>
+            <ol class="list-unstyled blog_categories">
+                    <li>
+    <a href="https://paragonie.com/blog/category/cryptology"><i class="fa fa-folder"></i> Cryptology</a>
+    </li>
+
+                    <li>
+    <a href="https://paragonie.com/blog/category/databases"><i class="fa fa-folder"></i> Databases</a>
+    </li>
+
+                    <li>
+    <a href="https://paragonie.com/blog/category/hardware"><i class="fa fa-folder"></i> Hardware</a>
+    </li>
+
+                    <li>
+    <a href="https://paragonie.com/blog/category/programming"><i class="fa fa-folder"></i> Programming</a>
+    </li>
+
+                    <li>
+    <a href="https://paragonie.com/blog/category/quality-assurance"><i class="fa fa-folder"></i> Quality Assurance</a>
+    </li>
+
+                    <li>
+    <a href="https://paragonie.com/blog/category/security-engineering"><i class="fa fa-folder"></i> Security Engineering</a>
+    </li>
+
+                    <li>
+    <a href="https://paragonie.com/blog/category/system-administration"><i class="fa fa-folder"></i> System Administration</a>
+    </li>
+
+                </ol>
+    </li>
+                     <li>
+                        <a href="https://paragonie.com/blog/category/"><i class="fa fa-folder-o"></i> Uncategorized</a>
+                    </li>
+                </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Tags</h4>
+                <ol class="tagcloud list-unstyled">
+                                            <li>
+                            <a href="https://paragonie.com/blog/tag/access-controls" style="font-size: 56%;">
+                                Access Controls
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/application-security" style="font-size: 120%; font-weight: bold;">
+                                Application Security
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/authentication" style="font-size: 76.5%;">
+                                Authentication
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/authorization" style="font-size: 57%;">
+                                Authorization
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/automatic-updates" style="font-size: 53%;">
+                                Automatic Updates
+                            </a>
+                        </li>                                                                <li>
+                            <a href="https://paragonie.com/blog/tag/business" style="font-size: 57.5%;">
+                                Business
+                            </a>
+                        </li>                                                                <li>
+                            <a href="https://paragonie.com/blog/tag/central-florida" style="font-size: 58.5%;">
+                                Central Florida
+                            </a>
+                        </li>                                                                                    <li>
+                            <a href="https://paragonie.com/blog/tag/cryptography" style="font-size: 104%; font-weight: bold;">
+                                Cryptography
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/csprng" style="font-size: 60%;">
+                                CSPRNG
+                            </a>
+                        </li>                                                                <li>
+                            <a href="https://paragonie.com/blog/tag/data-science" style="font-size: 55.5%;">
+                                Data Science
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/encryption" style="font-size: 71%;">
+                                Encryption
+                            </a>
+                        </li>                                                                <li>
+                            <a href="https://paragonie.com/blog/tag/https" style="font-size: 61.5%;">
+                                HTTPS
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/integrity" style="font-size: 54%;">
+                                Integrity
+                            </a>
+                        </li>                                                                                    <li>
+                            <a href="https://paragonie.com/blog/tag/libsodium" style="font-size: 72%;">
+                                Libsodium
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/login" style="font-size: 61.5%;">
+                                Login
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/math" style="font-size: 55.5%;">
+                                Math
+                            </a>
+                        </li>                                                                                    <li>
+                            <a href="https://paragonie.com/blog/tag/net" style="font-size: 53%;">
+                                .NET
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/networking" style="font-size: 56.5%;">
+                                Networking
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/node-js" style="font-size: 53%;">
+                                Node.js
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/open-source" style="font-size: 78.5%;">
+                                Open Source
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/orlando" style="font-size: 58.5%;">
+                                Orlando
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/owasp" style="font-size: 53%;">
+                                OWASP
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/owasp-top-ten" style="font-size: 60%;">
+                                OWASP Top Ten
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/php" style="font-size: 112.5%; font-weight: bold;">
+                                PHP
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/postgresql" style="font-size: 54%;">
+                                PostgreSQL
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/public-key-cryptography" style="font-size: 69%;">
+                                Public Key Cryptography
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/python" style="font-size: 53%;">
+                                Python
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/ruby" style="font-size: 53%;">
+                                Ruby
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/secret-key-cryptography" style="font-size: 75%;">
+                                Secret Key Cryptography
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/security" style="font-size: 125.5%; font-weight: bold;">
+                                Security
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/signatures" style="font-size: 56%;">
+                                Signatures
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/sql" style="font-size: 59%;">
+                                SQL
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/sql-injection" style="font-size: 59%;">
+                                SQL Injection
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/statistics" style="font-size: 55.5%;">
+                                Statistics
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/vulnerability" style="font-size: 63.5%;">
+                                Vulnerability
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/web-development" style="font-size: 76.5%;">
+                                Web Development
+                            </a>
+                        </li>                                            <li>
+                            <a href="https://paragonie.com/blog/tag/xss" style="font-size: 60%;">
+                                XSS
+                            </a>
+                        </li>                                    </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Mailing Lists</h4>
+                <ol class="list-unstyled">
+                    <li>
+                        <a href="http://eepurl.com/bqnTnf" title="Our quarterly newsletter">
+                            <i class="far fa-clock pad"></i>
+                            Paragon Initiative Quarterly
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://eepurl.com/bqnRzf" title="Receive our security advisories before Full Disclosure publishes them!">
+                            <i class="fa fa-lock pad"></i>
+                            Paragon Initiative Vanguard
+                        </a>
+                    </li>
+                </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Elsewhere</h4>
+                <ol class="list-unstyled">
+                    <li>
+                        <a href="https://github.com/paragonie">
+                            <i class="fab fa-github-square pad"></i>
+                            ParagonIE on Github
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/ParagonIE">
+                            <i class="fab fa-twitter-square pad"></i>
+                            @ParagonIE
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://facebook.com/ParagonIE">
+                            <i class="fab fa-facebook-square pad"></i>
+                            Paragonie on Facebook
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.blog-sidebar -->
+
+    </div>
+    <!-- /.row -->
+
+    <hr class="pagebreak">
+                        <div id="proposition">
+                <div>
+                    <h2>Need Technology Consultants?</h2>
+                    <p>
+                        Will tomorrow bring <a href="https://paragonie.com/white-paper/2015-why-invest-application-security">costly
+                        and embarrassing data breaches</a>? Or will it bring growth,
+                        success, and peace of mind?
+                    </p>
+                    <p>
+                        Our team of technology consultants have extensive knowledge
+                        and experience with application security and web/application
+                        development.
+                    </p>
+                    <p>
+                        We specialize in <a href="https://paragonie.com/blog/tag/cryptography">cryptography</a>
+                        and <a href="https://paragonie.com/blog/tag/php">secure PHP development</a>.
+                    </p>
+                    <div><a class="btn btn-ultra align-center" href="https://paragonie.com/contact" title="Technology Consulting from Paragon Initiative">
+                        <i class="fa fa-users"></i>
+                        Let's Work Together Towards Success
+                    </a></div>
+                </div>
+                <div>
+                    <h2>Our Security Newsletters</h2>
+                    <p>
+                        Want the latest from Paragon Initiative Enterprises delivered
+                        straight to your inbox? We have two newsletters to choose from.
+                    </p>
+                    <p>
+                        The first mails quarterly and often showcases our behind-the-scenes
+                        projects.
+                    </p>
+                    <p>
+                        The other is unscheduled and gives you a direct
+                        feed into the findings of our open source security research
+                        initiatives.
+                    </p>
+                    <div>
+                        <a class="btn btn-success align-center" href="http://eepurl.com/bqnTnf" title="Paragon Initiatve Quarterly">
+                            <i class="fa fa-calendar-o"></i>
+                            Quarterly Newsletter
+                        </a>
+                        &nbsp;
+                        <a class="btn btn-warning align-center" href="http://eepurl.com/bqnRzf" title="Paragon Initiatve Vanguard">
+                            <i class="fa fa-lock"></i>
+                            Security Announcements
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+    <!-- Start Footer -->
+    <footer class="footer">
+        <div class="container btn-glass">
+            <br>
+            <div class="row row-centered">
+                <div class="col-lg-6 col-centered footercopy">
+                    <p class="text-left">
+                        Copyright © 2015 - 2019 Paragon Initiative Enterprises, LLC.
+                        All right reserved.
+                        <span class="visible-xl-inline">
+                            Software security and cryptography specialists.
+                        </span>
+                    </p>
+                </div>
+                <div class="col-lg-4  col-centered text-right">
+                    <a href="https://paragonie.com/contact" title="Contact Paragon Initiative Enterprises"><i class="fa fa-2x fa-envelope pad"></i></a>
+                    <a href="https://facebook.com/paragonie" title="Paragon Initiative Enterprises on Facebook"><i class="fab fa-2x fa-facebook-square pad"></i></a>
+                    <a href="https://github.com/paragonie" title="Fork our code on GitHub"><i class="fab fa-2x fa-github-square pad"></i></a>
+                    <a href="https://twitter.com/ParagonIE" title="Follow us on Twitter"><i class="fab fa-2x fa-twitter-square pad"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /container -->
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script nonce="PAIm4o16IYzzYgZa/1Fe1E+Q" src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script nonce="oyfU3O6GJ2C1f2+IXuS69cAY" src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script async="" src="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/analytics.js"></script><script nonce="" src="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script nonce="" src="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script nonce="">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-61029337-1', 'auto');
+      ga('send', 'pageview');
+
+
+        $(document).ready(function() {
+            $('#nav_menu_info').attr('href', '#');
+            $('#nav_menu_services').attr('href', '#');
+            $('#nav_menu_community').attr('href', '#');
+        });
+    </script>
+    <script nonce="" src="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/highlight.pack.js"></script>
+        <script type="text/x-mathjax-config;executed=true" nonce="">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+        });
+    </script>
+    <script src="./Security Concerns Surrounding WebAuthn_ Don&#39;t Implement ECDAA (Yet) - Paragon Initiative Enterprises Blog_files/MathJax.js" id=""></script>
+        <script nonce="">hljs.initHighlightingOnLoad();</script>
+    
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: STIXSizeOneSym, sans-serif;"></div></div></body></html>

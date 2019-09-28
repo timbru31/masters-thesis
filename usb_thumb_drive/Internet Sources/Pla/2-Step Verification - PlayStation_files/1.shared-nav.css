@@ -1,0 +1,2473 @@
+@font-face {
+  font-family: "SST W20 Ultra Light";
+  src: url(assets/fonts/30dace52-b9f4-48c2-bab5-dda075d0ba71.woff2) format("woff2"), url(assets/fonts/f9187573-6d21-4362-bdda-2ade6a33f2ed.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Ultra Light Italic";
+  src: url(assets/fonts/22461e8c-a824-4024-8a3e-74eb6e8a0e48.woff2) format("woff2"), url(assets/fonts/d50dd84a-06ff-4a63-b984-c959f0cc61fe.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Light";
+  src: url(assets/fonts/68f1bb9f-2c5f-44c4-ab8e-193b6fb6b8a8.woff2) format("woff2"), url(assets/fonts/f17f812e-1324-4606-bfa3-b8af9ffcbb1d.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Light Italic";
+  src: url(assets/fonts/d6f8cc20-f30a-402a-89fd-633d6fc24412.woff2) format("woff2"), url(assets/fonts/507a3ba7-9f29-471a-8125-75452324693d.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Roman";
+  src: url(assets/fonts/dcb015ed-475f-4221-9b3c-157c4b6bc4ca.woff2) format("woff2"), url(assets/fonts/509e2a7d-d453-44aa-a0b2-8cb7fb111da7.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Medium";
+  src: url(assets/fonts/ddee892c-8380-4323-84a1-11374952a430.woff2) format("woff2"), url(assets/fonts/a8b01fae-a36c-4d28-889a-94f25849cc70.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Bold";
+  src: url(assets/fonts/f2c57125-0b07-4b47-9b3e-cb9f6f2217aa.woff2) format("woff2"), url(assets/fonts/416e4815-4bb6-459f-a85a-f2362db24801.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Light";
+  font-weight: 200;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-light-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-light-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Book";
+  font-weight: 300;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-book-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-book-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Regular";
+  font-weight: 400;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-regular-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-regular-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Bold";
+  font-weight: 600;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-bold-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-bold-webfont.woff) format("woff"); }
+
+.search-container .shared-nav-icon::before,
+.search-container .shared-nav-icon::after,
+.search-container .shared-nav-ps-logo {
+  -webkit-box-sizing: unset;
+          box-sizing: unset;
+  line-height: normal;
+  font-family: 'Shared-Nav-Icons';
+  speak: none; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon,
+.search-container .shared-nav-icon {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: inherit;
+  display: inline-block;
+  font-family: 'Shared-Nav-Icons';
+  font-size: inherit;
+  speak: none;
+  text-rendering: optimizeLegibility;
+  text-transform: none; }
+
+[dir] .search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon, [dir] .search-container .shared-nav-icon {
+  text-align: center; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--friends::before {
+  color: #0172ce;
+  content: '\e941'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--messages::before {
+  color: #0172ce;
+  content: '\e943'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--notifications::before {
+  color: #0172ce;
+  content: '\e945'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--notifications::before {
+  content: '\e946';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--notifications:hover::before {
+  content: '\e945';
+  color: #0172ce; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--messages::before {
+  content: '\e944';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--messages:hover::before {
+  content: '\e943';
+  color: #0172ce; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--friends::before {
+  content: '\e942';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--friends:hover::before {
+  content: '\e941';
+  color: #0172ce; }
+
+.search-container .shared-nav-icon--gaming:active::before {
+  content: '\e921'; }
+
+.search-container .shared-nav-icon--gaming::before {
+  content: '\e922'; }
+
+.search-container .shared-nav-icon--help:active::before {
+  content: '\e923'; }
+
+.search-container .shared-nav-icon--help::before {
+  content: '\e924'; }
+
+.search-container .shared-nav-icon--news:active::before {
+  content: '\e926'; }
+
+.search-container .shared-nav-icon--news::before {
+  content: '\e927'; }
+
+.search-container .shared-nav-icon--services:active::before {
+  content: '\e928'; }
+
+.search-container .shared-nav-icon--services::before {
+  content: '\e929'; }
+
+.search-container .shared-nav-icon--store:active::before {
+  content: '\e92a'; }
+
+.search-container .shared-nav-icon--store::before {
+  content: '\e92b'; }
+
+.search-container .shared-nav-icon--systems:active::before {
+  content: '\e92c'; }
+
+.search-container .shared-nav-icon--systems::before {
+  content: '\e92d'; }
+
+@media only screen and (min-width: 1024px) {
+  .search-container .shared-nav-icon--account:active::before {
+    content: '\e92e'; }
+  .search-container .shared-nav-icon--account::before {
+    content: '\e92f'; }
+  .search-container .shared-nav-icon--cart:active::before {
+    content: '\e930'; }
+  .search-container .shared-nav-icon--cart::before {
+    content: '\e931'; }
+  .search-container .shared-nav-icon--friends:active::before {
+    content: '\e934'; }
+  .search-container .shared-nav-icon--friends::before {
+    content: '\e935'; }
+  .search-container .shared-nav-icon--messages:active::before {
+    content: '\e936'; }
+  .search-container .shared-nav-icon--messages::before {
+    content: '\e937'; }
+  .search-container .shared-nav-icon--mypsnsignedout:active::before {
+    content: '\e938'; }
+  .search-container .shared-nav-icon--mypsnsignedout::before {
+    content: '\e939'; }
+  .search-container .shared-nav-icon--notification:active::before {
+    content: '\e93a'; }
+  .search-container .shared-nav-icon--notification::before {
+    content: '\e93b'; }
+  .search-container .shared-nav-icon--wishlist-desktop:active::before {
+    content: '\e93f'; }
+  .search-container .shared-nav-icon--wishlist-desktop::before {
+    content: '\e940'; } }
+
+.search-container .shared-nav-icon--chevron-top::before, .search-container .shared-nav-icon--chevron-down::before, .search-container .shared-nav-icon--chevron-after::after, .search-container .shared-nav-icon--chevron-before::before {
+  content: '\e932'; }
+
+[dir=ltr] .search-container .shared-nav-icon--chevron-top::before {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg); }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-top::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.search-container .shared-nav-icon--chevron-left::before {
+  content: '\e91e';
+  display: inline-block; }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-left::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.search-container .shared-nav-icon--hamburger::before {
+  content: '\e925'; }
+
+.search-container .shared-nav-icon--hamburger[aria-expanded="true"]::before {
+  content: '\e920'; }
+
+.search-container .shared-nav-icon--tertiary-marker::before {
+  content: '\e93c'; }
+
+.search-container .shared-nav-icon--secondary-header::before {
+  content: '\e932'; }
+
+[dir=ltr] .search-container .shared-nav-icon--chevron-after::after {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg); }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-after::after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg); }
+
+.search-container .shared-nav-link-icon::before {
+  font-family: 'Shared-Nav-Icons'; }
+
+.search-container .shared-nav-link-icon--accessories::before {
+  content: '\e900'; }
+
+.search-container .shared-nav-link-icon--allgames::before {
+  content: '\e901'; }
+
+.search-container .shared-nav-link-icon--buygames::before {
+  content: '\e902'; }
+
+.search-container .shared-nav-link-icon--helpandsupport::before {
+  content: '\e903'; }
+
+.search-container .shared-nav-link-icon--licensedproducts::before {
+  content: '\e904'; }
+
+.search-container .shared-nav-link-icon--news::before {
+  content: '\e905'; }
+
+.search-container .shared-nav-link-icon--psblog::before {
+  content: '\e906'; }
+
+.search-container .shared-nav-link-icon--psclassic::before {
+  content: '\e907'; }
+
+.search-container .shared-nav-link-icon--psgear::before {
+  content: '\e908'; }
+
+.search-container .shared-nav-link-icon--psmusic::before {
+  content: '\e909'; }
+
+.search-container .shared-nav-link-icon--psnowgames::before {
+  content: '\e90a'; }
+
+.search-container .shared-nav-link-icon--psnow::before {
+  content: '\e90b'; }
+
+.search-container .shared-nav-link-icon--psplusgames::before {
+  content: '\e90c'; }
+
+.search-container .shared-nav-link-icon--psplus::before {
+  content: '\e90d'; }
+
+.search-container .shared-nav-link-icon--psstore::before {
+  content: '\e90e'; }
+
+.search-container .shared-nav-link-icon--psvideo::before {
+  content: '\e90f'; }
+
+.search-container .shared-nav-link-icon--psvita::before {
+  content: '\e910'; }
+
+.search-container .shared-nav-link-icon--psvrgames::before {
+  content: '\e911'; }
+
+.search-container .shared-nav-link-icon--psvr::before {
+  content: '\e912'; }
+
+.search-container .shared-nav-link-icon--psvue::before {
+  content: '\e913'; }
+
+.search-container .shared-nav-link-icon--ps4games::before {
+  content: '\e914'; }
+
+.search-container .shared-nav-link-icon--ps4::before {
+  content: '\e915'; }
+
+.search-container .shared-nav-link-icon--ps4progames::before {
+  content: '\e916'; }
+
+.search-container .shared-nav-link-icon--ps4pro::before {
+  content: '\e91a'; }
+
+.search-container .shared-nav-link-icon--psnstatus::before {
+  content: '\e91c'; }
+
+.search-container .shared-nav-link-icon--sony::before {
+  content: '\e91d'; }
+
+.jetstream-search div,
+.jetstream-search button,
+.jetstream-search input {
+  font-family: "SST W20 Light", helvetica, arial, sans-serif; }
+
+@-webkit-keyframes jetstream-search-input-grow {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes jetstream-search-input-grow {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-webkit-keyframes jetstream-search-slide-down {
+  from {
+    -webkit-transform: translateY(calc(100% * -1));
+            transform: translateY(calc(100% * -1)); }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); } }
+
+@keyframes jetstream-search-slide-down {
+  from {
+    -webkit-transform: translateY(calc(100% * -1));
+            transform: translateY(calc(100% * -1)); }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); } }
+
+@-webkit-keyframes jetstream-search-slide-up {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  to {
+    -webkit-transform: translateY(calc(100% * -1));
+            transform: translateY(calc(100% * -1)); } }
+
+@keyframes jetstream-search-slide-up {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  to {
+    -webkit-transform: translateY(calc(100% * -1));
+            transform: translateY(calc(100% * -1)); } }
+
+@-webkit-keyframes jetstream-search-fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes jetstream-search-fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes jetstream-search-fadeout {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@keyframes jetstream-search-fadeout {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@-webkit-keyframes jetstream-search-input-shrink {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  to {
+    -webkit-transform: scale(0);
+            transform: scale(0); } }
+
+@keyframes jetstream-search-input-shrink {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  to {
+    -webkit-transform: scale(0);
+            transform: scale(0); } }
+
+.jetstream-search {
+  height: 100vh;
+  min-width: 320px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 10000; }
+
+[dir] .jetstream-search {
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), color-stop(43.07%, rgba(0, 0, 0, 0.8)), to(black));
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 43.07%, black 100%); }
+
+[dir=ltr] .jetstream-search {
+  left: 0; }
+
+[dir=rtl] .jetstream-search {
+  right: 0; }
+  .jetstream-search input[type=search] {
+    -moz-appearance: none;
+         appearance: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0; }
+  .jetstream-search__offscreen-label {
+    position: absolute;
+    width: 0.0625rem;
+    height: 0.0625rem;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0); }
+  [dir] .jetstream-search__offscreen-label {
+    margin: -0.0625rem;
+    border: 0;
+    padding: 0; }
+  .jetstream-search__offscreen-search-btn {
+    display: none; }
+  [dir=ltr] .jetstream-search--is-closing {
+  -webkit-animation: jetstream-search-fadeout .5s ease forwards;
+          animation: jetstream-search-fadeout .5s ease forwards; }
+  [dir=rtl] .jetstream-search--is-closing {
+    -webkit-animation: jetstream-search-fadeout .5s ease forwards;
+            animation: jetstream-search-fadeout .5s ease forwards; }
+  .jetstream-search__wrapper {
+    position: absolute;
+    width: 100%; }
+  [dir=ltr] .jetstream-search__wrapper {
+  -webkit-animation: jetstream-search-slide-down .3s ease forwards;
+          animation: jetstream-search-slide-down .3s ease forwards;
+  right: 0; }
+  [dir=rtl] .jetstream-search__wrapper {
+    -webkit-animation: jetstream-search-slide-down .3s ease forwards;
+            animation: jetstream-search-slide-down .3s ease forwards;
+    left: 0; }
+    [dir=ltr] .jetstream-search__wrapper--is-closing {
+  -webkit-animation: jetstream-search-slide-up .3s ease forwards;
+          animation: jetstream-search-slide-up .3s ease forwards; }
+    [dir=rtl] .jetstream-search__wrapper--is-closing {
+      -webkit-animation: jetstream-search-slide-up .3s ease forwards;
+              animation: jetstream-search-slide-up .3s ease forwards; }
+  .jetstream-search__input {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    height: 5rem;
+    position: relative;
+    width: 100%; }
+  [dir] .jetstream-search__input {
+    background: white;
+    border: 0;
+    -webkit-box-shadow: 0 0.25rem 0.3125rem 0 rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0.25rem 0.3125rem 0 rgba(0, 0, 0, 0.6); }
+  [dir=ltr] .jetstream-search__input {
+  padding: 0.5rem 1rem 1rem 0; }
+  [dir=rtl] .jetstream-search__input {
+    padding: 0.5rem 0 1rem 1rem; }
+  .jetstream-search__text-box {
+    height: 2.5rem;
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3; }
+  [dir] .jetstream-search__text-box {
+    border: 0; }
+  .jetstream-search__select {
+    height: 42px;
+    -webkit-box-ordinal-group: 5;
+        -ms-flex-order: 4;
+            order: 4; }
+  [dir] .jetstream-search__select {
+    margin: 8px 48px 0; }
+  .jetstream-search__back-icon-wrapper {
+    font-size: 0.625rem;
+    height: 2.5rem;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    width: 3rem; }
+  [dir] .jetstream-search__back-icon-wrapper {
+    background: white;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+    text-align: center; }
+    .jetstream-search__back-icon-wrapper .shared-nav-icon--chevron-left::before {
+      color: #1f1f1f;
+      font-size: 0.6875rem; }
+  .jetstream-search__search-button {
+    color: black;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 1.25rem;
+    height: 2.5rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    line-height: 2.5rem;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    width: 2.5rem; }
+  [dir] .jetstream-search__search-button {
+    cursor: pointer;
+    background-color: #f5f5f5;
+    border: 0;
+    padding: 0;
+    text-align: center; }
+    .jetstream-search__search-button svg {
+      fill: #1f1f1f;
+      height: 20px;
+      width: 20px; }
+
+@media only screen and (min-width: 700px) {
+  [dir=ltr] .jetstream-search {
+    -webkit-animation: jetstream-search-fadein .3s ease forwards;
+            animation: jetstream-search-fadein .3s ease forwards;
+    background: linear-gradient(200deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.75) 43.07%, rgba(0, 0, 0, 0.8) 100%); }
+  [dir=rtl] .jetstream-search {
+    -webkit-animation: jetstream-search-fadein .3s ease forwards;
+            animation: jetstream-search-fadein .3s ease forwards;
+    background: linear-gradient(-200deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.75) 43.07%, rgba(0, 0, 0, 0.8) 100%); }
+    [dir=ltr] .jetstream-search--is-closing {
+    -webkit-animation-name: jetstream-search-fadeout;
+            animation-name: jetstream-search-fadeout; }
+    [dir=rtl] .jetstream-search--is-closing {
+      -webkit-animation-name: jetstream-search-fadeout;
+              animation-name: jetstream-search-fadeout; }
+    .jetstream-search__wrapper {
+      top: 3.125rem;
+      width: 40.625rem; }
+    [dir=ltr] .jetstream-search__wrapper {
+    right: 1.875rem;
+    -webkit-transform-origin: top right;
+            transform-origin: top right;
+    -webkit-animation: jetstream-search-input-grow .2s ease forwards;
+            animation: jetstream-search-input-grow .2s ease forwards; }
+    [dir=rtl] .jetstream-search__wrapper {
+      left: 1.875rem;
+      -webkit-transform-origin: top left;
+              transform-origin: top left;
+      -webkit-animation: jetstream-search-input-grow .2s ease forwards;
+              animation: jetstream-search-input-grow .2s ease forwards; }
+      [dir=ltr] .jetstream-search__wrapper--is-closing {
+    -webkit-animation-name: jetstream-search-input-shrink;
+            animation-name: jetstream-search-input-shrink; }
+      [dir=rtl] .jetstream-search__wrapper--is-closing {
+        -webkit-animation-name: jetstream-search-input-shrink;
+                animation-name: jetstream-search-input-shrink; }
+    .jetstream-search__input {
+      height: 64px; }
+    [dir] .jetstream-search__input {
+      padding: 0; }
+    .jetstream-search__text-box, .jetstream-search__select {
+      height: 100%;
+      -webkit-box-ordinal-group: 1;
+          -ms-flex-order: 0;
+              order: 0; }
+    [dir] .jetstream-search__text-box, [dir] .jetstream-search__select {
+      margin: 0; }
+    .jetstream-search__back-icon-wrapper {
+      display: none; }
+    .jetstream-search__offscreen-search-btn {
+      position: absolute;
+      width: 0.0625rem;
+      height: 0.0625rem;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      display: block; }
+    [dir] .jetstream-search__offscreen-search-btn {
+      margin: -0.0625rem;
+      border: 0;
+      padding: 0; }
+    .jetstream-search__search-button {
+      color: white;
+      font-size: 1.5625rem;
+      height: 100%;
+      line-height: 4rem;
+      -webkit-box-ordinal-group: 1;
+          -ms-flex-order: 0;
+              order: 0;
+      width: 4rem; }
+    [dir] .jetstream-search__search-button {
+      background: #0072ce;
+      padding: 0;
+      text-align: center; }
+      .jetstream-search__search-button svg {
+        fill: white;
+        height: 25px;
+        width: 25px; }
+      [dir] .jetstream-search__search-button svg {
+        padding-top: 2px; } }
+
+@font-face {
+  font-family: "SST W20 Ultra Light";
+  src: url(assets/fonts/30dace52-b9f4-48c2-bab5-dda075d0ba71.woff2) format("woff2"), url(assets/fonts/f9187573-6d21-4362-bdda-2ade6a33f2ed.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Ultra Light Italic";
+  src: url(assets/fonts/22461e8c-a824-4024-8a3e-74eb6e8a0e48.woff2) format("woff2"), url(assets/fonts/d50dd84a-06ff-4a63-b984-c959f0cc61fe.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Light";
+  src: url(assets/fonts/68f1bb9f-2c5f-44c4-ab8e-193b6fb6b8a8.woff2) format("woff2"), url(assets/fonts/f17f812e-1324-4606-bfa3-b8af9ffcbb1d.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Light Italic";
+  src: url(assets/fonts/d6f8cc20-f30a-402a-89fd-633d6fc24412.woff2) format("woff2"), url(assets/fonts/507a3ba7-9f29-471a-8125-75452324693d.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Roman";
+  src: url(assets/fonts/dcb015ed-475f-4221-9b3c-157c4b6bc4ca.woff2) format("woff2"), url(assets/fonts/509e2a7d-d453-44aa-a0b2-8cb7fb111da7.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Medium";
+  src: url(assets/fonts/ddee892c-8380-4323-84a1-11374952a430.woff2) format("woff2"), url(assets/fonts/a8b01fae-a36c-4d28-889a-94f25849cc70.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Bold";
+  src: url(assets/fonts/f2c57125-0b07-4b47-9b3e-cb9f6f2217aa.woff2) format("woff2"), url(assets/fonts/416e4815-4bb6-459f-a85a-f2362db24801.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Light";
+  font-weight: 200;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-light-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-light-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Book";
+  font-weight: 300;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-book-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-book-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Regular";
+  font-weight: 400;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-regular-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-regular-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Bold";
+  font-weight: 600;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-bold-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-bold-webfont.woff) format("woff"); }
+
+.search-container .shared-nav-icon::before,
+.search-container .shared-nav-icon::after,
+.search-container .shared-nav-ps-logo {
+  -webkit-box-sizing: unset;
+          box-sizing: unset;
+  line-height: normal;
+  font-family: 'Shared-Nav-Icons';
+  speak: none; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon,
+.search-container .shared-nav-icon {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: inherit;
+  display: inline-block;
+  font-family: 'Shared-Nav-Icons';
+  font-size: inherit;
+  speak: none;
+  text-rendering: optimizeLegibility;
+  text-transform: none; }
+
+[dir] .search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon, [dir] .search-container .shared-nav-icon {
+  text-align: center; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--friends::before {
+  color: #0172ce;
+  content: '\e941'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--messages::before {
+  color: #0172ce;
+  content: '\e943'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--notifications::before {
+  color: #0172ce;
+  content: '\e945'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--notifications::before {
+  content: '\e946';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--notifications:hover::before {
+  content: '\e945';
+  color: #0172ce; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--messages::before {
+  content: '\e944';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--messages:hover::before {
+  content: '\e943';
+  color: #0172ce; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--friends::before {
+  content: '\e942';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--friends:hover::before {
+  content: '\e941';
+  color: #0172ce; }
+
+.search-container .shared-nav-icon--gaming:active::before {
+  content: '\e921'; }
+
+.search-container .shared-nav-icon--gaming::before {
+  content: '\e922'; }
+
+.search-container .shared-nav-icon--help:active::before {
+  content: '\e923'; }
+
+.search-container .shared-nav-icon--help::before {
+  content: '\e924'; }
+
+.search-container .shared-nav-icon--news:active::before {
+  content: '\e926'; }
+
+.search-container .shared-nav-icon--news::before {
+  content: '\e927'; }
+
+.search-container .shared-nav-icon--services:active::before {
+  content: '\e928'; }
+
+.search-container .shared-nav-icon--services::before {
+  content: '\e929'; }
+
+.search-container .shared-nav-icon--store:active::before {
+  content: '\e92a'; }
+
+.search-container .shared-nav-icon--store::before {
+  content: '\e92b'; }
+
+.search-container .shared-nav-icon--systems:active::before {
+  content: '\e92c'; }
+
+.search-container .shared-nav-icon--systems::before {
+  content: '\e92d'; }
+
+@media only screen and (min-width: 1024px) {
+  .search-container .shared-nav-icon--account:active::before {
+    content: '\e92e'; }
+  .search-container .shared-nav-icon--account::before {
+    content: '\e92f'; }
+  .search-container .shared-nav-icon--cart:active::before {
+    content: '\e930'; }
+  .search-container .shared-nav-icon--cart::before {
+    content: '\e931'; }
+  .search-container .shared-nav-icon--friends:active::before {
+    content: '\e934'; }
+  .search-container .shared-nav-icon--friends::before {
+    content: '\e935'; }
+  .search-container .shared-nav-icon--messages:active::before {
+    content: '\e936'; }
+  .search-container .shared-nav-icon--messages::before {
+    content: '\e937'; }
+  .search-container .shared-nav-icon--mypsnsignedout:active::before {
+    content: '\e938'; }
+  .search-container .shared-nav-icon--mypsnsignedout::before {
+    content: '\e939'; }
+  .search-container .shared-nav-icon--notification:active::before {
+    content: '\e93a'; }
+  .search-container .shared-nav-icon--notification::before {
+    content: '\e93b'; }
+  .search-container .shared-nav-icon--wishlist-desktop:active::before {
+    content: '\e93f'; }
+  .search-container .shared-nav-icon--wishlist-desktop::before {
+    content: '\e940'; } }
+
+.search-container .shared-nav-icon--chevron-top::before, .search-container .shared-nav-icon--chevron-down::before, .search-container .shared-nav-icon--chevron-after::after, .search-container .shared-nav-icon--chevron-before::before {
+  content: '\e932'; }
+
+[dir=ltr] .search-container .shared-nav-icon--chevron-top::before {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg); }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-top::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.search-container .shared-nav-icon--chevron-left::before {
+  content: '\e91e';
+  display: inline-block; }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-left::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.search-container .shared-nav-icon--hamburger::before {
+  content: '\e925'; }
+
+.search-container .shared-nav-icon--hamburger[aria-expanded="true"]::before {
+  content: '\e920'; }
+
+.search-container .shared-nav-icon--tertiary-marker::before {
+  content: '\e93c'; }
+
+.search-container .shared-nav-icon--secondary-header::before {
+  content: '\e932'; }
+
+[dir=ltr] .search-container .shared-nav-icon--chevron-after::after {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg); }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-after::after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg); }
+
+.search-container .shared-nav-link-icon::before {
+  font-family: 'Shared-Nav-Icons'; }
+
+.search-container .shared-nav-link-icon--accessories::before {
+  content: '\e900'; }
+
+.search-container .shared-nav-link-icon--allgames::before {
+  content: '\e901'; }
+
+.search-container .shared-nav-link-icon--buygames::before {
+  content: '\e902'; }
+
+.search-container .shared-nav-link-icon--helpandsupport::before {
+  content: '\e903'; }
+
+.search-container .shared-nav-link-icon--licensedproducts::before {
+  content: '\e904'; }
+
+.search-container .shared-nav-link-icon--news::before {
+  content: '\e905'; }
+
+.search-container .shared-nav-link-icon--psblog::before {
+  content: '\e906'; }
+
+.search-container .shared-nav-link-icon--psclassic::before {
+  content: '\e907'; }
+
+.search-container .shared-nav-link-icon--psgear::before {
+  content: '\e908'; }
+
+.search-container .shared-nav-link-icon--psmusic::before {
+  content: '\e909'; }
+
+.search-container .shared-nav-link-icon--psnowgames::before {
+  content: '\e90a'; }
+
+.search-container .shared-nav-link-icon--psnow::before {
+  content: '\e90b'; }
+
+.search-container .shared-nav-link-icon--psplusgames::before {
+  content: '\e90c'; }
+
+.search-container .shared-nav-link-icon--psplus::before {
+  content: '\e90d'; }
+
+.search-container .shared-nav-link-icon--psstore::before {
+  content: '\e90e'; }
+
+.search-container .shared-nav-link-icon--psvideo::before {
+  content: '\e90f'; }
+
+.search-container .shared-nav-link-icon--psvita::before {
+  content: '\e910'; }
+
+.search-container .shared-nav-link-icon--psvrgames::before {
+  content: '\e911'; }
+
+.search-container .shared-nav-link-icon--psvr::before {
+  content: '\e912'; }
+
+.search-container .shared-nav-link-icon--psvue::before {
+  content: '\e913'; }
+
+.search-container .shared-nav-link-icon--ps4games::before {
+  content: '\e914'; }
+
+.search-container .shared-nav-link-icon--ps4::before {
+  content: '\e915'; }
+
+.search-container .shared-nav-link-icon--ps4progames::before {
+  content: '\e916'; }
+
+.search-container .shared-nav-link-icon--ps4pro::before {
+  content: '\e91a'; }
+
+.search-container .shared-nav-link-icon--psnstatus::before {
+  content: '\e91c'; }
+
+.search-container .shared-nav-link-icon--sony::before {
+  content: '\e91d'; }
+
+.search-text-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 1.875rem;
+  position: relative;
+  width: calc(100% - 110px); }
+
+[dir] .search-text-box {
+  background: white; }
+
+[dir=ltr] .search-text-box {
+  margin-right: 16px; }
+
+[dir=rtl] .search-text-box {
+  margin-left: 16px; }
+  .search-text-box__input {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    font-size: 1rem;
+    width: 100%; }
+  [dir] .search-text-box__input {
+    border: 0;
+    border-radius: 0;
+    background-color: #f5f5f5;
+    margin: 0; }
+  [dir=ltr] .search-text-box__input {
+  padding: 0 16px 0 0; }
+  [dir=rtl] .search-text-box__input {
+    padding: 0 0 0 16px; }
+    .search-text-box__input::-webkit-search-decoration {
+      -webkit-appearance: none; }
+    .search-text-box__input:focus {
+      outline: none; }
+    [dir] .search-text-box__input:focus {
+      -webkit-box-shadow: none;
+              box-shadow: none; }
+
+@media only screen and (min-width: 700px) {
+  .search-text-box {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    width: auto; }
+  [dir=ltr] .search-text-box {
+    margin-right: 0; }
+  [dir=rtl] .search-text-box {
+    margin-left: 0; }
+    .search-text-box__input {
+      font-size: 1.25rem; }
+    [dir] .search-text-box__input {
+      background-color: white;
+      padding: 8px 16px; } }
+
+@font-face {
+  font-family: "SST W20 Ultra Light";
+  src: url(assets/fonts/30dace52-b9f4-48c2-bab5-dda075d0ba71.woff2) format("woff2"), url(assets/fonts/f9187573-6d21-4362-bdda-2ade6a33f2ed.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Ultra Light Italic";
+  src: url(assets/fonts/22461e8c-a824-4024-8a3e-74eb6e8a0e48.woff2) format("woff2"), url(assets/fonts/d50dd84a-06ff-4a63-b984-c959f0cc61fe.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Light";
+  src: url(assets/fonts/68f1bb9f-2c5f-44c4-ab8e-193b6fb6b8a8.woff2) format("woff2"), url(assets/fonts/f17f812e-1324-4606-bfa3-b8af9ffcbb1d.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Light Italic";
+  src: url(assets/fonts/d6f8cc20-f30a-402a-89fd-633d6fc24412.woff2) format("woff2"), url(assets/fonts/507a3ba7-9f29-471a-8125-75452324693d.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Roman";
+  src: url(assets/fonts/dcb015ed-475f-4221-9b3c-157c4b6bc4ca.woff2) format("woff2"), url(assets/fonts/509e2a7d-d453-44aa-a0b2-8cb7fb111da7.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Medium";
+  src: url(assets/fonts/ddee892c-8380-4323-84a1-11374952a430.woff2) format("woff2"), url(assets/fonts/a8b01fae-a36c-4d28-889a-94f25849cc70.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Bold";
+  src: url(assets/fonts/f2c57125-0b07-4b47-9b3e-cb9f6f2217aa.woff2) format("woff2"), url(assets/fonts/416e4815-4bb6-459f-a85a-f2362db24801.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Light";
+  font-weight: 200;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-light-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-light-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Book";
+  font-weight: 300;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-book-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-book-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Regular";
+  font-weight: 400;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-regular-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-regular-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Bold";
+  font-weight: 600;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-bold-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-bold-webfont.woff) format("woff"); }
+
+.search-container .shared-nav-icon::before,
+.search-container .shared-nav-icon::after,
+.search-container .shared-nav-ps-logo {
+  -webkit-box-sizing: unset;
+          box-sizing: unset;
+  line-height: normal;
+  font-family: 'Shared-Nav-Icons';
+  speak: none; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon,
+.search-container .shared-nav-icon {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: inherit;
+  display: inline-block;
+  font-family: 'Shared-Nav-Icons';
+  font-size: inherit;
+  speak: none;
+  text-rendering: optimizeLegibility;
+  text-transform: none; }
+
+[dir] .search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon, [dir] .search-container .shared-nav-icon {
+  text-align: center; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--friends::before {
+  color: #0172ce;
+  content: '\e941'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--messages::before {
+  color: #0172ce;
+  content: '\e943'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--notifications::before {
+  color: #0172ce;
+  content: '\e945'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--notifications::before {
+  content: '\e946';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--notifications:hover::before {
+  content: '\e945';
+  color: #0172ce; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--messages::before {
+  content: '\e944';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--messages:hover::before {
+  content: '\e943';
+  color: #0172ce; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--friends::before {
+  content: '\e942';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--friends:hover::before {
+  content: '\e941';
+  color: #0172ce; }
+
+.search-container .shared-nav-icon--gaming:active::before {
+  content: '\e921'; }
+
+.search-container .shared-nav-icon--gaming::before {
+  content: '\e922'; }
+
+.search-container .shared-nav-icon--help:active::before {
+  content: '\e923'; }
+
+.search-container .shared-nav-icon--help::before {
+  content: '\e924'; }
+
+.search-container .shared-nav-icon--news:active::before {
+  content: '\e926'; }
+
+.search-container .shared-nav-icon--news::before {
+  content: '\e927'; }
+
+.search-container .shared-nav-icon--services:active::before {
+  content: '\e928'; }
+
+.search-container .shared-nav-icon--services::before {
+  content: '\e929'; }
+
+.search-container .shared-nav-icon--store:active::before {
+  content: '\e92a'; }
+
+.search-container .shared-nav-icon--store::before {
+  content: '\e92b'; }
+
+.search-container .shared-nav-icon--systems:active::before {
+  content: '\e92c'; }
+
+.search-container .shared-nav-icon--systems::before {
+  content: '\e92d'; }
+
+@media only screen and (min-width: 1024px) {
+  .search-container .shared-nav-icon--account:active::before {
+    content: '\e92e'; }
+  .search-container .shared-nav-icon--account::before {
+    content: '\e92f'; }
+  .search-container .shared-nav-icon--cart:active::before {
+    content: '\e930'; }
+  .search-container .shared-nav-icon--cart::before {
+    content: '\e931'; }
+  .search-container .shared-nav-icon--friends:active::before {
+    content: '\e934'; }
+  .search-container .shared-nav-icon--friends::before {
+    content: '\e935'; }
+  .search-container .shared-nav-icon--messages:active::before {
+    content: '\e936'; }
+  .search-container .shared-nav-icon--messages::before {
+    content: '\e937'; }
+  .search-container .shared-nav-icon--mypsnsignedout:active::before {
+    content: '\e938'; }
+  .search-container .shared-nav-icon--mypsnsignedout::before {
+    content: '\e939'; }
+  .search-container .shared-nav-icon--notification:active::before {
+    content: '\e93a'; }
+  .search-container .shared-nav-icon--notification::before {
+    content: '\e93b'; }
+  .search-container .shared-nav-icon--wishlist-desktop:active::before {
+    content: '\e93f'; }
+  .search-container .shared-nav-icon--wishlist-desktop::before {
+    content: '\e940'; } }
+
+.search-container .shared-nav-icon--chevron-top::before, .search-container .shared-nav-icon--chevron-down::before, .search-container .shared-nav-icon--chevron-after::after, .search-container .shared-nav-icon--chevron-before::before {
+  content: '\e932'; }
+
+[dir=ltr] .search-container .shared-nav-icon--chevron-top::before {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg); }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-top::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.search-container .shared-nav-icon--chevron-left::before {
+  content: '\e91e';
+  display: inline-block; }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-left::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.search-container .shared-nav-icon--hamburger::before {
+  content: '\e925'; }
+
+.search-container .shared-nav-icon--hamburger[aria-expanded="true"]::before {
+  content: '\e920'; }
+
+.search-container .shared-nav-icon--tertiary-marker::before {
+  content: '\e93c'; }
+
+.search-container .shared-nav-icon--secondary-header::before {
+  content: '\e932'; }
+
+[dir=ltr] .search-container .shared-nav-icon--chevron-after::after {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg); }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-after::after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg); }
+
+.search-container .shared-nav-link-icon::before {
+  font-family: 'Shared-Nav-Icons'; }
+
+.search-container .shared-nav-link-icon--accessories::before {
+  content: '\e900'; }
+
+.search-container .shared-nav-link-icon--allgames::before {
+  content: '\e901'; }
+
+.search-container .shared-nav-link-icon--buygames::before {
+  content: '\e902'; }
+
+.search-container .shared-nav-link-icon--helpandsupport::before {
+  content: '\e903'; }
+
+.search-container .shared-nav-link-icon--licensedproducts::before {
+  content: '\e904'; }
+
+.search-container .shared-nav-link-icon--news::before {
+  content: '\e905'; }
+
+.search-container .shared-nav-link-icon--psblog::before {
+  content: '\e906'; }
+
+.search-container .shared-nav-link-icon--psclassic::before {
+  content: '\e907'; }
+
+.search-container .shared-nav-link-icon--psgear::before {
+  content: '\e908'; }
+
+.search-container .shared-nav-link-icon--psmusic::before {
+  content: '\e909'; }
+
+.search-container .shared-nav-link-icon--psnowgames::before {
+  content: '\e90a'; }
+
+.search-container .shared-nav-link-icon--psnow::before {
+  content: '\e90b'; }
+
+.search-container .shared-nav-link-icon--psplusgames::before {
+  content: '\e90c'; }
+
+.search-container .shared-nav-link-icon--psplus::before {
+  content: '\e90d'; }
+
+.search-container .shared-nav-link-icon--psstore::before {
+  content: '\e90e'; }
+
+.search-container .shared-nav-link-icon--psvideo::before {
+  content: '\e90f'; }
+
+.search-container .shared-nav-link-icon--psvita::before {
+  content: '\e910'; }
+
+.search-container .shared-nav-link-icon--psvrgames::before {
+  content: '\e911'; }
+
+.search-container .shared-nav-link-icon--psvr::before {
+  content: '\e912'; }
+
+.search-container .shared-nav-link-icon--psvue::before {
+  content: '\e913'; }
+
+.search-container .shared-nav-link-icon--ps4games::before {
+  content: '\e914'; }
+
+.search-container .shared-nav-link-icon--ps4::before {
+  content: '\e915'; }
+
+.search-container .shared-nav-link-icon--ps4progames::before {
+  content: '\e916'; }
+
+.search-container .shared-nav-link-icon--ps4pro::before {
+  content: '\e91a'; }
+
+.search-container .shared-nav-link-icon--psnstatus::before {
+  content: '\e91c'; }
+
+.search-container .shared-nav-link-icon--sony::before {
+  content: '\e91d'; }
+
+button:focus,
+input:focus,
+.focusable:focus {
+  outline: 0.125rem solid #3b99fc;
+  outline-offset: -0.125rem; }
+
+[dir] button:focus, [dir] input:focus, [dir] .focusable:focus {
+  -webkit-box-shadow: inset 0 0 0.3125rem 0.125rem #3b99fc;
+          box-shadow: inset 0 0 0.3125rem 0.125rem #3b99fc; }
+  button:focus.round,
+  input:focus.round,
+  .focusable:focus.round {
+    outline: none; }
+
+.select__label--primary {
+  width: 50px;
+  font-size: 1rem; }
+
+.jetstream-search__input-wrapper {
+  position: relative; }
+
+.jetstream-search .select {
+  position: relative;
+  min-width: 9.75rem; }
+  .jetstream-search .select__chevron.shared-nav-icon {
+    color: #1f1f1f;
+    font-size: 0.6875rem;
+    position: absolute; }
+  [dir] .jetstream-search .select__chevron.shared-nav-icon {
+    margin-top: 1px; }
+  [dir=ltr] .jetstream-search .select__chevron.shared-nav-icon {
+  padding-left: 0;
+  right: 20px; }
+  [dir=rtl] .jetstream-search .select__chevron.shared-nav-icon {
+    padding-right: 0;
+    left: 20px; }
+  .jetstream-search .select__label-title {
+    color: #1f1f1f;
+    font-family: "SST W20 Roman", helvetica, arial, sans-serif;
+    font-size: 0.8125rem; }
+  [dir=ltr] .jetstream-search .select__label-title {
+  margin-right: 0; }
+  [dir=rtl] .jetstream-search .select__label-title {
+    margin-left: 0; }
+  .jetstream-search .select__label {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: #0072ce;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 42px;
+    overflow: hidden;
+    -webkit-transition: background-color 0.4s;
+    transition: background-color 0.4s;
+    width: 100%; }
+  [dir] .jetstream-search .select__label {
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+    padding: 0 12px; }
+  [dir=ltr] .jetstream-search .select__label {
+  text-align: left; }
+  [dir=rtl] .jetstream-search .select__label {
+    text-align: right; }
+    .jetstream-search .select__label:hover .select__label-title,
+    .jetstream-search .select__label:hover .select__chevron.shared-nav-icon {
+      color: #0172ce; }
+    [dir] .jetstream-search .select__label--open {
+      -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+              box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5); }
+    .jetstream-search .select__label-title {
+      -webkit-box-flex: 1;
+          -ms-flex-positive: 1;
+              flex-grow: 1; }
+    .jetstream-search .select__label--primary {
+      height: 100%;
+      position: relative; }
+    .jetstream-search .select__label--placeholder {
+      color: black; }
+      .jetstream-search .select__label--placeholder:hover .select__label-title {
+        color: #757575; }
+      .jetstream-search .select__label--placeholder:hover .select__chevron.shared-nav-icon {
+        color: #1f1f1f; }
+      .jetstream-search .select__label--placeholder .select__label-title {
+        color: #757575;
+        font-family: "SST W20 Light", helvetica, arial, sans-serif; }
+    [dir] .jetstream-search .select__label--selected {
+      background-color: #0172ce; }
+      .jetstream-search .select__label--selected .select__label-title {
+        color: white; }
+      .jetstream-search .select__label--selected:hover .select__label-title {
+        color: white; }
+  .jetstream-search .select__options {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    position: absolute;
+    max-height: 12.5rem;
+    overflow: auto;
+    width: 100%;
+    z-index: 20;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-transition: -webkit-box-flex 1s ease-in;
+    transition: -webkit-box-flex 1s ease-in;
+    transition: flex 1s ease-in;
+    transition: flex 1s ease-in, -webkit-box-flex 1s ease-in, -ms-flex 1s ease-in;
+    list-style-type: none;
+    outline: 0; }
+  [dir] .jetstream-search .select__options {
+    background-color: white;
+    border: 0.0625rem solid #dedede;
+    -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.02), 0 2px 8px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.02), 0 2px 8px 0px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    margin: 0;
+    border: 0; }
+
+@media only screen and (min-width: 700px) {
+  .jetstream-search .select {
+    width: 206px;
+    min-width: 206px; }
+    .jetstream-search .select__label {
+      height: 64px; }
+    [dir] .jetstream-search .select__label {
+      padding: 0 20px; }
+      [dir] .jetstream-search .select__label--open {
+        -webkit-box-shadow: none;
+                box-shadow: none; }
+    [dir] .jetstream-search .select__chevron.shared-nav-icon {
+      margin-top: 2px; }
+    .jetstream-search .select__label-title {
+      font-size: 1.125rem; }
+  [dir=ltr] .jetstream-search .jetstream-search__select {
+    border-right: 0.0625rem solid #dedede; }
+  [dir=rtl] .jetstream-search .jetstream-search__select {
+    border-left: 0.0625rem solid #dedede; } }
+
+@font-face {
+  font-family: "SST W20 Ultra Light";
+  src: url(assets/fonts/30dace52-b9f4-48c2-bab5-dda075d0ba71.woff2) format("woff2"), url(assets/fonts/f9187573-6d21-4362-bdda-2ade6a33f2ed.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Ultra Light Italic";
+  src: url(assets/fonts/22461e8c-a824-4024-8a3e-74eb6e8a0e48.woff2) format("woff2"), url(assets/fonts/d50dd84a-06ff-4a63-b984-c959f0cc61fe.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Light";
+  src: url(assets/fonts/68f1bb9f-2c5f-44c4-ab8e-193b6fb6b8a8.woff2) format("woff2"), url(assets/fonts/f17f812e-1324-4606-bfa3-b8af9ffcbb1d.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Light Italic";
+  src: url(assets/fonts/d6f8cc20-f30a-402a-89fd-633d6fc24412.woff2) format("woff2"), url(assets/fonts/507a3ba7-9f29-471a-8125-75452324693d.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Roman";
+  src: url(assets/fonts/dcb015ed-475f-4221-9b3c-157c4b6bc4ca.woff2) format("woff2"), url(assets/fonts/509e2a7d-d453-44aa-a0b2-8cb7fb111da7.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Medium";
+  src: url(assets/fonts/ddee892c-8380-4323-84a1-11374952a430.woff2) format("woff2"), url(assets/fonts/a8b01fae-a36c-4d28-889a-94f25849cc70.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Bold";
+  src: url(assets/fonts/f2c57125-0b07-4b47-9b3e-cb9f6f2217aa.woff2) format("woff2"), url(assets/fonts/416e4815-4bb6-459f-a85a-f2362db24801.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Light";
+  font-weight: 200;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-light-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-light-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Book";
+  font-weight: 300;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-book-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-book-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Regular";
+  font-weight: 400;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-regular-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-regular-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Bold";
+  font-weight: 600;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-bold-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-bold-webfont.woff) format("woff"); }
+
+.search-container .shared-nav-icon::before,
+.search-container .shared-nav-icon::after,
+.search-container .shared-nav-ps-logo {
+  -webkit-box-sizing: unset;
+          box-sizing: unset;
+  line-height: normal;
+  font-family: 'Shared-Nav-Icons';
+  speak: none; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon,
+.search-container .shared-nav-icon {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: inherit;
+  display: inline-block;
+  font-family: 'Shared-Nav-Icons';
+  font-size: inherit;
+  speak: none;
+  text-rendering: optimizeLegibility;
+  text-transform: none; }
+
+[dir] .search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon, [dir] .search-container .shared-nav-icon {
+  text-align: center; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--friends::before {
+  color: #0172ce;
+  content: '\e941'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--messages::before {
+  color: #0172ce;
+  content: '\e943'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--notifications::before {
+  color: #0172ce;
+  content: '\e945'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--notifications::before {
+  content: '\e946';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--notifications:hover::before {
+  content: '\e945';
+  color: #0172ce; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--messages::before {
+  content: '\e944';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--messages:hover::before {
+  content: '\e943';
+  color: #0172ce; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--friends::before {
+  content: '\e942';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--friends:hover::before {
+  content: '\e941';
+  color: #0172ce; }
+
+.search-container .shared-nav-icon--gaming:active::before {
+  content: '\e921'; }
+
+.search-container .shared-nav-icon--gaming::before {
+  content: '\e922'; }
+
+.search-container .shared-nav-icon--help:active::before {
+  content: '\e923'; }
+
+.search-container .shared-nav-icon--help::before {
+  content: '\e924'; }
+
+.search-container .shared-nav-icon--news:active::before {
+  content: '\e926'; }
+
+.search-container .shared-nav-icon--news::before {
+  content: '\e927'; }
+
+.search-container .shared-nav-icon--services:active::before {
+  content: '\e928'; }
+
+.search-container .shared-nav-icon--services::before {
+  content: '\e929'; }
+
+.search-container .shared-nav-icon--store:active::before {
+  content: '\e92a'; }
+
+.search-container .shared-nav-icon--store::before {
+  content: '\e92b'; }
+
+.search-container .shared-nav-icon--systems:active::before {
+  content: '\e92c'; }
+
+.search-container .shared-nav-icon--systems::before {
+  content: '\e92d'; }
+
+@media only screen and (min-width: 1024px) {
+  .search-container .shared-nav-icon--account:active::before {
+    content: '\e92e'; }
+  .search-container .shared-nav-icon--account::before {
+    content: '\e92f'; }
+  .search-container .shared-nav-icon--cart:active::before {
+    content: '\e930'; }
+  .search-container .shared-nav-icon--cart::before {
+    content: '\e931'; }
+  .search-container .shared-nav-icon--friends:active::before {
+    content: '\e934'; }
+  .search-container .shared-nav-icon--friends::before {
+    content: '\e935'; }
+  .search-container .shared-nav-icon--messages:active::before {
+    content: '\e936'; }
+  .search-container .shared-nav-icon--messages::before {
+    content: '\e937'; }
+  .search-container .shared-nav-icon--mypsnsignedout:active::before {
+    content: '\e938'; }
+  .search-container .shared-nav-icon--mypsnsignedout::before {
+    content: '\e939'; }
+  .search-container .shared-nav-icon--notification:active::before {
+    content: '\e93a'; }
+  .search-container .shared-nav-icon--notification::before {
+    content: '\e93b'; }
+  .search-container .shared-nav-icon--wishlist-desktop:active::before {
+    content: '\e93f'; }
+  .search-container .shared-nav-icon--wishlist-desktop::before {
+    content: '\e940'; } }
+
+.search-container .shared-nav-icon--chevron-top::before, .search-container .shared-nav-icon--chevron-down::before, .search-container .shared-nav-icon--chevron-after::after, .search-container .shared-nav-icon--chevron-before::before {
+  content: '\e932'; }
+
+[dir=ltr] .search-container .shared-nav-icon--chevron-top::before {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg); }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-top::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.search-container .shared-nav-icon--chevron-left::before {
+  content: '\e91e';
+  display: inline-block; }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-left::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.search-container .shared-nav-icon--hamburger::before {
+  content: '\e925'; }
+
+.search-container .shared-nav-icon--hamburger[aria-expanded="true"]::before {
+  content: '\e920'; }
+
+.search-container .shared-nav-icon--tertiary-marker::before {
+  content: '\e93c'; }
+
+.search-container .shared-nav-icon--secondary-header::before {
+  content: '\e932'; }
+
+[dir=ltr] .search-container .shared-nav-icon--chevron-after::after {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg); }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-after::after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg); }
+
+.search-container .shared-nav-link-icon::before {
+  font-family: 'Shared-Nav-Icons'; }
+
+.search-container .shared-nav-link-icon--accessories::before {
+  content: '\e900'; }
+
+.search-container .shared-nav-link-icon--allgames::before {
+  content: '\e901'; }
+
+.search-container .shared-nav-link-icon--buygames::before {
+  content: '\e902'; }
+
+.search-container .shared-nav-link-icon--helpandsupport::before {
+  content: '\e903'; }
+
+.search-container .shared-nav-link-icon--licensedproducts::before {
+  content: '\e904'; }
+
+.search-container .shared-nav-link-icon--news::before {
+  content: '\e905'; }
+
+.search-container .shared-nav-link-icon--psblog::before {
+  content: '\e906'; }
+
+.search-container .shared-nav-link-icon--psclassic::before {
+  content: '\e907'; }
+
+.search-container .shared-nav-link-icon--psgear::before {
+  content: '\e908'; }
+
+.search-container .shared-nav-link-icon--psmusic::before {
+  content: '\e909'; }
+
+.search-container .shared-nav-link-icon--psnowgames::before {
+  content: '\e90a'; }
+
+.search-container .shared-nav-link-icon--psnow::before {
+  content: '\e90b'; }
+
+.search-container .shared-nav-link-icon--psplusgames::before {
+  content: '\e90c'; }
+
+.search-container .shared-nav-link-icon--psplus::before {
+  content: '\e90d'; }
+
+.search-container .shared-nav-link-icon--psstore::before {
+  content: '\e90e'; }
+
+.search-container .shared-nav-link-icon--psvideo::before {
+  content: '\e90f'; }
+
+.search-container .shared-nav-link-icon--psvita::before {
+  content: '\e910'; }
+
+.search-container .shared-nav-link-icon--psvrgames::before {
+  content: '\e911'; }
+
+.search-container .shared-nav-link-icon--psvr::before {
+  content: '\e912'; }
+
+.search-container .shared-nav-link-icon--psvue::before {
+  content: '\e913'; }
+
+.search-container .shared-nav-link-icon--ps4games::before {
+  content: '\e914'; }
+
+.search-container .shared-nav-link-icon--ps4::before {
+  content: '\e915'; }
+
+.search-container .shared-nav-link-icon--ps4progames::before {
+  content: '\e916'; }
+
+.search-container .shared-nav-link-icon--ps4pro::before {
+  content: '\e91a'; }
+
+.search-container .shared-nav-link-icon--psnstatus::before {
+  content: '\e91c'; }
+
+.search-container .shared-nav-link-icon--sony::before {
+  content: '\e91d'; }
+
+.tumbler-search-results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: fixed;
+  top: 6.5rem;
+  width: 100%; }
+
+[dir] .tumbler-search-results {
+  background: white;
+  -webkit-box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.6);
+          box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.6); }
+
+[dir=ltr] .tumbler-search-results {
+  right: 0; }
+
+[dir=rtl] .tumbler-search-results {
+  left: 0; }
+  .tumbler-search-results__list {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-transition: -webkit-box-flex 1s ease-in;
+    transition: -webkit-box-flex 1s ease-in;
+    transition: flex 1s ease-in;
+    transition: flex 1s ease-in, -webkit-box-flex 1s ease-in, -ms-flex 1s ease-in;
+    list-style-type: none;
+    outline: 0; }
+  [dir] .tumbler-search-results__list {
+    padding: 0;
+    margin: 0;
+    border: 0; }
+  .tumbler-search-results__see-all {
+    font-size: 0.875rem; }
+  [dir] .tumbler-search-results__see-all {
+    padding: 1rem; }
+  .tumbler-search-results__see-all-link {
+    color: #0072ce;
+    text-decoration: none; }
+
+@media only screen and (min-width: 700px) {
+  .tumbler-search-results {
+    position: absolute;
+    top: 4rem; }
+  [dir] .tumbler-search-results {
+    -webkit-box-shadow: 0 0 0 0;
+            box-shadow: 0 0 0 0; }
+    .tumbler-search-results__see-all-link {
+      color: #1f1f1f; }
+      .tumbler-search-results__see-all-link:visited, .tumbler-search-results__see-all-link:hover {
+        color: inherit; } }
+
+@font-face {
+  font-family: "SST W20 Ultra Light";
+  src: url(assets/fonts/30dace52-b9f4-48c2-bab5-dda075d0ba71.woff2) format("woff2"), url(assets/fonts/f9187573-6d21-4362-bdda-2ade6a33f2ed.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Ultra Light Italic";
+  src: url(assets/fonts/22461e8c-a824-4024-8a3e-74eb6e8a0e48.woff2) format("woff2"), url(assets/fonts/d50dd84a-06ff-4a63-b984-c959f0cc61fe.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Light";
+  src: url(assets/fonts/68f1bb9f-2c5f-44c4-ab8e-193b6fb6b8a8.woff2) format("woff2"), url(assets/fonts/f17f812e-1324-4606-bfa3-b8af9ffcbb1d.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Light Italic";
+  src: url(assets/fonts/d6f8cc20-f30a-402a-89fd-633d6fc24412.woff2) format("woff2"), url(assets/fonts/507a3ba7-9f29-471a-8125-75452324693d.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Roman";
+  src: url(assets/fonts/dcb015ed-475f-4221-9b3c-157c4b6bc4ca.woff2) format("woff2"), url(assets/fonts/509e2a7d-d453-44aa-a0b2-8cb7fb111da7.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Medium";
+  src: url(assets/fonts/ddee892c-8380-4323-84a1-11374952a430.woff2) format("woff2"), url(assets/fonts/a8b01fae-a36c-4d28-889a-94f25849cc70.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Bold";
+  src: url(assets/fonts/f2c57125-0b07-4b47-9b3e-cb9f6f2217aa.woff2) format("woff2"), url(assets/fonts/416e4815-4bb6-459f-a85a-f2362db24801.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Light";
+  font-weight: 200;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-light-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-light-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Book";
+  font-weight: 300;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-book-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-book-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Regular";
+  font-weight: 400;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-regular-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-regular-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Bold";
+  font-weight: 600;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-bold-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-bold-webfont.woff) format("woff"); }
+
+.search-container .shared-nav-icon::before,
+.search-container .shared-nav-icon::after,
+.search-container .shared-nav-ps-logo {
+  -webkit-box-sizing: unset;
+          box-sizing: unset;
+  line-height: normal;
+  font-family: 'Shared-Nav-Icons';
+  speak: none; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon,
+.search-container .shared-nav-icon {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: inherit;
+  display: inline-block;
+  font-family: 'Shared-Nav-Icons';
+  font-size: inherit;
+  speak: none;
+  text-rendering: optimizeLegibility;
+  text-transform: none; }
+
+[dir] .search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon, [dir] .search-container .shared-nav-icon {
+  text-align: center; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--friends::before {
+  color: #0172ce;
+  content: '\e941'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--messages::before {
+  color: #0172ce;
+  content: '\e943'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--notifications::before {
+  color: #0172ce;
+  content: '\e945'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--notifications::before {
+  content: '\e946';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--notifications:hover::before {
+  content: '\e945';
+  color: #0172ce; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--messages::before {
+  content: '\e944';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--messages:hover::before {
+  content: '\e943';
+  color: #0172ce; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--friends::before {
+  content: '\e942';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--friends:hover::before {
+  content: '\e941';
+  color: #0172ce; }
+
+.search-container .shared-nav-icon--gaming:active::before {
+  content: '\e921'; }
+
+.search-container .shared-nav-icon--gaming::before {
+  content: '\e922'; }
+
+.search-container .shared-nav-icon--help:active::before {
+  content: '\e923'; }
+
+.search-container .shared-nav-icon--help::before {
+  content: '\e924'; }
+
+.search-container .shared-nav-icon--news:active::before {
+  content: '\e926'; }
+
+.search-container .shared-nav-icon--news::before {
+  content: '\e927'; }
+
+.search-container .shared-nav-icon--services:active::before {
+  content: '\e928'; }
+
+.search-container .shared-nav-icon--services::before {
+  content: '\e929'; }
+
+.search-container .shared-nav-icon--store:active::before {
+  content: '\e92a'; }
+
+.search-container .shared-nav-icon--store::before {
+  content: '\e92b'; }
+
+.search-container .shared-nav-icon--systems:active::before {
+  content: '\e92c'; }
+
+.search-container .shared-nav-icon--systems::before {
+  content: '\e92d'; }
+
+@media only screen and (min-width: 1024px) {
+  .search-container .shared-nav-icon--account:active::before {
+    content: '\e92e'; }
+  .search-container .shared-nav-icon--account::before {
+    content: '\e92f'; }
+  .search-container .shared-nav-icon--cart:active::before {
+    content: '\e930'; }
+  .search-container .shared-nav-icon--cart::before {
+    content: '\e931'; }
+  .search-container .shared-nav-icon--friends:active::before {
+    content: '\e934'; }
+  .search-container .shared-nav-icon--friends::before {
+    content: '\e935'; }
+  .search-container .shared-nav-icon--messages:active::before {
+    content: '\e936'; }
+  .search-container .shared-nav-icon--messages::before {
+    content: '\e937'; }
+  .search-container .shared-nav-icon--mypsnsignedout:active::before {
+    content: '\e938'; }
+  .search-container .shared-nav-icon--mypsnsignedout::before {
+    content: '\e939'; }
+  .search-container .shared-nav-icon--notification:active::before {
+    content: '\e93a'; }
+  .search-container .shared-nav-icon--notification::before {
+    content: '\e93b'; }
+  .search-container .shared-nav-icon--wishlist-desktop:active::before {
+    content: '\e93f'; }
+  .search-container .shared-nav-icon--wishlist-desktop::before {
+    content: '\e940'; } }
+
+.search-container .shared-nav-icon--chevron-top::before, .search-container .shared-nav-icon--chevron-down::before, .search-container .shared-nav-icon--chevron-after::after, .search-container .shared-nav-icon--chevron-before::before {
+  content: '\e932'; }
+
+[dir=ltr] .search-container .shared-nav-icon--chevron-top::before {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg); }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-top::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.search-container .shared-nav-icon--chevron-left::before {
+  content: '\e91e';
+  display: inline-block; }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-left::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.search-container .shared-nav-icon--hamburger::before {
+  content: '\e925'; }
+
+.search-container .shared-nav-icon--hamburger[aria-expanded="true"]::before {
+  content: '\e920'; }
+
+.search-container .shared-nav-icon--tertiary-marker::before {
+  content: '\e93c'; }
+
+.search-container .shared-nav-icon--secondary-header::before {
+  content: '\e932'; }
+
+[dir=ltr] .search-container .shared-nav-icon--chevron-after::after {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg); }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-after::after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg); }
+
+.search-container .shared-nav-link-icon::before {
+  font-family: 'Shared-Nav-Icons'; }
+
+.search-container .shared-nav-link-icon--accessories::before {
+  content: '\e900'; }
+
+.search-container .shared-nav-link-icon--allgames::before {
+  content: '\e901'; }
+
+.search-container .shared-nav-link-icon--buygames::before {
+  content: '\e902'; }
+
+.search-container .shared-nav-link-icon--helpandsupport::before {
+  content: '\e903'; }
+
+.search-container .shared-nav-link-icon--licensedproducts::before {
+  content: '\e904'; }
+
+.search-container .shared-nav-link-icon--news::before {
+  content: '\e905'; }
+
+.search-container .shared-nav-link-icon--psblog::before {
+  content: '\e906'; }
+
+.search-container .shared-nav-link-icon--psclassic::before {
+  content: '\e907'; }
+
+.search-container .shared-nav-link-icon--psgear::before {
+  content: '\e908'; }
+
+.search-container .shared-nav-link-icon--psmusic::before {
+  content: '\e909'; }
+
+.search-container .shared-nav-link-icon--psnowgames::before {
+  content: '\e90a'; }
+
+.search-container .shared-nav-link-icon--psnow::before {
+  content: '\e90b'; }
+
+.search-container .shared-nav-link-icon--psplusgames::before {
+  content: '\e90c'; }
+
+.search-container .shared-nav-link-icon--psplus::before {
+  content: '\e90d'; }
+
+.search-container .shared-nav-link-icon--psstore::before {
+  content: '\e90e'; }
+
+.search-container .shared-nav-link-icon--psvideo::before {
+  content: '\e90f'; }
+
+.search-container .shared-nav-link-icon--psvita::before {
+  content: '\e910'; }
+
+.search-container .shared-nav-link-icon--psvrgames::before {
+  content: '\e911'; }
+
+.search-container .shared-nav-link-icon--psvr::before {
+  content: '\e912'; }
+
+.search-container .shared-nav-link-icon--psvue::before {
+  content: '\e913'; }
+
+.search-container .shared-nav-link-icon--ps4games::before {
+  content: '\e914'; }
+
+.search-container .shared-nav-link-icon--ps4::before {
+  content: '\e915'; }
+
+.search-container .shared-nav-link-icon--ps4progames::before {
+  content: '\e916'; }
+
+.search-container .shared-nav-link-icon--ps4pro::before {
+  content: '\e91a'; }
+
+.search-container .shared-nav-link-icon--psnstatus::before {
+  content: '\e91c'; }
+
+.search-container .shared-nav-link-icon--sony::before {
+  content: '\e91d'; }
+
+.tumbler-search-results-list-item {
+  -webkit-transition: background-color .2s ease-in;
+  transition: background-color .2s ease-in; }
+
+[dir] .tumbler-search-results-list-item {
+  padding: 0.5rem 1.25rem; }
+  [dir] .tumbler-search-results-list-item:hover {
+    background-color: #eee; }
+  [dir] .tumbler-search-results-list-item:first-child {
+    padding-top: 1rem; }
+  .tumbler-search-results-list-item__anchor {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    text-decoration: none;
+    color: #4a4a4a;
+    font-weight: 700; }
+  .tumbler-search-results-list-item__image-wrapper {
+    width: 3.75rem;
+    height: 3.75rem; }
+  .tumbler-search-results-list-item__details {
+    font-size: 1rem;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+  [dir=ltr] .tumbler-search-results-list-item__details {
+  margin-left: 1rem; }
+  [dir=rtl] .tumbler-search-results-list-item__details {
+    margin-right: 1rem; }
+  .tumbler-search-results-list-item__label-platforms {
+    color: #757575;
+    font-weight: 300; }
+
+@charset "UTF-8";
+@font-face {
+  font-family: "SST W20 Ultra Light";
+  src: url(assets/fonts/30dace52-b9f4-48c2-bab5-dda075d0ba71.woff2) format("woff2"), url(assets/fonts/f9187573-6d21-4362-bdda-2ade6a33f2ed.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Ultra Light Italic";
+  src: url(assets/fonts/22461e8c-a824-4024-8a3e-74eb6e8a0e48.woff2) format("woff2"), url(assets/fonts/d50dd84a-06ff-4a63-b984-c959f0cc61fe.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Light";
+  src: url(assets/fonts/68f1bb9f-2c5f-44c4-ab8e-193b6fb6b8a8.woff2) format("woff2"), url(assets/fonts/f17f812e-1324-4606-bfa3-b8af9ffcbb1d.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Light Italic";
+  src: url(assets/fonts/d6f8cc20-f30a-402a-89fd-633d6fc24412.woff2) format("woff2"), url(assets/fonts/507a3ba7-9f29-471a-8125-75452324693d.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Roman";
+  src: url(assets/fonts/dcb015ed-475f-4221-9b3c-157c4b6bc4ca.woff2) format("woff2"), url(assets/fonts/509e2a7d-d453-44aa-a0b2-8cb7fb111da7.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Medium";
+  src: url(assets/fonts/ddee892c-8380-4323-84a1-11374952a430.woff2) format("woff2"), url(assets/fonts/a8b01fae-a36c-4d28-889a-94f25849cc70.woff) format("woff"); }
+
+@font-face {
+  font-family: "SST W20 Bold";
+  src: url(assets/fonts/f2c57125-0b07-4b47-9b3e-cb9f6f2217aa.woff2) format("woff2"), url(assets/fonts/416e4815-4bb6-459f-a85a-f2362db24801.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Light";
+  font-weight: 200;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-light-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-light-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Book";
+  font-weight: 300;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-book-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-book-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Regular";
+  font-weight: 400;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-regular-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-regular-webfont.woff) format("woff"); }
+
+@font-face {
+  font-family: "Bebas Neue Bold";
+  font-weight: 600;
+  font-style: normal;
+  src: url(assets/fonts/bebasneue-bold-webfont.woff2) format("woff2"), url(assets/fonts/bebasneue-bold-webfont.woff) format("woff"); }
+
+.search-container .shared-nav-icon::before,
+.search-container .shared-nav-icon::after,
+.search-container .shared-nav-ps-logo {
+  -webkit-box-sizing: unset;
+          box-sizing: unset;
+  line-height: normal;
+  font-family: 'Shared-Nav-Icons';
+  speak: none; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon,
+.search-container .shared-nav-icon {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: inherit;
+  display: inline-block;
+  font-family: 'Shared-Nav-Icons';
+  font-size: inherit;
+  speak: none;
+  text-rendering: optimizeLegibility;
+  text-transform: none; }
+
+[dir] .search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon, [dir] .search-container .shared-nav-icon {
+  text-align: center; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--friends::before {
+  color: #0172ce;
+  content: '\e941'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--messages::before {
+  color: #0172ce;
+  content: '\e943'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item.sb-toolbar-icons__item--selected .sb-icon--notifications::before {
+  color: #0172ce;
+  content: '\e945'; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--notifications::before {
+  content: '\e946';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--notifications:hover::before {
+  content: '\e945';
+  color: #0172ce; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--messages::before {
+  content: '\e944';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--messages:hover::before {
+  content: '\e943';
+  color: #0172ce; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--friends::before {
+  content: '\e942';
+  font-size: 1.625rem;
+  color: #757575; }
+
+.search-container #sb-social-toolbar-root #sb .sb-toolbar-icons__item__icon.sb-icon--friends:hover::before {
+  content: '\e941';
+  color: #0172ce; }
+
+.search-container .shared-nav-icon--gaming:active::before {
+  content: '\e921'; }
+
+.search-container .shared-nav-icon--gaming::before {
+  content: '\e922'; }
+
+.search-container .shared-nav-icon--help:active::before {
+  content: '\e923'; }
+
+.search-container .shared-nav-icon--help::before {
+  content: '\e924'; }
+
+.search-container .shared-nav-icon--news:active::before {
+  content: '\e926'; }
+
+.search-container .shared-nav-icon--news::before {
+  content: '\e927'; }
+
+.search-container .shared-nav-icon--services:active::before {
+  content: '\e928'; }
+
+.search-container .shared-nav-icon--services::before {
+  content: '\e929'; }
+
+.search-container .shared-nav-icon--store:active::before {
+  content: '\e92a'; }
+
+.search-container .shared-nav-icon--store::before {
+  content: '\e92b'; }
+
+.search-container .shared-nav-icon--systems:active::before {
+  content: '\e92c'; }
+
+.search-container .shared-nav-icon--systems::before {
+  content: '\e92d'; }
+
+@media only screen and (min-width: 1024px) {
+  .search-container .shared-nav-icon--account:active::before {
+    content: '\e92e'; }
+  .search-container .shared-nav-icon--account::before {
+    content: '\e92f'; }
+  .search-container .shared-nav-icon--cart:active::before {
+    content: '\e930'; }
+  .search-container .shared-nav-icon--cart::before {
+    content: '\e931'; }
+  .search-container .shared-nav-icon--friends:active::before {
+    content: '\e934'; }
+  .search-container .shared-nav-icon--friends::before {
+    content: '\e935'; }
+  .search-container .shared-nav-icon--messages:active::before {
+    content: '\e936'; }
+  .search-container .shared-nav-icon--messages::before {
+    content: '\e937'; }
+  .search-container .shared-nav-icon--mypsnsignedout:active::before {
+    content: '\e938'; }
+  .search-container .shared-nav-icon--mypsnsignedout::before {
+    content: '\e939'; }
+  .search-container .shared-nav-icon--notification:active::before {
+    content: '\e93a'; }
+  .search-container .shared-nav-icon--notification::before {
+    content: '\e93b'; }
+  .search-container .shared-nav-icon--wishlist-desktop:active::before {
+    content: '\e93f'; }
+  .search-container .shared-nav-icon--wishlist-desktop::before {
+    content: '\e940'; } }
+
+.search-container .shared-nav-icon--chevron-top::before, .search-container .shared-nav-icon--chevron-down::before, .search-container .shared-nav-icon--chevron-after::after, .search-container .shared-nav-icon--chevron-before::before {
+  content: '\e932'; }
+
+[dir=ltr] .search-container .shared-nav-icon--chevron-top::before {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg); }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-top::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.search-container .shared-nav-icon--chevron-left::before {
+  content: '\e91e';
+  display: inline-block; }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-left::before {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }
+
+.search-container .shared-nav-icon--hamburger::before {
+  content: '\e925'; }
+
+.search-container .shared-nav-icon--hamburger[aria-expanded="true"]::before {
+  content: '\e920'; }
+
+.search-container .shared-nav-icon--tertiary-marker::before {
+  content: '\e93c'; }
+
+.search-container .shared-nav-icon--secondary-header::before {
+  content: '\e932'; }
+
+[dir=ltr] .search-container .shared-nav-icon--chevron-after::after {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg); }
+
+[dir=rtl] .search-container .shared-nav-icon--chevron-after::after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg); }
+
+.search-container .shared-nav-link-icon::before {
+  font-family: 'Shared-Nav-Icons'; }
+
+.search-container .shared-nav-link-icon--accessories::before {
+  content: '\e900'; }
+
+.search-container .shared-nav-link-icon--allgames::before {
+  content: '\e901'; }
+
+.search-container .shared-nav-link-icon--buygames::before {
+  content: '\e902'; }
+
+.search-container .shared-nav-link-icon--helpandsupport::before {
+  content: '\e903'; }
+
+.search-container .shared-nav-link-icon--licensedproducts::before {
+  content: '\e904'; }
+
+.search-container .shared-nav-link-icon--news::before {
+  content: '\e905'; }
+
+.search-container .shared-nav-link-icon--psblog::before {
+  content: '\e906'; }
+
+.search-container .shared-nav-link-icon--psclassic::before {
+  content: '\e907'; }
+
+.search-container .shared-nav-link-icon--psgear::before {
+  content: '\e908'; }
+
+.search-container .shared-nav-link-icon--psmusic::before {
+  content: '\e909'; }
+
+.search-container .shared-nav-link-icon--psnowgames::before {
+  content: '\e90a'; }
+
+.search-container .shared-nav-link-icon--psnow::before {
+  content: '\e90b'; }
+
+.search-container .shared-nav-link-icon--psplusgames::before {
+  content: '\e90c'; }
+
+.search-container .shared-nav-link-icon--psplus::before {
+  content: '\e90d'; }
+
+.search-container .shared-nav-link-icon--psstore::before {
+  content: '\e90e'; }
+
+.search-container .shared-nav-link-icon--psvideo::before {
+  content: '\e90f'; }
+
+.search-container .shared-nav-link-icon--psvita::before {
+  content: '\e910'; }
+
+.search-container .shared-nav-link-icon--psvrgames::before {
+  content: '\e911'; }
+
+.search-container .shared-nav-link-icon--psvr::before {
+  content: '\e912'; }
+
+.search-container .shared-nav-link-icon--psvue::before {
+  content: '\e913'; }
+
+.search-container .shared-nav-link-icon--ps4games::before {
+  content: '\e914'; }
+
+.search-container .shared-nav-link-icon--ps4::before {
+  content: '\e915'; }
+
+.search-container .shared-nav-link-icon--ps4progames::before {
+  content: '\e916'; }
+
+.search-container .shared-nav-link-icon--ps4pro::before {
+  content: '\e91a'; }
+
+.search-container .shared-nav-link-icon--psnstatus::before {
+  content: '\e91c'; }
+
+.search-container .shared-nav-link-icon--sony::before {
+  content: '\e91d'; }
+
+.thumbnail-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+  .thumbnail-image__preload {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    opacity: 1; }
+  [dir] .thumbnail-image__preload {
+    background-color: #f5f5f5; }
+    .thumbnail-image__preload--hidden {
+      opacity: 0; }
+    .thumbnail-image__preload::before {
+      content: "";
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      color: #0070d1;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      font-size: 30px;
+      font-family: 'Shared-Nav-Icons';
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+  .thumbnail-image__img {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: opacity .2s ease;
+    transition: opacity .2s ease; }
+    .thumbnail-image__img--fade-in {
+      opacity: 1; }
+
+
+/*# sourceMappingURL=1.shared-nav.css.map*/

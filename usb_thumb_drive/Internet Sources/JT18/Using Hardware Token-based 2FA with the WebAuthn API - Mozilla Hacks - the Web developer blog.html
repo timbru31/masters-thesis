@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/ -->
+<html lang="en-US"><head data-template-path="https://hacks.mozilla.org/wp-content/themes/Hax"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="w2ocEMd5yV9IsGCjhq-7ls67r4VH-Ob6oWdiZpqjN8U">
+
+  
+  <meta name="title" content="Using Hardware Token-based 2FA with the WebAuthn API – Mozilla Hacks - the Web developer blog">
+  <meta name="description" content="To provide higher security for logins, websites are deploying two-factor authentication (2FA), often using a smartphone application or text messages. Those mechanisms make phishing harder but fail to prevent it ...">
+
+    <meta property="og:site_name" content="Mozilla Hacks – the Web developer blog">
+  <meta property="og:url" content="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api">
+  <meta property="og:title" content="Using Hardware Token-based 2FA with the WebAuthn API – Mozilla Hacks - the Web developer blog">
+  <meta property="og:description" content="To provide higher security for logins, websites are deploying two-factor authentication (2FA), often using a smartphone application or text messages. Those mechanisms make phishing harder but fail to prevent it ...">
+  <meta property="og:image" content="https://hacks.mozilla.org/files/2018/01/20180111_162351.jpg">
+  <meta property="og:image:width" content="3447">
+  <meta property="og:image:height" content="2836">
+
+    <meta property="twitter:title" content="Using Hardware Token-based 2FA with the WebAuthn API – Mozilla Hacks - the Web developer blog">
+  <meta property="twitter:description" content="To provide higher security for logins, websites are deploying two-factor authentication (2FA), often using a smartphone application or text messages. Those mechanisms make phishing harder but fail to prevent it ...">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:image" content="https://hacks.mozilla.org/files/2018/01/20180111_162351.jpg">
+  <meta name="twitter:site" content="@mozhacks">
+
+  <link href="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/font-awesome.min.css">
+  <link rel="stylesheet" href="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/style.css">
+  <link rel="stylesheet" href="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/solarized_light.min.css">
+
+  <script type="text/javascript" async="" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/ga.js"></script><script type="text/javascript">
+    window.hacks = {};
+    // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+    var removeUtms  =   function(){
+        var l = window.location;
+        if( l.hash.indexOf( "utm" ) != -1 ){
+            var anchor = l.hash.match(/#(?!utm)[^&]+/);
+            anchor  =   anchor? anchor[0]: '';
+            if(!anchor && window.history.replaceState){
+                history.replaceState({},'', l.pathname + l.search);
+            } else {
+                l.hash = anchor;
+            }
+        };
+    };
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35433268-8'],
+              ['_setAllowAnchor', true]);
+    _gaq.push (['_gat._anonymizeIp']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push( removeUtms );
+    (function(d, k) {
+      var ga = d.createElement(k); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = 'https://ssl.google-analytics.com/ga.js';
+      var s = d.getElementsByTagName(k)[0]; s.parentNode.insertBefore(ga, s);
+    })(document, 'script');
+  </script>
+
+  <title>Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog</title>
+<meta name="blog-name" content="Mozilla Hacks - the Web developer blog">
+
+<!-- This site is optimized with the Yoast SEO plugin v11.6 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/">
+<script type="application/ld+json" class="yoast-schema-graph yoast-schema-graph--main">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://hacks.mozilla.org/#website","url":"https://hacks.mozilla.org/","name":"Mozilla Hacks - the Web developer blog","potentialAction":{"@type":"SearchAction","target":"https://hacks.mozilla.org/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#primaryimage","url":"https://hacks.mozilla.org/files/2018/01/20180111_162351.jpg","width":3447,"height":2836,"caption":"USB WebAuthn tokens lit up asking for user interaction"},{"@type":"WebPage","@id":"https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#webpage","url":"https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/","inLanguage":"en-US","name":"Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog","isPartOf":{"@id":"https://hacks.mozilla.org/#website"},"primaryImageOfPage":{"@id":"https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#primaryimage"},"datePublished":"2018-01-16T16:02:14+00:00","dateModified":"2018-01-16T16:02:14+00:00","author":{"@id":"https://hacks.mozilla.org/#/schema/person/ff7006d539a011babd1a38233028c96a"}},{"@type":["Person"],"@id":"https://hacks.mozilla.org/#/schema/person/ff7006d539a011babd1a38233028c96a","name":"J.C. Jones","image":{"@type":"ImageObject","@id":"https://hacks.mozilla.org/#authorlogo","url":"https://secure.gravatar.com/avatar/64eb1412c9354cf356df31936368cdac?s=96&d=mm&r=g","caption":"J.C. Jones"},"description":"Keeping people safe on the 'net. Cryptography Engineering lead for Firefox.","sameAs":["https://twitter.com/JamesPugJones"]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Mozilla Hacks - the Web developer blog » Feed" href="https://hacks.mozilla.org/feed/">
+<link rel="alternate" type="application/rss+xml" title="Mozilla Hacks - the Web developer blog » Comments Feed" href="https://hacks.mozilla.org/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Mozilla Hacks - the Web developer blog » Using Hardware Token-based 2FA with the WebAuthn API Comments Feed" href="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/feed/">
+<link rel="stylesheet" id="wp-block-library-css" href="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-syntax-css-css" href="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/wp-syntax.css" type="text/css" media="all">
+<script type="text/javascript" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/jquery.js"></script>
+<script type="text/javascript" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/analytics.js"></script>
+<script type="text/javascript" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/socialshare.min.js"></script>
+<link rel="https://api.w.org/" href="https://hacks.mozilla.org/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://hacks.mozilla.org/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://hacks.mozilla.org/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="https://hacks.mozilla.org/?p=31705">
+<link rel="alternate" type="application/json+oembed" href="https://hacks.mozilla.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhacks.mozilla.org%2F2018%2F01%2Fusing-hardware-token-based-2fa-with-the-webauthn-api%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://hacks.mozilla.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fhacks.mozilla.org%2F2018%2F01%2Fusing-hardware-token-based-2fa-with-the-webauthn-api%2F&amp;format=xml">
+<link rel="shortcut icon" type="image/x-icon" href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/favicon.ico"><style>#wpadminbar #wp-admin-bar-site-name>.ab-item:before { content: none !important;}li#wp-admin-bar-site-name a { background: url( "https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/wp-content/themes/Hax/favicon.ico" ) left center/20px no-repeat !important; padding-left: 21px !important; background-size: 20px !important; } li#wp-admin-bar-site-name { margin-left: 5px !important; } li#wp-admin-bar-site-name {} #wp-admin-bar-site-name div a { background: none !important; }
+</style><script src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/newsletter.js"></script></head>
+<body>
+  <div class="outer-wrapper">
+    <header class="section section--fullwidth header">
+      <div class="masthead row">
+        <div class="branding block block--3">
+          <h1>
+            <a href="https://hacks.mozilla.org/">
+              <img class="branding__logo" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/mdn-logo-mono.svg">
+              <img class="branding__wordmark" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/wordmark.svg" alt="Mozilla">
+              <span class="branding__title">Hac<span class="logo-askew">k</span>s</span>
+            </a>
+          </h1>
+        </div>
+        <div class="search block block--2">
+          <form class="search__form" method="get" action="https://hacks.mozilla.org/">
+            <input type="search" name="s" class="search__input" placeholder="Search Mozilla Hacks" value="">
+            <i class="fa fa-search search__badge"></i>
+          </form>
+        </div>
+        <nav class="social">
+          <a class="social__link youtube" href="http://www.youtube.com/user/mozhacks" title="YouTube"><i class="fa fa-youtube" aria-hidden="true"></i><span>Hacks on YouTube</span></a>
+          <a class="social__link twitter" href="https://twitter.com/mozhacks" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span>@mozhacks on Twitter</span></a>
+          <a class="social__link rss" href="https://hacks.mozilla.org/feed/" title="RSS Feed"><i class="fa fa-rss" aria-hidden="true"></i><span>Hacks RSS Feed</span></a>
+          <a class="fx-button" href="https://www.mozilla.org/firefox/download/thanks/?utm_source=hacks.mozilla.org&amp;utm_medium=referral&amp;utm_campaign=header-download-button&amp;utm_content=header-download-button">Download Firefox</a>
+        </nav>
+      </div>
+    </header>
+
+  
+<div id="content-head" class="section">
+  <h1 class="post__title">Using Hardware Token-based 2FA with the WebAuthn API</h1>
+  <div class="byline">
+    <h3 class="post__author">
+                      <img alt="" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/64eb1412c9354cf356df31936368cdac.jpeg" srcset="https://secure.gravatar.com/avatar/64eb1412c9354cf356df31936368cdac?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">        By
+                                        <a class="url" href="https://tacticalsecret.com/" rel="external me">J.C. Jones</a>,                                                  <a class="url" href="https://timtaubert.de/" rel="external me">Tim Taubert</a>                            </h3>
+    <div class="post__meta">
+      Posted on
+      <abbr class="published" title="2018-01-16T08:02:14-07:00">
+        January 16, 2018      </abbr>
+      <span class="entry-cat">in
+        <a href="https://hacks.mozilla.org/category/featured/" rel="category tag" title="View all posts in Featured Article">Featured Article</a>, <a href="https://hacks.mozilla.org/category/security/" rel="category tag" title="View all posts in Security">Security</a>,  and <a href="https://hacks.mozilla.org/category/webapi/" rel="category tag" title="View all posts in Web APIs">Web APIs</a>      </span>
+            <div class="socialshare" data-type="bubbles"><div class="dropdown-toggle" data-toggle="socialshare">    <a class="share-button" role="button" href="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#share-options" aria-controls="share-options" aria-expanded="false"><span>Share This</span></a>    <div id="share-options">        <ul>            <li><div class="fb-like" data-send="false" data-layout="box_count" data-width="12" data-show-faces="false"></div></li>            <li><div class="g-plusone" data-size="tall"></div></li>            <li><a href="https://twitter.com/share" class="twitter-share-button" data-via="mozhacks" data-count="vertical" data-related="mozhacks" data-text="Using Hardware Token-based 2FA with the WebAuthn API – Mozilla Hacks - the Web developer blog" data-url="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api"></a></li>        </ul>    </div></div></div>
+    </div>
+  </div>
+</div>
+
+<main id="content-main" class="section article">
+  <article class="post" role="article">
+    <p>To provide higher security for logins, websites are deploying two-factor authentication (2FA), often using a smartphone application or text messages. Those mechanisms make <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Phishing" target="_blank">phishing</a> harder but fail to prevent it entirely — users can still be tricked into passing along codes, and SMS messages can be intercepted in various ways.</p>
+<p>Firefox 60 will ship with the <a href="https://www.w3.org/TR/webauthn/" target="_blank">WebAuthn API</a> enabled by default, providing two-factor authentication built on <a href="https://en.wikipedia.org/wiki/Public-key_cryptography" target="_blank">public-key cryptography</a> immune to phishing as we know it today. Read on for an introduction and learn how to secure millions of users already in possession of <a href="https://en.wikipedia.org/wiki/Universal_2nd_Factor" target="_blank">FIDO U2F USB tokens</a>.</p>
+<h2>Creating a new credential</h2>
+<p>Let’s start with a simple example: this requests a new credential compatible with a standard USB-connected FIDO U2F device; there are many of these compliant tokens sold with names like Yubikey, U2F Zero, and others:</p>
+<pre><code class="js hljs javascript"><span class="hljs-keyword">const</span> cose_alg_ECDSA_w_SHA256 = <span class="hljs-number">-7</span>;
+
+<span class="hljs-comment">/* The challenge must be produced by the server */</span>
+<span class="hljs-keyword">let</span> challenge = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>([<span class="hljs-number">21</span>,<span class="hljs-number">31</span>,<span class="hljs-number">105</span> <span class="hljs-comment">/* 29 more random bytes generated by the server */</span>]);
+<span class="hljs-keyword">let</span> pubKeyCredParams = [{
+  <span class="hljs-attr">type</span>: <span class="hljs-string">"public-key"</span>,
+  <span class="hljs-attr">alg</span>: cose_alg_ECDSA_w_SHA256
+}];
+<span class="hljs-keyword">let</span> rp = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"Test Website"</span>
+};
+<span class="hljs-keyword">let</span> user = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"Firefox User &lt;firefox@example.com&gt;"</span>,
+  <span class="hljs-attr">displayName</span>: <span class="hljs-string">"Firefox User"</span>,
+  <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> TextEncoder(<span class="hljs-string">"utf-8"</span>).encode(<span class="hljs-string">"firefox@example.com"</span>)
+};
+
+<span class="hljs-keyword">let</span> publicKey = {challenge, pubKeyCredParams, rp, user};
+navigator.credentials.create({publicKey})
+  .then(decodeCredential);
+</code></pre>
+<p>In the case of USB U2F tokens, this will make all compatible tokens connected to the user’s system wait for user interaction. As soon as the user touches any of the devices, it generates a new credential and the Promise resolves.</p>
+<p>The user-defined function <code>decodeCredential()</code> will decode the response to receive a key handle, either a handle to the ECDSA key pair stored on the device or the ECDSA key pair itself, encrypted with a secret, device-specific key. The public key belonging to said pair is sent in the clear.</p>
+<p>The key handle, the public key, and a signature must be verified by the backend using the random challenge. As a credential is cryptographically tied to the web site that requested it, this step would fail if the origins don’t match. This prevents reuse of credentials generated for other websites.</p>
+<p>The key handle and public key will from now on be associated with the current user. The WebAuthn API mandates no browser UI, which means it’s the sole responsibility of the website to signal to users they should now connect and register a token.</p>
+<h2>Getting an assertion for an existing credential</h2>
+<p>The next time the user logs into the website they will be required to prove possession of the second factor that created the credential in the previous section. The backend will retrieve the key handle and send it with a new <i>challenge</i> to the user. As <code>allowCredentials</code> is an array, it allows sending more than one token, if multiple tokens are registered with a single user account.</p>
+<pre><code class="js hljs javascript"><span class="hljs-comment">/* The challenge must be produced by the server */</span>
+<span class="hljs-keyword">let</span> challenge = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>([<span class="hljs-number">42</span>,<span class="hljs-number">42</span>,<span class="hljs-number">33</span> <span class="hljs-comment">/* 29 more random bytes generated by the server */</span>]);
+<span class="hljs-keyword">let</span> key = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(<span class="hljs-comment">/* … retrieve key handle … */</span>);
+
+<span class="hljs-keyword">let</span> allowCredentials = [{
+  <span class="hljs-attr">type</span>: <span class="hljs-string">"public-key"</span>,
+  <span class="hljs-attr">id</span>: key,
+  <span class="hljs-attr">transports</span>: [<span class="hljs-string">"usb"</span>]
+}];
+
+<span class="hljs-keyword">let</span> publicKey = {challenge, allowCredentials};
+
+navigator.credentials.get({publicKey})
+  .then(decodeAssertion);
+</code></pre>
+<p>Again, all connected USB U2F tokens will wait for user interaction. When the user touches a token it will try to either find the stored key handle with the given ID, or try to decrypt it with the internal secret key. On success, it will return a signature. Otherwise the authentication flow will abort and will need to be retried by the website.</p>
+<p>After decoding, the signature and the key handle that were used to sign are sent to the backend. If the public key stored with the key handle is able to verify the given signature over the provided challenge, the assertion is considered valid and the user will be logged in.</p>
+<h2>First Factor Authentication</h2>
+<p>Web Authentication also defines the mechanisms to log in without a username and password at all using a secure token － such as the trusted execution environment on your smartphone. In this mode, your token would attest that you not only have possession of it, but also that you, as a person, unlocked the token using a passcode (<em>something you know</em>) and/or a biometric (<em>something you are</em>).</p>
+<p>In this world, websites could let you enroll to perform seamless authentication to a web application on your desktop by answering a prompt which appears on your smartphone.</p>
+<p>The FIDO U2F tokens deployed today aren’t sophisticated enough to make this happen yet, but the next generation of tokens will be, and web developers will interact with those FIDO 2.0 tokens using Web Authentication.</p>
+<h2>WebAuthn, coming to a Firefox near you</h2>
+<p>This was a very short introduction to the world of Web Authentication and it intentionally omits a lot of nitty-gritty details such as <a href="https://tools.ietf.org/html/rfc7049" target="_blank">CBOR encoding</a> and <a href="https://tools.ietf.org/html/rfc8152#section-7" target="_blank">COSE_Key formats</a>, as well as further parameters that can be passed to the <code>.create()</code> and <code>.get()</code> functions.</p>
+<p>We would like to encourage developers to start experimenting with WebAuthn, and allow users to secure their logins with second factors, as the API becomes available. We are not aware of any WebAuthn-U2F polyfill libraries at the time of writing, but hope that these will be available soon. If you have seen something promising, please let us know in the comments.</p>
+<p>It is very exciting to bring standardized two-factor authentication to the web; public-key cryptography already protects our data as it travels the Internet via the TLS protocol, and now we can use it to make phishing a lot, lot harder. Give WebAuthn a try in Firefox Nightly!</p>
+<p><a href="https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/files/2018/01/20180111_162351.jpg" target="_blank"><img class="alignnone wp-image-31709 size-large" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/20180111_162351-500x411.jpg" alt="USB WebAuthn tokens lit up asking for user interaction" width="500" height="411" srcset="https://hacks.mozilla.org/files/2018/01/20180111_162351-500x411.jpg 500w, https://hacks.mozilla.org/files/2018/01/20180111_162351-250x206.jpg 250w, https://hacks.mozilla.org/files/2018/01/20180111_162351-768x632.jpg 768w" sizes="(max-width: 500px) 100vw, 500px"></a></p>
+<h3>A final note about testing</h3>
+<p>Web Authentication is a powerful feature. As such, it can only be used in <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts" target="_blank">Secure Contexts</a>, and if used in a frame, only when all of the frames are from the same origin as the parent document. This means that you are likely to encounter security errors when experimenting with it on some popular testing websites (such as jsfiddle.net).</p>
+    <section class="about">
+                                <h2 class="about__header">About
+                          <a class="url" href="https://tacticalsecret.com/" rel="external me" target="_blank">
+                J.C. Jones              </a>
+                      </h2>
+                      <p>Keeping people safe on the 'net. Cryptography Engineering lead for Firefox.</p>
+                    <ul class="author-meta fa-ul"><li><i class="fa-li fa fa-globe"></i><a href="https://tacticalsecret.com/" class="website" rel="me" target="_blank">https://tacticalsecret.com/</a></li><li><i class="fa-li fa fa-twitter"></i><a href="http://twitter.com/JamesPugJones" class="twitter" rel="me" target="_blank">@JamesPugJones</a></li></ul>            <p><a class="url" href="https://hacks.mozilla.org/author/jjonesmozilla-com/">More articles by J.C. Jones…</a></p>
+                  <h2 class="about__header">About
+                          <a class="url" href="https://timtaubert.de/" rel="external me" target="_blank">
+                Tim Taubert              </a>
+                      </h2>
+                      <p>Security Engineer working on Firefox and NSS.</p>
+                    <ul class="author-meta fa-ul"><li><i class="fa-li fa fa-globe"></i><a href="https://timtaubert.de/" class="website" rel="me" target="_blank">https://timtaubert.de/</a></li><li><i class="fa-li fa fa-twitter"></i><a href="http://twitter.com/ttaubert" class="twitter" rel="me" target="_blank">@ttaubert</a></li></ul>            <p><a class="url" href="https://hacks.mozilla.org/author/ttaubertmozilla-com/">More articles by Tim Taubert…</a></p>
+                  </section>
+  </article>
+  <section class="promo">
+    <form id="newsletterForm" name="newsletter-form" class="newsletter block block--1 block--polite" action="https://www.mozilla.org/en-US/newsletter/" method="post">
+  <h2 class="heading">Learn the best of web development</h2>
+  <p class="newsletter__description">Sign up for the Mozilla Developer Newsletter:</p>
+  <input id="fmt" name="fmt" value="H" type="hidden">
+  <input id="newsletterNewslettersInput" name="newsletters" value="app-dev" type="hidden">
+
+  <div id="newsletterErrors" class="newsletter__errors"></div>
+
+  <div id="newsletterEmail" class="form__row">
+    <label for="newsletterEmailInput" class="offscreen">E-mail</label>
+    <input id="newsletterEmailInput" name="email" class="newsletter__input" required="" placeholder="you@example.com" size="30" type="email">
+  </div>
+
+  <div id="newsletterPrivacy" class="form__row form__fineprint">
+    <input id="newsletterPrivacyInput" name="privacy" required="" type="checkbox">
+    <label for="newsletterPrivacyInput">
+      I'm okay with Mozilla handling my info as explained in this <a href="https://www.mozilla.org/privacy/" target="_blank">Privacy Policy</a>.
+    </label>
+  </div>
+  <button id="newsletter-submit" type="submit" class="button positive">Sign up now</button>
+</form>
+<div id="newsletterThanks" class="newsletter newsletter--thanks block block--1 block--polite hidden">
+  <h2 class="heading">Thanks! Please check your inbox to confirm your subscription.</h2>
+  <p>If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us.
+  </p>
+</div>
+  </section>
+  
+
+<section class="discussion">
+  <hr class="dino">
+  <div class="comments">
+    <header class="comments__head">
+      <h3>9 comments</h3>
+    </header>
+
+          <ol class="comments__list">
+      
+ <li id="comment-22706" class="comment even thread-even depth-1">
+      <b class="comment__title vcard">
+      <cite class="author fn">T</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>Totally unclear what runs in the server, and what in the client.<br>
+Can you provide a full worked example, including both sides ?</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#comment-22706" rel="bookmark" title="Permanent link to this comment by T"><abbr class="published" title="2018-01-17">January 17th, 2018</abbr> at 04:33</a>
+
+      <p class="comment__util"> </p>
+  <ol class="children">
+
+ <li id="comment-22707" class="comment byuser comment-author-jjonesmozilla-com bypostauthor odd alt depth-2">
+      <b class="comment__title vcard">
+      <cite class="author fn">J.C. Jones</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>Sorry for the confusion! As for full open-source implementations, we’re aware of <a href="https://github.com/google/webauthndemo" rel="nofollow" target="_blank">google/webauthndemo</a>, but it doesn’t appear to be fully caught up to the current state of the specification, so it doesn’t work yet in Firefox. It looks like there’s activity happening, though. That repository is also a good example of the split of client/server responsibility when you run through the code, even if the code isn’t quite finished.</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#comment-22707" rel="bookmark" title="Permanent link to this comment by J.C. Jones"><abbr class="published" title="2018-01-17">January 17th, 2018</abbr> at 06:27</a>
+
+      <p class="comment__util"> </p>
+  </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+
+ <li id="comment-22744" class="comment even thread-odd thread-alt depth-1">
+      <b class="comment__title vcard">
+      <cite class="author fn">Eli F.</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>Duo Lab’s put together a demonstration app here: <a href="https://github.com/duo-labs/webauthn#webauthn-demo" rel="nofollow" target="_blank">https://github.com/duo-labs/webauthn#webauthn-demo</a><br>
+I can’t speak to how fully it implements the specification but it looks useful for exploring.</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#comment-22744" rel="bookmark" title="Permanent link to this comment by Eli F."><abbr class="published" title="2018-01-22">January 22nd, 2018</abbr> at 05:24</a>
+
+      <p class="comment__util"> </p>
+  </li><!-- #comment-## -->
+
+ <li id="comment-22760" class="comment odd alt thread-even depth-1">
+      <b class="comment__title vcard">
+      <cite class="author fn">desar</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>The sample code in this blog isn’t very helpful.<br>
+The W3C draft already has the sample code. Check chapter 12.<br>
+<a href="http://www.w3.org/TR/webauthn/" rel="nofollow" target="_blank">http://www.w3.org/TR/webauthn/</a></p>
+<p>You got the credential, so what. You need to check/verify it.<br>
+The W3C draft doesn’t have the sample code but it has the spec.<br>
+If you have time you should check it out.</p>
+<p>Look at webauthn.bin.coffee for sample on how to verify<br>
+the credential on client side (browser). Checking on client<br>
+is not ideal, this only a POC/sample of course.<br>
+<a href="https://webauthn.bin.coffee/" rel="nofollow" target="_blank">https://webauthn.bin.coffee/</a><br>
+<a href="https://github.com/jcjones/webauthn.bin.coffee" rel="nofollow" target="_blank">https://github.com/jcjones/webauthn.bin.coffee</a></p>
+<p>The spec has more than U2F, but current sample are focusing on that.<br>
+Since security key is easy to get/make.</p>
+<p>For client server implementation vendor is working on their proprietary code I guess.<br>
+But, Duo Lab’s sample above is worth checking. Hope more open source community effort for this<br>
+to be success.</p>
+<p>BTW, if anyone interested, Chrome also had working beta today.<br>
+<a href="https://groups.google.com/a/fidoalliance.org/forum/#!topic/fido-dev/GH7AahxrE8o" rel="nofollow" target="_blank">https://groups.google.com/a/fidoalliance.org/forum/#!topic/fido-dev/GH7AahxrE8o</a></p>
+<p><a href="http://webauthndemo.appspot.com/" rel="nofollow" target="_blank">http://webauthndemo.appspot.com/</a></p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#comment-22760" rel="bookmark" title="Permanent link to this comment by desar"><abbr class="published" title="2018-01-24">January 24th, 2018</abbr> at 17:25</a>
+
+      <p class="comment__util"> </p>
+  <ol class="children">
+
+ <li id="comment-22798" class="comment even depth-2">
+      <b class="comment__title vcard">
+      <cite class="author fn">kaiju</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>I wrote Duo Labs’ blog post and code repo. If you have any questions about the how the server side code works, feel free to message me at <a href="https://twitter.com/codekaiju" rel="nofollow" target="_blank">https://twitter.com/codekaiju</a> </p>
+<p>You can also check out the repo’s code in production at <a href="https://webauthn.io/" rel="nofollow" target="_blank">https://webauthn.io</a></p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#comment-22798" rel="bookmark" title="Permanent link to this comment by kaiju"><abbr class="published" title="2018-01-31">January 31st, 2018</abbr> at 14:39</a>
+
+      <p class="comment__util"> </p>
+  </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+
+ <li id="comment-22787" class="comment odd alt thread-odd thread-alt depth-1">
+      <b class="comment__title vcard">
+      <cite class="author fn">James Ahern</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>Thanks for the great article.  I believe that Mozilla will be releasing this with Firefox 60.  Will the security.webauth.webauthn flag remain and/or will it be true by default?</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#comment-22787" rel="bookmark" title="Permanent link to this comment by James Ahern"><abbr class="published" title="2018-01-30">January 30th, 2018</abbr> at 07:45</a>
+
+      <p class="comment__util"> </p>
+  <ol class="children">
+
+ <li id="comment-22788" class="comment byuser comment-author-jjonesmozilla-com bypostauthor even depth-2">
+      <b class="comment__title vcard">
+      <cite class="author fn">J.C. Jones</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>The flag will remain, but is being set <code>true</code> by default. Thanks!</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#comment-22788" rel="bookmark" title="Permanent link to this comment by J.C. Jones"><abbr class="published" title="2018-01-30">January 30th, 2018</abbr> at 08:46</a>
+
+      <p class="comment__util"> </p>
+  <ol class="children">
+
+ <li id="comment-22796" class="comment odd alt depth-3">
+      <b class="comment__title vcard">
+      <cite class="author fn">James Ahern</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>Really appreciate you taking the time to reply.  Thanks, James</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#comment-22796" rel="bookmark" title="Permanent link to this comment by James Ahern"><abbr class="published" title="2018-01-31">January 31st, 2018</abbr> at 08:50</a>
+
+      <p class="comment__util"> </p>
+  </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+
+ <li id="comment-22898" class="comment even thread-even depth-1">
+      <b class="comment__title vcard">
+      <cite class="author fn">Wellington Torrejais da Silva</cite>
+    </b>
+  
+    
+    <blockquote class="comment__body">
+      <p>Nice, very useful.</p>
+    </blockquote>
+
+    <a class="comment__meta" href="https://hacks.mozilla.org/2018/01/using-hardware-token-based-2fa-with-the-webauthn-api/#comment-22898" rel="bookmark" title="Permanent link to this comment by Wellington Torrejais da Silva"><abbr class="published" title="2018-02-09">February 9th, 2018</abbr> at 07:58</a>
+
+      <p class="comment__util"> </p>
+  </li><!-- #comment-## -->
+      </ol>
+      </div>
+
+<p class="comments__closed"><b>Comments are closed for this article.</b></p>
+
+
+</section></main><!-- /#content-main -->
+
+  
+
+    <footer class="footer section section--fullwidth">
+      <div class="row">
+        <p class="block block--1">
+          Except where otherwise noted, content on this site is licensed
+          under the
+          <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license external">Creative Commons Attribution Share-Alike License v3.0</a>
+          or any later version.
+        </p>
+        <img class="footer__logo" alt="the Mozilla dino logo" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/dino.svg">
+      </div>
+    </footer>
+  </div>
+  <link rel="stylesheet" id="hljstheme-css" href="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/solarized-light.css" type="text/css" media="all">
+<script type="text/javascript" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/wp-syntax.js"></script>
+<script type="text/javascript" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/wp-embed.min.js"></script>
+<script type="text/javascript" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/highlight.common.pack.js"></script>
+<script type="text/javascript" src="./Using Hardware Token-based 2FA with the WebAuthn API - Mozilla Hacks - the Web developer blog_files/highlight.custom.pack.js"></script>
+    <style>pre.hljs {padding: 5px;}
+pre.hljs code {}</style>
+    <script type="text/javascript">
+    (function($, window) {
+        var init_fn_flag = false;
+        var init_fn = (function() {
+            if (init_fn_flag)
+                return;
+            init_fn_flag = true;
+             hljs.configure({"tabReplace":"    "});
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
+        $(document).ready(init_fn);
+        $(window).on("load", init_fn);
+    })(jQuery, window);
+    </script>
+  <script>
+    // External links should open in a new tab.
+    (function () {
+      var postLinks = document.querySelectorAll('#content-main a');
+
+      var origin = location.origin;
+
+      for (var i = 0; i < postLinks.length; i++) {
+        var link = postLinks[i];
+        if (link.origin !== origin && !link.getAttribute('target')) {
+          link.setAttribute('target', '_blank');
+        }
+      }
+    })();
+
+    window.addEventListener('load', function () {
+      if (document.querySelector('#newsletterForm')) {
+        var script = document.createElement('script');
+        var path = document.head.getAttribute('data-template-path');
+        script.setAttribute('src', path + '/js/newsletter.js');
+        document.head.appendChild(script);
+      }
+    });
+  </script>
+
+
+</body></html>

@@ -1,0 +1,199 @@
+/**
+* SRP LAYOUT CSS
+* Package: special-recent-posts-free
+* Version: 2.0.4
+* Author: Luca Grandicelli <lgrandicelli@gmail.com>
+* Copyright (C) 2011-2014 Luca Grandicelli
+* The stylesheet of the SRP widget layout
+*/
+
+
+/**
+ * --------------------------------
+ * THE WIDGET TITLE
+ * --------------------------------
+*/
+.srp-widget-title {}
+
+
+/**
+ * --------------------------------
+ * THE POSTS CONTAINER
+ * --------------------------------
+*/
+.srp-widget-container {
+	display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;     /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;  /* TWEENER - IE 10 */
+	display: -webkit-flex; /* NEW - Chrome */
+	display: flex;         /* NEW, Spec - Opera 12.1, Firefox 20+ */
+
+	    -webkit-box-orient : vertical;
+	       -moz-box-orient : vertical;
+	-webkit-flex-direction : column;
+	   -moz-flex-direction : column;
+	    -ms-flex-direction : column;
+	        flex-direction : column;
+
+	-webkit-flex-wrap : nowrap;
+	   -moz-flex-wrap : nowrap;
+	    -ms-flex-wrap : nowrap;
+	        flex-wrap : nowrap;
+}
+
+/**
+ * --------------------------------
+ * THE SINGLE POST
+ * --------------------------------
+*/
+.srp-widget-singlepost {
+	border-bottom  : 1px solid #ccc;
+	margin-bottom  : 10px;
+	padding-bottom : 10px;
+}
+
+.srp-widget-container > .srp-widget-singlepost:last-child {
+	border-bottom  : 0;
+	margin-bottom  : 0;
+	padding-bottom : 0;
+}
+
+.srp-post-content-container {
+	display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;     /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;  /* TWEENER - IE 10 */
+	display: -webkit-flex; /* NEW - Chrome */
+	display: flex;         /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.srp-thumbnail-position-default {
+	-webkit-box-orient: horizontal;
+       -moz-box-orient: horizontal;
+       -webkit-flex-direction: row;
+          -moz-flex-direction: row;
+           -ms-flex-direction: row;
+               flex-direction: row;
+
+	     -webkit-flex-wrap: nowrap;
+	        -moz-flex-wrap: nowrap;
+	         -ms-flex-wrap: nowrap;
+	             flex-wrap: nowrap;
+}
+
+
+/**
+ * --------------------------------
+ * THE THUMBNAIL BOX
+ * --------------------------------
+*/
+.srp-thumbnail-box {
+	margin-right: 20px;
+}
+
+.srp-post-thumbnail-link {
+	display: block;
+}
+
+.srp-thumbnail-box img {
+	height: auto;
+}
+
+
+/**
+ * --------------------------------
+ * THE CONTENT BOX
+ * --------------------------------
+*/
+.srp-content-box {
+	-webkit-box-flex: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
+       -moz-box-flex: 1;   /* OLD - Firefox 19- */
+             width: 20%;   /* For old syntax, otherwise collapses. */
+        -webkit-flex: 1;   /* Chrome */
+            -ms-flex: 1;   /* IE 10 */
+                flex: 1;   /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.srp-content-box .srp-post-date,
+.widget-area .widget .srp-post-date {
+	margin: 0 0 10px;
+}
+
+.srp-content-box .srp-post-title,
+.widget-area .widget .srp-post-title {
+	margin: 0;
+}
+
+
+/**
+ * --------------------------------
+ * THE POST TITLE
+ * --------------------------------
+*/
+.srp-content-box .srp-post-title,
+.widget-area .widget .srp-post-title {
+  margin: 0;
+}
+
+.srp-content-box .srp-post-stringbreak-link {
+  margin: 0 5px;
+}
+
+
+/**
+ * --------------------------------
+ * THE POST CONTENT
+ * --------------------------------
+*/
+.srp-content-box .srp-post-content,
+.widget-area .widget .srp-post-content {
+	margin: 0;
+}
+
+
+/**
+ * --------------------------------
+ * MEDIA QUERIES
+ * --------------------------------
+*/
+
+/* Max-width 640px, mobile-only styles, use when QAing mobile issues */
+@media only screen and (max-width: 40em) {
+
+	/**
+	 * --------------------------------
+	 * The Single Post
+	 * --------------------------------
+	*/
+	.srp-post-content-container {
+	-webkit-box-orient: vertical;
+       -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+   	 -moz-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+
+	   -webkit-flex-wrap: nowrap;
+          -moz-flex-wrap: nowrap;
+           -ms-flex-wrap: nowrap;
+               flex-wrap: nowrap;
+	}
+
+	.srp-content-box {
+		-webkit-box-flex: none;   /* OLD - iOS 6-, Safari 3.1-6 */
+	       -moz-box-flex: none;   /* OLD - Firefox 19- */
+	               width: auto;   /* For old syntax, otherwise collapses. */
+	        -webkit-flex: none;   /* Chrome */
+	            -ms-flex: none;   /* IE 10 */
+	                flex: none;   /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	}
+
+	/**
+	 * --------------------------------
+	 * The Thumbnail Box
+	 * --------------------------------
+	*/
+	.srp-thumbnail-box {
+		margin: 0 0 10px;
+	}
+
+}
