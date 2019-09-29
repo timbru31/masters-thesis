@@ -16,9 +16,9 @@
         <text font-family="Helvetica" font-size="24" fill="#000" x="107.336" y="411">FIDO</text>
         <text font-family="Helvetica" font-size="24" fill="#000" x="65.289" y="440">Authenticator</text>
         <text font-family="Helvetica" font-size="24" fill="#000" x="103.996" y="310">ASM</text>
-        <text font-family="Helvetica" font-size="24" fill="#000" x="12.143" y="36">User device</text>
+        <text font-family="Helvetica-Bold, Helvetica" font-size="24" font-weight="bold" fill="#000" x="6.787" y="36">User Device</text>
         <rect stroke="#979797" fill="#D8D8D8" x="552.5" y=".5" width="266" height="427" rx="8"/>
-        <text font-family="Helvetica" font-size="24" fill="#000" x="568.469" y="30">Relying party</text>
+        <text font-family="Helvetica-Bold, Helvetica" font-size="24" font-weight="bold" fill="#000" x="561.807" y="30">Relying Party</text>
         <rect stroke="#979797" fill="#FFF" x="552.5" y="532.5" width="266" height="104" rx="8"/>
         <text font-family="Helvetica" font-size="24" fill="#000" x="613.469" y="575">FIDO metadata</text>
         <text font-family="Helvetica" font-size="24" fill="#000" x="657.49" y="604">service</text>
