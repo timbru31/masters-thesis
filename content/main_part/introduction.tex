@@ -2,11 +2,11 @@
 \label{chapter:basics}
 
 \section{Methods of Authentication}
-There are multiple different methods or forms, respectively, that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession, and trait are considered the different forms of authentication. However, other sources also introduce or take new kinds into account, such as location- or time-based authentication. Therefore, this thesis accounts for them, too, and describes the forms in the following sections briefly. A detailed analysis of the security, especially potential threats and vulnerabilities follows in \autoref{chap:one-factor-security}.\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[See][47]{anderson2008security}[See][]{6296127}[See][191]{dasgupta2017multi}
+There are multiple different methods or forms, respectively, that can be used to authenticate a user against someone or something. Traditionally only knowledge, possession, and trait are considered the different forms of authentication. However, other sources also introduce or take new kinds into account, such as location- or time-based authentication. Therefore, this thesis accounts for them, too, and describes the different forms in the following sections briefly. A detailed analysis of the security, especially potential threats and vulnerabilities follows in \autoref{chap:one-factor-security}.\footcites[See][299]{10.2307/27845364}[See][140]{brotherston2017defensive}[See][47]{anderson2008security}[See][]{6296127}[See][191]{dasgupta2017multi}
 
 \subsection{Knowledge}
 
-The most used method of authentication is knowledge, i.e., \frqq something the user knows\flqq{}. Commonly used in \gls{it} are passwords. Other forms of knowledge are, for example, \glspl{pin}, passphrases, secrets, recovery questions, or \glspl{otp}. The \gls{pin} is an example of knowledge, used in, e.g., banking (ATM's, credit cards) or telephony (\gls{sim}). The security relies on the fact that the knowledge is considered a secret that only the user knows. When compromised, it is relatively easy to replace the knowledge with a different secret the user knows. Unintentional side effects of replacing a password are that the users may have to replace the used knowledge everywhere in case of re-use.\footcite[See][467]{eckert-it-sec-9}
+The most used method of authentication is knowledge, i.e., \frqq something the user knows\flqq{}. Commonly used in \gls{it} are passwords. Other forms of knowledge are, for example, \glspl{pin}, passphrases, secrets, recovery questions, or \glspl{otp}. The \gls{pin} is an example of knowledge, used in, e.g., banking (\glspl{atm}, credit cards) or telephony (\gls{sim}). The security relies on the fact that the knowledge is considered a secret that only the user knows. When compromised, it is relatively easy to replace the knowledge with a different secret the user knows. An example of an unintentional side effect in case of password re-use is that the user needs to replace the used knowledge everywhere.\footcite[See][467]{eckert-it-sec-9}
 
 \newpage
 
@@ -18,11 +18,11 @@ The most used method of authentication is knowledge, i.e., \frqq something the u
 \end{figure}
 \footnotetext{Source: diagram by author.}
 
-\autoref{fig:knowledge_auth_flow} shows a simplified authentication by knowledge flow. In this example, the user first visits a website and enters their password in the corresponding form fields. When the user submits the form, the transferred password is often transformed, e.g., hashed and salted. If the database contains an entry for the user, then the stored (hash of) the password is retrieved and compared to the entered one. Only if the hashes are identical, the login succeeds. Otherwise, it fails. The \frqq access denied/cancel\flqq{} and \frqq checkmark\flqq{} symbols are chosen since it cannot be verified by whom the authentication is made. It could be a genuine user or an imposter that gained access to the knowledge of the attacked user, in this case, their password.
+\autoref{fig:knowledge_auth_flow} shows a simplified knowledge-based authentication flow. In this example, the user first visits a website and enters their password in the corresponding form fields. When the user submits the form, the transferred password is often transformed on the server-side, e.g., hashed and salted. If the database contains an entry for the user, then the stored (hash of) the password is retrieved and compared to the entered one. Only if the hashes are identical, the login succeeds. Otherwise, it fails. The \frqq access denied/cancel\flqq{} and \frqq checkmark\flqq{} symbols are chosen since it cannot be verified by whom the authentication is made. It could be a genuine user or an imposter that gained access to the knowledge of the attacked user, in this case, their password.
 
 \subsection{Possession}
 
-Another form of authentication is the possession, i.e., \frqq something the user (physically) has\flqq{}. The most basic example is a key for a lock. Other forms are, for example, a bank or ID card that can use techniques such as \gls{rfid}, an onboard chip or magnetic stripes to store the information. In \gls{it}, security tokens are often used, which can be hardware (such as a YubiKey, an RSA SecurID or a smart card) or software (for instance, a smartphone application) token. They can either be disconnected, connected (e.g., via \gls{usb} or as a smart card) or contactless (for example via \gls{nfc}, \gls{ble} or \gls{rfid}). Sometimes these tokens contain a display that can show further information.\footcites[See][24]{265831}[See][]{Dressel:2019:SZT:3319499.3328225}[See][8--11]{Mayes2017}
+Another form of authentication is the possession, i.e., \frqq something the user (physically) has\flqq{}. The most basic example is a key for a lock. Other forms are, for example, a bank or ID card that can use techniques such as \gls{rfid}, an onboard chip or magnetic stripes to store the information. In \gls{it}, security tokens are often used. They can be hardware tokens (such as a YubiKey, an RSA SecurID, or a smart card) or software tokens (for instance, a smartphone application). They can either be disconnected, connected (e.g., via \gls{usb} or as a smart card) or contactless (for example, via \gls{nfc}, \gls{ble}, or \gls{rfid}). Sometimes these tokens contain a display that can show further information.\footcites[See][24]{265831}[See][]{Dressel:2019:SZT:3319499.3328225}[See][8--11]{Mayes2017}
 
 \begin{figure}[hbt]
 	\centering
@@ -32,16 +32,16 @@ Another form of authentication is the possession, i.e., \frqq something the user
 \end{figure}
 \footnotetext{Source: diagram by author}
 
-\autoref{fig:possesion_auth_flow} shows an example of an authentication flow with a smart card. First, the user inserts the given smart card into their computer. The data is read subsequently. Contemporaneous the application or system reads the stored database entry and compares the data to the one stored on the smart card. If the data is equal or matches, and the user is authorized, then the authentication succeeds. Again, any user can log on as long as they have the smart card.
+\autoref{fig:possesion_auth_flow} shows an example of a possession-based authentication flow with a smart card. First, the user inserts the given smart card into their computer. The data is read subsequently. Contemporaneous, the application or system reads the stored database entry and compares the data to the one stored on the smart card. If the data is equal or matches, and the user is authorized, then the authentication succeeds. Again, any user can log on as long as they have the smart card.
 
 \subsection{Biometrics}
 
 Besides the knowledge and possession factors, another one is biometrics. This factor is classified as \frqq something the user is\flqq{} and commonly includes the fingerprint, facial, or iris scan. In theory, many other characteristics, e.g., the gait, the ear, DNA, or even the human odor, can be a biometric factor.\footcite[See][30--34]{Jain2011}\\
 These intrinsic factors are sometimes referred to as traits or inherence, too.\footcite[See][186]{dasgupta2017multi}
 
-While it seems natural to authenticate a person with a biometric factor, it also comes with a couple of challenges. Both, the \gls{frr}, i.e., the system rejects a user even though it is a legitimate user, and the \gls{far}, i.e., an imposter is granted access, needs to be accounted for the usage. Compared to knowledge and possession factors, the enrollment of the biometrics and the continuous update of the sample is more complicated and expensive.\footcites[See][18--24]{Jain2011}[See][34--37]{265831}
+While it seems natural to authenticate a person with a biometric factor, it also comes with a couple of challenges. Both, the \gls{frr}, i.e., the system rejects a user even though it is a legitimate user, and the \gls{far}, i.e., an imposter is granted access, needs to be accounted for the usage. Compared to knowledge-based and possession-based authentication, the enrollment of the biometrics and the continuous update of the sample is more complicated and expensive.\footcites[See][18--24]{Jain2011}[See][34--37]{265831}
 
-On the other hand, it is more complicated to steal, share, or copy this factor than the others -- but it is also nearly impossible to replace compromised biometrics. The usability varies because of the quality of the used biometrics module, the chosen biometrics itself, and the availability of the biometrics.
+On the other hand, it is more complex to steal, share, or copy this factor than the others --- but it is also nearly impossible to replace compromised biometrics. The usability varies because of the quality of the used biometrics module, the chosen biometrics itself, and the availability of the biometrics.
 
 \begin{figure}[hbt]
 	\centering
@@ -51,24 +51,24 @@ On the other hand, it is more complicated to steal, share, or copy this factor t
 \end{figure}
 \footcitetext[Source: diagram by author, based on][11]{Jain2011}
 
-\autoref{fig:biometrics_auth_flow} shows an exemplary authentication flow using biometrics, in this case with a fingerprint. First, the user interacts with the sensor which reads the fingerprint and extracts the biometric template. Generally, the system or reader transforms the template into a more comparable format. For instance, fingerprints are scanned for minutiae and their direction. Simultaneously, the system retrieves the stored fingerprint or searches for it. The system now compares the stored probe to the fresh one. A threshold value determines how much difference is tolerable. This comparison result finally decides if the authentication attempt can proceed or if it has to be aborted, and access for the user is denied. If the authentication succeeds, the stored template can be updated in the database, as denoted by the dotted grey arrow.
+\autoref{fig:biometrics_auth_flow} shows an exemplary authentication flow using biometrics, in this case with a fingerprint. First, the user interacts with the sensor which reads the fingerprint and extracts the biometric template. Generally, the system or reader transforms the template into a more comparable format. For instance, fingerprints are scanned for minutiae and their direction. Simultaneously, the system retrieves the stored fingerprint or searches for it. The system now compares the stored probe to the fresh one. A threshold value determines how much difference is tolerable. This comparison result finally decides if the authentication attempt can proceed or if it has to be aborted. If the latter occurs, the system denies access to the user. If the authentication succeeds, the stored template can be updated in the database, as denoted by the dotted grey arrow in the figure.
 
 \subsection{Further Methods of Authentication}
 
-While the mentioned authentication forms above are considered a standard in the literature, other forms exist, too. Those include, for example, the current position of the user. The location-based approach grants or denies access based on the current location. The location can either be physical (e.g., via \gls{gps}) or digital with, e.g., an IP address.\footcites[See][]{6296127}[See][Chapter 13.9]{2308830}
+While the preceding authentication forms are considered a standard in the literature, other forms exist, too. Those include, for example, the current position of the user. The location-based approach grants or denies access based on the current position. The location can either be physical (e.g., via \gls{gps}) or digital, such as an IP address.\footcites[See][]{6296127}[See][Chapter 13.9]{2308830}
 
-Another method of authentication is time-based authentication. A typical example is time-limited access to a banking safe, which can only be opened at specific times of the day. A time lock secures it. In \gls{it}, this form of authentication helps to protect against, for example, phishing attacks from abroad. The access is granted or denied based on the time and usual time routines where, for instance, a user logs typically on.\footcite[See][191]{dasgupta2017multi}
+Another method of authentication is time-based authentication. A typical example is time-limited access to a banking safe, which can only be opened at specific times of the day. A time lock secures it. In \gls{it}, this form of authentication helps to protect against, for example, phishing attacks from abroad. The access is granted or denied based on the time and usual time routines where, for instance, a user typically logs on to a system.\footcite[See][191]{dasgupta2017multi}
 
 Further methods of authentication are, for instance, social authentication, also referred to as \frqq someone the user knows\flqq. For example, Facebook uses this method to ensure that the authentication attempt is genuine by asking the user to identify a set of their friends. Of course, social authentication works in other scenarios, especially offline use cases, too. Besides these methods, \frqq something the user does\flqq{} is another form of authentication. Examples range from keystrokes to online shopping behavior.\footcites[See][]{Brainard2006}[See][278--279]{shostack2014threat}[See][]{10.1007/978-3-642-18178-8_9}[See][]{7460349}
 
 \section{Processes of Authentication}
 
-The process of authentication can be done in three different manners that are explained in the following subsections. These are namely:
+The process of authentication can be performed in three different manners that are explained in the following subsections. These are namely:
 
 \begin{enumerate}
-	\item \textbf{active authentication}, where a user has to initiate the process
-	\item \textbf{passive authentication}, where the user does not need to interact with the system
-	\item \textbf{continuous authentication}, where a system continually monitors and authenticates the user
+	\item \textbf{Active authentication}, where a user has to initiate the process.
+	\item \textbf{Passive authentication}, where the user does not need to interact with the system.
+	\item \textbf{Continuous authentication}, where a system continually monitors and authenticates the user.
 \end{enumerate}
 
 A combination of active and passive authentication is also possible. For example, the biometric passport (\frqq ePassport\flqq) contains both active authentication and passive authentication with the help of an integrated \gls{rfid} chip.\footcite[See][545]{eckert-it-sec-9}
@@ -81,45 +81,45 @@ The most common process of authentication is active authentication. In this proc
 
 \subsection{Passive Authentication}
 
-In contrast to the active authentication process, in the passive authentication process, the user is authenticated without the need to take action on their part. Use cases of passive authentication are, for example, \gls{rfid} chips that continuously send a signal in a short-range and can open a door when the user approaches it. Further examples can be the analysis of keystrokes or touch screen usage patterns. In comparison with active authentication, this process is more low-friction. The biometric passport provides a way to calculate the integrity and authenticity from a reading device to improve the protection against forgery.\footcites[See][186]{10.1007/978-3-319-05452-0_14}[See][]{185306}[See][545]{eckert-it-sec-9}
+In contrast to the active authentication process, the passive authentication process authenticates the user without the need to take action on their part. Use cases of passive authentication are, for example, \gls{rfid} chips that continuously send a signal in a short-range and can open a door when the user approaches it. Further examples can be the analysis of keystrokes or touch screen usage patterns. In comparison with active authentication, this process is more low-friction. The biometric passport provides a way for a reading device to calculate the integrity and authenticity of the passport to improve the protection against forgery.\footcites[See][186]{10.1007/978-3-319-05452-0_14}[See][]{185306}[See][545]{eckert-it-sec-9}
 
 \subsection{Continuous Authentication}
 
-Further, the process of continuous authentication exists, too. In this case, the user is continuously authenticated or monitored to ensure that it is still the initially authenticated user who is using the system. Authentication must happen in a non-intrusive way. Commonly used for continuous authentication are biometrics, such as fingerprints, facial recognition, or keystroke patterns.\footcites[See][236--238]{dasgupta2017multi}[See][]{7444124}
+Further, the process of continuous authentication exists, too. In this case, the user is continuously authenticated or monitored to ensure that it is still the initially authenticated user who uses the system. Authentication must happen in a non-intrusive way. Commonly used for continuous authentication are biometrics, such as fingerprints, facial recognition, or keystroke patterns.\footcites[See][236--238]{dasgupta2017multi}[See][]{7444124}
 
 Unfortunately, the term active authentication is often used to describe continuous authentication, too. To avoid confusion, solely term continuous authentication is used to refer to this process of authentication, while any mentions of active authentication are a reference to the process described in \autoref{subsec:active_auth}.
 
 \section{Attestation}
 
-A typical problem in authentication is the trustworthiness between two parties, usually a server and a client. Assuring and proving that an entity is trustworthy is called attestation. \Gls{tpm} computing uses attestation, also called »Remote Attestation«, but it is also important in the context of the \gls{uaf}, \gls{u2f} protocol, and the \wa. An essential aspect is to prove (\frqq vouch for\flqq) an entity while keeping the user and the users' data private. This form of attestation is called \gls{daa}, which can use \gls{ecc} to achieve this goal, too.\footcites[See][]{trusted-comp}[See][501]{Mayes2017}[See][4]{Coker:2011:PRA:1989153.1989155}[See][100]{2178405}[See][226]{10.1007/978-3-642-12510-2_16}
+A typical problem in authentication is the trustworthiness between two parties, usually a server and a client. Assuring and proving that an entity is trustworthy is called attestation. For example, the \gls{tpm} computing uses attestation, also called \frqq Remote Attestation\flqq. Nevertheless, it is also important in the context of the \gls{uaf}, \gls{u2f} protocol, and the \wa. An essential aspect is to prove (\frqq vouch for\flqq) an entity while keeping the user and the users' data private. This form of attestation is called \gls{daa}, which can use \gls{ecc} to achieve this goal, too.\footcites[See][]{trusted-comp}[See][501]{Mayes2017}[See][4]{Coker:2011:PRA:1989153.1989155}[See][100]{2178405}[See][226]{10.1007/978-3-642-12510-2_16}
 
 \section{Challenge-Response Authentication}
 
-Challenge-response authentication is a further method of authentication by knowledge. Instead of transmitting the knowledge, the client answers challenges sent by the server. This proves that the client knows the shared secret. Both symmetric and asymmetric cryptosystems can be used. A basic symmetric approach is the following:
+Challenge-response authentication is a particular method of authentication by knowledge. Instead of transmitting the knowledge, the client answers challenges sent by the server. This proves that the client knows the shared secret. Challenge-response authentication supports both symmetric and asymmetric cryptosystems. A basic symmetric approach is the following:
 
 \begin{enumerate}
 	\setcounter{enumi}{-1} 
-	\item \textbf{requirement}: The server and client both know the same secret key \textit{K}
-	\item the server generates a unique challenge \textit{c} (e.g., a random number) and sends it to the client 
-	\item the client computes the keyed hash \(resp_c = hash(c, K)\)
-	\item the server compares its computation of \(resp_s = hash(c, K)\) to the received \textit{\(resp_c\)}
+	\item \textbf{Requirement}: The server and client both know the same secret key \textit{K}.
+	\item The server generates a unique challenge \textit{c} (e.g., a random number) and sends it to the client.
+	\item The client computes the keyed hash \(resp_c = hash(c, K)\) and sends it back to the server.
+	\item The server compares its computation of \(resp_s = hash(c, K)\) to the received \textit{\(resp_c\)}.
 \end{enumerate}
 
 To achieve mutual authentication, the client can also send a unique challenge to the server, which in turn generates the keyed hash and sends it back to the client for verification. A typical challenge-response protocol is Fiat-Shamir.\footcites[See][Chapter 13.6]{waschke2017personal}[See][489--491]{eckert-it-sec-9}
 
 \section{Zero-Knowledge Protocol}
 
-Zero-knowledge protocols or proofs are special variants of the challenge-response authentication where two participants want to prove the knowledge of a secret without disclosing the secret or parts of it to the other or third-parties. The verifying party asks the participant to solve a challenge that can only be answered correctly by knowing the secret. To decrease the chance that an attacker guessed correctly, the challenges are repeated multiple times. An example implementation is the Feige–Fiat–Shamir identification scheme. A more sophisticated variant is the \gls{zkpp} which is an interactive zero-knowledge proof. It is standardized in the \gls{ieee} standard IEEE 1363.2. Using \gls{zkpp} protects against, e.g., guessing and dictionary attacks.\footcites[See][492]{eckert-it-sec-9}[See][Chapter 28.3.7]{1174011}[See][769--770]{FISCHERHBNER2017759}[See][]{Feige1988}
+Zero-knowledge protocols or proofs are special variants of the challenge-response authentication. In this protocol, two participants want to prove the knowledge of a secret without disclosing the secret or parts of it to the other or third-parties. The verifying party asks the participant to solve a challenge that can only be answered correctly by knowing the secret. The challenges are repeated multiple times to decrease the chances of a correct guess by an attacker. An example implementation is the Feige–Fiat–Shamir identification scheme. A more sophisticated variant is the \gls{zkpp} which is an interactive zero-knowledge proof. It is standardized in the \gls{ieee} standard IEEE 1363.2. The use of \gls{zkpp} protects against, e.g., guessing and dictionary attacks.\footcites[See][492]{eckert-it-sec-9}[See][Chapter 28.3.7]{1174011}[See][769--770]{FISCHERHBNER2017759}[See][]{Feige1988}
 
 \section{Wording Differences between Multi-Factor, Multi-Step, Authentication, and Verification}
 
-Three different terms are used in the authentication environment. Single-factor authentication describes the authentication of a user with one of the described authentication methods. \Glsfirst{2fa} described the process with two distinct methods of authentication involved in the authentication process, while \glsfirst{mfa} is an abstraction of this term that enables the usage of 2-n different methods of authentication.\footcites[See][186--188]{dasgupta2017multi}
+Three different terms are used in the authentication context. Single-factor authentication describes the authentication of a user with one of the introduced authentication methods. \Glsfirst{2fa} describes the process with two distinct methods of authentication involved in the authentication process. \Glsfirst{mfa} is an abstraction of this term that enables the usage of 2-n different methods of authentication.\footcites[See][186--188]{dasgupta2017multi}
 
-Authorities such as the \gls{bsi}, the \gls{eu}, or the National Information Assurance Glossary also use the term \frqq strong authentication\flqq{} as a synonym for \gls{mfa}, although strong authentication often differently defined.\footcites[See][47]{CNSS4009}[See][11]{deutschland2018grundschutz}
+Authorities such as the \gls{bsi}, the \gls{eu}, or the National Information Assurance Glossary also use the term \frqq strong authentication\flqq{} as a synonym for \gls{mfa}.\footcites[See][117]{CNSS4009}[See][11]{deutschland2018grundschutz}
 
-The naming of the chosen authentication or verification methods by companies is often confusing and difficult to understand. The terms used by companies vary from \glsfirst{2fa}, often just calling it \gls{2fa}, to two-step-verification, sometimes written as 2-Step Verification, too.\footcites[See][]{apple_2fa}[See][]{apple_s2v}[See][]{playstation}[See][]{google_2-step_verification}[See][]{microsoft_2sv}
+The naming of the chosen authentication or verification methods by companies is often confusing and difficult to understand. The terms used by companies vary from \glsdesc{2fa}, often just calling it \gls{2fa}, to two-step-verification, sometimes even written as 2-Step Verification or 2SV, too.\footcites[See][]{apple_2fa}[See][]{apple_s2v}[See][]{playstation}[See][]{google_2-step_verification}[See][]{microsoft_2sv}
 
 One could argue that the different authentication factors can be reduced to a single one, e.g., that an \gls{otp} is \frqq something the user knows\flqq{} since it relies on a secret that \textit{could, in theory,} be memorized, too, but practically is not memorable.\\
-In this case, the term \gls{mfa} or 2FA is technically incorrect, since it is instead a multi-step authentication because the same factor is used multiple times. However, it has to be noted that using the same authentication factor multiple times is weaker than using different authentication factors.\footcite[See][117]{grimes2017hacking}
+In this case, the term \gls{mfa} or 2FA is technically incorrect, since it is instead a multi-step authentication because the same factor is used multiple times. Also, it has to be noted that using the same authentication factor multiple times is weaker than using different authentication factors.\footcite[See][117]{grimes2017hacking}
 
 The (user) verification, especially the verification of access permissions, is a part of the authentication process. Because of this, for the remainder of this thesis, the subtle differences between verification and authentication are not relevant, and the term \gls{mfa} is used throughout.
