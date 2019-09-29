@@ -1,6 +1,13 @@
 \section{Overall Comparison of Threats}
 
-The following section sums the introduce methods of authentication and analyzed \gls{mfa} solutions up and shows their key threats.
+The following section sums the introduced methods of authentication and analyzed \gls{mfa} solutions up and shows their key threats.
+
+\autoref{tab:all-threats} shows the introduced authentication methods grouped by the authentication methods knowledge, possession, and biometrics. It shows that primary authentication by possession is used as an additional authentication factor, given the fact that passwords are the de facto standard on the internet as the first factor. Biometrics can be used, for instance, with the \gls{uaf}, but in practice there exist very few applications that use biometrics as an additional factor for internet-based login flows.
+
+Further, it shows that no authentication method is free of vulnerabilities, even when combined as \gls{2fa} or \gls{mfa}. The most present vulnerability is the missing phishing resistance alongside the threat of interception, followed by physical theft. The table shows that every introduced method of \glspl{otp} is subject to phishing attacks and that the only phishing resistant solution is \gls{u2f}. Unfortunately, hardware tokens itself are often not protected.
+
+\newpage
+
 \begin{table}[ht]
 	\begin{tabularx}{\textwidth}{c|p{3.5cm}|p{1.5cm}|p{8cm}}
 		& Authentication & \gls{mfa} & Threats \\
@@ -36,8 +43,4 @@ The following section sums the introduce methods of authentication and analyzed 
 \end{table}
 \footcitetexts[Sources: table based on analysis from previous chapters and additionally from][41--45]{SP80063B}
 
-\autoref{tab:all-threats} shows the introduced authentication methods grouped by the known authentication methods knowledge, possession, and biometrics. It shows that primary authentication by possession is used as an additional authentication factor, given the fact that passwords are the de-facto standard on the internet as the first factor. Biometrics can be used, for instance, with the \gls{uaf}, but in practice there exist very few applications that use biometrics as an additional factor for internet-based login flows.
-
-Further, it shows that no authentication method is free of vulnerabilities, even when combined as \gls{2fa} or \gls{mfa}. The most present vulnerability is the missing phishing resistance alongside the threat of interception followed by physical theft. The table shows that every introduced method of \glspl{otp} is subject to phishing attacks and that the only phishing resistant solution is \gls{u2f}. Unfortunately, hardware tokens itself are often not protected.
-
-Independently of the used \gls{mfa} solution, the service provider must require the usage of \gls{mfa} for sensitive transactions, such as the change of the user's password, the de-activation of \gls{2fa} or the initiation of an account recovery process. Failing to do so enables an account takeover if an attacker can successfully perform, for example, a session hijacking because no additional confirmation is necessary to de-activate the \gls{mfa}. Alternatively, if for instance, an attacker controls a victim's e-mail account, they can reset any password for every account that is registered with the e-mail if the service provider does not enforce \gls{2fa} for this operation.\footcites[See][370]{10.1007/978-3-662-45472-5_24}
+Independently of the used \gls{mfa} solution, the service provider must require the usage of \gls{mfa} the login and for sensitive transactions, such as the change of the user's password, the de-activation of \gls{2fa} or the initiation of an account recovery process. Failing to do so enables an account takeover if an attacker can successfully perform, for example, a session hijacking because no additional confirmation is necessary to de-activate the \gls{mfa}. Alternatively, if, for instance, an attacker controls a victim's e-mail account, they can reset any password for every account that is registered with the e-mail if the service provider does not enforce \gls{2fa} for this operation.\footcites[See][370]{10.1007/978-3-662-45472-5_24}
