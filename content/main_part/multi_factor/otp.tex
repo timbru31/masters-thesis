@@ -46,7 +46,7 @@ Mathematically, the \gls{hmac} is defined as
 
 where \textit{K} is the shared secret key and \textit{K'} is the result by appending zeroes to the key \textit{K} until it reaches a full block size (\textit{B}) defined by the hash function. The inner padding \textit{ipad} is constructed by repeating the byte \textit{0x36} B-times, and \textit{opad} is the outer padding constructed by repeating the byte \textit{0x5C} B-times.
 
-Naively one could think that the \gls{hmac} is constructed by just hashing the secret key with the message. In order to increase the security and to protect against a probable collision of the hash functions, the algorithm design is slightly different and is shown in the next figure.
+Naively, one could think that the \gls{hmac} is constructed by just hashing the secret key with the message. In order to increase the security and to protect against a probable collision of the hash functions, the algorithm design is slightly different and is shown in the next figure.
 
 \begin{figure}[hbt]
 	\centering
@@ -56,7 +56,7 @@ Naively one could think that the \gls{hmac} is constructed by just hashing the s
 \end{figure}
 \footcitetext[Source: diagram by author, based on][395]{eckert-it-sec-9}
 
-The exclusive or (XOR) operation is instead performed on the key, \textit{opad} (1) and \textit{ipad} (2), respectively. Besides that, the hash function is invoked twice. First, on the result of the XOR operation on \textit{K'} and the \textit{ipad} (3) with the message. Secondly, on the final result of the concatenation of (1), (2), and (3). \autoref{fig:hmac} shows the intermediate steps in order to generate the \gls{hmac}.
+The exclusive or (XOR) operation is instead performed on the key, \textit{opad} (1) and \textit{ipad} (2), respectively. Besides that, the hash function is invoked twice. Firstly, on the result of the XOR operation on \textit{K'} and the \textit{ipad} (3) with the message. Secondly, on the final result of the concatenation of (1), (2), and (3). \autoref{fig:hmac} shows the intermediate steps in order to generate the \gls{hmac}.
 
 One of the key aspects of the \gls{hmac} is that the efficiency of the original hash function is maintained and not altered by wrapping it in the \gls{hmac} algorithm. The security of the \gls{mac} relies on the used cryptographic hash function and the strength of the secret key, for example, the length and the chosen alphabet. The best-known attacks against \gls{hmac} remain the brute-force and birthday attack. \autoref{sec:totp_sec} performs further security analysis.\footcites[See][Chapter 10.4.1]{2308830}[See][398]{1679747}[See][3, 10--13]{10.1007/3-540-68697-5_1}[See][]{10.1007/3-540-44750-4_1}
 
