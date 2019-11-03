@@ -1,0 +1,64 @@
+/* Copyright 1997-2003 W3C (MIT, ERCIM, Keio). All Rights Reserved.
+   The following software licensing rules apply:
+   http://www.w3.org/Consortium/Legal/copyright-software */
+
+/* $Id: press.css,v 2.10 2014-06-04 16:39:33 ijacobs Exp $ */
+
+body {
+  font-family: sans-serif;
+  color: black;
+  background: white;
+  margin-left: 5em; margin-right: 5em;
+}
+
+a:link, a:active {
+  color: #00e;
+  background: transparent;
+}
+
+a img {
+  border-style: none;
+  color: #fffbf0;
+}
+
+a:visited {
+  color: #529;
+  background: transparent;
+}
+
+div.intro {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-style: italic;
+}
+
+.menu {
+  text-align: center;
+}
+
+pre {
+  font-family: monospace;
+}
+
+img.icon { 
+  border: none;
+}
+
+ul.toc {
+  list-style: none;
+}
+
+div.issue {
+  padding: 0.5em;
+  border: none;
+  margin-right: 5%;
+}
+
+.hideme {
+  display: none;
+}
+
+.indent {
+  margin-left: 3em;
+  width: 85%;
+}
