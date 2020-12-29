@@ -1,0 +1,37 @@
+\input{content/config}		% Packages und Formatierungen laden
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[multiple]{footmisc}
+
+\begin{document}
+
+\input{content/deckblatt.tex}
+\setcounter{page}{3}
+
+\pagestyle{fancy}
+
+%%%%%%%%%% automatische Verzeichnisse %%%%%%%%%%%
+\pagenumbering{Roman} % Römische Nummerierung
+\setcounter{page}{2}
+
+\newpage
+%%%%%%%% Hauptteil %%%%%%%%%%%%%%%%%%%
+%% Seitenzahlzähler für die Verzeichnisse und Anhänge speichern
+\newpage % damit neue Nummerierung erst auf der nächsten Seite beginnt
+\newcounter{Verzeichnisseitenzahl}
+\setcounter{Verzeichnisseitenzahl}{\value{page}}
+
+\pagenumbering{arabic} % arabische Nummerierung für die eigentliche Arbeit
+ 
+\include{content/motivation}
+
+\include{content/zielsetzung}
+
+\include{content/forschung}
+
+\include{content/vorgehen}
+
+\include{content/gliederung}
+
+\include{content/literaturverzeichnis}
+
+\end{document}

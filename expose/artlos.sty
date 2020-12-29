@@ -1,0 +1,15 @@
+\def\listofsymbolsname{Symbolverzeichnis}
+\newcommand\listofsymbols{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listofsymbolsname
+      \@mkboth{\MakeUppercase\listofsymbolsname}%
+              {\MakeUppercase\listofsymbolsname}}%
+    \@starttoc{los}%
+    \if@restonecol\twocolumn\fi
+    }
+\let\l@symbol\l@figure
+\def\addtolos#1#2{\addcontentsline{los}{symbol}{\protect\makebox[20mm][r]{#1}\protect\quad #2}}

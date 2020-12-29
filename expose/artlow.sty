@@ -1,0 +1,32 @@
+\def\listoffremdsname{Verzeichnis der verwendeten Begriffe}
+\newcommand\listoffremds{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listoffremdsname
+      \@mkboth{\MakeUppercase\listoffremdsname}%
+              {\MakeUppercase\listoffremdsname}}%
+    \@starttoc{low}%
+    \if@restonecol\twocolumn\fi
+    }
+
+\let\l@fremd\l@figure
+
+%\newcommand\listoftables{%
+%    \if@twocolumn
+%      \@restonecoltrue\onecolumn
+%    \else
+%      \@restonecolfalse
+%    \fi
+%    \chapter*{\listtablename
+%      \@mkboth{%
+%          \MakeUppercase\listtablename}{\MakeUppercase\listtablename}}%
+%    \@starttoc{lot}%
+%    \if@restonecol\twocolumn\fi
+%    }
+%\let\l@table\l@figure
+
+\newcommand{\addtolow}[2]{%
+\addcontentsline{low}{symbol}{\protect\makebox[20mm][r]{#1}\protect\quad #2}}

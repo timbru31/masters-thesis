@@ -1,0 +1,80 @@
+%% allgemeine Textformatierung
+
+\documentclass[
+	oneside,			%				einseitig
+	a4paper,			%				DIN A4-Format
+	12pt					%				Schriftgröße
+]{scrreprt}
+
+% Für die Verzeichnisse für Abkürzungen, Fremdwörter, Symbole
+\usepackage[]{artlos,artlob,artlow}
+
+%% deutsche Sprachanpassungen (Silbentrennung, Umlaute usw.)
+\usepackage{ngerman}
+
+%% keine Ahnung, is aber immer drin :-)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+%% nicht bitmap, sondern postscript (type 1, vector)
+\usepackage[]{pslatex}
+
+%% Package zum einfärben von Text und anderen Objekte
+%\usepackage{color}
+
+%% Package zum einbinden von Grafiken
+\usepackage[]{graphicx}
+
+%% Package für Index (Register)
+\usepackage{makeidx}
+\makeindex
+\renewcommand{\indexname}{Stichwortverzeichnis}
+
+%% Package für Kopfzeilen
+\usepackage{fancyhdr}
+% Kopfzeilenformat festlegen
+\rhead{}
+\headheight = 14.5pt
+
+%% Package zum einbetten von Verweisen in die Ausgabe (DVI, PDF)
+\usepackage[
+	bookmarksopen=true,			% öffnet alle Lesezeichen (nur in PDF)
+	plainpages=false				% ermöglicht mehrere Seitenzahlformate
+]{hyperref}
+
+%% Package für Abkürzungsverzeichnis (Glossar)
+\usepackage{nomencl}
+	\let\abbrev\nomenclature
+	\renewcommand{\nomname}{Abkürzungsverzeichnis}
+	\setlength{\nomlabelwidth}{.25\hsize}
+%	\renewcommand{\nomlabel}[1]{#1 \dotfill}
+	\setlength{\nomitemsep}{-\parsep}
+% Paketabhaengig heissen die Befehle makenomenclature / printnomenclature
+%                 oder makeglossary / printglossary !!!!
+	% \makenomenclature
+	\makeglossary
+%	\let\listofabbreviations\printnomenclature  % Paketabhaengig !!!!
+	\let\listofabbreviations\printglossary
+
+%% Hervorhebung für das Abkürzungsverzeichnis
+\usepackage[normalem]{ulem}
+	\newcommand{\markup}[1]{\underline{#1}}
+
+% Seitenformat festlegen
+\textwidth14.5cm
+\textheight24.5cm
+\topmargin-15mm
+
+% 1.5 zeilig
+\linespread{1.25}\selectfont
+
+%% Package zum formatieren von Tabellen
+\usepackage{array}
+
+% kein Einrücken am Absatzanfang
+\parindent 0pt 
+
+% variabler Abstand zwischen Wörtern, um Blocksatz zu wahren und weniger zu trennen
+\sloppy
+
+\usepackage{xcolor}

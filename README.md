@@ -25,4 +25,4 @@ If you want to cite my thesis, here is the BibTeX record:
 
 ---
 
-Copyright (c) 2019 Tim Brust - All rights reserved.
+Copyright (c) 2019-present Tim Brust - All rights reserved.
